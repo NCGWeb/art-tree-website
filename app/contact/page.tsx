@@ -1,8 +1,9 @@
 import Image from 'next/image';
 import type { Metadata } from 'next';
 import ContactForm from '@/components/ContactForm';
+import Reveal from '@/components/Reveal';
 import { PhoneIcon, MailIcon, PinIcon, TwitterIcon, YoutubeIcon, FacebookIcon, InstagramIcon } from '@/components/icons';
-import { getPageContent } from '@/lib/content';
+import { getPageContent, getSiteSettings } from '@/lib/content';
 
 export async function generateMetadata(): Promise<Metadata> {
   const contact = await getPageContent('contact');
@@ -11,32 +12,51 @@ export async function generateMetadata(): Promise<Metadata> {
 
 export default async function ContactPage() {
   const contact = await getPageContent('contact');
+  const site = await getSiteSettings();
 
   return (
     <main id="main">
+      {/* HERO — compact side-by-side on desktop (text left, photo right),
+          and on mobile the same photo sits as a full-bleed background
+          behind the text with a scrim for contrast, per the client's
+          reference mockup. One <Image> only (not two), sized responsively
+          via the `sizes` prop, so mobile and desktop never both fetch a
+          full copy. */}
       <section className="relative overflow-hidden bg-[#F6F1E4]">
-        <div className="relative aspect-[4/3] w-full sm:aspect-[16/9] lg:aspect-[21/9]">
-          <Image src={contact.hero.image} alt={contact.hero.alt} fill priority className="object-cover" sizes="100vw" />
-        </div>
-        <div className="mx-auto max-w-site px-5 py-8">
-          <div className="text-[0.7rem] font-semibold uppercase tracking-[2px] text-terracotta">{contact.hero.eyebrow}</div>
-          <h1 className="mt-2 font-head text-3xl text-headline-green sm:text-4xl">{contact.hero.heading}</h1>
-          <div className="my-4 h-0.5 w-11 bg-gold" />
-          <p className="max-w-[46ch] text-sm leading-relaxed text-[#4a473c]">{contact.hero.lead}</p>
+        <div className="relative flex min-h-[420px] flex-col md:min-h-[380px] md:flex-row md:items-stretch">
+          <div className="absolute inset-0 md:relative md:inset-auto md:order-2 md:w-1/2">
+            <Image
+              src={contact.hero.image}
+              alt={contact.hero.alt}
+              fill
+              priority
+              className="object-cover"
+              sizes="(min-width: 768px) 50vw, 100vw"
+            />
+            {/* Mobile-only scrim so the heading/lead stay readable over the photo */}
+            <div className="absolute inset-0 bg-gradient-to-t from-ink/80 via-ink/45 to-ink/10 md:hidden" />
+          </div>
+
+          <div className="relative z-10 flex flex-1 flex-col justify-center px-5 py-10 md:order-1 md:w-1/2 md:py-0 md:pl-6 lg:pl-10">
+            <div className="text-xs font-semibold uppercase tracking-[0.2em] text-white md:text-terracotta">{contact.hero.eyebrow}</div>
+            <h1 className="mt-2 font-head text-3xl text-white sm:text-4xl md:text-headline-green">{contact.hero.heading}</h1>
+            <div className="my-4 h-0.5 w-12 bg-gold" />
+            <p className="max-w-[42ch] text-sm leading-relaxed text-white/90 md:text-muted">{contact.hero.lead}</p>
+          </div>
         </div>
       </section>
 
-      <section className="bg-cream py-10">
+      <section className="bg-cream py-10 sm:py-12">
         <div className="mx-auto grid max-w-site grid-cols-1 gap-10 px-5 lg:grid-cols-[1fr_1.2fr]">
-          <div>
+          <Reveal as="div">
             <h2 className="mb-1.5 font-head text-2xl text-headline-green">Contact Information</h2>
-            <div className="mb-5 h-0.5 w-11 bg-gold" />
+            <div className="mb-5 h-0.5 w-12 bg-gold" />
 
             <div className="mb-4 flex items-start gap-3.5">
               <span className="flex h-9 w-9 shrink-0 items-center justify-center rounded-full border border-gold-dark text-terracotta">
                 <PhoneIcon className="h-4 w-4" />
               </span>
-              <a href={`tel:${contact.phone.replace(/\s+/g, '')}`} className="pt-1.5 text-sm text-ink">
+              <a href={`tel:${contact.phone.replace(/\s+/g, '')}`} className="border-b border-transparent pt-1.5 text-sm text-ink transition-colors duration-300 ease-out hover:border-terracotta hover:text-terracotta">
                 {contact.phone}
               </a>
             </div>
@@ -48,7 +68,7 @@ export default async function ContactPage() {
               <div className="pt-1.5 text-sm text-ink">
                 {contact.emails.map((e: string, i: number) => (
                   <div key={i}>
-                    <a href={`mailto:${e}`}>{e}</a>
+                    <a href={`mailto:${e}`} className="border-b border-transparent transition-colors duration-300 ease-out hover:border-terracotta hover:text-terracotta">{e}</a>
                   </div>
                 ))}
               </div>
@@ -65,16 +85,16 @@ export default async function ContactPage() {
 
             <h3 className="mb-3 font-head text-lg text-headline-green">Follow Us</h3>
             <div className="mb-8 flex gap-3">
-              <a href={contact.socials.twitter || '#'} aria-label="Twitter" className="text-ink hover:text-terracotta">
+              <a href={contact.socials.twitter || '#'} aria-label="Twitter" className="flex h-10 w-10 items-center justify-center rounded-full text-ink transition-all duration-300 ease-out hover:-translate-y-0.5 hover:bg-terracotta/10 hover:text-terracotta">
                 <TwitterIcon className="h-5 w-5" />
               </a>
-              <a href={contact.socials.youtube || '#'} aria-label="YouTube" className="text-ink hover:text-terracotta">
+              <a href={contact.socials.youtube || '#'} aria-label="YouTube" className="flex h-10 w-10 items-center justify-center rounded-full text-ink transition-all duration-300 ease-out hover:-translate-y-0.5 hover:bg-terracotta/10 hover:text-terracotta">
                 <YoutubeIcon className="h-5 w-5" />
               </a>
-              <a href={contact.socials.facebook || '#'} aria-label="Facebook" className="text-ink hover:text-terracotta">
+              <a href={contact.socials.facebook || '#'} aria-label="Facebook" className="flex h-10 w-10 items-center justify-center rounded-full text-ink transition-all duration-300 ease-out hover:-translate-y-0.5 hover:bg-terracotta/10 hover:text-terracotta">
                 <FacebookIcon className="h-5 w-5" />
               </a>
-              <a href={contact.socials.instagram || '#'} aria-label="Instagram" className="text-ink hover:text-terracotta">
+              <a href={contact.socials.instagram || '#'} aria-label="Instagram" className="flex h-10 w-10 items-center justify-center rounded-full text-ink transition-all duration-300 ease-out hover:-translate-y-0.5 hover:bg-terracotta/10 hover:text-terracotta">
                 <InstagramIcon className="h-5 w-5" />
               </a>
             </div>
@@ -83,17 +103,40 @@ export default async function ContactPage() {
               <h3 className="mb-2 font-head text-lg text-headline-green">You can also write to</h3>
               <div className="text-sm font-semibold text-ink">{contact.founder.name}</div>
               <div className="mb-2 text-xs text-tan">{contact.founder.role}</div>
-              <blockquote className="font-head text-sm italic leading-relaxed text-[#4a473c]">{contact.founder.quote}</blockquote>
+              <blockquote className="font-head text-sm italic leading-relaxed text-muted">{contact.founder.quote}</blockquote>
             </div>
-          </div>
+          </Reveal>
 
-          <ContactForm
-            recipientEmail={contact.recipientEmail}
-            defaultSubject={contact.form.defaultSubject}
-            labels={contact.form}
-          />
+          <Reveal as="div" delay={120}>
+            <ContactForm
+              recipientEmail={contact.recipientEmail}
+              defaultSubject={contact.form.defaultSubject}
+              labels={contact.form}
+            />
+          </Reveal>
         </div>
       </section>
+
+      {/* Lotus-flanked quote banner, matching the client's reference mockup.
+          Reuses the site's existing footer-banner copy (no new copy) and
+          the existing footer-lotus.webp decorative asset. */}
+      <Reveal
+        as="section"
+        className="relative isolate flex min-h-[170px] items-center overflow-hidden bg-[#F6F1E4] px-5 py-10 sm:min-h-[200px] sm:py-12"
+      >
+        <Image
+          src="/images/footer-lotus.webp"
+          alt=""
+          aria-hidden="true"
+          fill
+          className="object-cover"
+          style={{ objectPosition: 'center bottom' }}
+          sizes="100vw"
+        />
+        <blockquote className="relative z-10 mx-auto max-w-2xl text-center font-head text-lg italic leading-relaxed text-headline-green sm:text-xl">
+          {site.footerBanner}
+        </blockquote>
+      </Reveal>
     </main>
   );
 }

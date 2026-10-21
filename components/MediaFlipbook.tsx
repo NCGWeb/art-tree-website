@@ -1,17 +1,58 @@
 'use client';
 
-import Image from 'next/image';
-import { useEffect, useState } from 'react';
+import { forwardRef, useEffect, useRef, useState, type ComponentType } from 'react';
 
-export default function MediaFlipbook({ items }: { items: { image: string; alt: string }[] }) {
-  const [index, setIndex] = useState(0);
+type MediaItem = { image: string; alt: string };
+
+// react-pageflip targets its own ref directly at each page's root DOM node
+// to size/position/flip it, so every page must forward a ref.
+const Page = forwardRef<HTMLDivElement, { image: string; alt: string; priority?: boolean }>(
+  ({ image, alt, priority }, ref) => (
+    <div ref={ref} className="flex h-full w-full items-center justify-center bg-white">
+      {/* Plain <img>, not next/image: the flip engine applies its own
+          absolute positioning/transform to this element while dragging, and
+          a lazily-hydrated next/image fill box doesn't play well with that.
+          Only the first couple of pages skip native lazy-loading. */}
+      <img
+        src={image}
+        alt={alt}
+        draggable={false}
+        loading={priority ? 'eager' : 'lazy'}
+        className="h-full w-full select-none object-contain"
+      />
+    </div>
+  ),
+);
+Page.displayName = 'MediaFlipbookPage';
+
+export default function MediaFlipbook({ items }: { items: MediaItem[] }) {
+  const bookRef = useRef<any>(null);
+  const [pageIndex, setPageIndex] = useState(0);
+  // react-pageflip (StPageFlip under the hood) measures and manipulates the
+  // DOM on mount, so it can never run during SSR. Rather than
+  // next/dynamic(..., { ssr: false }) — whose loader wrapper is a plain
+  // function component and silently drops the ref this library needs to
+  // expose its flip API — the module is imported inside an effect, which
+  // only ever runs in the browser, and the real forwardRef-wrapped
+  // component is used directly once it resolves.
+  const [FlipBook, setFlipBook] = useState<ComponentType<any> | null>(null);
   const total = items.length;
 
+  useEffect(() => {
+    let cancelled = false;
+    import('react-pageflip').then((mod) => {
+      if (!cancelled) setFlipBook(() => mod.default);
+    });
+    return () => {
+      cancelled = true;
+    };
+  }, []);
+
   function prev() {
-    setIndex((i) => Math.max(0, i - 1));
+    bookRef.current?.pageFlip?.()?.flipPrev();
   }
   function next() {
-    setIndex((i) => Math.min(total - 1, i + 1));
+    bookRef.current?.pageFlip?.()?.flipNext();
   }
 
   useEffect(() => {
@@ -22,54 +63,98 @@ export default function MediaFlipbook({ items }: { items: { image: string; alt: 
     document.addEventListener('keydown', onKey);
     return () => document.removeEventListener('keydown', onKey);
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [total]);
+  }, []);
 
   if (total === 0) {
-    return <p className="text-center text-sm text-white/70">No press coverage has been added yet.</p>;
+    return <p className="text-center text-sm text-muted-soft">No press coverage has been added yet.</p>;
   }
 
-  const current = items[index];
-
   return (
-    <div className="mx-auto flex max-w-xl flex-col items-center gap-4 px-4">
-      <div className="flex w-full items-center justify-center gap-3">
+    <div className="mx-auto flex max-w-3xl flex-col items-center gap-5 px-4">
+      <div className="flex w-full items-center justify-center gap-2 sm:gap-5">
         <button
           type="button"
           onClick={prev}
-          disabled={index <= 0}
+          disabled={pageIndex <= 0}
           aria-label="Previous page"
-          className="flex h-10 w-10 items-center justify-center rounded-full border border-white/30 text-xl text-white disabled:opacity-30"
+          className="flex h-11 w-11 shrink-0 items-center justify-center rounded-full border border-headline-green/30 text-xl text-headline-green transition-all duration-300 ease-out hover:border-terracotta hover:bg-terracotta/10 hover:text-terracotta disabled:pointer-events-none disabled:opacity-30"
         >
           ‹
         </button>
 
-        <div className="relative aspect-[3/4] w-full max-w-sm overflow-hidden rounded-md bg-white shadow-2xl">
-          <Image src={current.image} alt={current.alt} fill className="object-contain" sizes="380px" priority={index === 0} />
+        <div className="w-full max-w-md drop-shadow-xl sm:max-w-xl">
+          {FlipBook ? (
+            <FlipBook
+              ref={bookRef}
+              width={320}
+              height={452}
+              size="stretch"
+              minWidth={220}
+              maxWidth={520}
+              minHeight={311}
+              maxHeight={735}
+              startPage={0}
+              drawShadow
+              flippingTime={700}
+              usePortrait
+              startZIndex={0}
+              autoSize
+              maxShadowOpacity={0.5}
+              showCover={false}
+              mobileScrollSupport
+              clickEventForward
+              useMouseEvents
+              swipeDistance={30}
+              showPageCorners
+              disableFlipByClick={false}
+              className="media-flipbook"
+              style={{}}
+              onFlip={(e: any) => setPageIndex(e.data)}
+            >
+              {items.map((item, i) => (
+                <Page key={i} image={item.image} alt={item.alt} priority={i === 0} />
+              ))}
+            </FlipBook>
+          ) : (
+            <div className="flex aspect-[320/452] w-full items-center justify-center rounded bg-white/70 text-sm text-muted-soft">
+              Loading…
+            </div>
+          )}
         </div>
 
         <button
           type="button"
           onClick={next}
-          disabled={index >= total - 1}
+          disabled={pageIndex >= total - 1}
           aria-label="Next page"
-          className="flex h-10 w-10 items-center justify-center rounded-full border border-white/30 text-xl text-white disabled:opacity-30"
+          className="flex h-11 w-11 shrink-0 items-center justify-center rounded-full border border-headline-green/30 text-xl text-headline-green transition-all duration-300 ease-out hover:border-terracotta hover:bg-terracotta/10 hover:text-terracotta disabled:pointer-events-none disabled:opacity-30"
         >
           ›
         </button>
       </div>
 
-      <div className="flex items-center gap-4 text-xs uppercase tracking-widest text-white/80">
-        <button type="button" onClick={prev} disabled={index <= 0} className="border border-white/40 px-3 py-1.5 disabled:opacity-30">
+      <div className="flex items-center gap-4 text-xs uppercase tracking-widest text-ink">
+        <button
+          type="button"
+          onClick={prev}
+          disabled={pageIndex <= 0}
+          className="min-h-[44px] border border-headline-green/30 px-3 py-1.5 transition-colors duration-300 ease-out hover:border-terracotta hover:text-terracotta disabled:pointer-events-none disabled:opacity-30"
+        >
           ‹ Prev
         </button>
-        <span>
-          {index + 1} / {total}
+        <span className="text-muted-soft">
+          {pageIndex + 1} / {total}
         </span>
-        <button type="button" onClick={next} disabled={index >= total - 1} className="border border-white/40 px-3 py-1.5 disabled:opacity-30">
+        <button
+          type="button"
+          onClick={next}
+          disabled={pageIndex >= total - 1}
+          className="min-h-[44px] border border-headline-green/30 px-3 py-1.5 transition-colors duration-300 ease-out hover:border-terracotta hover:text-terracotta disabled:pointer-events-none disabled:opacity-30"
+        >
           Next ›
         </button>
       </div>
-      <p className="text-center text-xs text-white/50">Click the arrows, swipe, or use your keyboard to flip through.</p>
+      <p className="text-center text-xs text-muted-soft">Drag a corner, swipe, or use the arrows to flip through.</p>
     </div>
   );
 }

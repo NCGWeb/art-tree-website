@@ -35,24 +35,24 @@ export default function Modal({
         onClick={() => setOpen(true)}
         className={
           buttonClassName ??
-          'mt-2 inline-flex w-fit items-center gap-2 border border-ink px-5 py-2.5 text-[0.7rem] uppercase tracking-widest text-ink transition-colors hover:bg-ink hover:text-cream'
+          'mt-2 inline-flex w-fit items-center gap-2 border border-ink px-5 py-2.5 text-xs uppercase tracking-widest text-ink transition-colors duration-300 ease-out hover:bg-ink hover:text-cream'
         }
       >
         {buttonLabel} <span aria-hidden="true">→</span>
       </button>
 
       {open && (
-        <div className="fixed inset-0 z-[1000] flex animate-[fadeIn_.3s_ease]">
+        <div className="fixed inset-0 z-[1000] flex animate-fadeIn">
           <div
             className="absolute inset-0 bg-black/60 backdrop-blur-sm"
             onClick={() => setOpen(false)}
           />
-          <div className="relative z-[2] m-auto max-h-[85vh] w-[90%] max-w-[640px] overflow-y-auto rounded-md bg-white shadow-2xl">
+          <div className="relative z-[2] m-auto max-h-[85vh] w-[90%] max-w-[640px] overflow-y-auto rounded-md bg-white shadow-2xl animate-fadeIn">
             <button
               type="button"
               onClick={() => setOpen(false)}
               aria-label="Close"
-              className="absolute right-3 top-3 z-[3] flex h-8 w-8 items-center justify-center text-lg text-ink transition hover:scale-110 hover:text-terracotta"
+              className="absolute right-3 top-3 z-[3] flex h-10 w-10 items-center justify-center rounded-full text-lg text-ink transition-all duration-300 ease-out hover:scale-110 hover:bg-cream hover:text-terracotta"
             >
               ✕
             </button>
@@ -61,7 +61,7 @@ export default function Modal({
             </h3>
             <div className="space-y-3 px-6 pb-6 pt-4">
               {paragraphs.map((p, i) => (
-                <p key={i} className="text-sm leading-relaxed text-[#4a473c]">
+                <p key={i} className="text-sm leading-relaxed text-muted">
                   {p}
                 </p>
               ))}

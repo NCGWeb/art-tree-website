@@ -32,7 +32,7 @@ export default function SiteFooter({
         <div className="mx-auto max-w-site px-5">
           <div className="mb-6 flex flex-col flex-wrap items-start justify-between gap-8 md:flex-row">
             <div>
-              <Link href="/" className="inline-block">
+              <Link href="/" className="inline-block transition-opacity duration-300 ease-out hover:opacity-80">
                 <Image src="/images/logo.png" alt={logoAlt} width={140} height={71} className="h-10 w-auto" />
               </Link>
               <div className="mt-2 text-sm text-[#bfbba9]">{footerTagline}</div>
@@ -40,7 +40,11 @@ export default function SiteFooter({
 
             <nav aria-label="Footer" className="flex flex-wrap gap-x-5 gap-y-2 text-sm">
               {footerNav.map((item, i) => (
-                <Link key={i} href={item.href} className="transition-colors hover:text-gold">
+                <Link
+                  key={i}
+                  href={item.href}
+                  className="border-b border-transparent pb-0.5 transition-colors duration-300 ease-out hover:border-gold hover:text-gold"
+                >
                   {item.label}
                 </Link>
               ))}
@@ -49,13 +53,25 @@ export default function SiteFooter({
             <div>
               <div className="mb-2 text-xs uppercase tracking-wide text-[#bfbba9]">Connect With Us</div>
               <div className="flex gap-3">
-                <a href={socials.instagram || '#'} aria-label="Instagram" className="text-[#d9d5c6] hover:text-gold">
+                <a
+                  href={socials.instagram || '#'}
+                  aria-label="Instagram"
+                  className="flex h-9 w-9 items-center justify-center rounded-full text-[#d9d5c6] transition-all duration-300 ease-out hover:-translate-y-0.5 hover:bg-white/10 hover:text-gold"
+                >
                   <InstagramIcon className="h-5 w-5" />
                 </a>
-                <a href={socials.facebook || '#'} aria-label="Facebook" className="text-[#d9d5c6] hover:text-gold">
+                <a
+                  href={socials.facebook || '#'}
+                  aria-label="Facebook"
+                  className="flex h-9 w-9 items-center justify-center rounded-full text-[#d9d5c6] transition-all duration-300 ease-out hover:-translate-y-0.5 hover:bg-white/10 hover:text-gold"
+                >
                   <FacebookIcon className="h-5 w-5" />
                 </a>
-                <a href={socials.youtube || '#'} aria-label="YouTube" className="text-[#d9d5c6] hover:text-gold">
+                <a
+                  href={socials.youtube || '#'}
+                  aria-label="YouTube"
+                  className="flex h-9 w-9 items-center justify-center rounded-full text-[#d9d5c6] transition-all duration-300 ease-out hover:-translate-y-0.5 hover:bg-white/10 hover:text-gold"
+                >
                   <YoutubeIcon className="h-5 w-5" />
                 </a>
               </div>

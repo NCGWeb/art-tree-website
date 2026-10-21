@@ -52,7 +52,7 @@ export default function GalleryFan({
               type="button"
               aria-label={i === 2 ? undefined : 'Bring this artwork to the centre'}
               onClick={() => (i !== 2 ? go(i - 2) : undefined)}
-              className="absolute left-1/2 top-5 overflow-hidden rounded-lg bg-white shadow-[0_10px_28px_rgba(60,45,20,0.22)] transition-all duration-500"
+              className="absolute left-1/2 top-5 overflow-hidden rounded-lg bg-white shadow-[0_10px_28px_rgba(60,45,20,0.22)] transition-all duration-500 ease-out hover:shadow-[0_16px_38px_rgba(60,45,20,0.32)] hover:brightness-105"
               style={{
                 width: pos.w,
                 height: pos.h,
@@ -68,14 +68,14 @@ export default function GalleryFan({
       </div>
       <div className="relative z-10 mt-5 text-center">
         <div className="font-head text-lg text-headline-green">{captionTitle}</div>
-        <div className="text-sm text-[#6a674f]">{captionSub}</div>
+        <div className="text-sm text-muted-soft">{captionSub}</div>
       </div>
       <div className="mt-3 flex justify-center gap-3">
         <button
           type="button"
           aria-label="Previous"
           onClick={() => go(-1)}
-          className="flex h-9 w-9 items-center justify-center rounded-full border border-headline-green text-headline-green"
+          className="flex h-10 w-10 items-center justify-center rounded-full border border-headline-green text-headline-green transition-all duration-300 ease-out hover:-translate-y-0.5 hover:bg-headline-green hover:text-white"
         >
           ‹
         </button>
@@ -83,7 +83,7 @@ export default function GalleryFan({
           type="button"
           aria-label="Next"
           onClick={() => go(1)}
-          className="flex h-9 w-9 items-center justify-center rounded-full border border-headline-green text-headline-green"
+          className="flex h-10 w-10 items-center justify-center rounded-full border border-headline-green text-headline-green transition-all duration-300 ease-out hover:-translate-y-0.5 hover:bg-headline-green hover:text-white"
         >
           ›
         </button>
