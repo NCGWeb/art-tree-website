@@ -17,39 +17,36 @@ export default async function ContactPage() {
 
   return (
     <main id="main">
-      {/* HERO — compact side-by-side on desktop (text left, photo right),
-          and on mobile the same photo sits as a full-bleed background
-          behind the text with a scrim for contrast, per the client's
-          reference mockup. One <Image> only (not two), sized responsively
-          via the `sizes` prop, so mobile and desktop never both fetch a
-          full copy. */}
-      <section className="relative overflow-hidden bg-[#F6F1E4]">
-        <div className="relative flex min-h-[420px] flex-col md:min-h-[380px] md:flex-row md:items-stretch">
-          <div className="absolute inset-0 md:relative md:inset-auto md:order-2 md:w-1/2">
-            <Image
-              src={contact.hero.image}
-              alt={contact.hero.alt}
-              fill
-              priority
-              className="object-cover"
-              // The framed painting sits on the right ~55-100% of the source
-              // photo (vase/books/blank wall occupy the left side). Anchoring
-              // object-position toward that side keeps the painting in frame
-              // instead of the default center crop, which — especially on a
-              // narrow/tall mobile crop — could show mostly blank wall and
-              // read as "cropped oddly" / not a true background fill.
-              style={{ objectPosition: '72% center' }}
-              sizes="(min-width: 768px) 50vw, 100vw"
-            />
-            {/* Mobile-only scrim so the heading/lead stay readable over the photo */}
-            <div className="absolute inset-0 bg-gradient-to-t from-ink/80 via-ink/45 to-ink/10 md:hidden" />
-          </div>
+      {/* HERO — full-bleed background photo edge-to-edge at every width,
+          text overlaid on the left over a scrim. One <Image> only, full
+          width/height of the section on mobile AND desktop (no side-by-side
+          split), so the photo always spans the entire hero. */}
+      <section className="relative isolate overflow-hidden">
+        <div className="relative flex min-h-[420px] flex-col justify-center md:min-h-[460px] lg:min-h-[520px]">
+          <Image
+            src={contact.hero.image}
+            alt={contact.hero.alt}
+            fill
+            priority
+            className="object-cover"
+            // The framed painting sits on the right ~55-100% of the source
+            // photo (vase/books/blank wall occupy the left side). Anchoring
+            // object-position toward that side keeps the painting in frame
+            // instead of the default center crop, and leaves the left side
+            // of the frame clearer for the text + scrim.
+            style={{ objectPosition: '68% center' }}
+            sizes="100vw"
+          />
+          {/* Scrim: dark-to-light left-to-right on desktop (text sits left,
+              photo stays visible on the right), and a vertical top-down
+              scrim on mobile where the text stacks over the full image. */}
+          <div className="absolute inset-0 bg-gradient-to-t from-ink/85 via-ink/50 to-ink/15 md:bg-gradient-to-r md:from-ink/85 md:via-ink/55 md:to-ink/10" />
 
-          <div className="relative z-10 flex flex-1 flex-col justify-center px-5 py-10 md:order-1 md:w-1/2 md:py-0 md:pl-6 lg:pl-10">
-            <div className="text-xs font-semibold uppercase tracking-[0.2em] text-white md:text-terracotta">{contact.hero.eyebrow}</div>
-            <h1 className="mt-2 font-head text-3xl text-white sm:text-4xl md:text-headline-green">{contact.hero.heading}</h1>
+          <div className="relative z-10 px-5 py-10 md:max-w-xl md:py-0 md:pl-10 lg:pl-16">
+            <div className="text-xs font-semibold uppercase tracking-[0.2em] text-white/90">{contact.hero.eyebrow}</div>
+            <h1 className="mt-2 font-head text-3xl text-white sm:text-4xl">{contact.hero.heading}</h1>
             <div className="my-4 h-0.5 w-12 bg-gold" />
-            <p className="max-w-[42ch] text-sm leading-relaxed text-white/90 md:text-muted">{contact.hero.lead}</p>
+            <p className="max-w-[42ch] text-sm leading-relaxed text-white/90">{contact.hero.lead}</p>
           </div>
         </div>
       </section>
