@@ -2,6 +2,7 @@ import Image from 'next/image';
 import type { Metadata } from 'next';
 import ContactForm from '@/components/ContactForm';
 import Reveal from '@/components/Reveal';
+import LotusQuoteBanner from '@/components/LotusQuoteBanner';
 import { PhoneIcon, MailIcon, PinIcon, YoutubeIcon, FacebookIcon, InstagramIcon } from '@/components/icons';
 import { getPageContent, getSiteSettings } from '@/lib/content';
 
@@ -123,34 +124,8 @@ export default async function ContactPage() {
         </div>
       </section>
 
-      {/* Lotus-flanked quote banner, matching the client's reference mockup.
-          Reuses the site's existing footer-banner copy (no new copy) and
-          the existing footer-lotus.webp decorative asset.
-          Built as 3 separate flex items (left flower crop / quote / right
-          flower crop) rather than one full-bleed image behind the text.
-          That one-image-as-background approach scales the flower clusters
-          and the safe center zone by the SAME proportion as the viewport,
-          so the clusters crept in and collided with the quote on narrower
-          screens. As separate flex siblings, the clusters and the text can
-          never overlap at any width — flex children simply don't render on
-          top of each other — and each side shrinks independently via its
-          own responsive size classes ("reduce the image as needed" on
-          mobile). */}
-      <Reveal as="section" className="bg-[#F6F1E4] px-4 py-8 sm:py-10 md:py-12">
-        <div className="mx-auto flex max-w-site items-center justify-center gap-3 sm:gap-6 md:gap-10 lg:gap-14">
-          <div className="relative h-12 w-16 shrink-0 overflow-hidden sm:h-16 sm:w-24 md:h-20 md:w-32 lg:h-24 lg:w-40">
-            <Image src="/images/footer-lotus.webp" alt="" aria-hidden="true" fill className="object-cover object-left" sizes="160px" />
-          </div>
-
-          <blockquote className="max-w-[22ch] shrink text-center font-head text-sm italic leading-snug text-headline-green sm:max-w-xs sm:text-base md:max-w-sm md:text-lg lg:max-w-md lg:text-xl">
-            {site.footerBanner}
-          </blockquote>
-
-          <div className="relative h-12 w-16 shrink-0 overflow-hidden sm:h-16 sm:w-24 md:h-20 md:w-32 lg:h-24 lg:w-40">
-            <Image src="/images/footer-lotus.webp" alt="" aria-hidden="true" fill className="object-cover object-right" sizes="160px" />
-          </div>
-        </div>
-      </Reveal>
+      {/* Reuses the site's existing footer-banner copy — no new copy here. */}
+      <LotusQuoteBanner quote={site.footerBanner} />
     </main>
   );
 }

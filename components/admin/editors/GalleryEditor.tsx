@@ -4,7 +4,6 @@ import { useState } from 'react';
 import SaveBar from '@/components/admin/SaveBar';
 import { TextField, TextAreaField } from '@/components/admin/Field';
 import { ImageField } from '@/components/admin/ImageField';
-import ImageListField from '@/components/admin/ImageListField';
 import CardList from '@/components/admin/CardList';
 
 export default function GalleryEditor({ initial }: { initial: any }) {
@@ -44,16 +43,40 @@ export default function GalleryEditor({ initial }: { initial: any }) {
             <TextField label="Heading" value={data.hero.heading} onChange={(v) => set(['hero', 'heading'], v)} />
             <TextAreaField label="Lead paragraph" value={data.hero.lead} onChange={(v) => set(['hero', 'lead'], v)} rows={2} />
             <TextField label="Explore button label" value={data.hero.exploreLabel} onChange={(v) => set(['hero', 'exploreLabel'], v)} />
+            <ImageField
+              label="Decorative branch image (top-right of hero)"
+              src={data.hero.birdImage}
+              onSrcChange={(v) => set(['hero', 'birdImage'], v)}
+            />
           </div>
         </section>
 
         <section>
           <h2 className="mb-3 font-head text-lg text-headline-green">Carousel</h2>
-          <div className="space-y-3">
-            <TextField label="Caption title" value={data.carousel.captionTitle} onChange={(v) => set(['carousel', 'captionTitle'], v)} />
-            <TextField label="Caption subtitle" value={data.carousel.captionSub} onChange={(v) => set(['carousel', 'captionSub'], v)} />
-            <ImageListField label="Carousel images" value={data.carousel.images} onChange={(v) => set(['carousel', 'images'], v)} />
-          </div>
+          <p className="mb-3 text-xs text-muted-soft">
+            Each card shows its own title, art form and region as it rotates through the fan.
+          </p>
+          <CardList
+            items={data.carousel.items}
+            onChange={(v) => set(['carousel', 'items'], v)}
+            newItem={() => ({ title: '', form: '', region: '', image: '', alt: '' })}
+            addLabel="+ Add artwork"
+            itemLabel={(item: any) => item.title || 'Artwork'}
+            renderItem={(item: any, update) => (
+              <>
+                <TextField label="Title" value={item.title} onChange={(v) => update({ title: v })} />
+                <TextField label="Art form" value={item.form} onChange={(v) => update({ form: v })} />
+                <TextField label="Region" value={item.region} onChange={(v) => update({ region: v })} />
+                <ImageField
+                  label="Image"
+                  src={item.image}
+                  alt={item.alt}
+                  onSrcChange={(v) => update({ image: v })}
+                  onAltChange={(v) => update({ alt: v })}
+                />
+              </>
+            )}
+          />
         </section>
 
         <section>
@@ -96,6 +119,16 @@ export default function GalleryEditor({ initial }: { initial: any }) {
                 />
               </>
             )}
+          />
+        </section>
+
+        <section>
+          <h2 className="mb-3 font-head text-lg text-headline-green">Quote Banner</h2>
+          <TextAreaField
+            label="Quote (shown between the flanking lotus graphics, above the footer)"
+            value={data.quoteBanner}
+            onChange={(v) => set(['quoteBanner'], v)}
+            rows={2}
           />
         </section>
       </div>

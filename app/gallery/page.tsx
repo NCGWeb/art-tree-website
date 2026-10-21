@@ -3,6 +3,7 @@ import Link from 'next/link';
 import type { Metadata } from 'next';
 import GalleryFan from '@/components/GalleryFan';
 import Reveal from '@/components/Reveal';
+import LotusQuoteBanner from '@/components/LotusQuoteBanner';
 import { getPageContent } from '@/lib/content';
 
 export async function generateMetadata(): Promise<Metadata> {
@@ -15,24 +16,34 @@ export default async function GalleryPage() {
 
   return (
     <main id="main">
+      {/* HERO — left-aligned text with a decorative illustrated branch
+          bleeding off the top-right corner, per the client's reference
+          mockup (previously this was centered with no decoration). */}
       <section className="relative overflow-hidden bg-cream px-5 pb-10 pt-10 sm:pt-12">
-        <div className="relative z-10 mx-auto max-w-2xl text-center">
-          <div className="text-xs font-semibold uppercase tracking-[0.2em] text-terracotta">{g.hero.eyebrow}</div>
-          <h1 className="mt-2 font-head text-3xl leading-tight text-headline-green sm:text-4xl">{g.hero.heading}</h1>
-          <p className="mx-auto mt-4 max-w-[56ch] text-sm leading-relaxed text-muted">{g.hero.lead}</p>
-          <a
-            href="#g-collection"
-            className="mt-5 inline-flex items-center gap-2 border border-headline-green px-5 py-3 text-xs uppercase tracking-widest text-headline-green transition-all duration-300 ease-out hover:-translate-y-0.5 hover:bg-headline-green hover:text-white"
-          >
-            {g.hero.exploreLabel} <span aria-hidden="true">→</span>
-          </a>
+        {g.hero.birdImage && (
+          <div className="pointer-events-none absolute -right-6 -top-6 hidden h-56 w-56 sm:block md:-right-8 md:-top-8 md:h-72 md:w-72 lg:h-80 lg:w-80">
+            <Image src={g.hero.birdImage} alt="" aria-hidden="true" fill className="object-contain object-right-top" sizes="320px" priority />
+          </div>
+        )}
+        <div className="relative z-10 mx-auto max-w-site">
+          <div className="max-w-xl">
+            <div className="text-xs font-semibold uppercase tracking-[0.2em] text-terracotta">{g.hero.eyebrow}</div>
+            <h1 className="mt-2 font-head text-3xl leading-tight text-headline-green sm:text-4xl md:text-[2.5rem]">{g.hero.heading}</h1>
+            <p className="mt-4 max-w-[52ch] text-sm leading-relaxed text-muted">{g.hero.lead}</p>
+            <a
+              href="#g-collection"
+              className="mt-5 inline-flex items-center gap-2 border border-headline-green px-5 py-3 text-xs uppercase tracking-widest text-headline-green transition-all duration-300 ease-out hover:-translate-y-0.5 hover:bg-headline-green hover:text-white"
+            >
+              {g.hero.exploreLabel} <span aria-hidden="true">→</span>
+            </a>
+          </div>
         </div>
 
-        <GalleryFan images={g.carousel.images} captionTitle={g.carousel.captionTitle} captionSub={g.carousel.captionSub} />
+        <GalleryFan items={g.carousel.items} />
       </section>
 
       <Reveal as="section" id="g-collection" className="bg-[#F6F1E4] py-12 sm:py-14">
-        <div className="mx-auto grid max-w-site grid-cols-1 items-center gap-8 px-5 md:grid-cols-[1fr_0.9fr_1fr]">
+        <div className="mx-auto grid max-w-site grid-cols-1 items-center gap-8 px-5 md:grid-cols-[1.1fr_0.6fr_auto_1fr]">
           <div>
             <div className="mb-2 text-xs font-semibold uppercase tracking-[0.2em] text-terracotta">{g.collection.eyebrow}</div>
             <h2 className="mb-2 font-head text-2xl leading-tight text-headline-green sm:text-3xl">{g.collection.heading}</h2>
@@ -45,14 +56,21 @@ export default async function GalleryPage() {
               {g.collection.ctaLabel} <span aria-hidden="true">→</span>
             </Link>
           </div>
+
           <div className="relative mx-auto hidden h-56 w-40 md:block">
             {g.collection.decorImage && (
               <Image src={g.collection.decorImage} alt="" fill aria-hidden="true" className="object-contain" sizes="160px" />
             )}
           </div>
-          <blockquote className="border-l-2 border-gold pl-4 font-head text-xl italic leading-snug text-headline-green">
-            {g.collection.quote}
-          </blockquote>
+
+          {/* Thin vertical divider between the decorative plant and the
+              pull-quote, matching the mockup. */}
+          <div className="mx-auto hidden h-40 w-px bg-headline-green/15 md:block" />
+
+          <div>
+            <blockquote className="font-head text-xl italic leading-snug text-headline-green">{g.collection.quote}</blockquote>
+            <div className="mt-4 h-0.5 w-12 bg-gold" />
+          </div>
         </div>
       </Reveal>
 
@@ -89,6 +107,8 @@ export default async function GalleryPage() {
           </div>
         </div>
       </section>
+
+      <LotusQuoteBanner quote={g.quoteBanner} />
     </main>
   );
 }

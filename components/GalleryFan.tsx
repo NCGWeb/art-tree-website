@@ -11,41 +11,48 @@ const POSITIONS = [
   { x: 290, y: 70, rotate: 18, z: 1, w: 150, h: 230, opacity: 0.9 },
 ];
 
-export default function GalleryFan({
-  images,
-  captionTitle,
-  captionSub,
-}: {
-  images: string[];
-  captionTitle: string;
-  captionSub: string;
-}) {
+type GalleryItem = { image: string; alt: string; title: string; form: string; region: string };
+
+export default function GalleryFan({ items }: { items: GalleryItem[] }) {
   const [cursor, setCursor] = useState(0);
   const pausedRef = useRef(false);
 
   useEffect(() => {
     const id = setInterval(() => {
       if (!pausedRef.current) {
-        setCursor((c) => (c + 1) % images.length);
+        setCursor((c) => (c + 1) % items.length);
       }
     }, 1400);
     return () => clearInterval(id);
-  }, [images.length]);
+  }, [items.length]);
 
   function go(dir: number) {
-    setCursor((c) => (c + dir + images.length) % images.length);
+    setCursor((c) => (c + dir + items.length) % items.length);
   }
+
+  // The center card (POSITIONS index 2) is always the current item —
+  // its title/form/region drive the caption below, updating live as the
+  // fan rotates or is navigated, matching the reference mockup.
+  const current = items[cursor];
 
   return (
     <div className="relative mx-auto mt-10 max-w-site">
+      {/* Height must fully contain the tallest card's visual extent:
+          top-5 (20px) + pos.y (-10px) + pos.h (350px) = 360px for the
+          center card. The old h-[320px] base was 40px too short below the
+          sm breakpoint (640px) — StPageFlip... no, this is GalleryFan: the
+          center card visually overflowed the container by 40px and, being
+          position:absolute, painted over the caption/nav-buttons below it
+          and bled into the next section, since positioned elements always
+          paint above normal-flow siblings regardless of z-index. */}
       <div
-        className="relative mx-auto flex h-[320px] items-start justify-center sm:h-[420px]"
+        className="relative mx-auto flex h-[380px] items-start justify-center sm:h-[420px]"
         onMouseEnter={() => (pausedRef.current = true)}
         onMouseLeave={() => (pausedRef.current = false)}
       >
         {POSITIONS.map((pos, i) => {
-          const idx = (cursor + i) % images.length;
-          const src = images[idx];
+          const idx = (cursor + i) % items.length;
+          const item = items[idx];
           return (
             <button
               key={i}
@@ -61,16 +68,21 @@ export default function GalleryFan({
                 transform: `translate(calc(-50% + ${pos.x}px), ${pos.y}px) rotate(${pos.rotate}deg)`,
               }}
             >
-              <Image src={src} alt="" fill className="object-cover" sizes="230px" />
+              <Image src={item.image} alt={item.alt} fill className="object-cover" sizes="230px" />
             </button>
           );
         })}
       </div>
+
       <div className="relative z-10 mt-5 text-center">
-        <div className="font-head text-lg text-headline-green">{captionTitle}</div>
-        <div className="text-sm text-muted-soft">{captionSub}</div>
+        <div className="font-head text-lg text-headline-green">{current.title}</div>
+        <div className="text-sm text-muted-soft">
+          {current.form} | {current.region}
+        </div>
       </div>
-      <div className="mt-3 flex justify-center gap-3">
+
+      {/* Left = outlined, right = solid gold-filled, matching the mockup. */}
+      <div className="mt-4 flex justify-center gap-3">
         <button
           type="button"
           aria-label="Previous"
@@ -83,7 +95,7 @@ export default function GalleryFan({
           type="button"
           aria-label="Next"
           onClick={() => go(1)}
-          className="flex h-10 w-10 items-center justify-center rounded-full border border-headline-green text-headline-green transition-all duration-300 ease-out hover:-translate-y-0.5 hover:bg-headline-green hover:text-white"
+          className="flex h-10 w-10 items-center justify-center rounded-full bg-gold text-white shadow-md transition-all duration-300 ease-out hover:-translate-y-0.5 hover:bg-gold-dark"
         >
           ›
         </button>
