@@ -2,7 +2,7 @@ import Image from 'next/image';
 import type { Metadata } from 'next';
 import ContactForm from '@/components/ContactForm';
 import Reveal from '@/components/Reveal';
-import { PhoneIcon, MailIcon, PinIcon, TwitterIcon, YoutubeIcon, FacebookIcon, InstagramIcon } from '@/components/icons';
+import { PhoneIcon, MailIcon, PinIcon, YoutubeIcon, FacebookIcon, InstagramIcon } from '@/components/icons';
 import { getPageContent, getSiteSettings } from '@/lib/content';
 
 export async function generateMetadata(): Promise<Metadata> {
@@ -31,6 +31,13 @@ export default async function ContactPage() {
               fill
               priority
               className="object-cover"
+              // The framed painting sits on the right ~55-100% of the source
+              // photo (vase/books/blank wall occupy the left side). Anchoring
+              // object-position toward that side keeps the painting in frame
+              // instead of the default center crop, which — especially on a
+              // narrow/tall mobile crop — could show mostly blank wall and
+              // read as "cropped oddly" / not a true background fill.
+              style={{ objectPosition: '72% center' }}
               sizes="(min-width: 768px) 50vw, 100vw"
             />
             {/* Mobile-only scrim so the heading/lead stay readable over the photo */}
@@ -84,18 +91,17 @@ export default async function ContactPage() {
             </div>
 
             <h3 className="mb-3 font-head text-lg text-headline-green">Follow Us</h3>
+            {/* Exactly 3 icons (Instagram, Facebook, YouTube) — matches the
+                shared SiteFooter, which already only renders this set. */}
             <div className="mb-8 flex gap-3">
-              <a href={contact.socials.twitter || '#'} aria-label="Twitter" className="flex h-10 w-10 items-center justify-center rounded-full text-ink transition-all duration-300 ease-out hover:-translate-y-0.5 hover:bg-terracotta/10 hover:text-terracotta">
-                <TwitterIcon className="h-5 w-5" />
-              </a>
-              <a href={contact.socials.youtube || '#'} aria-label="YouTube" className="flex h-10 w-10 items-center justify-center rounded-full text-ink transition-all duration-300 ease-out hover:-translate-y-0.5 hover:bg-terracotta/10 hover:text-terracotta">
-                <YoutubeIcon className="h-5 w-5" />
+              <a href={contact.socials.instagram || '#'} aria-label="Instagram" className="flex h-10 w-10 items-center justify-center rounded-full text-ink transition-all duration-300 ease-out hover:-translate-y-0.5 hover:bg-terracotta/10 hover:text-terracotta">
+                <InstagramIcon className="h-5 w-5" />
               </a>
               <a href={contact.socials.facebook || '#'} aria-label="Facebook" className="flex h-10 w-10 items-center justify-center rounded-full text-ink transition-all duration-300 ease-out hover:-translate-y-0.5 hover:bg-terracotta/10 hover:text-terracotta">
                 <FacebookIcon className="h-5 w-5" />
               </a>
-              <a href={contact.socials.instagram || '#'} aria-label="Instagram" className="flex h-10 w-10 items-center justify-center rounded-full text-ink transition-all duration-300 ease-out hover:-translate-y-0.5 hover:bg-terracotta/10 hover:text-terracotta">
-                <InstagramIcon className="h-5 w-5" />
+              <a href={contact.socials.youtube || '#'} aria-label="YouTube" className="flex h-10 w-10 items-center justify-center rounded-full text-ink transition-all duration-300 ease-out hover:-translate-y-0.5 hover:bg-terracotta/10 hover:text-terracotta">
+                <YoutubeIcon className="h-5 w-5" />
               </a>
             </div>
 
@@ -119,23 +125,31 @@ export default async function ContactPage() {
 
       {/* Lotus-flanked quote banner, matching the client's reference mockup.
           Reuses the site's existing footer-banner copy (no new copy) and
-          the existing footer-lotus.webp decorative asset. */}
-      <Reveal
-        as="section"
-        className="relative isolate flex min-h-[170px] items-center overflow-hidden bg-[#F6F1E4] px-5 py-10 sm:min-h-[200px] sm:py-12"
-      >
-        <Image
-          src="/images/footer-lotus.webp"
-          alt=""
-          aria-hidden="true"
-          fill
-          className="object-cover"
-          style={{ objectPosition: 'center bottom' }}
-          sizes="100vw"
-        />
-        <blockquote className="relative z-10 mx-auto max-w-2xl text-center font-head text-lg italic leading-relaxed text-headline-green sm:text-xl">
-          {site.footerBanner}
-        </blockquote>
+          the existing footer-lotus.webp decorative asset.
+          Built as 3 separate flex items (left flower crop / quote / right
+          flower crop) rather than one full-bleed image behind the text.
+          That one-image-as-background approach scales the flower clusters
+          and the safe center zone by the SAME proportion as the viewport,
+          so the clusters crept in and collided with the quote on narrower
+          screens. As separate flex siblings, the clusters and the text can
+          never overlap at any width — flex children simply don't render on
+          top of each other — and each side shrinks independently via its
+          own responsive size classes ("reduce the image as needed" on
+          mobile). */}
+      <Reveal as="section" className="bg-[#F6F1E4] px-4 py-8 sm:py-10 md:py-12">
+        <div className="mx-auto flex max-w-site items-center justify-center gap-3 sm:gap-6 md:gap-10 lg:gap-14">
+          <div className="relative h-12 w-16 shrink-0 overflow-hidden sm:h-16 sm:w-24 md:h-20 md:w-32 lg:h-24 lg:w-40">
+            <Image src="/images/footer-lotus.webp" alt="" aria-hidden="true" fill className="object-cover object-left" sizes="160px" />
+          </div>
+
+          <blockquote className="max-w-[22ch] shrink text-center font-head text-sm italic leading-snug text-headline-green sm:max-w-xs sm:text-base md:max-w-sm md:text-lg lg:max-w-md lg:text-xl">
+            {site.footerBanner}
+          </blockquote>
+
+          <div className="relative h-12 w-16 shrink-0 overflow-hidden sm:h-16 sm:w-24 md:h-20 md:w-32 lg:h-24 lg:w-40">
+            <Image src="/images/footer-lotus.webp" alt="" aria-hidden="true" fill className="object-cover object-right" sizes="160px" />
+          </div>
+        </div>
       </Reveal>
     </main>
   );

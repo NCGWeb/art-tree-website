@@ -31,6 +31,11 @@ const config: Config = {
         // every page draws from the same two muted text colors.
         muted: '#4a473c',
         'muted-soft': '#6a674f',
+        // Warm terracotta-tinted card background (e.g. the Contact form
+        // card) — deliberately a clearer step away from the page's own
+        // cream/cream-deep tones so a "card" reads as a card, not a washed
+        // out near-white rectangle.
+        'card-warm': '#F2E1CE',
       },
       fontFamily: {
         head: ['var(--font-playfair)', 'Georgia', 'serif'],
