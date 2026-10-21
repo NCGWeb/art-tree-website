@@ -43,6 +43,11 @@ export default function ExhibitionsEditor({ initial }: { initial: any }) {
             <TextField label="Heading" value={data.hero.heading} onChange={(v) => set(['hero', 'heading'], v)} />
             <TextAreaField label="Lead paragraph" value={data.hero.lead} onChange={(v) => set(['hero', 'lead'], v)} rows={2} />
             <TextAreaField label="Quote" value={data.hero.quote} onChange={(v) => set(['hero', 'quote'], v)} rows={2} />
+            <ImageField
+              label="Hero background image"
+              src={data.hero.image}
+              onSrcChange={(v) => set(['hero', 'image'], v)}
+            />
           </div>
         </section>
 

@@ -7,7 +7,8 @@
     "eyebrow": "Events",
     "heading": "Conversations that keep art alive",
     "lead": "Exhibitions, talks, workshops and more, exploring India's artistic traditions, together.",
-    "quote": "\"Art brings people together, across generations and geographies.\""
+    "quote": "\"Art brings people together, across generations and geographies.\"",
+    "image": "/images/exhibitions-hero-landscape.webp"
   },
   "current": {
     "day": "26",
@@ -26,6 +27,7 @@
   "filters": {
     "dates": [
       { "value": "all", "label": "All dates" },
+      { "value": "2025-09", "label": "September 2025" },
       { "value": "2023-11", "label": "November 2023" },
       { "value": "2022-08", "label": "August 2022" },
       { "value": "2021-12", "label": "December 2021" },
@@ -42,6 +44,24 @@
     ]
   },
   "events": [
+    {
+      "id": "vama",
+      "type": "shows",
+      "date": "2025-09",
+      "day": "26",
+      "month": "September",
+      "year": "2025",
+      "image": "/images/gallery/g56.jpg",
+      "alt": "VAMA — The Strength Within",
+      "category": "Shows",
+      "title": "VAMA — The Strength Within",
+      "meta": "September 26 – 1st October 2025 / Bikaner House, New Delhi",
+      "excerpt": "Art Tree's tribute to the unsung women artists of India's folk and tribal traditions. Coinciding with Navratri, VAMA brings together twenty women artists, many Padma Shri and National Award recipients, for a six-day celebration of Stree Shakti.",
+      "modalParagraphs": [
+        "Art Tree's tribute to the unsung women artists of India's folk and tribal traditions. Coinciding with Navratri, VAMA brings together twenty women artists, many Padma Shri and National Award recipients, for a six-day celebration of Stree Shakti.",
+        "Works span Madhubani, Warli, Gond, Bhil, Bengal Pattachitra, Mandana, Chamba Rumaal and more. Featured artists include Bhuri Bai (Bhil / Padma Shri), Durga Bai (Gond / Padma Shri), Manisha Jha and Urmila Devi (Mithila-Madhubani / National Award), Kalpana and Swarna Chitrakar (Bengal Pattachitra / National Award), Vidya Devi Soni (Mandana), Anita Kumari (Chamba Rumaal / National Award) and Juliet (Sohrai)."
+      ]
+    },
     {
       "id": "samanvay",
       "type": "shows",
