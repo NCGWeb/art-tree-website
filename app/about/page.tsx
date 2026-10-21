@@ -20,7 +20,7 @@ export default async function AboutPage() {
         {/* max-h caps keep the hero proportional at laptop/desktop widths
             instead of growing taller as the viewport widens. */}
         <div className="relative aspect-[4/3] w-full sm:aspect-[16/9] lg:aspect-[21/9] lg:max-h-[380px]">
-          <Image src={about.hero.image} alt={about.hero.alt} fill priority className="object-cover" sizes="100vw" />
+          <Image src={about.hero.image} alt={about.hero.alt} fill priority quality={90} className="object-cover" sizes="100vw" />
           <div className="absolute inset-x-4 bottom-4 max-w-xs rounded bg-white/90 p-4 font-head italic text-headline-green shadow-lg sm:bottom-8 sm:left-8">
             <p className="text-sm sm:text-base">{about.hero.quote}</p>
             <span className="mt-2 block font-body text-xs not-italic text-tan">— {about.hero.quoteAttribution}</span>
@@ -51,14 +51,14 @@ export default async function AboutPage() {
           />
         </Reveal>
         <div className="relative order-1 min-h-[220px] md:order-2">
-          <Image src={about.story.image} alt={about.story.alt} fill className="object-cover" sizes="(min-width: 768px) 50vw, 100vw" />
+          <Image src={about.story.image} alt={about.story.alt} fill quality={90} className="object-cover" sizes="(min-width: 768px) 50vw, 100vw" />
         </div>
       </section>
 
       {/* WHAT WE DO */}
       <section className="grid grid-cols-1 md:grid-cols-2">
         <div className="relative order-1 min-h-[220px]">
-          <Image src={about.whatWeDo.image} alt={about.whatWeDo.alt} fill className="object-cover" sizes="(min-width: 768px) 50vw, 100vw" />
+          <Image src={about.whatWeDo.image} alt={about.whatWeDo.alt} fill quality={90} className="object-cover" sizes="(min-width: 768px) 50vw, 100vw" />
         </div>
         <Reveal as="div" className="order-2 flex flex-col justify-center p-8 md:p-11">
           <div className="mb-2 text-xs font-semibold uppercase tracking-[0.2em] text-terracotta">{about.whatWeDo.eyebrow}</div>
@@ -97,7 +97,7 @@ export default async function AboutPage() {
           <div className="flex flex-col items-center gap-4">
             {about.philosophy.sprigImage && (
               <div className="relative h-32 w-32">
-                <Image src={about.philosophy.sprigImage} alt="" fill aria-hidden="true" className="object-contain" sizes="128px" />
+                <Image src={about.philosophy.sprigImage} alt="" fill aria-hidden="true" quality={90} className="object-contain" sizes="128px" />
               </div>
             )}
             <blockquote className="text-center font-head text-xl italic leading-snug text-headline-green">

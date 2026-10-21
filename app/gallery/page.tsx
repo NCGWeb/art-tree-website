@@ -22,7 +22,7 @@ export default async function GalleryPage() {
       <section className="relative overflow-hidden bg-cream px-5 pb-10 pt-10 sm:pt-12">
         {g.hero.birdImage && (
           <div className="pointer-events-none absolute -right-6 -top-6 hidden h-56 w-56 sm:block md:-right-8 md:-top-8 md:h-72 md:w-72 lg:h-80 lg:w-80">
-            <Image src={g.hero.birdImage} alt="" aria-hidden="true" fill className="object-contain object-right-top" sizes="320px" priority />
+            <Image src={g.hero.birdImage} alt="" aria-hidden="true" fill priority quality={90} className="object-contain object-right-top" sizes="320px" />
           </div>
         )}
         <div className="relative z-10 mx-auto max-w-site">
@@ -59,7 +59,7 @@ export default async function GalleryPage() {
 
           <div className="relative mx-auto hidden h-56 w-40 md:block">
             {g.collection.decorImage && (
-              <Image src={g.collection.decorImage} alt="" fill aria-hidden="true" className="object-contain" sizes="160px" />
+              <Image src={g.collection.decorImage} alt="" fill aria-hidden="true" quality={90} className="object-contain" sizes="160px" />
             )}
           </div>
 
@@ -93,6 +93,7 @@ export default async function GalleryPage() {
                     src={item.image}
                     alt={item.alt}
                     fill
+                    quality={90}
                     className="object-cover transition-transform duration-500 ease-out group-hover:scale-105"
                     sizes="(min-width: 1024px) 25vw, 50vw"
                   />

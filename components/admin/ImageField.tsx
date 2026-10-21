@@ -43,7 +43,7 @@ export function ImageField({
       <div className="flex items-start gap-3">
         <div className="relative h-20 w-20 shrink-0 overflow-hidden rounded border border-black/10 bg-cream-deep">
           {src ? (
-            <Image src={src} alt={alt || ''} fill className="object-cover" sizes="80px" unoptimized={src.startsWith('blob:')} />
+            <Image src={src} alt={alt || ''} fill quality={90} className="object-cover" sizes="80px" unoptimized={src.startsWith('blob:')} />
           ) : (
             <div className="flex h-full w-full items-center justify-center text-[10px] uppercase text-tan">No image</div>
           )}

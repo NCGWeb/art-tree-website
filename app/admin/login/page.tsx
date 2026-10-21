@@ -38,7 +38,7 @@ export default function AdminLoginPage() {
     <div className="flex min-h-screen items-center justify-center bg-[#F3EFE6] px-4 font-body">
       <div className="w-full max-w-sm rounded-lg border border-black/10 bg-white p-8 shadow-lg">
         <div className="mb-6 flex flex-col items-center">
-          <Image src="/images/logo.png" alt="Art Tree" width={140} height={71} className="mb-3 h-14 w-auto" />
+          <Image src="/images/logo.png" alt="Art Tree" width={140} height={71} quality={90} className="mb-3 h-14 w-auto" />
           <h1 className="font-head text-xl text-headline-green">Admin Login</h1>
           <p className="mt-1 text-center text-xs text-[#6a674f]">Sign in to edit the Art Tree website content.</p>
         </div>

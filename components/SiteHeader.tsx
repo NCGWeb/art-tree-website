@@ -48,7 +48,7 @@ export default function SiteHeader({
     <header className="sticky top-0 z-[1000] border-b border-black/5 bg-gradient-to-b from-[#E9DFC4] to-header-bg">
       <div className="mx-auto flex max-w-site items-center justify-between px-5 py-3">
         <Link href="/" className="flex items-center gap-3" aria-label="Art Tree home">
-          <Image src="/images/logo.png" alt={logoAlt} width={140} height={71} className="h-11 w-auto" priority />
+          <Image src="/images/logo.png" alt={logoAlt} width={140} height={71} quality={90} className="h-11 w-auto" priority />
           <span className="hidden text-[0.6rem] uppercase tracking-[2px] text-olive sm:inline">
             {tagline}
           </span>

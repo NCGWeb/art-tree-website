@@ -41,6 +41,7 @@ export default async function HomePage() {
             alt={home.hero.alt}
             fill
             priority
+            quality={90}
             className="object-cover"
             sizes="100vw"
           />
@@ -67,7 +68,7 @@ export default async function HomePage() {
             <Modal title={home.record.heading} paragraphs={home.record.modalParagraphs} buttonLabel={home.record.buttonLabel} />
           </div>
           <div className="relative aspect-[4/3] w-full overflow-hidden rounded-sm shadow-lg">
-            <Image src={home.record.image} alt={home.record.alt} fill className="object-cover" sizes="(min-width: 768px) 50vw, 100vw" />
+            <Image src={home.record.image} alt={home.record.alt} fill quality={90} className="object-cover" sizes="(min-width: 768px) 50vw, 100vw" />
           </div>
         </div>
       </Reveal>
@@ -95,7 +96,7 @@ export default async function HomePage() {
       <Reveal as="section" className="bg-cream py-10 sm:py-12">
         <div className="mx-auto grid max-w-site grid-cols-1 items-center gap-8 px-5 md:grid-cols-2">
           <div className="relative aspect-[4/3] w-full overflow-hidden md:order-1">
-            <Image src={home.canvas.image} alt={home.canvas.alt} fill className="object-cover" sizes="(min-width: 768px) 50vw, 100vw" />
+            <Image src={home.canvas.image} alt={home.canvas.alt} fill quality={90} className="object-cover" sizes="(min-width: 768px) 50vw, 100vw" />
           </div>
           <div className="md:order-2">
             <h2 className="mb-2 font-head text-2xl leading-tight text-headline-green sm:text-[1.85rem]">{home.canvas.heading}</h2>
@@ -157,7 +158,7 @@ export default async function HomePage() {
             />
           </div>
           <div className="absolute inset-y-0 right-0 hidden w-[45%] md:block">
-            <Image src={home.philosophy.image} alt={home.philosophy.alt} fill className="object-cover" sizes="50vw" />
+            <Image src={home.philosophy.image} alt={home.philosophy.alt} fill quality={90} className="object-cover" sizes="50vw" />
           </div>
         </Reveal>
 
@@ -166,7 +167,7 @@ export default async function HomePage() {
           <div className="mb-3 h-0.5 w-12 bg-gold" />
           <div className="flex items-center gap-3.5">
             <div className="relative h-[90px] w-[90px] shrink-0 overflow-hidden rounded-full border-[3px] border-gold shadow-lg sm:h-[110px] sm:w-[110px]">
-              <Image src={home.expertise.image} alt={home.expertise.alt} fill className="object-cover" style={{ objectPosition: '30% center' }} sizes="110px" />
+              <Image src={home.expertise.image} alt={home.expertise.alt} fill quality={90} className="object-cover" style={{ objectPosition: '30% center' }} sizes="110px" />
             </div>
             <p className="text-sm text-white/90">{home.expertise.paragraph}</p>
           </div>

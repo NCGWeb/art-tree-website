@@ -27,6 +27,7 @@ export default async function ExhibitionsPage() {
           aria-hidden="true"
           fill
           priority
+          quality={90}
           className="object-cover"
           sizes="100vw"
         />
@@ -54,7 +55,7 @@ export default async function ExhibitionsPage() {
               <div className="font-head text-lg text-terracotta">{ex.current.year}</div>
             </div>
             <div className="relative aspect-[4/3] w-full overflow-hidden rounded shadow-md">
-              <Image src={ex.current.image} alt={ex.current.alt} fill priority className="object-cover" sizes="280px" />
+              <Image src={ex.current.image} alt={ex.current.alt} fill priority quality={90} className="object-cover" sizes="280px" />
             </div>
             <div>
               <div className="mb-1 text-xs font-semibold uppercase tracking-wide text-tan">{ex.current.category}</div>

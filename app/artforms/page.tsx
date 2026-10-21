@@ -37,6 +37,7 @@ export default async function ArtformsPage() {
                     src={form.image}
                     alt={form.alt || form.title}
                     fill
+                    quality={90}
                     className="object-cover transition-transform duration-500 ease-out group-hover:scale-105"
                     sizes="(min-width: 768px) 50vw, 100vw"
                   />

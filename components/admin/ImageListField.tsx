@@ -47,7 +47,7 @@ export default function ImageListField({
         {images.map((src, i) => (
           <div key={i} className="rounded border border-black/10 bg-white p-2">
             <div className="relative mb-1.5 aspect-[3/4] w-full overflow-hidden rounded bg-cream-deep">
-              {src && <Image src={src} alt="" fill className="object-cover" sizes="120px" />}
+              {src && <Image src={src} alt="" fill quality={90} className="object-cover" sizes="120px" />}
             </div>
             <input
               type="file"

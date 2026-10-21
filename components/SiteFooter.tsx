@@ -33,7 +33,7 @@ export default function SiteFooter({
           <div className="mb-6 flex flex-col flex-wrap items-start justify-between gap-8 md:flex-row">
             <div>
               <Link href="/" className="inline-block transition-opacity duration-300 ease-out hover:opacity-80">
-                <Image src="/images/logo.png" alt={logoAlt} width={140} height={71} className="h-10 w-auto" />
+                <Image src="/images/logo.png" alt={logoAlt} width={140} height={71} quality={90} className="h-10 w-auto" />
               </Link>
               <div className="mt-2 text-sm text-[#bfbba9]">{footerTagline}</div>
             </div>

@@ -28,6 +28,7 @@ export default async function ContactPage() {
             alt={contact.hero.alt}
             fill
             priority
+            quality={90}
             className="object-cover"
             // The framed painting sits on the right ~55-100% of the source
             // photo (vase/books/blank wall occupy the left side). Anchoring
