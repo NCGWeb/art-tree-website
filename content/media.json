@@ -1,0 +1,34 @@
+{
+  "meta": {
+    "title": "In the Media, Art Tree | Art that finds its audience",
+    "description": "From leading publications to digital platforms, Art Tree's artists, exhibitions and initiatives have been featured across print and online media."
+  },
+  "hero": {
+    "eyebrow": "In the Media",
+    "heading": "The Art Tree Chronicle",
+    "lead": "Flip through our press coverage, features and reviews, one page at a time."
+  },
+  "items": [
+    { "image": "/images/media/8.jpg", "alt": "Press coverage page 1" },
+    { "image": "/images/media/13.jpg", "alt": "Press coverage page 2" },
+    { "image": "/images/media/7.jpg", "alt": "Press coverage page 3" },
+    { "image": "/images/media/9.jpg", "alt": "Press coverage page 4" },
+    { "image": "/images/media/11.jpg", "alt": "Press coverage page 5" },
+    { "image": "/images/media/4.jpg", "alt": "Press coverage page 6" },
+    { "image": "/images/media/6.jpg", "alt": "Press coverage page 7" },
+    { "image": "/images/media/10.jpg", "alt": "Press coverage page 8" },
+    { "image": "/images/media/12.jpg", "alt": "Press coverage page 9" },
+    { "image": "/images/media/14.jpg", "alt": "Press coverage page 10" },
+    { "image": "/images/media/15.jpg", "alt": "Press coverage page 11" },
+    { "image": "/images/media/16.jpg", "alt": "Press coverage page 12" },
+    { "image": "/images/media/17.jpg", "alt": "Press coverage page 13" },
+    { "image": "/images/media/18.jpg", "alt": "Press coverage page 14" },
+    { "image": "/images/media/19.jpg", "alt": "Press coverage page 15" },
+    { "image": "/images/media/20.jpg", "alt": "Press coverage page 16" },
+    { "image": "/images/media/21.jpg", "alt": "Press coverage page 17" },
+    { "image": "/images/media/2.jpg", "alt": "Press coverage page 18" },
+    { "image": "/images/media/3.jpg", "alt": "Press coverage page 19" },
+    { "image": "/images/media/5.jpg", "alt": "Press coverage page 20" },
+    { "image": "/images/media/22.jpg", "alt": "Press coverage page 21" }
+  ]
+}

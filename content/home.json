@@ -1,0 +1,97 @@
+{
+  "meta": {
+    "title": "Art Tree, Stories You Can Touch | Celebrating India's Folk & Tribal Art Heritage",
+    "description": "Art Tree celebrates the art, stories and soul of India's folk and tribal heritage through exhibitions, artist support, public programmes, education and collections."
+  },
+  "hero": {
+    "image": "/images/home-hero.jpg",
+    "alt": "Stories you can touch, a painted tree beside an Indian landscape, with leaf-shaped links to the site's sections",
+    "srHeading": "Stories you can touch, celebrating the art, stories and soul of India's folk and tribal heritage."
+  },
+  "record": {
+    "heading": "A Record of How People Lived",
+    "paragraph": "What makes Indian folk and tribal art so irreplaceable is that it is, at its core, a social document. It tells us not just what people believed, but how they lived, what they ate, how they dressed, what their homes looked like, how they celebrated, how they mourned, how they worked the land.",
+    "image": "/images/record.jpg",
+    "alt": "Folk artwork of a tree with village figures at its base",
+    "buttonLabel": "Read more",
+    "modalParagraphs": [
+      "What makes Indian folk and tribal art so irreplaceable is that it is, at its core, a social document. It tells us not just what people believed, but how they lived, what they ate, how they dressed, what their homes looked like, how they celebrated, how they mourned, how they worked the land, how they raised their children, how they governed themselves, and how they related to one another across caste, community, and custom.",
+      "The Pattachitra scrolls of Odisha narrate epic mythological tales, but between the gods and heroes you find the everyday, the markets, the boats, the women at the well. The Phad paintings of Rajasthan honour folk deities, but they are equally a record of the pastoral communities that worshipped them, their animals, their landscapes, their social codes. The Warli paintings of Maharashtra capture wedding ceremonies, harvest festivals, and community hunts, a vivid anthropological record of a people and their world.",
+      "In Madhubani, the seasons dictate the subject matter, different festivals, different rituals, different gods for different moments in the agricultural calendar. In Gond art, the relationship between human communities and the forest, the trees, rivers, birds, and animals they shared their lives with, is rendered with an intimacy and reverence that speaks of centuries of coexistence.",
+      "These are not simply beautiful objects. They are archives. They are testimonies. They are the voices of communities that history has too often overlooked, speaking clearly and powerfully across time."
+    ]
+  },
+  "stats": [
+    { "number": "13+", "label": "Years", "sub": "of purposeful practice" },
+    { "number": "150+", "label": "Artists", "sub": "across India" },
+    { "number": "50+", "label": "Shows", "sub": "& programmes" }
+  ],
+  "canvas": {
+    "heading": "A canvas as large as India itself",
+    "paragraphs": [
+      "India is not one story. It is thousands, told through the hands of weavers, painters, potters, and storytellers across centuries.",
+      "Our art forms are archives. They are testimonies. They are the voices of communities that history has too often overlooked, speaking clearly and powerfully across time."
+    ],
+    "image": "/images/canvas-art.webp",
+    "alt": "Traditional paintings: a peacock among flowering branches alongside tribal figures dancing and drumming",
+    "buttonLabel": "Discover our story",
+    "modalParagraphs": [
+      "India is not one story. It is thousands, told through the hands of weavers, painters, potters, and storytellers across centuries. Long before the written word became the dominant medium of history, India's folk and tribal communities were already documenting their world with extraordinary vitality and beauty. On walls of mud homes, on cloth, on palm leaves, and on paper, they recorded harvests and hunts, births and marriages, seasonal celebrations and community rituals, the rhythms of daily life and the great sweep of history.",
+      "These art forms were never separate from the communities that created them. They were the community, a mirror held up to society, reflecting its values, its hierarchies, its joys and its struggles, its relationship with nature, and its understanding of the cosmos. In a country as vast and diverse as India, folk and tribal art became the common thread that stitched together the social fabric of a civilisation, each region, each tribe, each dynasty leaving its mark in colour, line, and symbol.",
+      "And running quietly through all of it, like a river beneath the earth, was the spiritual, not as doctrine, but as lived experience. The gods and goddesses of the Indian imagination were not distant figures but intimate companions, woven into the texture of everyday life, celebrated in art as naturally as one would celebrate a harvest or a wedding."
+    ]
+  },
+  "whatWeDo": {
+    "heading": "What we do",
+    "items": [
+      {
+        "icon": "exhibitions",
+        "title": "Exhibitions",
+        "text": "We curate immersive exhibitions that bring art, community and context together.",
+        "linkLabel": "Explore exhibitions",
+        "linkHref": "/exhibitions"
+      },
+      {
+        "icon": "programmes",
+        "title": "Programmes",
+        "text": "Panel discussions, talks and public programmes that inspire curiosity and dialogue.",
+        "linkLabel": "View programmes",
+        "linkHref": "/exhibitions"
+      },
+      {
+        "icon": "artists",
+        "title": "Artist support",
+        "text": "We work closely with artists to support their practice, livelihood and reach.",
+        "linkLabel": "Meet our artists",
+        "linkHref": "/artforms"
+      },
+      {
+        "icon": "education",
+        "title": "Education",
+        "text": "Workshops, resources and initiatives that nurture the next generation of art lovers.",
+        "linkLabel": "Learn more",
+        "linkHref": "/about"
+      }
+    ]
+  },
+  "philosophy": {
+    "heading": "Our Philosophy",
+    "paragraph": "Art Tree follows a holistic approach to traditional Indian art, one that sees the artwork not as an isolated object, but as a living expression of community, identity, and shared human experience.",
+    "buttonLabel": "Read our philosophy",
+    "image": "/images/philosophy.jpg",
+    "alt": "An artist's hand painting fine floral detail on a traditional artwork",
+    "modalParagraphs": [
+      "Art Tree follows a holistic approach to traditional Indian art, one that sees the artwork not as an isolated object, but as a living expression of community, identity, and shared human experience. We seek to understand art as the medium through which people make sense of the world, giving form to their values, their histories, their relationships, and their place in the larger tapestry of Indian civilisation.",
+      "We are not interested in freezing these traditions in amber or reducing them to ethnic curiosity. We believe that living art forms must be allowed to breathe, evolve, and speak to the present, while remaining rooted in the rich cultural soil from which they grew. The goal is vitality, ensuring these art forms continue to matter, to move people, to connect them with a shared cultural heritage, and to tell their stories for generations to come.",
+      "Our work is rooted in respect, scholarship, and a deep commitment to the communities and artists whose work we celebrate. We partner, listen, and create space for their voices to be heard, because ultimately, these are their stories, their heritage, and their art."
+    ]
+  },
+  "expertise": {
+    "heading": "Guided by expertise",
+    "paragraph": "Art Tree is guided by deep expertise and a lifelong commitment to preserving and celebrating India's living folk and tribal art heritage with authenticity and vision.",
+    "image": "/images/expertise-portrait.jpg",
+    "alt": "Pragati Agarwal, Founder of Art Tree, beside a painted artwork",
+    "buttonLabel": "Know more"
+  },
+  "footerBanner": "Art Tree, Because every brushstroke tells a story, and every story is worth telling."
+}

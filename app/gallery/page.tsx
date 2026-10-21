@@ -1,0 +1,93 @@
+import Image from 'next/image';
+import Link from 'next/link';
+import type { Metadata } from 'next';
+import GalleryFan from '@/components/GalleryFan';
+import { getPageContent } from '@/lib/content';
+
+export async function generateMetadata(): Promise<Metadata> {
+  const g = await getPageContent('gallery');
+  return { title: g.meta.title, description: g.meta.description };
+}
+
+export default async function GalleryPage() {
+  const g = await getPageContent('gallery');
+
+  return (
+    <main id="main">
+      <section className="relative overflow-hidden bg-cream px-5 pb-10 pt-12">
+        <div className="relative z-10 mx-auto max-w-2xl text-center">
+          <div className="text-[0.7rem] font-semibold uppercase tracking-[2px] text-terracotta">{g.hero.eyebrow}</div>
+          <h1 className="mt-2 font-head text-3xl leading-tight text-headline-green sm:text-4xl">{g.hero.heading}</h1>
+          <p className="mx-auto mt-4 max-w-[56ch] text-sm leading-relaxed text-[#4a473c]">{g.hero.lead}</p>
+          <a
+            href="#g-collection"
+            className="mt-5 inline-flex items-center gap-2 border border-headline-green px-5 py-3 text-xs uppercase tracking-widest text-headline-green transition-colors hover:bg-headline-green hover:text-white"
+          >
+            {g.hero.exploreLabel} <span aria-hidden="true">→</span>
+          </a>
+        </div>
+
+        <GalleryFan images={g.carousel.images} captionTitle={g.carousel.captionTitle} captionSub={g.carousel.captionSub} />
+      </section>
+
+      <section id="g-collection" className="bg-[#F6F1E4] py-14">
+        <div className="mx-auto grid max-w-site grid-cols-1 items-center gap-8 px-5 md:grid-cols-[1fr_0.9fr_1fr]">
+          <div>
+            <div className="mb-2 text-[0.72rem] font-semibold uppercase tracking-[2px] text-terracotta">{g.collection.eyebrow}</div>
+            <h2 className="mb-2 font-head text-3xl leading-tight text-headline-green">{g.collection.heading}</h2>
+            <div className="mb-4 h-0.5 w-11 bg-gold" />
+            <p className="mb-5 text-sm leading-relaxed text-[#4a473c]">{g.collection.paragraph}</p>
+            <Link
+              href={g.collection.ctaHref}
+              className="inline-flex items-center gap-2 border border-headline-green px-5 py-3 text-xs uppercase tracking-widest text-headline-green transition-colors hover:bg-headline-green hover:text-white"
+            >
+              {g.collection.ctaLabel} <span aria-hidden="true">→</span>
+            </Link>
+          </div>
+          <div className="relative mx-auto hidden h-56 w-40 md:block">
+            {g.collection.decorImage && (
+              <Image src={g.collection.decorImage} alt="" fill aria-hidden="true" className="object-contain" sizes="160px" />
+            )}
+          </div>
+          <blockquote className="border-l-2 border-gold pl-4 font-head text-xl italic leading-snug text-headline-green">
+            {g.collection.quote}
+          </blockquote>
+        </div>
+      </section>
+
+      <section className="bg-[#2e3a24] py-14 text-[#f3efe6]">
+        <div className="mx-auto max-w-site px-5">
+          <div className="mb-7 flex flex-wrap items-end justify-between gap-3">
+            <div>
+              <div className="text-[0.72rem] font-semibold uppercase tracking-[2px] text-gold">{g.featured.eyebrow}</div>
+              <h2 className="mt-1 font-head text-3xl text-white">{g.featured.heading}</h2>
+            </div>
+            <Link href={g.featured.viewAllHref} className="text-xs uppercase tracking-widest text-gold hover:text-white">
+              {g.featured.viewAllLabel} →
+            </Link>
+          </div>
+          <div className="grid grid-cols-2 gap-5 lg:grid-cols-4">
+            {g.featured.items.map((item, i) => (
+              <figure key={i} className="group">
+                <div className="relative aspect-[3/4] w-full overflow-hidden rounded">
+                  <Image
+                    src={item.image}
+                    alt={item.alt}
+                    fill
+                    className="object-cover transition-transform duration-500 group-hover:scale-105"
+                    sizes="(min-width: 1024px) 25vw, 50vw"
+                  />
+                </div>
+                <figcaption className="pt-3">
+                  <h3 className="font-head text-base text-white">{item.title}</h3>
+                  <div className="text-xs text-gold">{item.form}</div>
+                  <div className="text-xs text-white/60">{item.region}</div>
+                </figcaption>
+              </figure>
+            ))}
+          </div>
+        </div>
+      </section>
+    </main>
+  );
+}

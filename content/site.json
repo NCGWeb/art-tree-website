@@ -1,0 +1,31 @@
+{
+  "logoAlt": "Art Tree",
+  "tagline": "Stories you can touch",
+  "whatsappNumber": "919811152110",
+  "nav": [
+    { "label": "About Us", "href": "/about" },
+    { "label": "Exhibitions", "href": "/exhibitions" },
+    { "label": "Art Forms", "href": "/artforms" },
+    { "label": "Gallery", "href": "/gallery" },
+    { "label": "Media", "href": "/media" },
+    { "label": "Contact", "href": "/contact" }
+  ],
+  "footerNav": [
+    { "label": "About", "href": "/about" },
+    { "label": "Exhibitions", "href": "/exhibitions" },
+    { "label": "Art Forms", "href": "/artforms" },
+    { "label": "Gallery", "href": "/gallery" },
+    { "label": "Media", "href": "/media" },
+    { "label": "Education", "href": "/about" },
+    { "label": "Contact", "href": "/contact" }
+  ],
+  "footerTagline": "Stories you can touch",
+  "footerBanner": "Art Tree, Because every brushstroke tells a story, and every story is worth telling.",
+  "socials": {
+    "instagram": "#",
+    "facebook": "#",
+    "youtube": "#",
+    "twitter": "#"
+  },
+  "copyrightName": "Art Tree"
+}

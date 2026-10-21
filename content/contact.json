@@ -1,0 +1,38 @@
+{
+  "meta": {
+    "title": "Contact Us, Art Tree | Let's Connect",
+    "description": "Get in touch with Art Tree. We are here to help you at any time, all over the world, reach us at any moment."
+  },
+  "hero": {
+    "image": "/images/contact-hero.webp",
+    "alt": "A hand-painted Madhubani artwork with lotus and fish, beside a vase of white blossoms and books about art, people and culture",
+    "eyebrow": "Let's Connect",
+    "heading": "Contact Us",
+    "lead": "We are here to help you at any time, all over the world, so don't hesitate to reach us at any moment."
+  },
+  "phone": "+91 98111 52110",
+  "emails": ["pragati@art-tree.co.in", "arttree23@gmail.com"],
+  "recipientEmail": "pragati@art-tree.co.in",
+  "location": "Gurgaon, India",
+  "locationNote": "By appointment only",
+  "socials": {
+    "twitter": "#",
+    "youtube": "#",
+    "facebook": "#",
+    "instagram": "#"
+  },
+  "founder": {
+    "name": "Pragati Agarwal",
+    "role": "Founder, Art Tree",
+    "quote": "\"For collaborations, enquiries or just to say hello, we'd love to hear from you.\""
+  },
+  "form": {
+    "heading": "Send us a message",
+    "nameLabel": "Your name",
+    "emailLabel": "Your email",
+    "subjectLabel": "Subject",
+    "messageLabel": "Your message (optional)",
+    "defaultSubject": "Enquiry from Art Tree website",
+    "submitLabel": "Submit"
+  }
+}

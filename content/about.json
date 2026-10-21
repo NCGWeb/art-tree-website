@@ -1,0 +1,63 @@
+{
+  "meta": {
+    "title": "About Us, Art Tree | More than art, a living legacy",
+    "description": "Art Tree is a celebration of India's folk and tribal art, a platform, advocate and community keeping traditional knowledge alive, relevant and understood."
+  },
+  "hero": {
+    "image": "/images/about-hero-new.webp",
+    "alt": "A painted tree with village figures at its base and drifting leaves",
+    "quote": "\"A people without the knowledge of their past history, origin and culture is a tree without roots.\"",
+    "quoteAttribution": "Marcus Garvey",
+    "eyebrow": "About Art Tree",
+    "heading": "More than art, a living legacy",
+    "lead": "Art Tree is a celebration of India's folk and tribal art, a space where traditional knowledge, contemporary conversations and thriving artistic communities come together."
+  },
+  "story": {
+    "eyebrow": "Our Story",
+    "heading": "Twelve Years of Purposeful Practice",
+    "paragraphs": [
+      "Founded nearly twelve years ago, Art Tree set out to be more than a gallery. We are a platform, an advocate and a community, built on the belief that art is not a luxury but a necessity, and that India's folk and tribal traditions are a national treasure.",
+      "Over the years, we have worked closely with artists across India, from Madhya Pradesh to Odisha, Bihar to Jharkhand, building long-term relationships rooted in respect, reciprocity and a shared commitment to keeping these traditions alive."
+    ],
+    "buttonLabel": "Read more",
+    "image": "/images/about-story-madhubani.jpg",
+    "alt": "A Madhubani painting of priests performing aarti on the ghats, with temples and lamps on the river",
+    "modalParagraphs": [
+      "Art Tree was founded nearly twelve years ago on a conviction that has only grown stronger with time: that art, whether ancient or contemporary, primal or refined, must always have a living, present context. That great art deserves great audiences. And that the extraordinary men and women who carry these traditions forward, who are, in many ways, the custodians of centuries of accumulated cultural knowledge, deserve far more than the margins they have historically been given.",
+      "From the very beginning, Art Tree set out to be more than a gallery. We are a platform, an advocate, and a community, built around the belief that art is not a luxury but a necessity, and that India's folk and tribal traditions are among the richest and most important cultural inheritances we have as a nation.",
+      "Over the past twelve years, we have worked closely with artists from across India, from the forests of Madhya Pradesh to the villages of Odisha, from the plains of Bihar to the hills of Jharkhand, building relationships rooted in respect, reciprocity, and a shared commitment to keeping these traditions alive, relevant, and deeply understood."
+    ]
+  },
+  "whatWeDo": {
+    "eyebrow": "What We Do",
+    "heading": "Supporting Art, Artists and Audiences",
+    "intro": "We work across the full arc of supporting art and its practitioners.",
+    "image": "/images/about-wwd-new.jpg",
+    "alt": "A folk painting of fish on a textured brown ground",
+    "items": [
+      { "icon": "exhibitions", "title": "Exhibitions", "text": "We curate and present exhibitions that bring context, community and story to the fore." },
+      { "icon": "programmes", "title": "Programmes", "text": "We organise panel discussions and public programmes with artists, scholars and audiences to deepen understanding and spark meaningful conversations." },
+      { "icon": "artists", "title": "Artists", "text": "We work closely with artists, supporting their practice and helping them reach new markets and audiences." },
+      { "icon": "education", "title": "Education", "text": "We invest in education so younger generations can learn about these traditions and carry them forward." }
+    ],
+    "modalParagraphs": [
+      "Art Tree's work spans the full arc of what it means to truly support an art form and its practitioners.",
+      "We curate and present exhibitions designed not merely to display art, but to immerse visitors in the social and cultural world from which it comes, bringing context, community, and story to the fore alongside the artworks themselves.",
+      "We organise panel discussions and public programmes that bring artists, scholars, anthropologists, critics, and audiences into conversation, creating spaces where knowledge is shared, questions are asked, and cultural understanding deepens.",
+      "We work directly with artists, supporting not just their practice but their ability to reach new markets, new collectors, and new audiences, ensuring that the economic dignity of the artist is as central to our mission as the cultural value of the art.",
+      "And we invest in education, because we believe that the future of these traditions depends on younger generations knowing them, understanding the communities behind them, and choosing to carry them forward."
+    ]
+  },
+  "philosophy": {
+    "eyebrow": "Our Philosophy",
+    "heading": "A living future for India's artistic heritage",
+    "paragraph": "We envision a more inclusive cultural landscape, where India's folk and tribal art is not only seen and celebrated, but truly understood, inspiring generations to come.",
+    "buttonLabel": "Our Impact",
+    "sprigImage": "/images/about-sprig.webp",
+    "quote": "\"Art brings people together, across cultures, across generations.\"",
+    "modalParagraphs": [
+      "Art Tree follows a holistic approach to traditional Indian art, one that sees the artwork not as an isolated object, but as a living expression of community, identity, and shared human experience. We seek to understand art as the medium through which people make sense of the world, giving form to their values, their histories, their relationships, and their place in the larger tapestry of Indian civilisation.",
+      "We are not interested in freezing these traditions in amber or reducing them to ethnic curiosity. We believe that living art forms must be allowed to breathe, evolve, and speak to the present, while remaining rooted in the rich cultural soil from which they grew. The goal is vitality, ensuring these art forms continue to matter, to move people, to connect them with a shared cultural heritage, and to tell their stories for generations to come."
+    ]
+  }
+}

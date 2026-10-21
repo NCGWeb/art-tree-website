@@ -1,0 +1,76 @@
+{
+  "meta": {
+    "title": "Gallery, Art Tree | Our Journey in Frames",
+    "description": "A glimpse into the exhibitions, events and moments that bring art and people together at Art Tree."
+  },
+  "hero": {
+    "eyebrow": "The Art Tree Collections",
+    "heading": "Discover stories through art",
+    "lead": "Explore our curated collection of folk, tribal and contemporary works from across India, each piece carrying a story, a tradition and a living legacy.",
+    "exploreLabel": "Explore collection",
+    "birdImage": "/images/g-bird-branch.webp"
+  },
+  "carousel": {
+    "captionTitle": "From the Collection",
+    "captionSub": "Folk & Tribal Art | India",
+    "images": [
+      "/images/gallery/g56.jpg",
+      "/images/gallery/g57.jpg",
+      "/images/gallery/g58.jpg",
+      "/images/gallery/g59.jpg",
+      "/images/gallery/g60.jpg",
+      "/images/gallery/g61.jpg",
+      "/images/gallery/g62.jpg",
+      "/images/gallery/g63.webp",
+      "/images/gallery/g65.jpg",
+      "/images/gallery/g66.jpg",
+      "/images/gallery/g67.jpg",
+      "/images/gallery/g68.jpg",
+      "/images/gallery/g69.jpg",
+      "/images/gallery/g70.jpg",
+      "/images/gallery/g71.jpg",
+      "/images/gallery/g72.jpg",
+      "/images/gallery/g73.jpg",
+      "/images/gallery/g74.jpg",
+      "/images/gallery/g75.jpg",
+      "/images/gallery/g76.jpg",
+      "/images/gallery/g77.jpg",
+      "/images/gallery/g78.jpg",
+      "/images/gallery/g79.jpg",
+      "/images/gallery/g80.jpg",
+      "/images/gallery/g81.jpg",
+      "/images/gallery/g82.jpg",
+      "/images/gallery/g83.jpg",
+      "/images/gallery/g84.jpg",
+      "/images/gallery/g85.jpg",
+      "/images/gallery/g86.jpg",
+      "/images/gallery/g87.jpg",
+      "/images/gallery/g88.jpg",
+      "/images/gallery/g89.jpg",
+      "/images/gallery/g90.jpg",
+      "/images/gallery/g91.jpg",
+      "/images/gallery/g92.jpg"
+    ]
+  },
+  "collection": {
+    "eyebrow": "Our Collection",
+    "heading": "Art, culture and living traditions",
+    "paragraph": "Our collection brings together works by master artists and emerging talents from across India, spanning folk, tribal and contemporary art forms. Each piece reflects a unique story, rooted in heritage, community and a deep connection to the land and its people.",
+    "ctaLabel": "Meet our artists",
+    "ctaHref": "/artforms",
+    "decorImage": "/images/g-lotus-plant.webp",
+    "quote": "\"Art brings people together, across cultures, across generations.\""
+  },
+  "featured": {
+    "eyebrow": "Featured",
+    "heading": "Featured Artworks",
+    "viewAllLabel": "View all works",
+    "viewAllHref": "/contact",
+    "items": [
+      { "title": "Ganga Aarti", "form": "Madhubani Art", "region": "Bihar", "image": "/images/gallery/g56.jpg", "alt": "Ganga Aarti" },
+      { "title": "Floral Stencil", "form": "Sanjhi Art", "region": "Rajasthan", "image": "/images/gallery/g57.jpg", "alt": "Floral Stencil" },
+      { "title": "Fish of the Deep", "form": "Warli Art", "region": "Maharashtra", "image": "/images/gallery/g58.jpg", "alt": "Fish of the Deep" },
+      { "title": "Royal Procession", "form": "Phad Art", "region": "Rajasthan", "image": "/images/gallery/g59.jpg", "alt": "Phad scrolls on display" }
+    ]
+  }
+}

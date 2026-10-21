@@ -1,0 +1,95 @@
+'use client';
+
+import { useState, type FormEvent } from 'react';
+
+export default function ContactForm({
+  recipientEmail,
+  defaultSubject,
+  labels,
+}: {
+  recipientEmail: string;
+  defaultSubject: string;
+  labels: {
+    heading: string;
+    nameLabel: string;
+    emailLabel: string;
+    subjectLabel: string;
+    messageLabel: string;
+    submitLabel: string;
+  };
+}) {
+  const [name, setName] = useState('');
+  const [email, setEmail] = useState('');
+  const [subject, setSubject] = useState('');
+  const [message, setMessage] = useState('');
+
+  function handleSubmit(e: FormEvent) {
+    e.preventDefault();
+    const finalSubject = subject.trim() || defaultSubject;
+    const body = `Name: ${name.trim()}\nEmail: ${email.trim()}\n\n${message.trim()}`;
+    const mailto = `mailto:${recipientEmail}?subject=${encodeURIComponent(finalSubject)}&body=${encodeURIComponent(body)}`;
+    window.location.href = mailto;
+  }
+
+  return (
+    <div className="rounded border border-black/5 bg-[#efe8d8] p-6 sm:p-8">
+      <h2 className="mb-5 font-head text-2xl text-headline-green">{labels.heading}</h2>
+      <form onSubmit={handleSubmit} className="space-y-4">
+        <div>
+          <label htmlFor="cf-name" className="mb-1 block text-sm font-medium text-ink">
+            {labels.nameLabel} *
+          </label>
+          <input
+            id="cf-name"
+            required
+            value={name}
+            onChange={(e) => setName(e.target.value)}
+            className="w-full rounded border border-black/15 bg-white px-3.5 py-2.5 text-sm text-ink"
+          />
+        </div>
+        <div>
+          <label htmlFor="cf-email" className="mb-1 block text-sm font-medium text-ink">
+            {labels.emailLabel} *
+          </label>
+          <input
+            id="cf-email"
+            type="email"
+            required
+            value={email}
+            onChange={(e) => setEmail(e.target.value)}
+            className="w-full rounded border border-black/15 bg-white px-3.5 py-2.5 text-sm text-ink"
+          />
+        </div>
+        <div>
+          <label htmlFor="cf-subject" className="mb-1 block text-sm font-medium text-ink">
+            {labels.subjectLabel}
+          </label>
+          <input
+            id="cf-subject"
+            value={subject}
+            onChange={(e) => setSubject(e.target.value)}
+            className="w-full rounded border border-black/15 bg-white px-3.5 py-2.5 text-sm text-ink"
+          />
+        </div>
+        <div>
+          <label htmlFor="cf-msg" className="mb-1 block text-sm font-medium text-ink">
+            {labels.messageLabel}
+          </label>
+          <textarea
+            id="cf-msg"
+            rows={5}
+            value={message}
+            onChange={(e) => setMessage(e.target.value)}
+            className="w-full rounded border border-black/15 bg-white px-3.5 py-2.5 text-sm text-ink"
+          />
+        </div>
+        <button
+          type="submit"
+          className="inline-flex items-center gap-2 border border-ink px-6 py-3 text-xs uppercase tracking-widest text-ink transition-colors hover:bg-ink hover:text-cream"
+        >
+          {labels.submitLabel} <span aria-hidden="true">→</span>
+        </button>
+      </form>
+    </div>
+  );
+}

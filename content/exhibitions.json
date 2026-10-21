@@ -1,0 +1,203 @@
+{
+  "meta": {
+    "title": "Exhibitions, Art Tree | Conversations that keep art alive",
+    "description": "Exhibitions, talks and public programmes from Art Tree, exploring India's folk and tribal art traditions, together."
+  },
+  "hero": {
+    "eyebrow": "Events",
+    "heading": "Conversations that keep art alive",
+    "lead": "Exhibitions, talks, workshops and more, exploring India's artistic traditions, together.",
+    "quote": "\"Art brings people together, across generations and geographies.\""
+  },
+  "current": {
+    "day": "26",
+    "month": "September",
+    "year": "2025",
+    "image": "/images/gallery/g56.jpg",
+    "alt": "VAMA — The Strength Within",
+    "category": "Current Show",
+    "title": "VAMA — The Strength Within",
+    "meta": "September 26 – 1st October 2025 / Bikaner House, New Delhi",
+    "paragraphs": [
+      "Art Tree's tribute to the unsung women artists of India's folk and tribal traditions. Coinciding with Navratri, VAMA brings together twenty women artists, many Padma Shri and National Award recipients, for a six-day celebration of Stree Shakti.",
+      "Works span Madhubani, Warli, Gond, Bhil, Bengal Pattachitra, Mandana, Chamba Rumaal and more. Featured artists include Bhuri Bai (Bhil / Padma Shri), Durga Bai (Gond / Padma Shri), Manisha Jha and Urmila Devi (Mithila-Madhubani / National Award), Kalpana and Swarna Chitrakar (Bengal Pattachitra / National Award), Vidya Devi Soni (Mandana), Anita Kumari (Chamba Rumaal / National Award) and Juliet (Sohrai)."
+    ]
+  },
+  "filters": {
+    "dates": [
+      { "value": "all", "label": "All dates" },
+      { "value": "2023-11", "label": "November 2023" },
+      { "value": "2022-08", "label": "August 2022" },
+      { "value": "2021-12", "label": "December 2021" },
+      { "value": "2021-09", "label": "September 2021" },
+      { "value": "2018-12", "label": "December 2018" },
+      { "value": "2017-10", "label": "October 2017" },
+      { "value": "2016-11", "label": "November 2016" },
+      { "value": "2015-11", "label": "November 2015" }
+    ],
+    "types": [
+      { "value": "all", "label": "All types" },
+      { "value": "shows", "label": "Shows" },
+      { "value": "talks", "label": "Talks" }
+    ]
+  },
+  "events": [
+    {
+      "id": "samanvay",
+      "type": "shows",
+      "date": "2023-11",
+      "day": "03",
+      "month": "November",
+      "year": "2023",
+      "image": "/images/ev-samanvay.jpg",
+      "alt": "Samanvay, Harmony in Nature",
+      "category": "Shows",
+      "title": "Samanvay, Harmony in Nature",
+      "meta": "November 3 – 8, 2023 / Main Art Gallery, Bikaner House, New Delhi",
+      "excerpt": "Samanvay sets aside the religious and the ritualistic to reveal what lies beneath: nature seen clearly, celebrated for what it simply and magnificently is. Five art forms, Gond, Madhubani, Phad, Sanjhi and Warli, come together, faithful to their essence yet alive to the new.",
+      "modalParagraphs": [
+        "Folk and tribal art have never stood still. They absorb, adapt, and renew, carrying the depth of tradition without being imprisoned by it. Over centuries, both have learned to hold the ancient and the contemporary in the same steady hand, finding new expression without surrendering their roots.",
+        "Nature is not incidental to these traditions. It is their very foundation, the first subject, the oldest grammar. Samanvay sets aside the religious and the ritualistic to reveal what lies beneath: nature seen clearly, rendered with honesty, celebrated for what it simply and magnificently is.",
+        "Five art forms, Gond, Madhubani, Phad, Sanjhi, and Warli, each carrying its own distinct visual world, its own way of seeing, come together here in that spirit. Faithful to their essence, yet alive to the new. This is what these traditions have always done, moved forward without looking away. Samanvay is simply the next step in a journey that has no end."
+      ]
+    },
+    {
+      "id": "pravaah",
+      "type": "shows",
+      "date": "2022-08",
+      "day": "17",
+      "month": "August",
+      "year": "2022",
+      "image": "/images/ev-pravaah.jpg",
+      "alt": "Pravaah, A Journey",
+      "category": "Shows",
+      "title": "Pravaah, A Journey",
+      "meta": "August 17 – 21, 2022 / Open Palm Court, India Habitat Centre, New Delhi",
+      "excerpt": "Art Tree focuses on the theme of Water in an exhibition titled Pravaah – A Journey, symbolising the constant flow of water that leads to purgation and cleansing, and the universality of water across five different forms of Indian folk and traditional art.",
+      "modalParagraphs": [
+        "In continuation of its exploration of traditional Indian arts, Art Tree focuses on the theme of Water in an exhibition titled Pravaah – A Journey. Symbolising the constant flow of water that leads to purgation and cleansing, and inspired by innumerable references to water in historical, ancient and Renaissance pieces of art, the exhibition depicts the universality of water in different forms of Indian art. In both literature and art, water is considered the universal symbol for change and continuity, in its forever flowing course.",
+        "Widely acknowledged for its traditional art forms and crafts, Indian folk art has been handed down from one generation to the next without altering its cultural and traditional vibrancy. Art Tree aims to preserve and promote the legacy of traditional Indian art and crafts, the origins of which can be traced to prehistoric settlements in the 3rd millennium BCE.",
+        "Pravaah emphasises the dynamic energy that water signifies in the works of some distinguished artists displaying five different forms of folk and traditional art: Madhubani by Manisha Jha and Manoj Choudhary; Pattachitra by Purna Chandra Moharana and Tanmay Mahapatra; Phad by Prakash Joshi; and Warli by Anil Wangad and Sarita Vanjara.",
+        "It is no coincidence that Pravaah coincides with the month of Shravan of the Hindu Saka calendar, connected to the arrival of the South-West monsoons across the Indian subcontinent. The time for our event was specially chosen to coincide with this month."
+      ]
+    },
+    {
+      "id": "ekayan",
+      "type": "shows",
+      "date": "2021-12",
+      "day": "22",
+      "month": "December",
+      "year": "2021",
+      "image": "/images/ev-ekayan.jpg",
+      "alt": "Ekayan, Ek Sutra",
+      "category": "Shows",
+      "title": "Ekayan, Ek Sutra",
+      "meta": "December 22 – 30, 2021 / Bikaner House, New Delhi",
+      "excerpt": "Ekayan, Ek Sutra brings together three distinct traditions, Madhubani/Mithila from Bihar, Chintz and Kalamkari from Andhra Pradesh, and Phad from Rajasthan, divergent in origin, technique and temperament, yet united here in a shared spirit of inquiry and experiment.",
+      "modalParagraphs": [
+        "\"The multiplicity of magnificent culture and arts of India definitely needs a big stage.\", Sadhguru",
+        "India's folk art traditions have never spoken in a single voice. They emerge from different soils, different communities, different ways of seeing, and yet, beneath their diversity, a common thread runs through them all. Ekayan, Ek Sutra is an attempt to find that thread.",
+        "This exhibition brings together three distinct traditions, Madhubani/Mithila from Bihar, Chintz and Kalamkari from Andhra Pradesh, and Phad from Rajasthan. Divergent in origin, technique, and temperament, they are united here in a shared spirit of inquiry and experiment.",
+        "The choice of these three traditions is not incidental. Madhubani has historically been a women's art, its narratives centred on figures like Sita/Maithili and Bhagwati, on the strength and grace of the feminine. Kalamkari and Phad, by contrast, have been predominantly male domains, their visual narratives drawn from the great epics as seen through a male lens.",
+        "Ekayan, Ek Sutra is a small but deliberate step toward blurring these lines. New subjects, new formats, new conversations, while the techniques remain rooted in their tradition, faithful to the hand and the knowledge that have sustained them for generations.",
+        "\"A nation's culture resides in the hearts and in the soul of its people.\", Mahatma Gandhi"
+      ]
+    },
+    {
+      "id": "echoes",
+      "type": "shows",
+      "date": "2021-09",
+      "day": "20",
+      "month": "September",
+      "year": "2021",
+      "image": "/images/ev-echoes.jpg",
+      "alt": "Echoes from the Sand",
+      "category": "Shows",
+      "title": "Echoes from the Sand",
+      "meta": "September 20 – 27, 2021 / Bikaner House, New Delhi",
+      "excerpt": "One of the first significant shows to open after the long stillness of the Covid years, Echoes from the Sand brought together two Rajasthani traditions, the Bikaner School of Miniatures and Pichwai, each carried forward with uncommon dedication.",
+      "modalParagraphs": [
+        "Held in September 2021, one of the first significant shows to open after the long stillness of the Covid years, Art Tree's exhibition at Bikaner House brought together two artists from Rajasthan, each working within a distinct tradition, each carrying it forward with uncommon dedication. After months of closed galleries and cancelled shows, audiences returned with a hunger for art experienced in person, and the response reflected that deeply.",
+        "The two traditions presented, the Bikaner School of Miniatures and Pichwai, are separated by subject, technique, and temperament. What they share is a commitment to the handmade, the refined, and the deeply practised.",
+        "Bikaner School of Miniatures, Shri Mahaveer Swami. The sole practising artist of the Bikaner School of Miniatures, Shri Mahaveer Swami is among the finest traditional artists working in India today. His ethereal palette, exquisite brushwork, and deep sensitivity to the world around him are held in balance by the rigorous discipline of a tradition he has spent a lifetime mastering.",
+        "Pichwai, Yugdeepak Soni. Yugdeepak Soni comes from a distinguished family of painters from Rajasthan, trained under the senior artists of his family and under the guardianship of Shilp Guru Shri Badri Lal Chitrakar. He brings to Pichwai the commitment of an artist determined to keep a living tradition alive."
+      ]
+    },
+    {
+      "id": "craft",
+      "type": "shows",
+      "date": "2018-12",
+      "day": "01",
+      "month": "December",
+      "dow": "Saturday",
+      "year": "2018",
+      "image": "/images/ev-craft.jpg",
+      "alt": "India Craft Week",
+      "category": "Shows",
+      "title": "India Craft Week",
+      "meta": "December 1 – 5, 2018 / GMR Aerocity, New Delhi",
+      "excerpt": "Art Tree was an integral part of the 1st edition of India Craft Week in December 2018. A five-day event, it showcased the varied arts and crafts across the length and breadth of India, with a special gallery, 'Craft Panorama', of exquisite works by renowned artists.",
+      "modalParagraphs": [
+        "December 1 – 5, 2018 · GMR Aerocity, New Delhi",
+        "Art Tree was an integral part of the 1st edition of India Craft Week in December 2018. A five-day-long event, it showcased the varied arts and crafts across the length and breadth of India. Art Tree created a gallery, 'Craft Panorama', where we displayed exquisite artworks by renowned artists."
+      ]
+    },
+    {
+      "id": "phadshow",
+      "type": "shows",
+      "date": "2017-10",
+      "day": "05",
+      "month": "October",
+      "dow": "Thursday",
+      "year": "2017",
+      "image": "/images/ev-phad.jpg",
+      "alt": "Phad, Mythical Heritage of Bhilwara",
+      "category": "Shows",
+      "title": "Phad, Mythical Heritage of Bhilwara",
+      "meta": "October 5 – 8, 2017 / Bikaner House, New Delhi",
+      "excerpt": "The first solo show by any Phad artist in India. The works of Shri Shrilal Joshi and his sons, Kalyan Joshi and Gopal Joshi, were exhibited. Shrilal Joshi is considered to be the father of Phad paintings.",
+      "modalParagraphs": [
+        "October 5 – 8, 2017 · Bikaner House, New Delhi",
+        "This show was held at Bikaner House, New Delhi from 5th to 8th October, 2017. It was the first solo show by any Phad artist in India. The works of Shri Shrilal Joshi and his sons, Kalyan Joshi and Gopal Joshi, were exhibited. Shrilal Joshi is considered to be the father of Phad paintings."
+      ]
+    },
+    {
+      "id": "tulika",
+      "type": "talks",
+      "date": "2016-11",
+      "day": "18",
+      "month": "November",
+      "dow": "Friday",
+      "year": "2016",
+      "image": "/images/ev-tulika.jpg",
+      "alt": "Tulika, A Symposium on Art",
+      "category": "Talks",
+      "title": "Tulika, A Symposium on Art",
+      "meta": "10:00 am – 4:00 pm / The Oxford Bookstore, New Delhi",
+      "excerpt": "Any art is manifested in various forms and aspects, be it contemporary, folk or fine arts. 'Tulika – A Symposium on Art' was organised to discuss the nuances and facets of art, held at The Oxford Bookstore, New Delhi.",
+      "modalParagraphs": [
+        "10:00 am – 4:00 pm · The Oxford Bookstore, New Delhi · 18 November 2016",
+        "Any art is manifested in various forms and aspects. Be it contemporary, folk or fine arts, the nuances and facets are aplenty. 'Tulika – A Symposium on Art' was organised to discuss the same. The event was held at The Oxford Bookstore in New Delhi on 18th November, 2016."
+      ]
+    },
+    {
+      "id": "artwalk",
+      "type": "shows",
+      "date": "2015-11",
+      "day": "30",
+      "month": "November",
+      "dow": "Monday",
+      "year": "2015",
+      "image": "/images/ev-artwalk.jpg",
+      "alt": "Art Walk at Crowne Plaza",
+      "category": "Shows",
+      "title": "Art Walk at Crowne Plaza",
+      "meta": "November 30, 2015 – May 20, 2016 / Crowne Plaza Okhla, New Delhi",
+      "excerpt": "We began our journey at Art Tree in 2014 by displaying the works of contemporary artists in the lobbies of Hotel Crowne Plaza, Gurgaon and Okhla. The synergy was amazing, the response favourable, and Art Tree started getting noticed, both by artists and audiences.",
+      "modalParagraphs": [
+        "November 30, 2015 – May 20, 2016 · Crowne Plaza Okhla, New Delhi",
+        "We began our journey at Art Tree in 2014 by displaying the works of contemporary artists in the lobbies of Hotel Crowne Plaza, Gurgaon and Okhla. The artists were upcoming and so were we. The synergy was amazing and the learning was great. The guests responded favourably and Art Tree started getting noticed, both by artists and audiences."
+      ]
+    }
+  ]
+}
