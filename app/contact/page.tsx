@@ -2,7 +2,7 @@ import Image from 'next/image';
 import type { Metadata } from 'next';
 import ContactForm from '@/components/ContactForm';
 import Reveal from '@/components/Reveal';
-import { PhoneIcon, MailIcon, PinIcon, YoutubeIcon, FacebookIcon, InstagramIcon } from '@/components/icons';
+import { PhoneIcon, MailIcon, PinIcon, FacebookIcon, InstagramIcon } from '@/components/icons';
 import { getPageContent } from '@/lib/content';
 
 export async function generateMetadata(): Promise<Metadata> {
@@ -88,17 +88,14 @@ export default async function ContactPage() {
             </div>
 
             <h3 className="mb-3 font-head text-lg text-headline-green">Follow Us</h3>
-            {/* Exactly 3 icons (Instagram, Facebook, YouTube) — matches the
-                shared SiteFooter, which already only renders this set. */}
+            {/* Instagram, Facebook — matches the shared SiteFooter, which
+                already only renders this set. */}
             <div className="mb-8 flex gap-3">
-              <a href={contact.socials.instagram || '#'} aria-label="Instagram" className="flex h-10 w-10 items-center justify-center rounded-full text-ink transition-all duration-300 ease-out hover:-translate-y-0.5 hover:bg-terracotta/10 hover:text-terracotta">
+              <a href={contact.socials.instagram || '#'} target="_blank" rel="noopener noreferrer" aria-label="Instagram" className="flex h-10 w-10 items-center justify-center rounded-full text-ink transition-all duration-300 ease-out hover:-translate-y-0.5 hover:bg-terracotta/10 hover:text-terracotta">
                 <InstagramIcon className="h-5 w-5" />
               </a>
-              <a href={contact.socials.facebook || '#'} aria-label="Facebook" className="flex h-10 w-10 items-center justify-center rounded-full text-ink transition-all duration-300 ease-out hover:-translate-y-0.5 hover:bg-terracotta/10 hover:text-terracotta">
+              <a href={contact.socials.facebook || '#'} target="_blank" rel="noopener noreferrer" aria-label="Facebook" className="flex h-10 w-10 items-center justify-center rounded-full text-ink transition-all duration-300 ease-out hover:-translate-y-0.5 hover:bg-terracotta/10 hover:text-terracotta">
                 <FacebookIcon className="h-5 w-5" />
-              </a>
-              <a href={contact.socials.youtube || '#'} aria-label="YouTube" className="flex h-10 w-10 items-center justify-center rounded-full text-ink transition-all duration-300 ease-out hover:-translate-y-0.5 hover:bg-terracotta/10 hover:text-terracotta">
-                <YoutubeIcon className="h-5 w-5" />
               </a>
             </div>
 

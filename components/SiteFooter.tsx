@@ -1,6 +1,6 @@
 import Image from 'next/image';
 import Link from 'next/link';
-import { FacebookIcon, InstagramIcon, YoutubeIcon } from '@/components/icons';
+import { FacebookIcon, InstagramIcon } from '@/components/icons';
 
 type NavItem = { label: string; href: string };
 
@@ -55,6 +55,8 @@ export default function SiteFooter({
               <div className="flex gap-3">
                 <a
                   href={socials.instagram || '#'}
+                  target="_blank"
+                  rel="noopener noreferrer"
                   aria-label="Instagram"
                   className="flex h-9 w-9 items-center justify-center rounded-full text-[#d9d5c6] transition-all duration-300 ease-out hover:-translate-y-0.5 hover:bg-white/10 hover:text-gold"
                 >
@@ -62,17 +64,12 @@ export default function SiteFooter({
                 </a>
                 <a
                   href={socials.facebook || '#'}
+                  target="_blank"
+                  rel="noopener noreferrer"
                   aria-label="Facebook"
                   className="flex h-9 w-9 items-center justify-center rounded-full text-[#d9d5c6] transition-all duration-300 ease-out hover:-translate-y-0.5 hover:bg-white/10 hover:text-gold"
                 >
                   <FacebookIcon className="h-5 w-5" />
-                </a>
-                <a
-                  href={socials.youtube || '#'}
-                  aria-label="YouTube"
-                  className="flex h-9 w-9 items-center justify-center rounded-full text-[#d9d5c6] transition-all duration-300 ease-out hover:-translate-y-0.5 hover:bg-white/10 hover:text-gold"
-                >
-                  <YoutubeIcon className="h-5 w-5" />
                 </a>
               </div>
             </div>

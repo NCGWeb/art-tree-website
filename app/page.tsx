@@ -31,11 +31,15 @@ export default async function HomePage() {
 
       {/* HERO */}
       <section className="relative" aria-label="Introduction">
-        {/* max-h caps keep this proportional at laptop/desktop widths — an
-            aspect-ratio box with fill+w-full otherwise keeps growing taller
-            as the viewport gets wider (e.g. 16:9 at 1920px = 1080px tall,
-            nearly a full screen of hero). */}
-        <div className="relative aspect-[3/2] w-full sm:aspect-[16/9] lg:max-h-[440px]">
+        {/* The hero artwork is a single flattened 1600x885 (~16:9) image with
+            the "Stories you can touch" copy and leaf-nav icons baked in, so
+            unlike a plain photo it can't be cropped on the sides without
+            losing content. Using its native aspect ratio at every breakpoint
+            keeps the whole illustration (including the quote near the right
+            edge) visible on mobile instead of being cut off by object-cover.
+            max-h caps it on laptop/desktop so it doesn't balloon taller as
+            the viewport widens. */}
+        <div className="relative aspect-[1600/885] w-full lg:max-h-[440px]">
           <Image
             src={home.hero.image}
             alt={home.hero.alt}
