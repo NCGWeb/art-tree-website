@@ -70,7 +70,7 @@ export default async function HomePage() {
         <div className="relative w-full aspect-[1955/803]">
           <Image src={home.record.image} alt={home.record.alt} fill quality={90} className="object-cover object-left-top" sizes="100vw" />
           <div className="absolute inset-0 bg-gradient-to-r from-transparent via-cream/50 to-cream/92" />
-          <div className="absolute inset-0 z-10 flex items-center justify-center px-5 lg:px-10 xl:px-16">
+          <div className="absolute inset-0 z-10 flex items-center justify-end px-5 sm:pr-8 lg:pr-12 xl:pr-20">
             <div className="max-w-xl">
               <h2 className="font-head text-lg leading-tight text-headline-green sm:text-2xl lg:text-3xl">{home.record.heading}</h2>
               <div className="my-2 h-0.5 w-10 bg-gold sm:my-3.5 sm:w-12" />
