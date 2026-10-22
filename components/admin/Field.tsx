@@ -52,31 +52,41 @@ export function TextAreaField({
   );
 }
 
-export function SelectField({
+export function NumberField({
   label,
   value,
-  options,
   onChange,
+  min,
+  max,
+  suffix,
+  hint,
 }: {
   label: string;
-  value: string;
-  options: { value: string; label: string }[];
-  onChange: (v: string) => void;
+  value: number;
+  onChange: (v: number) => void;
+  min?: number;
+  max?: number;
+  suffix?: string;
+  hint?: string;
 }) {
   return (
     <label className="block">
       <span className="mb-1 block text-sm font-medium text-ink">{label}</span>
-      <select
-        value={value ?? options[0]?.value}
-        onChange={(e) => onChange(e.target.value)}
-        className="w-full rounded border border-black/15 bg-white px-3 py-2 text-sm text-ink focus:border-terracotta focus:outline-none"
-      >
-        {options.map((opt) => (
-          <option key={opt.value} value={opt.value}>
-            {opt.label}
-          </option>
-        ))}
-      </select>
+      <div className="flex items-center gap-2">
+        <input
+          type="number"
+          value={Number.isFinite(value) ? value : ''}
+          min={min}
+          max={max}
+          onChange={(e) => {
+            const n = parseInt(e.target.value, 10);
+            if (!Number.isNaN(n)) onChange(n);
+          }}
+          className="w-32 rounded border border-black/15 bg-white px-3 py-2 text-sm text-ink focus:border-terracotta focus:outline-none"
+        />
+        {suffix && <span className="text-sm text-muted-soft">{suffix}</span>}
+      </div>
+      {hint && <p className="mt-1 text-xs text-muted-soft">{hint}</p>}
     </label>
   );
 }

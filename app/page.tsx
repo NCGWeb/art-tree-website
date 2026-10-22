@@ -44,11 +44,7 @@ export default async function HomePage() {
             instead of cutting into the leaf-nav icons or quote. */}
         <div
           className="hero-wrap relative aspect-[1600/885] w-full"
-          style={
-            (home.hero.desktopHeight || '660px') !== 'full'
-              ? ({ '--hero-max-h': home.hero.desktopHeight || '660px' } as any)
-              : undefined
-          }
+          style={{ '--hero-max-h': home.hero.desktopHeight || '760px' } as any}
         >
           <Image
             src={home.hero.image}

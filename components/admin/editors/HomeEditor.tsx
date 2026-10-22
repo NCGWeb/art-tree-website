@@ -2,7 +2,7 @@
 
 import { useState } from 'react';
 import SaveBar from '@/components/admin/SaveBar';
-import { TextField, TextAreaField, ParagraphListField, SelectField } from '@/components/admin/Field';
+import { TextField, TextAreaField, ParagraphListField, NumberField } from '@/components/admin/Field';
 import { ImageField } from '@/components/admin/ImageField';
 import CardList from '@/components/admin/CardList';
 
@@ -46,20 +46,15 @@ export default function HomeEditor({ initial }: { initial: any }) {
               onSrcChange={(v) => set(['hero', 'image'], v)}
               onAltChange={(v) => set(['hero', 'alt'], v)}
             />
-            <SelectField
+            <NumberField
               label="Desktop/laptop height"
-              value={data.hero.desktopHeight ?? '660px'}
-              onChange={(v) => set(['hero', 'desktopHeight'], v)}
-              options={[
-                { value: 'full', label: 'Full image (no cropping)' },
-                { value: '440px', label: 'Compact (440px)' },
-                { value: '550px', label: 'Medium (550px)' },
-                { value: '660px', label: 'Tall (660px)' },
-              ]}
+              value={parseInt(data.hero.desktopHeight, 10) || 760}
+              onChange={(n) => set(['hero', 'desktopHeight'], `${n}px`)}
+              min={300}
+              max={1200}
+              suffix="px"
+              hint="Mobile always shows the full hero image. This only controls how tall it appears on laptop/desktop screens — the image stays full width and crops from the bottom."
             />
-            <p className="text-xs text-muted-soft">
-              Mobile always shows the full hero image. This only controls how tall it appears on laptop/desktop screens.
-            </p>
           </div>
         </section>
 
