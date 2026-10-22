@@ -1,7 +1,6 @@
 import Image from 'next/image';
 import type { Metadata } from 'next';
 import ExhibitionsList from '@/components/ExhibitionsList';
-import Reveal from '@/components/Reveal';
 import { getPageContent } from '@/lib/content';
 
 export async function generateMetadata(): Promise<Metadata> {
@@ -44,30 +43,6 @@ export default async function ExhibitionsPage() {
           </div>
         </div>
       </section>
-
-      {/* Current / latest show, pinned */}
-      <Reveal as="section" className="bg-cream py-6">
-        <div className="mx-auto max-w-site px-5">
-          <article className="card-hover grid grid-cols-1 gap-6 rounded-lg border border-gold/40 bg-cream-deep p-5 sm:grid-cols-[110px_280px_1fr] sm:items-start">
-            <div className="flex gap-2 sm:block">
-              <div className="font-head text-3xl leading-none text-headline-green">{ex.current.day}</div>
-              <div className="text-sm text-ink">{ex.current.month}</div>
-              <div className="font-head text-lg text-terracotta">{ex.current.year}</div>
-            </div>
-            <div className="relative aspect-[4/3] w-full overflow-hidden rounded shadow-md">
-              <Image src={ex.current.image} alt={ex.current.alt} fill priority quality={90} className="object-cover" sizes="280px" />
-            </div>
-            <div>
-              <div className="mb-1 text-xs font-semibold uppercase tracking-wide text-tan">{ex.current.category}</div>
-              <h3 className="mb-1.5 font-head text-2xl text-headline-green">{ex.current.title}</h3>
-              <div className="mb-2 text-xs text-muted-soft">{ex.current.meta}</div>
-              {ex.current.paragraphs.map((p, i) => (
-                <p key={i} className="mb-2 text-sm leading-relaxed text-muted">{p}</p>
-              ))}
-            </div>
-          </article>
-        </div>
-      </Reveal>
 
       <ExhibitionsList events={ex.events} dateOptions={ex.filters.dates} typeOptions={ex.filters.types} />
     </main>
