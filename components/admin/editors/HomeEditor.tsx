@@ -179,6 +179,7 @@ export default function HomeEditor({ initial }: { initial: any }) {
               onAltChange={(v) => set(['expertise', 'alt'], v)}
             />
             <TextField label="Button label" value={data.expertise.buttonLabel} onChange={(v) => set(['expertise', 'buttonLabel'], v)} />
+            <TextField label="Button link (page or URL)" value={data.expertise.buttonHref || '/about'} onChange={(v) => set(['expertise', 'buttonHref'], v)} />
           </div>
         </section>
 

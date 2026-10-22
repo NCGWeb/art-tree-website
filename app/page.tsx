@@ -220,9 +220,12 @@ export default async function HomePage() {
             </div>
             <p className="text-sm leading-relaxed text-white/90">{home.expertise.paragraph}</p>
           </div>
-          <button className="mt-4 inline-flex w-fit items-center gap-2 border border-white/60 px-5 py-2.5 text-xs uppercase tracking-widest text-white transition-all duration-300 ease-out hover:-translate-y-0.5 hover:bg-white hover:text-ink">
+          <Link
+            href={home.expertise.buttonHref || '/about'}
+            className="mt-4 inline-flex w-fit items-center gap-2 border border-white/60 px-5 py-2.5 text-xs uppercase tracking-widest text-white transition-all duration-300 ease-out hover:-translate-y-0.5 hover:bg-white hover:text-ink"
+          >
             {home.expertise.buttonLabel} <span aria-hidden="true">→</span>
-          </button>
+          </Link>
         </Reveal>
       </section>
 

@@ -93,7 +93,8 @@
     "paragraph": "Art Tree is guided by deep expertise and a lifelong commitment to preserving and celebrating India's living folk and tribal art heritage with authenticity and vision.",
     "image": "/images/profile-pic.jpg",
     "alt": "Pragati Agarwal, Founder of Art Tree",
-    "buttonLabel": "Know more"
+    "buttonLabel": "Know more",
+    "buttonHref": "/about"
   },
   "footerBanner": "Art Tree, Because every brushstroke tells a story, and every story is worth telling."
 }
