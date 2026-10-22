@@ -13,6 +13,7 @@
   "artforms": [
     {
       "id": "bhil",
+      "credit": "Bhil Art by Bhuri Bai",
       "title": "Bhil",
       "subtitle": "Rajasthan · Madhya Pradesh · Gujarat · Forest keepers",
       "excerpt": "Bhil art is the visual tradition of one of India's oldest and largest tribal communities, the Bhils of Rajasthan, Madhya Pradesh and Gujarat, custodians of India's forests for aeons. Like most tribal peoples, the Bhils are pagan, their spirituality rooted not in scripture but in the living forces of nature. The defining characteristic of Bhil art is the dot: every surface, figures, animals, trees, borders, is covered in densely packed, carefully placed dots of endlessly varied colour.",
@@ -28,6 +29,7 @@
     },
     {
       "id": "jangarh",
+      "credit": "Gond Art by Durga Bai",
       "title": "Gond Art",
       "subtitle": "Madhya Pradesh · The Art of the Green Mountain",
       "excerpt": "Gond Art is the painting tradition of the Gond community of Central India, one of the subcontinent's largest and most ancient tribal peoples. The Gonds take their name from Kond, meaning 'the green mountain', and in that name lies the essence of this art: rooted in the earth, alive to nature, and convinced that the world is not merely material but inhabited at every level by spirit.",
@@ -44,6 +46,7 @@
     },
     {
       "id": "madhubani",
+      "credit": "Ganga Aarti – Madhubani by Manoj",
       "title": "Madhubani",
       "subtitle": "Mithila, Bihar · The forest of honey",
       "excerpt": "Madhubani takes its name from the region that gave it birth, Madhu, honey, and Vana, forest, the forest of honey. Originating in the Mithila region of Bihar, Madhubani is among India's most ancient and most alive folk art traditions, traditionally practised solely by the women of the region. Legend holds that it was Raja Janak who first commissioned the painting of walls and floors to celebrate the wedding of Sita with Ram, giving birth to a tradition still alive today.",
@@ -84,6 +87,7 @@
     },
     {
       "id": "pichwai",
+      "credit": "Pichwai by Yugdeepak Soni",
       "title": "Pichwai",
       "subtitle": "Nathdwara, Rajasthan · Devotion in paint",
       "excerpt": "Pichwai is an art form of pure devotion and surrender, perhaps the most singularly dedicated of all India's painting traditions. Its etymology reveals its purpose entirely: pich, meaning behind, and wai, meaning one who belongs to, the painting that lives behind the deity, in service of the divine.",
@@ -101,6 +105,7 @@
     },
     {
       "id": "sanjhi",
+      "credit": "Sanjhi by Ram Soni",
       "title": "Sanjhi",
       "subtitle": "Mathura · The golden hour of Braj",
       "excerpt": "The word Sanjhi derives from sanjh, or godhuli, the golden hour of dusk when cattle return home from grazing, their hooves raising clouds of dust in the fading light. It is the most beloved hour in the world of Braj, the hour when Krishna, the divine cowherd, would return to Vrindavan, and Radha would await him. Everything about this art form flows from that image.",
@@ -133,6 +138,7 @@
     },
     {
       "id": "warli",
+      "credit": "Warli by Anil Vangad",
       "title": "Warli",
       "subtitle": "Maharashtra · The painted world of the Warli tribe",
       "excerpt": "Warli painting takes its name from the Warli tribe of Maharashtra, one of the largest and oldest tribal communities in India, living predominantly in the Dahanu, Palghar and Jawhar regions of Thane district. Remote, self-contained, and deeply rooted in the rhythms of the natural world, the Warli people developed a visual tradition as distinctive and coherent as any in India, a portrait of a community and its relationship with the living world around it.",

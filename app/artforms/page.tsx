@@ -90,6 +90,7 @@ export default async function ArtformsPage() {
                 )}
               </div>
               <div>
+                {form.credit && <div className="mb-1.5 text-xs italic tracking-wide text-terracotta">{form.credit}</div>}
                 <h2 className="font-head text-2xl text-headline-green">{form.title}</h2>
                 <div className="mb-2.5 mt-1 text-xs uppercase tracking-wide text-tan">{form.subtitle}</div>
                 <p className="mb-3.5 text-sm leading-relaxed text-muted">{form.excerpt}</p>

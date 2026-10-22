@@ -60,12 +60,13 @@ export default function ArtformsEditor({ initial }: { initial: any }) {
           <CardList
             items={data.artforms}
             onChange={(v) => set(['artforms'], v)}
-            newItem={() => ({ id: `artform-${Date.now()}`, title: '', subtitle: '', excerpt: '', image: '', alt: '', modalParagraphs: [''] })}
+            newItem={() => ({ id: `artform-${Date.now()}`, title: '', credit: '', subtitle: '', excerpt: '', image: '', alt: '', modalParagraphs: [''] })}
             addLabel="+ Add art form"
             itemLabel={(item: any) => item.title || 'Art form'}
             renderItem={(item: any, update) => (
               <>
                 <TextField label="Title" value={item.title} onChange={(v) => update({ title: v })} />
+                <TextField label="Artist credit (shown above the title, e.g. Gond Art by Durga Bai)" value={item.credit || ''} onChange={(v) => update({ credit: v })} />
                 <TextField label="Subtitle (region · description)" value={item.subtitle} onChange={(v) => update({ subtitle: v })} />
                 <ImageField
                   label="Image (leave empty to show a placeholder)"
