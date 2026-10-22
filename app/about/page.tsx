@@ -19,7 +19,7 @@ export default async function AboutPage() {
       <section className="grid grid-cols-1 overflow-hidden bg-[#F6F1E4] md:grid-cols-2">
         <div className="relative order-1 min-h-[280px] sm:min-h-[360px] md:order-1 md:min-h-[460px] lg:min-h-[520px]">
           <Image src={about.hero.image} alt={about.hero.alt} fill priority quality={90} className="object-cover" sizes="(min-width: 768px) 50vw, 100vw" />
-          <div className="absolute inset-x-4 bottom-16 mx-auto max-w-xs rounded bg-white/90 p-4 font-head italic text-headline-green shadow-lg sm:inset-x-auto sm:bottom-6 sm:left-6 sm:mx-0">
+          <div className="absolute inset-x-4 bottom-16 mx-auto max-w-xs rounded bg-white/90 p-4 font-head italic text-headline-green shadow-lg sm:bottom-6">
             <p className="text-sm sm:text-base">{about.hero.quote}</p>
             <span className="mt-2 block font-body text-xs not-italic text-tan">— {about.hero.quoteAttribution}</span>
           </div>

@@ -3,7 +3,6 @@ import Link from 'next/link';
 import type { Metadata } from 'next';
 import GalleryFan from '@/components/GalleryFan';
 import Reveal from '@/components/Reveal';
-import LotusQuoteBanner from '@/components/LotusQuoteBanner';
 import { getPageContent } from '@/lib/content';
 
 export async function generateMetadata(): Promise<Metadata> {
@@ -21,7 +20,7 @@ export default async function GalleryPage() {
           mockup (previously this was centered with no decoration). */}
       <section className="relative overflow-hidden bg-cream px-5 pb-6 pt-10 sm:pt-12">
         {g.hero.birdImage && (
-          <div className="pointer-events-none absolute -right-6 -top-6 hidden h-56 w-64 sm:block md:-right-8 md:-top-8 md:h-72 md:w-80 lg:h-80 lg:w-[22rem]">
+          <div className="pointer-events-none absolute -right-4 -top-4 h-36 w-40 opacity-60 sm:h-56 sm:w-64 sm:opacity-100 md:-right-8 md:-top-8 md:h-72 md:w-80 lg:h-80 lg:w-[22rem]">
             <Image src={g.hero.birdImage} alt="" aria-hidden="true" fill priority quality={90} className="object-cover object-right-top" sizes="352px" />
           </div>
         )}
@@ -108,8 +107,6 @@ export default async function GalleryPage() {
           </div>
         </div>
       </section>
-
-      <LotusQuoteBanner quote={g.quoteBanner} />
     </main>
   );
 }

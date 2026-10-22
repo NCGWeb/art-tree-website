@@ -14,7 +14,7 @@ export default async function ArtformsPage() {
 
   return (
     <main id="main">
-      <section className="bg-gradient-to-b from-cream to-[#EFE8D8] px-5 py-10 text-center sm:py-12">
+      <section className="bg-header-bg px-5 py-10 text-center sm:py-12">
         <div className="mx-auto max-w-2xl">
           <div className="text-xs font-semibold uppercase tracking-[0.2em] text-terracotta">{af.hero.eyebrow}</div>
           <h1 className="mt-2 font-head text-3xl leading-tight text-headline-green sm:text-4xl">{af.hero.heading}</h1>
