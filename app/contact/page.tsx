@@ -50,7 +50,7 @@ export default async function ContactPage() {
         </div>
       </section>
 
-      <section className="bg-cream py-10 sm:py-12">
+      <section className="bg-cream pb-4 pt-10 sm:pb-6 sm:pt-12">
         <div className="mx-auto grid max-w-site grid-cols-1 gap-10 px-5 lg:grid-cols-[1fr_1.2fr]">
           <Reveal as="div">
             <h2 className="mb-1.5 font-head text-2xl text-headline-green">Contact Information</h2>
