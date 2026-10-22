@@ -178,6 +178,11 @@ references it), changing only the fields you edited, and report which Blob value
 Before overwriting any image field, read its current Blob value; it may be the owner's own upload
 (this already happened once with the Gallery branch image) and should be kept or cut out, not swapped.
 
+**Blob reads can be stale for ~1 minute after a write** (CDN cache; `?t=` does not bust it). A
+second read-modify-write within that window writes the OLD copy back and silently reverts the
+first patch (this wiped six art-form credits once). Set every field you need in a single patch,
+or wait 90s between patches, and verify against the live page, not a Blob re-read.
+
 Pages with saved Blob content: home, about, exhibitions, artforms, gallery, media. Contact and
 site have none, so their seeds apply directly.
 
