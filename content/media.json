@@ -30,5 +30,18 @@
     { "image": "/images/media/3.jpg", "alt": "Press coverage page 19" },
     { "image": "/images/media/5.jpg", "alt": "Press coverage page 20" },
     { "image": "/images/media/22.jpg", "alt": "Press coverage page 21" }
-  ]
+  ],
+  "pressLinks": {
+    "heading": "More Press & Mentions",
+    "items": [
+      { "title": "Joint interview on VAMA with Cheriyal artists Vanaja & Padma", "publication": "ETV Bharat", "url": "https://www.etvbharat.com/en/!lifestyle/vama-art-interview-cheriyal-artists-telangana-vanaja-padma-enn25093001233" },
+      { "title": "VAMA", "publication": "YouTube", "url": "https://youtu.be/bkytfwOYUZA?si=UGUsPZelBfu_pVG_" },
+      { "title": "Celebrating Women Artists: A Tribute to India's Traditional Art Forms", "publication": "Dev Discourse", "url": "https://www.devdiscourse.com/article/entertainment/3643782-celebrating-women-artists-a-tribute-to-indias-traditional-art-forms" },
+      { "title": "VAMA", "publication": "", "url": "https://share.google/gEM032pDz1G9iqYTW" },
+      { "title": "VAMA: celebrating the strength of Indian women artists", "publication": "The Patriot", "url": "https://thepatriot.in/listicle/vama-celebrating-the-strength-of-indian-women-artists-76373" },
+      { "title": "VAMA", "publication": "Instagram", "url": "https://www.instagram.com/p/DPRCsUokyJm/?igsh=MTA0aW1kenpscmVuaQ==" },
+      { "title": "Honour the Power of Womanhood Through Tribal Art at This Exhibition in New Delhi", "publication": "Architect & Interiors India", "url": "https://www.architectandinteriorsindia.com/news/honour-the-power-of-womanhood-through-tribal-art-at-this-exhibition-in-new-delhi" },
+      { "title": "VAMA in Delhi Showcases Folk and Traditional Art by Women Artists", "publication": "The New Indian Express", "url": "https://www.newindianexpress.com/cities/delhi/2025/Sep/30/vama-in-delhi-showcases-folk-and-traditional-art-by-women-artists" }
+    ]
+  }
 }

@@ -15,11 +15,11 @@ export default async function AboutPage() {
 
   const heroText = (
     <div className="max-w-xl">
-      <div className="text-xs font-semibold uppercase tracking-[0.2em] text-terracotta">{about.hero.eyebrow}</div>
-      <h1 className="mt-2 font-head text-3xl leading-tight text-headline-green lg:text-4xl">{about.hero.heading}</h1>
-      <div className="my-4 h-0.5 w-12 bg-gold" />
-      <p className="max-w-[46ch] text-sm leading-relaxed text-muted">{about.hero.lead}</p>
-      <blockquote className="mt-5 max-w-md font-head italic leading-snug text-headline-green">
+      <div className="text-[0.65rem] font-semibold uppercase tracking-[0.2em] text-terracotta sm:text-xs">{about.hero.eyebrow}</div>
+      <h1 className="mt-1.5 font-head text-lg leading-tight text-headline-green sm:mt-2 sm:text-2xl lg:text-4xl">{about.hero.heading}</h1>
+      <div className="my-2 h-0.5 w-10 bg-gold sm:my-4 sm:w-12" />
+      <p className="max-w-[46ch] text-xs leading-snug text-muted sm:text-sm sm:leading-relaxed">{about.hero.lead}</p>
+      <blockquote className="mt-2 hidden max-w-md font-head italic leading-snug text-headline-green sm:mt-5 sm:block">
         <p className="text-base sm:text-lg">{about.hero.quote}</p>
         <span className="mt-2 block font-body text-xs not-italic text-muted-soft">— {about.hero.quoteAttribution}</span>
       </blockquote>
@@ -28,16 +28,22 @@ export default async function AboutPage() {
 
   return (
     <main id="main">
-      {/* HERO — text overlays the artwork at every breakpoint (no
-          mobile/desktop split): object-position keeps the tree anchored
-          top-left so any cropping from a min-height mismatch only ever eats
-          into its own blank canvas at the bottom/right, and a light scrim
-          guarantees the text stays legible even where it doesn't. */}
+      {/* HERO — the box's ratio always matches the artwork's own 1955:803
+          ratio exactly, at every breakpoint, so the image is NEVER cropped —
+          that's the one non-negotiable rule here, learned the hard way after
+          two earlier attempts traded it away for a comfortable text height.
+          Text overlays on top via absolute positioning instead, which keeps
+          it off the box's own height, so a short box (as on a phone) still
+          shows the complete artwork; the text there just has less room, so
+          it's set smaller and the quote hides below sm rather than crowding
+          or spilling past the artwork. */}
       <section className="relative overflow-hidden bg-cream/88">
-        <Image src={about.hero.image} alt={about.hero.alt} fill priority quality={90} className="object-cover object-left-top" sizes="100vw" />
-        <div className="absolute inset-0 bg-gradient-to-r from-transparent via-cream/50 to-cream/92" />
-        <div className="relative z-10 flex min-h-[340px] items-center justify-end px-5 py-10 sm:min-h-[400px] md:min-h-[440px] lg:min-h-[500px] lg:pr-10 xl:pr-16">
-          {heroText}
+        <div className="relative w-full aspect-[1955/803]">
+          <Image src={about.hero.image} alt={about.hero.alt} fill priority quality={90} className="object-cover object-left-top" sizes="100vw" />
+          <div className="absolute inset-0 bg-gradient-to-r from-transparent via-cream/50 to-cream/92" />
+          <div className="absolute inset-0 z-10 flex items-center justify-end px-5 lg:pr-10 xl:pr-16">
+            {heroText}
+          </div>
         </div>
       </section>
 
