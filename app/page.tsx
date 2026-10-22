@@ -70,7 +70,7 @@ export default async function HomePage() {
         <div className="relative w-full aspect-[1955/803]">
           <Image src={home.record.image} alt={home.record.alt} fill quality={90} className="object-cover object-left-top" sizes="100vw" />
           <div className="absolute inset-0 bg-gradient-to-r from-transparent via-cream/50 to-cream/92" />
-          <div className="absolute inset-0 z-10 flex items-center justify-end px-5 lg:pr-10 xl:pr-16">
+          <div className="absolute inset-0 z-10 flex items-center justify-center px-5 lg:px-10 xl:px-16">
             <div className="max-w-xl">
               <h2 className="font-head text-lg leading-tight text-headline-green sm:text-2xl lg:text-3xl">{home.record.heading}</h2>
               <div className="my-2 h-0.5 w-10 bg-gold sm:my-3.5 sm:w-12" />
@@ -86,13 +86,13 @@ export default async function HomePage() {
       {/* STATS — a visually distinct band (warmer gold tone + vertical
           dividers) whose border runs along the same edge as its own
           background, rather than a separate inset box, so the two align. */}
-      <section className="border-y border-gold/40 bg-[#EFE1BD] py-12 sm:py-16" aria-label="Art Tree in numbers">
+      <section className="bg-cream/88 py-12 sm:py-16" aria-label="Art Tree in numbers">
         <div className="mx-auto max-w-site px-5">
-          <div className="grid grid-cols-1 divide-y divide-gold/25 sm:grid-cols-3 sm:divide-x sm:divide-y-0">
+          <div className="grid grid-cols-1 divide-y divide-gold/25 border border-gold/40 bg-[#EFE1BD] sm:grid-cols-3 sm:divide-x sm:divide-y-0">
             {home.stats.map((s, i) => {
               const Icon = STAT_ICONS[i % STAT_ICONS.length];
               return (
-                <Reveal as="div" key={i} delay={i * 90} className="py-5 text-center sm:py-0">
+                <Reveal as="div" key={i} delay={i * 90} className="px-5 py-7 text-center">
                   <Icon className="mx-auto mb-3 h-9 w-9 stroke-terracotta" />
                   <div className="font-head text-3xl font-bold text-ink">{s.number}</div>
                   <div className="mt-2 text-xs font-semibold uppercase tracking-wide">{s.label}</div>
