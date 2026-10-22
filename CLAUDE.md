@@ -217,6 +217,7 @@ Done this session:
   Philosophy stacks on mobile with a larger left-aligned quote.
 - Gallery: rebuilt to the mockup (five-card fan, lotus, framed Featured cards); branch and lotus
   are CMS fields; images served at higher resolution (see Image quality above).
+- Art Forms: every entry has an editable `credit` line (artist name) shown above its title; all eight are filled (seed and Blob).
 - Header tagline aligned with the logo wordmark; favicon `app/icon.png`.
 - Blob fields patched: home `record.image/alt`, home `canvas.flowerImage`, gallery
   `hero.birdImage` (cutout of the owner's own upload), gallery `collection.decorImage`.
