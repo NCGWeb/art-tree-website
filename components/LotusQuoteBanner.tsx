@@ -25,7 +25,11 @@ export default function LotusQuoteBanner({ quote }: { quote: string }) {
         </blockquote>
       </div>
 
-      <div className="relative hidden w-full sm:block" style={{ aspectRatio: '1999 / 667' }}>
+      {/* maxHeight stops this ballooning on very wide monitors — at full
+          bleed width with no cap, the 1999:667 ratio alone pushes past
+          800px tall on a 2560px screen. object-contain on the image below
+          just shrinks further to fit within the cap, no cropping. */}
+      <div className="relative hidden w-full sm:block" style={{ aspectRatio: '1999 / 667', maxHeight: '420px' }}>
         <Image
           src="/images/footer-lotus.webp"
           alt=""

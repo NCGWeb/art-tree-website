@@ -16,16 +16,19 @@ export default async function GalleryPage() {
 
   return (
     <main id="main">
-      {/* HERO — the branch/bird illustration now spans the full section as
-          a true background image (previously a small box bled off the
-          corner and got clipped by the section's overflow-hidden on
-          narrower widths). A cream gradient keeps the left-aligned text
-          readable while the artwork stays fully visible on the right. */}
-      <section className="relative overflow-hidden bg-cream px-5 pb-6 pt-10 sm:pt-12">
+      {/* HERO — the branch/bird illustration is a modest corner accent in
+          the reference design (roughly a quarter of the hero's width), not
+          a full-bleed background. fill+object-cover across the whole
+          section was scaling it up to cover the entire hero, which is what
+          made it look oversized — a fixed, capped box with object-contain
+          instead, anchored to the top-right corner. */}
+      <Reveal as="section" className="relative overflow-hidden bg-cream px-5 pb-6 pt-10 sm:pt-12">
         {g.hero.birdImage && (
-          <div className="pointer-events-none absolute inset-0" aria-hidden="true">
-            <Image src={g.hero.birdImage} alt="" fill priority quality={90} className="object-cover object-right-top" sizes="100vw" />
-            <div className="absolute inset-0 bg-gradient-to-r from-cream via-cream/85 to-cream/10 sm:via-cream/75 sm:to-transparent" />
+          <div
+            className="pointer-events-none absolute right-0 top-0 h-[160px] w-[220px] sm:h-[220px] sm:w-[300px] md:h-[260px] md:w-[360px] lg:h-[300px] lg:w-[420px]"
+            aria-hidden="true"
+          >
+            <Image src={g.hero.birdImage} alt="" fill quality={90} className="object-contain object-right-top" sizes="(min-width: 1024px) 420px, (min-width: 768px) 360px, 300px" />
           </div>
         )}
         <div className="relative z-10 mx-auto max-w-site">
@@ -35,7 +38,7 @@ export default async function GalleryPage() {
             <p className="mt-4 max-w-[52ch] text-sm leading-relaxed text-muted">{g.hero.lead}</p>
             <a
               href="#g-collection"
-              className="mt-5 inline-flex items-center gap-2 border border-headline-green px-5 py-3 text-xs uppercase tracking-widest text-headline-green transition-all duration-300 ease-out hover:-translate-y-0.5 hover:bg-headline-green hover:text-white"
+              className="mt-5 inline-flex items-center gap-2 border border-headline-green px-5 py-2.5 text-xs uppercase tracking-widest text-headline-green transition-all duration-300 ease-out hover:-translate-y-0.5 hover:bg-headline-green hover:text-white"
             >
               {g.hero.exploreLabel} <span aria-hidden="true">→</span>
             </a>
@@ -43,9 +46,9 @@ export default async function GalleryPage() {
         </div>
 
         <GalleryFan items={g.carousel.items} />
-      </section>
+      </Reveal>
 
-      <Reveal as="section" id="g-collection" className="bg-[#F6F1E4] py-12 sm:py-14">
+      <Reveal as="section" id="g-collection" className="bg-[#F6F1E4] py-10 sm:py-12">
         <div className="mx-auto grid max-w-site grid-cols-1 items-center gap-8 px-5 md:grid-cols-[1.1fr_0.6fr_auto_1fr]">
           <div>
             <div className="mb-2 text-xs font-semibold uppercase tracking-[0.2em] text-terracotta">{g.collection.eyebrow}</div>
@@ -54,7 +57,7 @@ export default async function GalleryPage() {
             <p className="mb-5 text-sm leading-relaxed text-muted">{g.collection.paragraph}</p>
             <Link
               href={g.collection.ctaHref}
-              className="inline-flex items-center gap-2 border border-headline-green px-5 py-3 text-xs uppercase tracking-widest text-headline-green transition-all duration-300 ease-out hover:-translate-y-0.5 hover:bg-headline-green hover:text-white"
+              className="inline-flex items-center gap-2 border border-headline-green px-5 py-2.5 text-xs uppercase tracking-widest text-headline-green transition-all duration-300 ease-out hover:-translate-y-0.5 hover:bg-headline-green hover:text-white"
             >
               {g.collection.ctaLabel} <span aria-hidden="true">→</span>
             </Link>
@@ -84,7 +87,7 @@ export default async function GalleryPage() {
         </div>
       </Reveal>
 
-      <section className="bg-[#2e3a24] py-12 text-[#f3efe6] sm:py-14">
+      <section className="bg-[#2e3a24] py-10 text-[#f3efe6] sm:py-12">
         <div className="mx-auto max-w-site px-5">
           <div className="mb-7 flex flex-wrap items-end justify-between gap-3">
             <div>

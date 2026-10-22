@@ -60,13 +60,16 @@ export default async function HomePage() {
         </div>
       </section>
 
-      {/* RECORD */}
+      {/* RECORD — same edge-to-edge bleed-left treatment as the Canvas
+          section below it: image as a plain full-width column (no padded
+          box/shadow/rounded corners), text in its own gutter-padded
+          column. */}
       <Reveal as="section" className="border-t border-black/5 bg-cream/88 py-10 sm:py-12">
-        <div className="mx-auto grid max-w-site grid-cols-1 items-center gap-8 px-5 md:grid-cols-2">
-          <div className="relative aspect-[4/3] w-full overflow-hidden rounded-sm shadow-lg">
+        <div className="grid grid-cols-1 items-center gap-8 md:grid-cols-2">
+          <div className="relative aspect-[4/3] w-full overflow-hidden">
             <Image src={home.record.image} alt={home.record.alt} fill quality={90} className="object-cover" sizes="(min-width: 768px) 50vw, 100vw" />
           </div>
-          <div>
+          <div className="px-5 md:pr-8 lg:pr-16">
             <h2 className="mb-2 font-head text-2xl leading-tight text-headline-green sm:text-3xl">{home.record.heading}</h2>
             <div className="mb-3.5 h-0.5 w-12 bg-gold" />
             <p className="mb-2.5 max-w-[48ch] text-sm leading-relaxed text-muted">{home.record.paragraph}</p>
@@ -107,13 +110,21 @@ export default async function HomePage() {
           <div className="relative aspect-[1610/975] w-full overflow-hidden">
             <Image src={home.canvas.image} alt={home.canvas.alt} fill quality={90} className="object-cover" sizes="(min-width: 768px) 50vw, 100vw" />
           </div>
-          <div className="px-5 md:pl-0">
-            <h2 className="mb-2 font-head text-2xl leading-tight text-headline-green sm:text-3xl">{home.canvas.heading}</h2>
-            <div className="mb-3.5 h-0.5 w-12 bg-gold" />
-            {home.canvas.paragraphs.map((p, i) => (
-              <p key={i} className="mb-2.5 max-w-[46ch] text-sm leading-relaxed text-muted">{p}</p>
-            ))}
-            <Modal title={home.canvas.heading} paragraphs={home.canvas.modalParagraphs} buttonLabel={home.canvas.buttonLabel} />
+          <div className="relative px-5 md:pl-0">
+            <div className="relative z-10 max-w-[46ch]">
+              <h2 className="mb-2 font-head text-2xl leading-tight text-headline-green sm:text-3xl">{home.canvas.heading}</h2>
+              <div className="mb-3.5 h-0.5 w-12 bg-gold" />
+              {home.canvas.paragraphs.map((p, i) => (
+                <p key={i} className="mb-2.5 text-sm leading-relaxed text-muted">{p}</p>
+              ))}
+              <Modal title={home.canvas.heading} paragraphs={home.canvas.modalParagraphs} buttonLabel={home.canvas.buttonLabel} />
+            </div>
+            {/* Decorative flower in the blank space to the right of the
+                text column — hidden below lg where that space is too
+                tight. */}
+            <div className="pointer-events-none absolute right-6 top-1/2 hidden w-32 -translate-y-1/2 opacity-90 lg:block lg:w-40 xl:w-48">
+              <Image src="/images/g-lotus-plant.webp" alt="" aria-hidden="true" width={1716} height={915} className="h-auto w-full object-contain" />
+            </div>
           </div>
         </div>
       </Reveal>
@@ -138,7 +149,7 @@ export default async function HomePage() {
                 >
                   <Icon className="mx-auto mb-2.5 h-9 w-9 stroke-terracotta" />
                   <h3 className="mb-2 text-xs font-semibold uppercase tracking-wide">{item.title}</h3>
-                  <p className="mb-2.5 min-h-[45px] text-sm text-muted-soft">{item.text}</p>
+                  <p className="mb-2.5 min-h-[45px] text-sm leading-relaxed text-muted-soft">{item.text}</p>
                   <Link
                     href={item.linkHref}
                     className="border-b border-transparent text-xs font-semibold uppercase tracking-wide text-terracotta transition-colors duration-300 ease-out hover:border-terracotta"
@@ -178,7 +189,7 @@ export default async function HomePage() {
             <div className="relative h-[90px] w-[90px] shrink-0 overflow-hidden rounded-full border-[3px] border-gold shadow-lg sm:h-[110px] sm:w-[110px]">
               <Image src={home.expertise.image} alt={home.expertise.alt} fill quality={90} className="object-cover" sizes="110px" />
             </div>
-            <p className="text-sm text-white/90">{home.expertise.paragraph}</p>
+            <p className="text-sm leading-relaxed text-white/90">{home.expertise.paragraph}</p>
           </div>
           <button className="mt-4 inline-flex w-fit items-center gap-2 border border-white/60 px-5 py-2.5 text-xs uppercase tracking-widest text-white transition-all duration-300 ease-out hover:-translate-y-0.5 hover:bg-white hover:text-ink">
             {home.expertise.buttonLabel} <span aria-hidden="true">→</span>

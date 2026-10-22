@@ -9,12 +9,16 @@ import { useEffect, useRef, useState } from 'react';
 // every value is a CSS clamp() so the whole stack compresses smoothly on
 // narrow viewports instead of overflowing and getting clipped by the
 // section's overflow-hidden.
+// Ceiling (the clamp's 3rd value) scaled up ~1.75x from the original across
+// every entry — the old ceilings (e.g. 178px for the center card) were
+// tuned for not overflowing on mobile, but that same cap was also starving
+// the fan on desktop, where there's easily room for a much bigger spread.
 const POSITIONS = [
-  { x: 'clamp(-168px, -30vw, -108px)', y: 'clamp(14px, 3vw, 22px)', rotate: -12, z: 1, w: 'clamp(84px, 24vw, 120px)', h: 'clamp(128px, 36vw, 182px)', opacity: 0.85 },
-  { x: 'clamp(-90px, -16vw, -58px)', y: 'clamp(6px, 1.5vw, 10px)', rotate: -6, z: 2, w: 'clamp(96px, 27vw, 136px)', h: 'clamp(146px, 41vw, 206px)', opacity: 1 },
-  { x: '0px', y: '0px', rotate: 0, z: 5, w: 'clamp(128px, 34vw, 178px)', h: 'clamp(194px, 52vw, 270px)', opacity: 1 },
-  { x: 'clamp(58px, 16vw, 90px)', y: 'clamp(6px, 1.5vw, 10px)', rotate: 6, z: 2, w: 'clamp(96px, 27vw, 136px)', h: 'clamp(146px, 41vw, 206px)', opacity: 1 },
-  { x: 'clamp(108px, 30vw, 168px)', y: 'clamp(14px, 3vw, 22px)', rotate: 12, z: 1, w: 'clamp(84px, 24vw, 120px)', h: 'clamp(128px, 36vw, 182px)', opacity: 0.85 },
+  { x: 'clamp(-168px, -30vw, -189px)', y: 'clamp(14px, 3vw, 39px)', rotate: -12, z: 1, w: 'clamp(84px, 24vw, 210px)', h: 'clamp(128px, 36vw, 319px)', opacity: 0.85 },
+  { x: 'clamp(-90px, -16vw, -102px)', y: 'clamp(6px, 1.5vw, 18px)', rotate: -6, z: 2, w: 'clamp(96px, 27vw, 238px)', h: 'clamp(146px, 41vw, 361px)', opacity: 1 },
+  { x: '0px', y: '0px', rotate: 0, z: 5, w: 'clamp(128px, 34vw, 312px)', h: 'clamp(194px, 52vw, 473px)', opacity: 1 },
+  { x: 'clamp(58px, 16vw, 102px)', y: 'clamp(6px, 1.5vw, 18px)', rotate: 6, z: 2, w: 'clamp(96px, 27vw, 238px)', h: 'clamp(146px, 41vw, 361px)', opacity: 1 },
+  { x: 'clamp(108px, 30vw, 189px)', y: 'clamp(14px, 3vw, 39px)', rotate: 12, z: 1, w: 'clamp(84px, 24vw, 210px)', h: 'clamp(128px, 36vw, 319px)', opacity: 0.85 },
 ];
 
 type GalleryItem = { image: string; alt: string; title: string; form: string; region: string };
@@ -47,7 +51,7 @@ export default function GalleryFan({ items }: { items: GalleryItem[] }) {
           generous enough for the center card's clamp() max height so
           nothing bleeds into the caption/nav below at any viewport. */}
       <div
-        className="relative mx-auto flex h-[225px] items-start justify-center sm:h-[310px]"
+        className="relative mx-auto flex h-[225px] items-start justify-center sm:h-[310px] lg:h-[400px] xl:h-[490px]"
         onMouseEnter={() => (pausedRef.current = true)}
         onMouseLeave={() => (pausedRef.current = false)}
       >
@@ -73,7 +77,7 @@ export default function GalleryFan({ items }: { items: GalleryItem[] }) {
                 transform: `translateX(-50%) translate(${pos.x}, ${pos.y}) rotate(${pos.rotate}deg)`,
               }}
             >
-              <Image src={item.image} alt={item.alt} fill quality={90} className="object-contain" sizes="184px" />
+              <Image src={item.image} alt={item.alt} fill quality={90} className="object-contain" sizes="(min-width: 1280px) 312px, (min-width: 1024px) 238px, 184px" />
             </button>
           );
         })}

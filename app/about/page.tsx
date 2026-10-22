@@ -97,32 +97,34 @@ export default async function AboutPage() {
       </section>
 
       {/* PHILOSOPHY */}
-      <Reveal as="section" className="relative overflow-hidden bg-[#EFE8D8] px-4 py-8 sm:px-5 sm:py-12">
+      <Reveal as="section" className="relative overflow-hidden bg-[#EFE8D8] px-5 py-10 sm:py-12">
         <div className="mx-auto grid max-w-site grid-cols-[1.3fr_1fr] items-center gap-4 sm:gap-8 md:grid-cols-[1.2fr_1fr]">
           <div>
-            <div className="mb-1 text-[0.65rem] font-semibold uppercase tracking-[0.2em] text-terracotta sm:mb-2 sm:text-xs">{about.philosophy.eyebrow}</div>
-            <h2 className="mb-1.5 font-head text-lg leading-tight text-headline-green sm:text-2xl sm:leading-tight lg:text-[1.7rem]">{about.philosophy.heading}</h2>
+            <div className="mb-2 text-xs font-semibold uppercase tracking-[0.2em] text-terracotta">{about.philosophy.eyebrow}</div>
+            <h2 className="mb-1.5 font-head text-2xl leading-tight text-headline-green sm:text-3xl">{about.philosophy.heading}</h2>
             <div className="mb-3 h-0.5 w-10 bg-gold sm:mb-4 sm:w-12" />
-            <p className="mb-3 max-w-[48ch] text-xs leading-relaxed text-muted sm:mb-4 sm:text-sm">{about.philosophy.paragraph}</p>
+            <p className="mb-3 max-w-[48ch] text-sm leading-relaxed text-muted sm:mb-4">{about.philosophy.paragraph}</p>
             <Modal title={about.philosophy.heading} paragraphs={about.philosophy.modalParagraphs} buttonLabel={about.philosophy.buttonLabel} />
           </div>
-          <div className="relative flex min-h-[180px] items-center justify-center sm:min-h-[220px]">
-            {/* The sprig artwork has its own leaf cluster baked into its
-                right edge with empty canvas to the left — content.about.json
-                already carried this path (philosophy.sprigImage) but no page
-                ever rendered it. object-center (not object-right) so the
-                leaf sits centered in this box on laptop, not pinned to its
-                edge. */}
-            <Image
-              src={about.philosophy.sprigImage}
-              alt=""
-              aria-hidden="true"
-              fill
-              quality={90}
-              className="object-contain object-center"
-              sizes="(min-width: 768px) 40vw, 90vw"
-            />
-            <blockquote className="relative z-10 max-w-[18ch] text-center font-head text-xs italic leading-snug text-headline-green sm:text-xl">
+          <div className="flex min-h-[180px] flex-col items-center justify-center gap-3 sm:min-h-[220px] sm:gap-4">
+            {/* Stacked (leaf above, quote below) instead of overlaid in the
+                same box — overlapping them made the quote hard to read
+                against the leaf. Source file had no alpha channel (a
+                near-white background baked in, a shade off the section's
+                own cream, which read as a visible box); re-exported with
+                that background keyed out to transparent. */}
+            <div className="relative h-24 w-40 sm:h-32 sm:w-56">
+              <Image
+                src={about.philosophy.sprigImage}
+                alt=""
+                aria-hidden="true"
+                fill
+                quality={90}
+                className="object-contain"
+                sizes="224px"
+              />
+            </div>
+            <blockquote className="max-w-[20ch] text-center font-head text-xs italic leading-snug text-headline-green sm:text-xl">
               {about.philosophy.quote}
             </blockquote>
           </div>
