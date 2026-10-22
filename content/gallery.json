@@ -8,7 +8,7 @@
     "heading": "Discover stories through art",
     "lead": "Explore our curated collection of folk, tribal and contemporary works from across India, each piece carrying a story, a tradition and a living legacy.",
     "exploreLabel": "Explore collection",
-    "birdImage": "/images/g-bird-branch.webp"
+    "birdImage": "/images/g-bird-upload-cutout.png"
   },
   "carousel": {
     "items": [
@@ -56,7 +56,7 @@
     "paragraph": "Our collection brings together works by master artists and emerging talents from across India, spanning folk, tribal and contemporary art forms. Each piece reflects a unique story, rooted in heritage, community and a deep connection to the land and its people.",
     "ctaLabel": "Meet our artists",
     "ctaHref": "/artforms",
-    "decorImage": "/images/g-lotus-plant.webp",
+    "decorImage": "/images/g-lotus-cutout.png",
     "quote": "\"Art brings people together, across cultures, across generations.\""
   },
   "featured": {

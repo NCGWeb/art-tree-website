@@ -44,7 +44,7 @@ export default function GalleryEditor({ initial }: { initial: any }) {
             <TextAreaField label="Lead paragraph" value={data.hero.lead} onChange={(v) => set(['hero', 'lead'], v)} rows={2} />
             <TextField label="Explore button label" value={data.hero.exploreLabel} onChange={(v) => set(['hero', 'exploreLabel'], v)} />
             <ImageField
-              label="Decorative branch image (top-right of hero)"
+              label="Decorative branch image (top-right of hero; works best as a transparent PNG)"
               src={data.hero.birdImage}
               onSrcChange={(v) => set(['hero', 'birdImage'], v)}
             />
@@ -88,6 +88,11 @@ export default function GalleryEditor({ initial }: { initial: any }) {
             <TextField label="Button label" value={data.collection.ctaLabel} onChange={(v) => set(['collection', 'ctaLabel'], v)} />
             <TextField label="Button link" value={data.collection.ctaHref} onChange={(v) => set(['collection', 'ctaHref'], v)} />
             <TextAreaField label="Quote" value={data.collection.quote} onChange={(v) => set(['collection', 'quote'], v)} rows={2} />
+            <ImageField
+              label="Lotus plant artwork (between the text and quote; works best as a transparent PNG)"
+              src={data.collection.decorImage}
+              onSrcChange={(v) => set(['collection', 'decorImage'], v)}
+            />
           </div>
         </section>
 

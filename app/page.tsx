@@ -143,7 +143,7 @@ export default async function HomePage() {
           </div>
           <div className="relative px-5 md:pl-0 md:pr-24 lg:pr-32">
             <div className="pointer-events-none absolute bottom-0 right-3 hidden h-32 w-[85px] opacity-90 md:block lg:right-8 lg:h-40 lg:w-[107px]">
-              <Image src="/images/canvas-flower-sprig.png" alt="" aria-hidden="true" fill quality={90} className="object-contain" sizes="96px" />
+              <Image src={home.canvas.flowerImage || '/images/canvas-flower-sprig.png'} alt="" aria-hidden="true" fill quality={90} className="object-contain" sizes="96px" />
             </div>
             <h2 className="mb-2 font-head text-2xl leading-tight text-headline-green sm:text-3xl">{home.canvas.heading}</h2>
             <div className="mb-3 h-0.5 w-12 bg-gold" />

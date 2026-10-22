@@ -109,6 +109,11 @@ export default function HomeEditor({ initial }: { initial: any }) {
               onSrcChange={(v) => set(['canvas', 'image'], v)}
               onAltChange={(v) => set(['canvas', 'alt'], v)}
             />
+            <ImageField
+              label="Small flower at the right end of this section (transparent PNG works best)"
+              src={data.canvas.flowerImage || ''}
+              onSrcChange={(v) => set(['canvas', 'flowerImage'], v)}
+            />
             <TextField label="Button label" value={data.canvas.buttonLabel} onChange={(v) => set(['canvas', 'buttonLabel'], v)} />
             <ParagraphListField
               label="'Discover our story' popup text"

@@ -61,10 +61,8 @@ read from Blob first, falling back to the bundled JSON seed.
   (`{ ...seed, ...data }`) won't deep-merge nested objects/arrays — a saved edit with an old
   shape for a nested field will fully shadow the new seed's version of that field, not merge
   into it.
-- Known placeholder images still in use (see README "What was deliberately simplified" for the
-  full list): the Exhibitions page VAMA poster and the Gallery page's four "Featured Artworks"
-  images are stand-ins from other gallery photos; the 8 Art Forms entries have no real photos
-  yet. These are meant to be replaced via `/admin`, not treated as bugs.
+- Known placeholder images still in use: the VAMA poster on Exhibitions, and 8 Art Forms entries
+  with no real photos yet. They are meant to be replaced via `/admin`, not treated as bugs.
 - The Media page is a dependency-free prev/next image viewer (not the original site's CDN-based
   page-curl flipbook), fully content-managed from Admin → Media.
 - Card reordering in the admin uses up/down buttons, not drag-and-drop — intentional per the
@@ -113,46 +111,86 @@ Consequences:
 - There's no need to delete/reset a page's blob to fix drift — the seed and the blob can safely
   diverge forever on fields the user never asked to change; only patch what's actually needed.
 
-## Established pattern: full-bleed hero / background image with overlaid text
+## Established patterns (heroes, alignment, mobile)
 
-Several sections (Home hero, Home "Record", About hero, Art Forms hero) use the same
-illustration-style artwork: a painted scene occupying roughly the left portion of the image,
-with a large area of blank canvas (matching the site's own cream tone) to its right, built for
-exactly this treatment. The pattern that was landed on after a few false starts:
+**Every image and text on a public page must be editable from `/admin`.** Never hardcode an
+image path or copy in a page component. Put it in `content/<page>.json`, render it from
+`getPageContent`, and add the field to that page's editor in `components/admin/editors/`.
+A new nested field also needs a code-side fallback (`value || '/images/default.png'`) or a patch
+of the saved Blob, because the merge is shallow (see below). Decorative cutouts (Home canvas
+flower, Gallery branch and lotus, About sprig) are all CMS fields for this reason.
+
+**Right edges line up with the nav.** Anything right-anchored (About/Art Forms hero text, Home
+Record text) sits inside `mx-auto max-w-site px-5`, the same container as `SiteHeader`, never
+pinned to the viewport edge.
+
+**Hero text over painted artwork, sm and up (About, Art Forms, Home Record):** an aspect-locked
+box that matches the artwork's real ratio (check with `file`, don't assume), so `object-cover`
+never crops it. Text is `absolute inset-0` inside the `max-w-site` container:
 
 ```tsx
-<section className="relative overflow-hidden bg-cream/88">
-  <div className="relative w-full aspect-[1955/803]">  {/* match the artwork's real ratio */}
-    <Image src={...} alt={...} fill priority quality={90} className="object-cover object-left-top" sizes="100vw" />
-    <div className="absolute inset-0 bg-gradient-to-r from-transparent via-cream/50 to-cream/92" />
-    <div className="absolute inset-0 z-10 flex items-center justify-end px-5 lg:pr-10 xl:pr-16">
-      {/* text, sized down at the base breakpoint and growing at sm:/lg: */}
-    </div>
+<div className="relative w-full aspect-[1955/803]">
+  <Image fill className="object-cover object-left-top" sizes="100vw" />
+  <div className="absolute inset-0 bg-gradient-to-r from-transparent via-cream/50 to-cream/92" />
+  <div className="absolute inset-0 z-10">
+    <div className="mx-auto flex h-full max-w-site items-center justify-end px-5">{/* text */}</div>
   </div>
-</section>
+</div>
 ```
 
-Why it's built this way, after three failed attempts:
-1. A **two-column grid** (image in its own cell, text in another) left a visible dead rectangle
-   of blank canvas sitting as its own boxed-off element — looked like two pictures, not one.
-2. **`object-cover` with a fixed/content-driven `min-height`** (no `aspect-[...]`) crops the
-   artwork whenever the box's aspect ratio doesn't match the image's own — which happens at
-   *some* viewport width no matter what height you pick. This actually cropped the canopy.
-3. **`aspect-[...]` with text in normal document flow below it on mobile** (stacking) avoids the
-   crop, but the user explicitly rejected stacking — text must overlay the image at every
-   breakpoint, never stack above/below it.
+Put the text on the side of the artwork's blank canvas. The Home Record artwork has its blank
+canvas on the left, so its text is `justify-start` and the gradient is `bg-gradient-to-l`.
 
-The combination that satisfies both constraints simultaneously: `aspect-[1955/803]` (or
-whatever the specific artwork's real ratio is — **check with `file` on the actual asset**,
-don't assume) guarantees the box's ratio always matches the image's, so `object-cover` never
-has anything to crop regardless of viewport width. Text is then `absolute inset-0`, which keeps
-it from affecting the box's own height at all — so a short box (phone width) still shows the
-complete, uncropped artwork; the overlaid text just gets less room there, which is handled by
-sizing it down at the base breakpoint (and hiding the least-essential line, e.g. a lead
-paragraph or quote, below `sm`) rather than by growing the box.
+**Mobile (below sm) is a separate block, not the same box shrunk.** The aspect-locked box is only
+~154px tall on a phone, so overlaying text there overflows. Instead:
+- About and Art Forms heroes: an Events-style full-bleed hero (`sm:hidden`), the artwork as a
+  background under `bg-gradient-to-b from-ink/55 via-ink/65 to-ink/80`, white text, height driven
+  by `py-12`, eyebrow + heading + lead (+ quote on About) all shown.
+- Home Record: stacked in normal flow, text first, then the image (`sm:hidden`).
+- Two-column sections (About Philosophy) are `grid-cols-1` until `sm`.
 
-If you're asked to apply this same treatment to another section, reuse this exact structure —
-don't reach for a min-height or a two-column grid again.
+Centring a text block over this artwork (`justify-center`) overlaps the painted tree at every
+width. Don't.
+
+## Transparent cutouts and image processing
+
+Decorative art (`canvas-flower-sprig.png`, `g-lotus-cutout.png`, `g-bird-upload-cutout.png`,
+`about-sprig-cutout.png`) must be real transparent PNGs; a paper-coloured background shows as a
+box, and `mix-blend-multiply` doesn't hide it. No Python or sharp is installed. Key a background
+out with Playwright's Chromium (canvas `getImageData`, sample the corner colour, make near-matches
+transparent, crop to bounds), then rename the file when replacing one, because `next/image` caches
+by URL in dev.
+
+## Verifying UI
+
+`playwright` is available with `npm install -D playwright --no-save` and `npx playwright install
+chromium`; it is not in `package.json`. Screenshot at 375 and 1440 wide. Scroll-reveal sections
+(`Reveal`) only fade in on real scroll, so step `window.scrollTo` through the page and wait before a
+`fullPage` screenshot, and use `waitUntil: 'load'` (dev HMR never reaches `networkidle`). Local dev
+reads the same Blob as production once `BLOB_READ_WRITE_TOKEN` is set.
+
+## Deploying and syncing the CMS
+
+Push to `origin master`; Vercel's GitHub integration deploys it. Check with
+`gh api repos/thiru-hue/art-tree-website/commits/<sha>/status`. If a change touches content, push
+first and wait for `success`, then patch the Blob (so the new file exists before the page
+references it), changing only the fields you edited, and report which Blob values you replaced.
+Before overwriting any image field, read its current Blob value; it may be the owner's own upload
+(this already happened once with the Gallery branch image) and should be kept or cut out, not swapped.
+
+Pages with saved Blob content: home, about, exhibitions, artforms, gallery, media. Contact and
+site have none, so their seeds apply directly.
+
+## Misc
+
+- Favicon is `app/icon.png` (the logo tree on a dark tile); Next serves it automatically.
+- Header tagline is bottom-aligned (`items-end`) with the logo wordmark on desktop.
+- The Gallery page follows the "Discover stories through art" mockup: a five-card fan with
+  edge-to-edge images (`GalleryFan`), the lotus between the collection text and quote, framed
+  Featured cards. Several gallery photos are still event photos, not artworks; swap them from
+  `/admin` → Gallery.
+- The VAMA entry on Exhibitions still uses a placeholder (`g56.jpg`) until the poster photo is
+  uploaded from `/admin` → Exhibitions.
 
 ## Known chores to be done after a `npm run build`
 

@@ -28,7 +28,7 @@ export default async function GalleryPage() {
             className="pointer-events-none absolute right-0 top-0 aspect-[800/906] w-[96px] sm:w-[230px] md:w-[320px] lg:w-[400px]"
             aria-hidden="true"
           >
-            <Image src="/images/g-bird-cutout.png" alt="" fill quality={90} className="object-contain object-right-top" sizes="(min-width: 1024px) 400px, (min-width: 768px) 320px, 230px" />
+            <Image src={g.hero.birdImage} alt="" fill quality={90} className="object-contain object-right-top" sizes="(min-width: 1024px) 400px, (min-width: 768px) 320px, 230px" />
           </div>
         )}
         <div className="relative z-10 mx-auto max-w-site">
@@ -67,7 +67,7 @@ export default async function GalleryPage() {
           {/* Background-free plant cutout; the stem runs down to the edge of the
               section below. */}
           <div className="relative mx-auto hidden aspect-[470/856] w-[150px] self-end md:block lg:w-[200px]">
-            <Image src="/images/g-lotus-cutout.png" alt="" fill aria-hidden="true" quality={90} className="object-contain object-bottom" sizes="200px" />
+            <Image src={g.collection.decorImage} alt="" fill aria-hidden="true" quality={90} className="object-contain object-bottom" sizes="200px" />
           </div>
 
           <div className="mx-auto h-px w-24 bg-headline-green/15 md:h-48 md:w-px" />

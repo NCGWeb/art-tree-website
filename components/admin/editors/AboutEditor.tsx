@@ -118,6 +118,11 @@ export default function AboutEditor({ initial }: { initial: any }) {
             <TextAreaField label="Paragraph" value={data.philosophy.paragraph} onChange={(v) => set(['philosophy', 'paragraph'], v)} rows={2} />
             <TextField label="Button label" value={data.philosophy.buttonLabel} onChange={(v) => set(['philosophy', 'buttonLabel'], v)} />
             <TextAreaField label="Quote" value={data.philosophy.quote} onChange={(v) => set(['philosophy', 'quote'], v)} rows={2} />
+            <ImageField
+              label="Leaf sprig above the quote (transparent PNG works best)"
+              src={data.philosophy.sprigImage}
+              onSrcChange={(v) => set(['philosophy', 'sprigImage'], v)}
+            />
             <ParagraphListField
               label="'Our Impact' popup text"
               value={data.philosophy.modalParagraphs}

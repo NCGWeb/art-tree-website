@@ -28,6 +28,7 @@
     { "number": "50+", "label": "Shows", "sub": "& programmes" }
   ],
   "canvas": {
+    "flowerImage": "/images/canvas-flower-sprig.png",
     "heading": "A canvas as large as India itself",
     "paragraphs": [
       "India is not one story. It is thousands, told through the hands of weavers, painters, potters, and storytellers across centuries.",
