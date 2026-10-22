@@ -70,7 +70,7 @@ export default function MediaFlipbook({ items }: { items: MediaItem[] }) {
   }
 
   return (
-    <div className="mx-auto flex max-w-3xl flex-col items-center gap-5 px-4">
+    <div className="mx-auto flex w-full max-w-6xl flex-col items-center gap-5 px-4">
       <div className="flex w-full items-center justify-center gap-2 sm:gap-5">
         <button
           type="button"
@@ -82,7 +82,12 @@ export default function MediaFlipbook({ items }: { items: MediaItem[] }) {
           ‹
         </button>
 
-        <div className="w-full max-w-md drop-shadow-xl sm:max-w-xl">
+        {/* 70vw as asked — the old max-w-xl (576px) cap made the book look
+            tiny on wide desktop screens regardless of viewport size. The
+            FlipBook's own maxWidth/maxHeight props (below) must be raised
+            too, or its internal "stretch" sizing would still cap it at the
+            old 520px no matter how wide this wrapper grows. */}
+        <div className="w-[70vw] max-w-3xl drop-shadow-xl">
           {FlipBook ? (
             <FlipBook
               ref={bookRef}
@@ -90,9 +95,9 @@ export default function MediaFlipbook({ items }: { items: MediaItem[] }) {
               height={452}
               size="stretch"
               minWidth={220}
-              maxWidth={520}
+              maxWidth={900}
               minHeight={311}
-              maxHeight={735}
+              maxHeight={1272}
               startPage={0}
               drawShadow
               flippingTime={700}

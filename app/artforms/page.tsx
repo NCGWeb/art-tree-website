@@ -15,18 +15,24 @@ export default async function ArtformsPage() {
   return (
     <main id="main">
       {af.hero.image ? (
-        /* Optional full-bleed background photo (set in the CMS), same
-           edge-to-edge pattern as the Exhibitions/Contact/About heroes,
-           text right-aligned. */
-        <section className="relative isolate overflow-hidden">
-          <div className="relative flex min-h-[320px] flex-col items-end justify-center px-5 py-10 text-right sm:min-h-[360px] sm:py-12">
-            <Image src={af.hero.image} alt={af.hero.alt || ''} aria-hidden={!af.hero.alt} fill priority quality={90} className="object-cover" sizes="100vw" />
-            <div className="absolute inset-0 bg-ink/60" />
-            <div className="relative z-10 ml-auto max-w-2xl">
-              <div className="text-xs font-semibold uppercase tracking-[0.2em] text-white/90">{af.hero.eyebrow}</div>
-              <h1 className="mt-2 font-head text-3xl leading-tight text-white sm:text-4xl">{af.hero.heading}</h1>
-              <div className="ml-auto my-4 h-0.5 w-12 bg-gold" />
-              <p className="ml-auto max-w-[56ch] text-sm leading-relaxed text-white/90">{af.hero.lead}</p>
+        /* Optional hero image (set in the CMS). A full-bleed box with a
+           fixed min-height and object-cover was both too short ("small")
+           and, for artwork/illustration photos that bleed to one edge with
+           empty canvas elsewhere, cropping the subject to fill a mismatched
+           box. Two-column layout with object-contain instead: image gets
+           its own column at a generous, fixed-ratio box (never cropped,
+           only ever letterboxed), text gets its own padded column — same
+           pattern as the About hero. */
+        <section className="bg-cream/88 py-10 sm:py-12">
+          <div className="grid grid-cols-1 items-center gap-8 md:grid-cols-[1.1fr_1fr]">
+            <div className="relative aspect-[16/9] w-full overflow-hidden">
+              <Image src={af.hero.image} alt={af.hero.alt || ''} aria-hidden={!af.hero.alt} fill priority quality={90} className="object-contain object-left" sizes="(min-width: 768px) 55vw, 100vw" />
+            </div>
+            <div className="px-5 md:pl-0 md:pr-8 lg:pr-16">
+              <div className="text-xs font-semibold uppercase tracking-[0.2em] text-terracotta">{af.hero.eyebrow}</div>
+              <h1 className="mt-2 font-head text-3xl leading-tight text-headline-green sm:text-4xl">{af.hero.heading}</h1>
+              <div className="my-4 h-0.5 w-12 bg-gold" />
+              <p className="max-w-[56ch] text-sm leading-relaxed text-muted">{af.hero.lead}</p>
             </div>
           </div>
         </section>
@@ -49,23 +55,21 @@ export default async function ArtformsPage() {
               key={form.id}
               className="grid grid-cols-1 items-center gap-6 border-b border-black/5 pb-8 last:border-b-0 md:grid-cols-2"
             >
-              <div className={`group relative flex w-full items-center justify-center overflow-hidden rounded ${i % 2 === 1 ? 'md:order-2' : ''}`}>
+              <div className={`group relative aspect-[4/3] w-full overflow-hidden rounded ${i % 2 === 1 ? 'md:order-2' : ''}`}>
                 {form.image ? (
-                  // No fixed aspect-ratio box here on purpose: every artwork
-                  // photo keeps its own natural shape (portrait, landscape,
-                  // square, ...) instead of being cropped or letterboxed
-                  // inside a uniform frame. A max-height cap keeps unusually
-                  // tall scroll-like pieces (e.g. Sanjhi) from overflowing
-                  // the section — width/height both stay auto so the image
-                  // simply scales down proportionally, never cropped.
+                  // A fixed aspect-[4/3] box (vs. the old intrinsic-size
+                  // image) so every artform entry fills its column
+                  // consistently — a narrow/portrait photo used to render
+                  // small inside a much wider column, leaving a lot of bare
+                  // space on either side of it. object-contain still never
+                  // crops the artwork; a portrait photo now just letterboxes
+                  // within this box instead of shrinking the whole column.
                   <Image
                     src={form.image}
                     alt={form.alt || form.title}
-                    width={1200}
-                    height={900}
+                    fill
                     quality={90}
-                    className="h-auto max-h-[460px] w-auto max-w-full rounded transition-transform duration-500 ease-out group-hover:scale-105 sm:max-h-[520px]"
-                    style={{ width: 'auto', height: 'auto' }}
+                    className="rounded object-contain transition-transform duration-500 ease-out group-hover:scale-105"
                     sizes="(min-width: 768px) 50vw, 100vw"
                   />
                 ) : (
@@ -85,7 +89,11 @@ export default async function ArtformsPage() {
         </div>
       </section>
 
-      <section className="bg-cream-deep/88 py-10 sm:py-12">
+      {/* bg-cream-deep (#ECE5D3) was too close to the artform list section's
+          bg-cream (#F3EFE6) above — nearly the same tone, so the two ran
+          together with no visible seam. card-warm is a clearly different
+          hue (warm peach vs. cool cream), not just a shade darker. */}
+      <section className="bg-card-warm/70 py-10 sm:py-12">
         <div className="mx-auto max-w-site px-5">
           <Reveal as="div" className="mb-8 max-w-2xl">
             <div className="text-xs font-semibold uppercase tracking-[0.2em] text-terracotta">{af.programmes.eyebrow}</div>

@@ -15,32 +15,26 @@ export default async function AboutPage() {
 
   return (
     <main id="main">
-      {/* HERO — full-bleed background photo edge-to-edge at every width,
-          text overlaid on the right over a scrim (the painted tree in this
-          photo sits on the left, so the text goes over the clearer right
-          side instead of covering the artwork). object-position keeps the
-          tree in frame on narrow/mobile crops too. */}
-      <section className="relative isolate overflow-hidden">
-        <div className="relative flex min-h-[420px] flex-col justify-center md:min-h-[460px] lg:min-h-[520px]">
-          <Image
-            src={about.hero.image}
-            alt={about.hero.alt}
-            fill
-            priority
-            quality={90}
-            className="object-cover"
-            style={{ objectPosition: '30% center' }}
-            sizes="100vw"
-          />
-          <div className="absolute inset-0 bg-gradient-to-t from-ink/85 via-ink/50 to-ink/15 md:bg-gradient-to-l md:from-ink/85 md:via-ink/55 md:to-ink/10" />
-          <div className="relative z-10 ml-auto px-5 py-10 text-left md:max-w-xl md:py-0 md:pr-10 lg:pr-16">
-            <div className="text-xs font-semibold uppercase tracking-[0.2em] text-white/90">{about.hero.eyebrow}</div>
-            <h1 className="mt-2 font-head text-3xl leading-tight text-white sm:text-4xl">{about.hero.heading}</h1>
+      {/* HERO — the source artwork is a tree illustration flush to its own
+          left edge with the rest of its canvas empty, built for a
+          side-by-side layout, not a full-bleed photo with text overlaid on
+          top of it. A full-bleed treatment with a height cap was cropping
+          the canopy and jamming the text into the far right corner. This is
+          a plain two-column row instead: image at its native ratio bleeding
+          to the left edge (uncropped), text in its own padded column. */}
+      <section className="bg-cream/88 py-10 sm:py-12">
+        <div className="grid grid-cols-1 items-center gap-8 md:grid-cols-[1.1fr_1fr]">
+          <div className="relative aspect-[1955/803] w-full overflow-hidden">
+            <Image src={about.hero.image} alt={about.hero.alt} fill quality={90} priority className="object-contain object-left" sizes="(min-width: 768px) 55vw, 100vw" />
+          </div>
+          <div className="px-5 md:pl-0 md:pr-8 lg:pr-16">
+            <div className="text-xs font-semibold uppercase tracking-[0.2em] text-terracotta">{about.hero.eyebrow}</div>
+            <h1 className="mt-2 font-head text-3xl leading-tight text-headline-green sm:text-4xl">{about.hero.heading}</h1>
             <div className="my-4 h-0.5 w-12 bg-gold" />
-            <p className="max-w-[46ch] text-sm leading-relaxed text-white/90">{about.hero.lead}</p>
-            <blockquote className="mt-5 max-w-md font-head italic leading-snug text-white">
+            <p className="max-w-[46ch] text-sm leading-relaxed text-muted">{about.hero.lead}</p>
+            <blockquote className="mt-5 max-w-md font-head italic leading-snug text-headline-green">
               <p className="text-base sm:text-lg">{about.hero.quote}</p>
-              <span className="mt-2 block font-body text-xs not-italic text-white/70">— {about.hero.quoteAttribution}</span>
+              <span className="mt-2 block font-body text-xs not-italic text-muted-soft">— {about.hero.quoteAttribution}</span>
             </blockquote>
           </div>
         </div>
@@ -106,8 +100,21 @@ export default async function AboutPage() {
             <p className="mb-3 max-w-[48ch] text-xs leading-relaxed text-muted sm:mb-4 sm:text-sm">{about.philosophy.paragraph}</p>
             <Modal title={about.philosophy.heading} paragraphs={about.philosophy.modalParagraphs} buttonLabel={about.philosophy.buttonLabel} />
           </div>
-          <div className="flex items-center justify-center">
-            <blockquote className="text-center font-head text-xs italic leading-snug text-headline-green sm:text-xl">
+          <div className="relative flex min-h-[160px] items-center justify-center sm:min-h-[220px]">
+            {/* The sprig artwork has its own leaf cluster baked into its
+                right edge with empty canvas to the left — content.about.json
+                already carried this path (philosophy.sprigImage) but no page
+                ever rendered it. */}
+            <Image
+              src={about.philosophy.sprigImage}
+              alt=""
+              aria-hidden="true"
+              fill
+              quality={90}
+              className="object-contain object-right"
+              sizes="(min-width: 768px) 40vw, 90vw"
+            />
+            <blockquote className="relative z-10 max-w-[18ch] text-center font-head text-xs italic leading-snug text-headline-green sm:text-xl">
               {about.philosophy.quote}
             </blockquote>
           </div>

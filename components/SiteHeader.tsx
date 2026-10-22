@@ -45,11 +45,11 @@ export default function SiteHeader({
     // WhatsApp FAB (z-[999]) and other page content once opened. Without
     // this, a child's z-index can never escape its parent's own stacking
     // context, so the FAB would otherwise poke through the open menu.
-    <header className="sticky top-0 z-[1000] border-b border-black/5 bg-gradient-to-b from-[#E9DFC4] to-header-bg">
+    <header className="sticky top-0 z-[1000] border-b border-white/10 bg-ink">
       <div className="mx-auto flex max-w-site items-center justify-between px-5 py-3">
         <Link href="/" className="flex items-center gap-3" aria-label="Art Tree home">
           <Image src="/images/logo.png" alt={logoAlt} width={140} height={71} quality={90} className="h-11 w-auto" priority />
-          <span className="hidden text-[0.6rem] uppercase tracking-[2px] text-olive sm:inline">
+          <span className="hidden text-[0.6rem] uppercase tracking-[2px] text-[#bfbba9] sm:inline">
             {tagline}
           </span>
         </Link>
@@ -67,17 +67,17 @@ export default function SiteHeader({
         >
           <span className="relative block h-4 w-6">
             <span
-              className={`absolute left-0 block h-0.5 w-6 rounded-full bg-ink transition-all duration-300 ease-out ${
+              className={`absolute left-0 block h-0.5 w-6 rounded-full bg-[#d9d5c6] transition-all duration-300 ease-out ${
                 open ? 'top-[7px] rotate-45' : 'top-0 rotate-0'
               }`}
             />
             <span
-              className={`absolute left-0 top-[7px] block h-0.5 w-6 rounded-full bg-ink transition-opacity duration-200 ease-out ${
+              className={`absolute left-0 top-[7px] block h-0.5 w-6 rounded-full bg-[#d9d5c6] transition-opacity duration-200 ease-out ${
                 open ? 'opacity-0' : 'opacity-100'
               }`}
             />
             <span
-              className={`absolute left-0 block h-0.5 w-6 rounded-full bg-ink transition-all duration-300 ease-out ${
+              className={`absolute left-0 block h-0.5 w-6 rounded-full bg-[#d9d5c6] transition-all duration-300 ease-out ${
                 open ? 'top-[7px] -rotate-45' : 'top-[14px] rotate-0'
               }`}
             />
@@ -95,8 +95,8 @@ export default function SiteHeader({
                     aria-current={active ? 'page' : undefined}
                     className={`border-b-2 pb-1.5 pt-1.5 text-[0.75rem] font-medium uppercase tracking-wide transition-colors duration-300 ease-out ${
                       active
-                        ? 'border-gold-dark text-terracotta'
-                        : 'border-transparent text-ink hover:border-gold-dark hover:text-terracotta'
+                        ? 'border-gold-dark text-gold'
+                        : 'border-transparent text-[#d9d5c6] hover:border-gold-dark hover:text-gold'
                     }`}
                   >
                     {item.label}

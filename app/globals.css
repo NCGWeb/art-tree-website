@@ -80,16 +80,12 @@ body {
   box-shadow: 0 20px 38px -16px rgba(46, 43, 34, 0.35);
 }
 
-/* Homepage hero image height, editable from the CMS (Home > Hero > Desktop
- * height). Mobile always shows the image at its full native aspect ratio
- * (set inline via Tailwind on the wrapper); this only caps the height on
- * laptop/desktop so the illustration doesn't balloon too tall on wide
- * screens. --hero-max-h defaults to "none" (full image, no cropping). */
-@media (min-width: 1024px) {
-  .hero-wrap {
-    max-height: var(--hero-max-h, none);
-  }
-}
+/* Homepage hero: always rendered at the artwork's native 1600:885 ratio
+ * (set via Tailwind's aspect-[1600/885] on .hero-wrap) at full viewport
+ * width, so object-cover never has anything to crop. No height cap — a
+ * cap would force the box's ratio away from the image's own and either
+ * crop the sides (object-cover) or letterbox it (centered/contained),
+ * neither of which is acceptable here. */
 
 @media (prefers-reduced-motion: reduce) {
   html {

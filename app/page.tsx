@@ -34,18 +34,10 @@ export default async function HomePage() {
         {/* The hero artwork is a single flattened 1600x885 (~16:9) image with
             the "Stories you can touch" copy and leaf-nav icons baked in, so
             unlike a plain photo it can't be cropped on the sides without
-            losing content. Using its native aspect ratio at every breakpoint
-            keeps the whole illustration (including the quote near the right
-            edge) visible on mobile instead of being cut off by object-cover.
-            On laptop/desktop, hero.desktopHeight (editable in the CMS) caps
-            the height so the hero doesn't balloon on tall/wide screens.
-            object-top anchors the crop to the top of the image, so capping
-            the height only trims the plain landscape at the very bottom
-            instead of cutting into the leaf-nav icons or quote. */}
-        <div
-          className="hero-wrap relative aspect-[1600/885] w-full"
-          style={{ '--hero-max-h': home.hero.desktopHeight || '760px' } as any}
-        >
+            losing content. Always rendered at its native aspect ratio, full
+            viewport width, at every breakpoint — no height cap — so
+            object-cover never has a mismatched box to crop. */}
+        <div className="hero-wrap relative aspect-[1600/885] w-full">
           <Image
             src={home.hero.image}
             alt={home.hero.alt}
@@ -83,17 +75,19 @@ export default async function HomePage() {
         </div>
       </Reveal>
 
-      {/* STATS */}
-      <section className="border-y border-black/5 bg-cream-deep/88 py-10 sm:py-12" aria-label="Art Tree in numbers">
+      {/* STATS — a visually distinct band (warmer gold tone + vertical
+          dividers) whose border runs along the same edge as its own
+          background, rather than a separate inset box, so the two align. */}
+      <section className="border-y border-gold/40 bg-[#EFE1BD] py-12 sm:py-16" aria-label="Art Tree in numbers">
         <div className="mx-auto max-w-site px-5">
-          <div className="grid grid-cols-1 gap-4 sm:grid-cols-3">
+          <div className="grid grid-cols-1 divide-y divide-gold/25 sm:grid-cols-3 sm:divide-x sm:divide-y-0">
             {home.stats.map((s, i) => {
               const Icon = STAT_ICONS[i % STAT_ICONS.length];
               return (
-                <Reveal as="div" key={i} delay={i * 90} className="border-black/10 text-center sm:border-r last:sm:border-r-0">
-                  <Icon className="mx-auto mb-1.5 h-8 w-8 stroke-terracotta" />
-                  <div className="font-head text-2xl font-bold text-ink">{s.number}</div>
-                  <div className="mt-0.5 text-xs font-semibold uppercase tracking-wide">{s.label}</div>
+                <Reveal as="div" key={i} delay={i * 90} className="py-5 text-center sm:py-0">
+                  <Icon className="mx-auto mb-2 h-9 w-9 stroke-terracotta" />
+                  <div className="font-head text-3xl font-bold text-ink">{s.number}</div>
+                  <div className="mt-1 text-xs font-semibold uppercase tracking-wide">{s.label}</div>
                   <div className="text-xs uppercase tracking-wide text-muted-soft">{s.sub}</div>
                 </Reveal>
               );
@@ -104,11 +98,16 @@ export default async function HomePage() {
 
       {/* CANVAS / STORY */}
       <Reveal as="section" className="bg-cream/88 py-10 sm:py-12">
-        <div className="mx-auto grid max-w-site grid-cols-1 items-center gap-8 px-5 md:grid-cols-2">
-          <div className="relative aspect-[4/3] w-full overflow-hidden md:order-1">
+        {/* Image bleeds to the viewport's left edge (no mx-auto/px wrapper
+            on this row) and keeps the artwork's own native ratio instead of
+            being force-cropped to aspect-[4/3], matching the design's
+            compact, edge-anchored treatment. Only the text column gets
+            page-gutter padding. */}
+        <div className="grid grid-cols-1 items-center gap-8 md:grid-cols-2">
+          <div className="relative aspect-[1610/975] w-full overflow-hidden">
             <Image src={home.canvas.image} alt={home.canvas.alt} fill quality={90} className="object-cover" sizes="(min-width: 768px) 50vw, 100vw" />
           </div>
-          <div className="md:order-2">
+          <div className="flex flex-col items-end px-5 text-right md:pl-0">
             <h2 className="mb-2 font-head text-2xl leading-tight text-headline-green sm:text-3xl">{home.canvas.heading}</h2>
             <div className="mb-3.5 h-0.5 w-12 bg-gold" />
             {home.canvas.paragraphs.map((p, i) => (
@@ -120,11 +119,11 @@ export default async function HomePage() {
       </Reveal>
 
       {/* WHAT WE DO */}
-      <Reveal as="section" className="bg-cream/88 py-10 text-center sm:py-12">
+      <Reveal as="section" className="bg-cream/88 py-14 text-center sm:py-16">
         <div className="mx-auto max-w-site px-5">
-          <div className="mb-6 flex items-center justify-center gap-3.5 text-olive">
+          <div className="mb-10 flex items-center justify-center gap-5 text-olive">
             <span aria-hidden="true">⟵</span>
-            <h2 className="font-head text-2xl text-headline-green">{home.whatWeDo.heading}</h2>
+            <h2 className="font-head text-3xl font-bold text-headline-green sm:text-4xl">{home.whatWeDo.heading}</h2>
             <span aria-hidden="true">⟶</span>
           </div>
           <div className="grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-4">
@@ -172,16 +171,18 @@ export default async function HomePage() {
           </div>
         </Reveal>
 
-        <Reveal as="div" delay={120} className="relative flex min-h-[300px] flex-col justify-center bg-expertise-terracotta p-8 text-white">
-          <h2 className="mb-2 font-head text-2xl text-white">{home.expertise.heading}</h2>
-          <div className="mb-3 h-0.5 w-12 bg-gold" />
-          <div className="flex items-center gap-3.5">
-            <div className="relative h-[90px] w-[90px] shrink-0 overflow-hidden rounded-full border-[3px] border-gold shadow-lg sm:h-[110px] sm:w-[110px]">
-              <Image src={home.expertise.image} alt={home.expertise.alt} fill quality={90} className="object-cover" style={{ objectPosition: '30% center' }} sizes="110px" />
-            </div>
-            <p className="text-sm text-white/90">{home.expertise.paragraph}</p>
+        <Reveal
+          as="div"
+          delay={120}
+          className="relative flex min-h-[300px] flex-col items-center justify-center bg-expertise-terracotta p-8 text-center text-white"
+        >
+          <div className="relative h-[120px] w-[120px] shrink-0 overflow-hidden rounded-full border-[3px] border-gold shadow-lg sm:h-[140px] sm:w-[140px]">
+            <Image src={home.expertise.image} alt={home.expertise.alt} fill quality={90} className="object-cover" sizes="140px" />
           </div>
-          <button className="mt-4 inline-flex w-fit items-center gap-2 border border-white/60 px-5 py-2.5 text-xs uppercase tracking-widest text-white transition-all duration-300 ease-out hover:-translate-y-0.5 hover:bg-white hover:text-ink">
+          <h2 className="mb-2 mt-4 font-head text-2xl text-white">{home.expertise.heading}</h2>
+          <div className="mb-3 h-0.5 w-12 bg-gold" />
+          <p className="mb-4 max-w-[38ch] text-sm text-white/90">{home.expertise.paragraph}</p>
+          <button className="inline-flex w-fit items-center gap-2 border border-white/60 px-5 py-2.5 text-xs uppercase tracking-widest text-white transition-all duration-300 ease-out hover:-translate-y-0.5 hover:bg-white hover:text-ink">
             {home.expertise.buttonLabel} <span aria-hidden="true">→</span>
           </button>
         </Reveal>
