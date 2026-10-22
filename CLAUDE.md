@@ -192,6 +192,51 @@ site have none, so their seeds apply directly.
 - The VAMA entry on Exhibitions still uses a placeholder (`g56.jpg`) until the poster photo is
   uploaded from `/admin` → Exhibitions.
 
+## Image quality (next/image with object-cover)
+
+`sizes` must describe the width the image is actually *drawn* at, not the box it is clipped to.
+With `object-cover` and a source whose aspect differs from the box (landscape photos in the tall
+Gallery fan cards), the image is scaled to the box's long side and is much wider than the box.
+Telling Next the box width makes it serve a tiny file that the browser then enlarges, which looks
+blurry. The Gallery fan uses `sizes="(min-width: 1024px) 1100px, 100vw"` and `quality={95}`;
+Featured cards use `700px`/`100vw`. Check with Playwright at `deviceScaleFactor: 2`: compare each
+image's `currentSrc` `w=` against its drawn size. Decorative cutouts are small source files, so
+keep them at or below their native size.
+
+## Where we left off (update this at the end of each session)
+
+Last updated 2026-10-22. Everything below is pushed to GitHub (`master`) and live on Vercel; the
+saved Blob content is in sync for the fields listed.
+
+Done this session:
+- Home: Record section uses the garden artwork (`record-women.webp`), text on the left, stacked on
+  mobile; stats band with ornamental side borders; canvas image at 41% width with the small flower
+  (CMS field `canvas.flowerImage`); "What we do" ornament; ruled footer banner; "Know more" links
+  to `/about` (CMS field `expertise.buttonHref`).
+- About / Art Forms: Events-style full-bleed mobile hero; nav-aligned desktop overlay; About
+  Philosophy stacks on mobile with a larger left-aligned quote.
+- Gallery: rebuilt to the mockup (five-card fan, lotus, framed Featured cards); branch and lotus
+  are CMS fields; images served at higher resolution (see Image quality above).
+- Header tagline aligned with the logo wordmark; favicon `app/icon.png`.
+- Blob fields patched: home `record.image/alt`, home `canvas.flowerImage`, gallery
+  `hero.birdImage` (cutout of the owner's own upload), gallery `collection.decorImage`.
+
+Open items / next steps:
+1. **VAMA poster on Exhibitions** still shows the placeholder `g56.jpg`. The owner pasted the photo
+   in chat but it never reached disk. Get the file (or have them upload it in `/admin` →
+   Exhibitions), then set it on the Current Show header and the `vama` event card, in the seed and
+   in the Blob.
+2. **Gallery photos** are mostly event photos, and one is a screenshot of the design mockup. The
+   owner should supply the real artwork images (high resolution); swap them in `/admin` → Gallery
+   (carousel and Featured).
+3. **Footer** is shared by all pages and does not yet match the mockup's green footer with the
+   patterned border. Changing it affects every page, so confirm first.
+4. **Stats band** has 3 items; the reference design has 4 (12+ years, 500+ artists, 100+ exhibitions
+   and programmes, 1,00,000+ people). The layout adapts to 3 or 4; this is a content decision.
+5. Contact and Media pages have not been through the mobile/desktop audit (only Home, About, Art
+   Forms, Gallery have).
+6. A dev server may not be running; start it with `npm run dev` before screenshots.
+
 ## Known chores to be done after a `npm run build`
 
 `npm run build` and `npm run dev` write to the same `.next/` directory. Running a build while a

@@ -98,9 +98,9 @@ export default async function GalleryPage() {
                     src={item.image}
                     alt={item.alt}
                     fill
-                    quality={90}
+                    quality={95}
                     className="object-cover transition-transform duration-500 ease-out group-hover:scale-105"
-                    sizes="(min-width: 1024px) 25vw, 50vw"
+                    sizes="(min-width: 1024px) 700px, 100vw"
                   />
                 </div>
                 <figcaption className="pt-3">

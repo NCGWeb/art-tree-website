@@ -66,7 +66,7 @@ export default function GalleryFan({ items }: { items: GalleryItem[] }) {
                 transform: `rotateY(${pos.rotateY}deg)`,
               }}
             >
-              <Image src={item.image} alt={item.alt} fill quality={90} className="object-cover" loading="eager" sizes="(min-width: 1280px) 24vw, 34vw" />
+              <Image src={item.image} alt={item.alt} fill quality={95} className="object-cover" loading="eager" sizes="(min-width: 1024px) 1100px, 100vw" />
             </button>
           );
         })}
