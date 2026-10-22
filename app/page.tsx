@@ -37,9 +37,17 @@ export default async function HomePage() {
             losing content. Using its native aspect ratio at every breakpoint
             keeps the whole illustration (including the quote near the right
             edge) visible on mobile instead of being cut off by object-cover.
-            max-h caps it on laptop/desktop so it doesn't balloon taller as
-            the viewport widens. */}
-        <div className="relative aspect-[1600/885] w-full lg:max-h-[440px]">
+            On laptop/desktop, hero.desktopHeight (editable in the CMS) can
+            cap the height instead of showing the image at full size; "full"
+            (the default) leaves it uncapped so nothing is cropped. */}
+        <div
+          className="hero-wrap relative aspect-[1600/885] w-full"
+          style={
+            home.hero.desktopHeight && home.hero.desktopHeight !== 'full'
+              ? ({ '--hero-max-h': home.hero.desktopHeight } as any)
+              : undefined
+          }
+        >
           <Image
             src={home.hero.image}
             alt={home.hero.alt}
@@ -66,7 +74,7 @@ export default async function HomePage() {
       <Reveal as="section" className="border-t border-black/5 bg-cream/93 py-10 sm:py-12">
         <div className="mx-auto grid max-w-site grid-cols-1 items-center gap-8 px-5 md:grid-cols-2">
           <div>
-            <h2 className="mb-2 font-head text-2xl leading-tight text-headline-green sm:text-[1.85rem]">{home.record.heading}</h2>
+            <h2 className="mb-2 font-head text-2xl leading-tight text-headline-green sm:text-3xl">{home.record.heading}</h2>
             <div className="mb-3.5 h-0.5 w-12 bg-gold" />
             <p className="mb-2.5 max-w-[48ch] text-sm leading-relaxed text-muted">{home.record.paragraph}</p>
             <Modal title={home.record.heading} paragraphs={home.record.modalParagraphs} buttonLabel={home.record.buttonLabel} />
@@ -103,7 +111,7 @@ export default async function HomePage() {
             <Image src={home.canvas.image} alt={home.canvas.alt} fill quality={90} className="object-cover" sizes="(min-width: 768px) 50vw, 100vw" />
           </div>
           <div className="md:order-2">
-            <h2 className="mb-2 font-head text-2xl leading-tight text-headline-green sm:text-[1.85rem]">{home.canvas.heading}</h2>
+            <h2 className="mb-2 font-head text-2xl leading-tight text-headline-green sm:text-3xl">{home.canvas.heading}</h2>
             <div className="mb-3.5 h-0.5 w-12 bg-gold" />
             {home.canvas.paragraphs.map((p, i) => (
               <p key={i} className="mb-2.5 max-w-[46ch] text-sm leading-relaxed text-muted">{p}</p>

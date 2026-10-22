@@ -15,28 +15,32 @@ export default async function AboutPage() {
 
   return (
     <main id="main">
-      {/* HERO */}
-      <section className="grid grid-cols-1 overflow-hidden bg-[#F6F1E4] md:grid-cols-2">
-        <div className="relative order-1 min-h-[280px] sm:min-h-[360px] md:order-1 md:min-h-[460px] lg:min-h-[520px]">
-          <Image src={about.hero.image} alt={about.hero.alt} fill priority quality={90} className="object-cover" sizes="(min-width: 768px) 50vw, 100vw" />
-          <div className="absolute inset-x-4 bottom-16 mx-auto max-w-xs rounded bg-white/90 p-4 font-head italic text-headline-green shadow-lg sm:bottom-6">
-            <p className="text-sm sm:text-base">{about.hero.quote}</p>
-            <span className="mt-2 block font-body text-xs not-italic text-tan">— {about.hero.quoteAttribution}</span>
+      {/* HERO — full-bleed background photo edge-to-edge at every width,
+          text overlaid on the left over a scrim, matching the hero pattern
+          used on the Exhibitions and Contact pages (image never shares the
+          row with a text column). */}
+      <section className="relative isolate overflow-hidden">
+        <div className="relative flex min-h-[420px] flex-col justify-center md:min-h-[460px] lg:min-h-[520px]">
+          <Image src={about.hero.image} alt={about.hero.alt} fill priority quality={90} className="object-cover" sizes="100vw" />
+          <div className="absolute inset-0 bg-gradient-to-t from-ink/85 via-ink/50 to-ink/15 md:bg-gradient-to-r md:from-ink/85 md:via-ink/55 md:to-ink/10" />
+          <div className="relative z-10 px-5 py-10 md:max-w-xl md:py-0 md:pl-10 lg:pl-16">
+            <div className="text-xs font-semibold uppercase tracking-[0.2em] text-white/90">{about.hero.eyebrow}</div>
+            <h1 className="mt-2 font-head text-3xl leading-tight text-white sm:text-4xl">{about.hero.heading}</h1>
+            <div className="my-4 h-0.5 w-12 bg-gold" />
+            <p className="max-w-[46ch] text-sm leading-relaxed text-white/90">{about.hero.lead}</p>
+            <blockquote className="mt-5 max-w-md font-head italic leading-snug text-white">
+              <p className="text-base sm:text-lg">{about.hero.quote}</p>
+              <span className="mt-2 block font-body text-xs not-italic text-white/70">— {about.hero.quoteAttribution}</span>
+            </blockquote>
           </div>
         </div>
-        <Reveal as="div" className="order-2 flex flex-col justify-center p-8 md:order-2 md:p-11">
-          <div className="text-xs font-semibold uppercase tracking-[0.2em] text-terracotta">{about.hero.eyebrow}</div>
-          <h1 className="mt-2 font-head text-3xl leading-tight text-headline-green sm:text-4xl">{about.hero.heading}</h1>
-          <div className="my-4 h-0.5 w-12 bg-gold" />
-          <p className="max-w-[46ch] text-sm leading-relaxed text-muted">{about.hero.lead}</p>
-        </Reveal>
       </section>
 
       {/* OUR STORY */}
       <section className="grid grid-cols-1 bg-cream/93 md:grid-cols-2">
         <Reveal as="div" className="order-2 flex flex-col justify-center bg-expertise-terracotta p-8 text-white md:order-1 md:p-11">
           <div className="mb-2 text-xs font-semibold uppercase tracking-[0.2em] text-white/80">{about.story.eyebrow}</div>
-          <h2 className="mb-1.5 font-head text-2xl leading-tight text-white sm:text-[1.7rem]">{about.story.heading}</h2>
+          <h2 className="mb-1.5 font-head text-2xl leading-tight text-white sm:text-3xl">{about.story.heading}</h2>
           <div className="mb-4 h-0.5 w-12 bg-gold" />
           {about.story.paragraphs.map((p, i) => (
             <p key={i} className="mb-3 text-sm leading-relaxed text-white/90">{p}</p>
@@ -60,7 +64,7 @@ export default async function AboutPage() {
         </div>
         <Reveal as="div" className="order-2 flex flex-col justify-center p-8 md:p-11">
           <div className="mb-2 text-xs font-semibold uppercase tracking-[0.2em] text-terracotta">{about.whatWeDo.eyebrow}</div>
-          <h2 className="mb-1.5 font-head text-2xl leading-tight text-headline-green sm:text-[1.7rem]">{about.whatWeDo.heading}</h2>
+          <h2 className="mb-1.5 font-head text-2xl leading-tight text-headline-green sm:text-3xl">{about.whatWeDo.heading}</h2>
           <div className="mb-4 h-0.5 w-12 bg-gold" />
           <p className="mb-4 text-sm leading-relaxed text-muted">{about.whatWeDo.intro}</p>
           <ul className="list-none space-y-4">

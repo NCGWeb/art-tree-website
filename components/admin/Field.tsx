@@ -52,6 +52,35 @@ export function TextAreaField({
   );
 }
 
+export function SelectField({
+  label,
+  value,
+  options,
+  onChange,
+}: {
+  label: string;
+  value: string;
+  options: { value: string; label: string }[];
+  onChange: (v: string) => void;
+}) {
+  return (
+    <label className="block">
+      <span className="mb-1 block text-sm font-medium text-ink">{label}</span>
+      <select
+        value={value ?? options[0]?.value}
+        onChange={(e) => onChange(e.target.value)}
+        className="w-full rounded border border-black/15 bg-white px-3 py-2 text-sm text-ink focus:border-terracotta focus:outline-none"
+      >
+        {options.map((opt) => (
+          <option key={opt.value} value={opt.value}>
+            {opt.label}
+          </option>
+        ))}
+      </select>
+    </label>
+  );
+}
+
 export function StringListField({
   label,
   value,
