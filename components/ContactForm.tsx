@@ -32,7 +32,7 @@ export default function ContactForm({
   }
 
   return (
-    <div className="rounded border border-terracotta/15 bg-cream-deep p-6 shadow-sm sm:p-8">
+    <div className="rounded border border-terracotta/15 bg-[#EFE2C0] p-6 shadow-sm sm:p-8">
       <h2 className="mb-5 font-head text-2xl text-headline-green">{labels.heading}</h2>
       <form onSubmit={handleSubmit} className="space-y-4">
         <div>
