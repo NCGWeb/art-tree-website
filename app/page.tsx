@@ -107,7 +107,7 @@ export default async function HomePage() {
           <div className="relative aspect-[1610/975] w-full overflow-hidden">
             <Image src={home.canvas.image} alt={home.canvas.alt} fill quality={90} className="object-cover" sizes="(min-width: 768px) 50vw, 100vw" />
           </div>
-          <div className="flex flex-col items-end px-5 text-right md:pl-0">
+          <div className="px-5 md:pl-0">
             <h2 className="mb-2 font-head text-2xl leading-tight text-headline-green sm:text-3xl">{home.canvas.heading}</h2>
             <div className="mb-3.5 h-0.5 w-12 bg-gold" />
             {home.canvas.paragraphs.map((p, i) => (
