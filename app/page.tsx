@@ -137,7 +137,7 @@ export default async function HomePage() {
             being force-cropped to aspect-[4/3], matching the design's
             compact, edge-anchored treatment. Only the text column gets
             page-gutter padding. */}
-        <div className="grid grid-cols-1 items-center gap-8 md:grid-cols-2">
+        <div className="grid grid-cols-1 items-center gap-8 md:grid-cols-[41%_1fr] md:gap-10">
           <div className="relative aspect-[1610/975] w-full overflow-hidden">
             <Image src={home.canvas.image} alt={home.canvas.alt} fill quality={90} className="object-cover" sizes="(min-width: 768px) 50vw, 100vw" />
           </div>
@@ -146,9 +146,9 @@ export default async function HomePage() {
               <Image src="/images/canvas-flower-sprig.png" alt="" aria-hidden="true" fill quality={90} className="object-contain" sizes="96px" />
             </div>
             <h2 className="mb-2 font-head text-2xl leading-tight text-headline-green sm:text-3xl">{home.canvas.heading}</h2>
-            <div className="mb-3.5 h-0.5 w-12 bg-gold" />
+            <div className="mb-3 h-0.5 w-12 bg-gold" />
             {home.canvas.paragraphs.map((p, i) => (
-              <p key={i} className="mb-2.5 max-w-[46ch] text-sm leading-relaxed text-muted">{p}</p>
+              <p key={i} className="mb-2 max-w-[46ch] text-sm leading-normal text-muted">{p}</p>
             ))}
             <Modal title={home.canvas.heading} paragraphs={home.canvas.modalParagraphs} buttonLabel={home.canvas.buttonLabel} />
           </div>
