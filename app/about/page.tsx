@@ -16,22 +16,20 @@ export default async function AboutPage() {
   return (
     <main id="main">
       {/* HERO */}
-      <section className="relative overflow-hidden bg-[#F6F1E4]">
-        {/* max-h caps keep the hero proportional at laptop/desktop widths
-            instead of growing taller as the viewport widens. */}
-        <div className="relative aspect-[4/3] w-full sm:aspect-[16/9] lg:aspect-[21/9] lg:max-h-[380px]">
-          <Image src={about.hero.image} alt={about.hero.alt} fill priority quality={90} className="object-cover" sizes="100vw" />
-          <div className="absolute inset-x-4 bottom-4 max-w-xs rounded bg-white/90 p-4 font-head italic text-headline-green shadow-lg sm:bottom-8 sm:left-8">
+      <section className="grid grid-cols-1 overflow-hidden bg-[#F6F1E4] md:grid-cols-2">
+        <div className="relative order-1 min-h-[280px] sm:min-h-[360px] md:order-1 md:min-h-[460px] lg:min-h-[520px]">
+          <Image src={about.hero.image} alt={about.hero.alt} fill priority quality={90} className="object-cover" sizes="(min-width: 768px) 50vw, 100vw" />
+          <div className="absolute inset-x-4 bottom-4 max-w-xs rounded bg-white/90 p-4 font-head italic text-headline-green shadow-lg sm:bottom-6 sm:left-6">
             <p className="text-sm sm:text-base">{about.hero.quote}</p>
             <span className="mt-2 block font-body text-xs not-italic text-tan">— {about.hero.quoteAttribution}</span>
           </div>
         </div>
-        <div className="mx-auto max-w-site px-5 py-8">
+        <Reveal as="div" className="order-2 flex flex-col justify-center p-8 md:order-2 md:p-11">
           <div className="text-xs font-semibold uppercase tracking-[0.2em] text-terracotta">{about.hero.eyebrow}</div>
           <h1 className="mt-2 font-head text-3xl leading-tight text-headline-green sm:text-4xl">{about.hero.heading}</h1>
           <div className="my-4 h-0.5 w-12 bg-gold" />
           <p className="max-w-[46ch] text-sm leading-relaxed text-muted">{about.hero.lead}</p>
-        </div>
+        </Reveal>
       </section>
 
       {/* OUR STORY */}
@@ -85,22 +83,22 @@ export default async function AboutPage() {
       </section>
 
       {/* PHILOSOPHY */}
-      <Reveal as="section" className="relative overflow-hidden bg-[#EFE8D8] px-5 py-12">
-        <div className="mx-auto grid max-w-site grid-cols-1 items-center gap-8 md:grid-cols-[1.2fr_1fr]">
+      <Reveal as="section" className="relative overflow-hidden bg-[#EFE8D8] px-4 py-8 sm:px-5 sm:py-12">
+        <div className="mx-auto grid max-w-site grid-cols-[1.3fr_1fr] items-center gap-4 sm:gap-8 md:grid-cols-[1.2fr_1fr]">
           <div>
-            <div className="mb-2 text-xs font-semibold uppercase tracking-[0.2em] text-terracotta">{about.philosophy.eyebrow}</div>
-            <h2 className="mb-1.5 font-head text-2xl leading-tight text-headline-green sm:text-[1.7rem]">{about.philosophy.heading}</h2>
-            <div className="mb-4 h-0.5 w-12 bg-gold" />
-            <p className="mb-4 max-w-[48ch] text-sm leading-relaxed text-muted">{about.philosophy.paragraph}</p>
+            <div className="mb-1 text-[0.65rem] font-semibold uppercase tracking-[0.2em] text-terracotta sm:mb-2 sm:text-xs">{about.philosophy.eyebrow}</div>
+            <h2 className="mb-1.5 font-head text-lg leading-tight text-headline-green sm:text-2xl sm:leading-tight lg:text-[1.7rem]">{about.philosophy.heading}</h2>
+            <div className="mb-3 h-0.5 w-10 bg-gold sm:mb-4 sm:w-12" />
+            <p className="mb-3 max-w-[48ch] text-xs leading-relaxed text-muted sm:mb-4 sm:text-sm">{about.philosophy.paragraph}</p>
             <Modal title={about.philosophy.heading} paragraphs={about.philosophy.modalParagraphs} buttonLabel={about.philosophy.buttonLabel} />
           </div>
-          <div className="flex flex-col items-center gap-4">
+          <div className="flex flex-col items-center gap-2 sm:gap-4">
             {about.philosophy.sprigImage && (
-              <div className="relative h-32 w-32">
+              <div className="relative h-14 w-14 sm:h-32 sm:w-32">
                 <Image src={about.philosophy.sprigImage} alt="" fill aria-hidden="true" quality={90} className="object-contain" sizes="128px" />
               </div>
             )}
-            <blockquote className="text-center font-head text-xl italic leading-snug text-headline-green">
+            <blockquote className="text-center font-head text-xs italic leading-snug text-headline-green sm:text-xl">
               {about.philosophy.quote}
             </blockquote>
           </div>
