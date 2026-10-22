@@ -27,5 +27,6 @@
     "youtube": "#",
     "twitter": "#"
   },
-  "copyrightName": "Art Tree"
+  "copyrightName": "Art Tree",
+  "bodyBackgroundImage": "/images/body-bg-phad.jpg"
 }

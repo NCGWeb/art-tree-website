@@ -22,7 +22,7 @@ export default async function MediaPage() {
         <p className="mx-auto mt-3 max-w-[52ch] text-sm leading-relaxed text-muted">{media.hero.lead}</p>
       </section>
 
-      <Reveal as="section" className="bg-cream-deep py-10 sm:py-14">
+      <Reveal as="section" className="bg-cream-deep/93 py-10 sm:py-14">
         <MediaFlipbook items={media.items} />
       </Reveal>
     </main>

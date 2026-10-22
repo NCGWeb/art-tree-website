@@ -23,7 +23,7 @@ export default async function ArtformsPage() {
         </div>
       </section>
 
-      <section className="bg-cream py-10 sm:py-12">
+      <section className="bg-cream/93 py-10 sm:py-12">
         <div className="mx-auto max-w-site space-y-10 px-5">
           {af.artforms.map((form, i) => (
             <Reveal
@@ -58,7 +58,7 @@ export default async function ArtformsPage() {
         </div>
       </section>
 
-      <section className="bg-cream-deep py-10 sm:py-12">
+      <section className="bg-cream-deep/93 py-10 sm:py-12">
         <div className="mx-auto max-w-site px-5">
           <Reveal as="div" className="mb-8 max-w-2xl">
             <div className="text-xs font-semibold uppercase tracking-[0.2em] text-terracotta">{af.programmes.eyebrow}</div>

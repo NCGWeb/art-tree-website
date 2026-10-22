@@ -63,7 +63,7 @@ export default async function HomePage() {
       </section>
 
       {/* RECORD */}
-      <Reveal as="section" className="border-t border-black/5 bg-cream py-10 sm:py-12">
+      <Reveal as="section" className="border-t border-black/5 bg-cream/93 py-10 sm:py-12">
         <div className="mx-auto grid max-w-site grid-cols-1 items-center gap-8 px-5 md:grid-cols-2">
           <div>
             <h2 className="mb-2 font-head text-2xl leading-tight text-headline-green sm:text-[1.85rem]">{home.record.heading}</h2>
@@ -78,7 +78,7 @@ export default async function HomePage() {
       </Reveal>
 
       {/* STATS */}
-      <section className="border-y border-black/5 bg-cream-deep py-10 sm:py-12" aria-label="Art Tree in numbers">
+      <section className="border-y border-black/5 bg-cream-deep/93 py-10 sm:py-12" aria-label="Art Tree in numbers">
         <div className="mx-auto max-w-site px-5">
           <div className="grid grid-cols-1 gap-4 sm:grid-cols-3">
             {home.stats.map((s, i) => {
@@ -97,7 +97,7 @@ export default async function HomePage() {
       </section>
 
       {/* CANVAS / STORY */}
-      <Reveal as="section" className="bg-cream py-10 sm:py-12">
+      <Reveal as="section" className="bg-cream/93 py-10 sm:py-12">
         <div className="mx-auto grid max-w-site grid-cols-1 items-center gap-8 px-5 md:grid-cols-2">
           <div className="relative aspect-[4/3] w-full overflow-hidden md:order-1">
             <Image src={home.canvas.image} alt={home.canvas.alt} fill quality={90} className="object-cover" sizes="(min-width: 768px) 50vw, 100vw" />
@@ -114,7 +114,7 @@ export default async function HomePage() {
       </Reveal>
 
       {/* WHAT WE DO */}
-      <Reveal as="section" className="bg-cream py-10 text-center sm:py-12">
+      <Reveal as="section" className="bg-cream/93 py-10 text-center sm:py-12">
         <div className="mx-auto max-w-site px-5">
           <div className="mb-6 flex items-center justify-center gap-3.5 text-olive">
             <span aria-hidden="true">⟵</span>

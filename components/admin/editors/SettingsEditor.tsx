@@ -3,6 +3,7 @@
 import { useState } from 'react';
 import SaveBar from '@/components/admin/SaveBar';
 import { TextField } from '@/components/admin/Field';
+import { ImageField } from '@/components/admin/ImageField';
 import CardList from '@/components/admin/CardList';
 
 export default function SettingsEditor({ initial }: { initial: any }) {
@@ -83,6 +84,20 @@ export default function SettingsEditor({ initial }: { initial: any }) {
                 <TextField label="URL" value={item.href} onChange={(v) => update({ href: v })} />
               </div>
             )}
+          />
+        </section>
+
+        <section>
+          <h2 className="mb-3 font-head text-lg text-headline-green">Body background</h2>
+          <p className="mb-3 text-xs text-muted-soft">
+            A faint textured background shown behind the page content (not the hero banners) on every page, from the
+            homepage through Contact. It's automatically lightened, so even a bold, colourful image will show up as a
+            subtle texture rather than overpowering the text. Leave empty to use the plain cream background.
+          </p>
+          <ImageField
+            label="Background image"
+            src={data.bodyBackgroundImage || ''}
+            onSrcChange={(v) => set(['bodyBackgroundImage'], v)}
           />
         </section>
 
