@@ -2,6 +2,7 @@ import Image from 'next/image';
 import Link from 'next/link';
 import type { Metadata } from 'next';
 import GalleryFan from '@/components/GalleryFan';
+import LotusQuoteBanner from '@/components/LotusQuoteBanner';
 import Reveal from '@/components/Reveal';
 import { getPageContent } from '@/lib/content';
 
@@ -59,9 +60,15 @@ export default async function GalleryPage() {
             </Link>
           </div>
 
-          <div className="relative mx-auto h-40 w-28 animate-float md:h-56 md:w-40">
+          {/* The lotus artwork is a wide 1716:915 illustration — the old
+              h-40 w-28 box was portrait-shaped (taller than wide), the
+              opposite of the image's own proportions, so object-contain
+              shrank it down to a small fraction of the box. Sized to the
+              image's real aspect ratio instead, so it renders at its
+              actual intended size. */}
+          <div className="relative mx-auto aspect-[1716/915] w-44 animate-float sm:w-56 md:w-72">
             {g.collection.decorImage && (
-              <Image src={g.collection.decorImage} alt="" fill aria-hidden="true" quality={90} className="object-contain drop-shadow-sm" sizes="160px" />
+              <Image src={g.collection.decorImage} alt="" fill aria-hidden="true" quality={90} className="object-contain drop-shadow-sm" sizes="(min-width: 768px) 288px, 224px" />
             )}
           </div>
 
@@ -111,6 +118,11 @@ export default async function GalleryPage() {
           </div>
         </div>
       </section>
+
+      {/* Content already had quoteBanner; LotusQuoteBanner already existed
+          as a component (its own doc comment says it's meant to close out
+          Gallery and Contact) but no page actually rendered it. */}
+      <LotusQuoteBanner quote={g.quoteBanner} />
     </main>
   );
 }
