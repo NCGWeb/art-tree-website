@@ -49,7 +49,7 @@ export default function SiteHeader({
       <div className="mx-auto flex max-w-site items-center justify-between px-5 py-3">
         <Link href="/" className="flex items-end gap-3" aria-label="Art Tree home">
           <Image src="/images/logo.png" alt={logoAlt} width={140} height={71} quality={90} className="h-11 w-auto" priority />
-          <span className="hidden pb-1.5 text-[0.6rem] uppercase tracking-[2px] text-[#bfbba9] sm:inline">
+          <span className="hidden pb-0.5 text-[0.6rem] uppercase tracking-[2px] text-[#bfbba9] sm:inline">
             {tagline}
           </span>
         </Link>
