@@ -15,13 +15,16 @@ export default async function GalleryPage() {
 
   return (
     <main id="main">
-      {/* HERO — left-aligned text with a decorative illustrated branch
-          bleeding off the top-right corner, per the client's reference
-          mockup (previously this was centered with no decoration). */}
+      {/* HERO — the branch/bird illustration now spans the full section as
+          a true background image (previously a small box bled off the
+          corner and got clipped by the section's overflow-hidden on
+          narrower widths). A cream gradient keeps the left-aligned text
+          readable while the artwork stays fully visible on the right. */}
       <section className="relative overflow-hidden bg-cream px-5 pb-6 pt-10 sm:pt-12">
         {g.hero.birdImage && (
-          <div className="pointer-events-none absolute -right-4 -top-4 h-36 w-40 opacity-60 sm:h-56 sm:w-64 sm:opacity-100 md:-right-8 md:-top-8 md:h-72 md:w-80 lg:h-80 lg:w-[22rem]">
-            <Image src={g.hero.birdImage} alt="" aria-hidden="true" fill priority quality={90} className="object-cover object-right-top" sizes="352px" />
+          <div className="pointer-events-none absolute inset-0" aria-hidden="true">
+            <Image src={g.hero.birdImage} alt="" fill priority quality={90} className="object-cover object-right-top" sizes="100vw" />
+            <div className="absolute inset-0 bg-gradient-to-r from-cream via-cream/85 to-cream/10 sm:via-cream/75 sm:to-transparent" />
           </div>
         )}
         <div className="relative z-10 mx-auto max-w-site">
@@ -56,15 +59,16 @@ export default async function GalleryPage() {
             </Link>
           </div>
 
-          <div className="relative mx-auto hidden h-56 w-40 md:block">
+          <div className="relative mx-auto h-40 w-28 animate-float md:h-56 md:w-40">
             {g.collection.decorImage && (
-              <Image src={g.collection.decorImage} alt="" fill aria-hidden="true" quality={90} className="object-contain" sizes="160px" />
+              <Image src={g.collection.decorImage} alt="" fill aria-hidden="true" quality={90} className="object-contain drop-shadow-sm" sizes="160px" />
             )}
           </div>
 
-          {/* Thin vertical divider between the decorative plant and the
-              pull-quote, matching the mockup. */}
-          <div className="mx-auto hidden h-40 w-px bg-headline-green/15 md:block" />
+          {/* Thin divider between the decorative plant and the pull-quote —
+              horizontal on mobile where everything stacks, vertical once
+              the grid goes side-by-side, matching the mockup. */}
+          <div className="mx-auto h-px w-24 bg-headline-green/15 md:h-40 md:w-px" />
 
           <div>
             <blockquote className="font-head text-xl italic leading-snug text-headline-green">{g.collection.quote}</blockquote>

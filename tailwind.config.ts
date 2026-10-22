@@ -49,6 +49,10 @@ const config: Config = {
           '0%': { opacity: '0' },
           '100%': { opacity: '1' },
         },
+        float: {
+          '0%, 100%': { transform: 'translateY(0) rotate(-2deg)' },
+          '50%': { transform: 'translateY(-10px) rotate(2deg)' },
+        },
       },
       animation: {
         // Used by Modal.tsx. Previously referenced as an arbitrary-value
@@ -56,6 +60,9 @@ const config: Config = {
         // anywhere, so it never actually animated. Defining it here (and
         // switching Modal to the named `animate-fadeIn` utility) fixes that.
         fadeIn: 'fadeIn .25s ease-out',
+        // Gentle idle sway for small decorative illustrations (e.g. the
+        // Gallery page's floral accent) so they read as alive, not static.
+        float: 'float 6s ease-in-out infinite',
       },
       transitionTimingFunction: {
         'reveal': 'cubic-bezier(0.22, 0.61, 0.36, 1)',
