@@ -16,18 +16,25 @@ export default async function AboutPage() {
   return (
     <main id="main">
       {/* HERO — the source artwork is a tree illustration flush to its own
-          left edge with the rest of its canvas empty, built for a
-          side-by-side layout, not a full-bleed photo with text overlaid on
-          top of it. A full-bleed treatment with a height cap was cropping
-          the canopy and jamming the text into the far right corner. This is
-          a plain two-column row instead: image at its native ratio bleeding
-          to the left edge (uncropped), text in its own padded column. */}
-      <section className="bg-cream/88 py-10 sm:py-12">
-        <div className="grid grid-cols-1 items-center gap-8 md:grid-cols-[1.1fr_1fr]">
-          <div className="relative aspect-[1955/803] w-full overflow-hidden">
-            <Image src={about.hero.image} alt={about.hero.alt} fill quality={90} priority className="object-contain object-left" sizes="(min-width: 768px) 55vw, 100vw" />
-          </div>
-          <div className="px-5 md:pl-0 md:pr-8 lg:pr-16">
+          left edge with a lot of its own canvas left empty (same pale cream
+          as the page background) to its right, built to be used as one
+          continuous full-bleed background, not boxed into its own column.
+          Putting it in a separate grid cell (the previous version) left a
+          visible dead rectangle of blank space between the tree and the
+          text — two boxes sitting side by side instead of one picture.
+          Full-bleed on desktop instead: the image is the whole section's
+          background (object-cover, anchored top-left so only its own blank
+          canvas can ever be cropped, never the tree), text overlaid
+          directly on top in the right portion — "full width" and "same row
+          on laptop" as asked. On mobile there's no room to overlay text
+          over a ~150px-tall sliver of this image, so it stacks instead:
+          the artwork at its native ratio, then the text block below it. */}
+      <section className="relative bg-cream/88 py-10 md:py-0">
+        <div className="relative w-full aspect-[1955/803] md:absolute md:inset-0 md:aspect-auto">
+          <Image src={about.hero.image} alt={about.hero.alt} fill quality={90} priority className="object-cover object-left-top" sizes="100vw" />
+        </div>
+        <div className="relative z-10 px-5 py-8 md:flex md:min-h-[460px] md:items-center md:justify-end lg:min-h-[520px]">
+          <div className="md:max-w-xl md:pr-10 lg:pr-16">
             <div className="text-xs font-semibold uppercase tracking-[0.2em] text-terracotta">{about.hero.eyebrow}</div>
             <h1 className="mt-2 font-head text-3xl leading-tight text-headline-green sm:text-4xl">{about.hero.heading}</h1>
             <div className="my-4 h-0.5 w-12 bg-gold" />
