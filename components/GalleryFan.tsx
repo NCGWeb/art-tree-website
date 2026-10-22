@@ -3,22 +3,17 @@
 import Image from 'next/image';
 import { useEffect, useRef, useState } from 'react';
 
-// A tight, mostly-flat overlapping stack (like a hand of cards laid on a
-// table) rather than the old wide semi-circle arc — the y-offsets stay
-// small and close together instead of sweeping down toward the ends, and
-// every value is a CSS clamp() so the whole stack compresses smoothly on
-// narrow viewports instead of overflowing and getting clipped by the
-// section's overflow-hidden.
-// Ceiling (the clamp's 3rd value) scaled up ~1.75x from the original across
-// every entry — the old ceilings (e.g. 178px for the center card) were
-// tuned for not overflowing on mobile, but that same cap was also starving
-// the fan on desktop, where there's easily room for a much bigger spread.
+// Five tall portrait cards spread across the full width, centre one largest.
+// Everything is a percentage of the stage (whose aspect ratio is fixed), so
+// the whole fan scales together at any viewport width and never overflows.
+// rotateY (under the stage's perspective) turns the outer cards toward the
+// centre like the reference; images fill their cards edge to edge.
 const POSITIONS = [
-  { x: 'clamp(-168px, -30vw, -189px)', y: 'clamp(14px, 3vw, 39px)', rotate: -12, z: 1, w: 'clamp(84px, 24vw, 210px)', h: 'clamp(128px, 36vw, 319px)', opacity: 0.85 },
-  { x: 'clamp(-90px, -16vw, -102px)', y: 'clamp(6px, 1.5vw, 18px)', rotate: -6, z: 2, w: 'clamp(96px, 27vw, 238px)', h: 'clamp(146px, 41vw, 361px)', opacity: 1 },
-  { x: '0px', y: '0px', rotate: 0, z: 5, w: 'clamp(128px, 34vw, 312px)', h: 'clamp(194px, 52vw, 473px)', opacity: 1 },
-  { x: 'clamp(58px, 16vw, 102px)', y: 'clamp(6px, 1.5vw, 18px)', rotate: 6, z: 2, w: 'clamp(96px, 27vw, 238px)', h: 'clamp(146px, 41vw, 361px)', opacity: 1 },
-  { x: 'clamp(108px, 30vw, 189px)', y: 'clamp(14px, 3vw, 39px)', rotate: 12, z: 1, w: 'clamp(84px, 24vw, 210px)', h: 'clamp(128px, 36vw, 319px)', opacity: 0.85 },
+  { left: 2, top: 20, w: 17, h: 76, rotateY: 16, z: 1 },
+  { left: 20.5, top: 12, w: 16.5, h: 84, rotateY: 12, z: 2 },
+  { left: 38, top: 0, w: 24, h: 100, rotateY: 0, z: 5 },
+  { left: 63, top: 12, w: 16.5, h: 84, rotateY: -12, z: 2 },
+  { left: 81, top: 20, w: 17, h: 76, rotateY: -16, z: 1 },
 ];
 
 type GalleryItem = { image: string; alt: string; title: string; form: string; region: string };
@@ -32,7 +27,7 @@ export default function GalleryFan({ items }: { items: GalleryItem[] }) {
       if (!pausedRef.current) {
         setCursor((c) => (c + 1) % items.length);
       }
-    }, 2200);
+    }, 2600);
     return () => clearInterval(id);
   }, [items.length]);
 
@@ -40,26 +35,19 @@ export default function GalleryFan({ items }: { items: GalleryItem[] }) {
     setCursor((c) => (c + dir + items.length) % items.length);
   }
 
-  // The center card (POSITIONS index 2) is always the current item —
-  // its title/form/region drive the caption below, updating live as the
-  // fan rotates or is navigated, matching the reference mockup.
   const current = items[cursor];
 
   return (
-    <div className="relative mx-auto mt-4 max-w-site animate-fadeIn sm:mt-6">
-      {/* Height must fully contain the tallest card's visual extent. Kept
-          generous enough for the center card's clamp() max height so
-          nothing bleeds into the caption/nav below at any viewport. */}
+    <div className="relative mx-auto mt-6 w-full max-w-[1500px] animate-fadeIn px-2 sm:mt-8 sm:px-4">
       <div
-        className="relative mx-auto flex h-[225px] items-start justify-center sm:h-[310px] lg:h-[400px] xl:h-[490px]"
+        className="relative mx-auto w-full"
+        style={{ aspectRatio: '823 / 360', perspective: '1400px' }}
         onMouseEnter={() => (pausedRef.current = true)}
         onMouseLeave={() => (pausedRef.current = false)}
       >
         {POSITIONS.map((pos, i) => {
-          // Key by the item's own index (not the fan slot i) so React keeps
-          // each <button> mounted as it moves between slots — that's what
-          // makes the position/rotation change animate smoothly via the
-          // transition classes below instead of the image just popping.
+          // Keyed by the item's own index so each card stays mounted while
+          // it travels between slots, which is what animates the move.
           const idx = (cursor + i) % items.length;
           const item = items[idx];
           return (
@@ -68,37 +56,38 @@ export default function GalleryFan({ items }: { items: GalleryItem[] }) {
               type="button"
               aria-label={i === 2 ? undefined : 'Bring this artwork to the centre'}
               onClick={() => (i !== 2 ? go(i - 2) : undefined)}
-              className="absolute left-1/2 top-2 overflow-hidden rounded-lg bg-white shadow-[0_10px_28px_rgba(60,45,20,0.22)] transition-all duration-700 ease-reveal hover:shadow-[0_16px_38px_rgba(60,45,20,0.32)] hover:brightness-105 sm:top-5"
+              className="absolute overflow-hidden rounded-xl shadow-[0_14px_34px_rgba(60,45,20,0.28)] transition-all duration-700 ease-reveal hover:brightness-105 sm:rounded-2xl"
               style={{
-                width: pos.w,
-                height: pos.h,
+                left: `${pos.left}%`,
+                top: `${pos.top}%`,
+                width: `${pos.w}%`,
+                height: `${pos.h}%`,
                 zIndex: pos.z,
-                opacity: pos.opacity,
-                transform: `translateX(-50%) translate(${pos.x}, ${pos.y}) rotate(${pos.rotate}deg)`,
+                transform: `rotateY(${pos.rotateY}deg)`,
               }}
             >
-              <Image src={item.image} alt={item.alt} fill quality={90} className="object-contain" sizes="(min-width: 1280px) 312px, (min-width: 1024px) 238px, 184px" />
+              <Image src={item.image} alt={item.alt} fill quality={90} className="object-cover" loading="eager" sizes="(min-width: 1280px) 24vw, 34vw" />
             </button>
           );
         })}
       </div>
 
-      <div key={cursor} className="relative z-10 mt-5 text-center animate-fadeIn">
-        <div className="font-head text-lg text-headline-green">{current.title}</div>
-        <div className="text-sm text-muted-soft">
+      <div key={cursor} className="relative z-10 mt-6 text-center animate-fadeIn">
+        <div className="text-sm font-semibold text-ink sm:text-base">{current.title}</div>
+        <div className="mx-auto my-2 h-0.5 w-8 bg-gold" />
+        <div className="text-xs text-muted-soft sm:text-sm">
           {current.form} | {current.region}
         </div>
       </div>
 
-      {/* Left = outlined, right = solid gold-filled, matching the mockup. */}
       <div className="mt-4 flex justify-center gap-3">
         <button
           type="button"
           aria-label="Previous"
           onClick={() => go(-1)}
-          className="flex h-10 w-10 items-center justify-center rounded-full border border-headline-green text-headline-green transition-all duration-300 ease-out hover:-translate-y-0.5 hover:bg-headline-green hover:text-white active:scale-95"
+          className="flex h-10 w-10 items-center justify-center rounded-full border border-gold/60 text-headline-green transition-all duration-300 ease-out hover:-translate-y-0.5 hover:bg-headline-green hover:text-white active:scale-95"
         >
-          ‹
+          ←
         </button>
         <button
           type="button"
@@ -106,7 +95,7 @@ export default function GalleryFan({ items }: { items: GalleryItem[] }) {
           onClick={() => go(1)}
           className="flex h-10 w-10 items-center justify-center rounded-full bg-gold text-white shadow-md transition-all duration-300 ease-out hover:-translate-y-0.5 hover:bg-gold-dark active:scale-95"
         >
-          ›
+          →
         </button>
       </div>
     </div>

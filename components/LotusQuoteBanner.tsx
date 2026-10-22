@@ -39,10 +39,11 @@ export default function LotusQuoteBanner({ quote }: { quote: string }) {
           className="object-contain"
           sizes="100vw"
         />
-        <div className="absolute inset-0 flex items-center justify-center px-5">
+        <div className="absolute inset-0 flex flex-col items-center justify-center px-5">
           <blockquote className="max-w-xs text-center font-head text-base italic leading-snug text-headline-green md:max-w-sm md:text-lg lg:max-w-md lg:text-xl">
             {quote}
           </blockquote>
+          <div className="mt-3 h-0.5 w-12 bg-gold" />
         </div>
       </div>
     </Reveal>
