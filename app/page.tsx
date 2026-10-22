@@ -171,18 +171,16 @@ export default async function HomePage() {
           </div>
         </Reveal>
 
-        <Reveal
-          as="div"
-          delay={120}
-          className="relative flex min-h-[300px] flex-col items-center justify-center bg-expertise-terracotta p-8 text-center text-white"
-        >
-          <div className="relative h-[120px] w-[120px] shrink-0 overflow-hidden rounded-full border-[3px] border-gold shadow-lg sm:h-[140px] sm:w-[140px]">
-            <Image src={home.expertise.image} alt={home.expertise.alt} fill quality={90} className="object-cover" sizes="140px" />
-          </div>
-          <h2 className="mb-2 mt-4 font-head text-2xl text-white">{home.expertise.heading}</h2>
+        <Reveal delay={120} className="relative flex min-h-[300px] flex-col justify-center bg-expertise-terracotta p-8 text-white">
+          <h2 className="mb-2 font-head text-2xl text-white">{home.expertise.heading}</h2>
           <div className="mb-3 h-0.5 w-12 bg-gold" />
-          <p className="mb-4 max-w-[38ch] text-sm text-white/90">{home.expertise.paragraph}</p>
-          <button className="inline-flex w-fit items-center gap-2 border border-white/60 px-5 py-2.5 text-xs uppercase tracking-widest text-white transition-all duration-300 ease-out hover:-translate-y-0.5 hover:bg-white hover:text-ink">
+          <div className="flex items-center gap-3.5">
+            <div className="relative h-[90px] w-[90px] shrink-0 overflow-hidden rounded-full border-[3px] border-gold shadow-lg sm:h-[110px] sm:w-[110px]">
+              <Image src={home.expertise.image} alt={home.expertise.alt} fill quality={90} className="object-cover" sizes="110px" />
+            </div>
+            <p className="text-sm text-white/90">{home.expertise.paragraph}</p>
+          </div>
+          <button className="mt-4 inline-flex w-fit items-center gap-2 border border-white/60 px-5 py-2.5 text-xs uppercase tracking-widest text-white transition-all duration-300 ease-out hover:-translate-y-0.5 hover:bg-white hover:text-ink">
             {home.expertise.buttonLabel} <span aria-hidden="true">→</span>
           </button>
         </Reveal>

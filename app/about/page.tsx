@@ -13,32 +13,37 @@ export async function generateMetadata(): Promise<Metadata> {
 export default async function AboutPage() {
   const about = await getPageContent('about');
 
+  const heroText = (
+    <div className="max-w-xl">
+      <div className="text-xs font-semibold uppercase tracking-[0.2em] text-terracotta">{about.hero.eyebrow}</div>
+      <h1 className="mt-2 font-head text-3xl leading-tight text-headline-green lg:text-4xl">{about.hero.heading}</h1>
+      <div className="my-4 h-0.5 w-12 bg-gold" />
+      <p className="max-w-[46ch] text-sm leading-relaxed text-muted">{about.hero.lead}</p>
+      <blockquote className="mt-5 max-w-md font-head italic leading-snug text-headline-green">
+        <p className="text-base sm:text-lg">{about.hero.quote}</p>
+        <span className="mt-2 block font-body text-xs not-italic text-muted-soft">— {about.hero.quoteAttribution}</span>
+      </blockquote>
+    </div>
+  );
+
   return (
     <main id="main">
-      {/* HERO — same full-bleed structure as the Exhibitions hero: the
-          image is a plain fill sibling (not boxed into its own grid cell),
-          height driven by the text content's own padding + an lg
-          min-height, never by the image's aspect ratio. object-left-top
-          keeps the artwork (concentrated in its own left/top portion)
-          anchored so object-cover only ever crops into its own blank
-          canvas, never the tree, at any breakpoint — no mobile/desktop
-          split needed. Unlike Exhibitions' photo, this artwork's "empty"
-          area is already the same pale cream as the page, so dark text
-          sits directly on it with no gradient scrim required. */}
-      <section className="relative overflow-hidden bg-cream/88">
-        <Image src={about.hero.image} alt={about.hero.alt} fill priority quality={90} className="object-cover object-left-top" sizes="100vw" />
-        <div className="relative z-10 px-5 py-14 sm:py-16 md:py-20 lg:flex lg:min-h-[420px] lg:items-center lg:justify-end">
-          <div className="max-w-xl lg:pr-10 xl:pr-16">
-            <div className="text-xs font-semibold uppercase tracking-[0.2em] text-terracotta">{about.hero.eyebrow}</div>
-            <h1 className="mt-2 font-head text-3xl leading-tight text-headline-green sm:text-4xl">{about.hero.heading}</h1>
-            <div className="my-4 h-0.5 w-12 bg-gold" />
-            <p className="max-w-[46ch] text-sm leading-relaxed text-muted">{about.hero.lead}</p>
-            <blockquote className="mt-5 max-w-md font-head italic leading-snug text-headline-green">
-              <p className="text-base sm:text-lg">{about.hero.quote}</p>
-              <span className="mt-2 block font-body text-xs not-italic text-muted-soft">— {about.hero.quoteAttribution}</span>
-            </blockquote>
+      {/* HERO — the box's aspect ratio matches the artwork's own 1955:803
+          ratio exactly (same technique as the Home hero), at every
+          breakpoint, so object-cover never has anything to crop —
+          guaranteed, not just "mostly". A fixed pixel min-height here
+          (tried twice before) always mismatches the box ratio against *some*
+          viewport width and crops the canopy. Below md the ratio box is
+          only ~150px tall — not enough to hold text overlaid on it — so
+          text stacks below it there instead of overlaying on top of it. */}
+      <section className="relative bg-cream/88">
+        <div className="relative w-full overflow-hidden aspect-[1955/803]">
+          <Image src={about.hero.image} alt={about.hero.alt} fill priority quality={90} className="object-cover object-left" sizes="100vw" />
+          <div className="absolute inset-0 z-10 hidden items-center justify-end px-5 md:flex lg:pr-10 xl:pr-16">
+            {heroText}
           </div>
         </div>
+        <div className="px-5 py-8 md:hidden">{heroText}</div>
       </section>
 
       {/* OUR STORY */}
@@ -101,18 +106,20 @@ export default async function AboutPage() {
             <p className="mb-3 max-w-[48ch] text-xs leading-relaxed text-muted sm:mb-4 sm:text-sm">{about.philosophy.paragraph}</p>
             <Modal title={about.philosophy.heading} paragraphs={about.philosophy.modalParagraphs} buttonLabel={about.philosophy.buttonLabel} />
           </div>
-          <div className="relative flex min-h-[160px] items-center justify-center sm:min-h-[220px]">
+          <div className="relative flex min-h-[180px] items-center justify-center sm:min-h-[220px]">
             {/* The sprig artwork has its own leaf cluster baked into its
                 right edge with empty canvas to the left — content.about.json
                 already carried this path (philosophy.sprigImage) but no page
-                ever rendered it. */}
+                ever rendered it. object-center (not object-right) so the
+                leaf sits centered in this box on laptop, not pinned to its
+                edge. */}
             <Image
               src={about.philosophy.sprigImage}
               alt=""
               aria-hidden="true"
               fill
               quality={90}
-              className="object-contain object-right"
+              className="object-contain object-center"
               sizes="(min-width: 768px) 40vw, 90vw"
             />
             <blockquote className="relative z-10 max-w-[18ch] text-center font-head text-xs italic leading-snug text-headline-green sm:text-xl">

@@ -15,21 +15,29 @@ export default async function ArtformsPage() {
   return (
     <main id="main">
       {af.hero.image ? (
-        /* Same full-bleed structure as the Exhibitions/About heroes: the
-           image is a plain fill sibling, height driven by the text
-           content's own padding + an lg min-height, not by the image's
-           aspect ratio. object-left-top keeps the artwork anchored so
-           object-cover only ever crops into its own blank canvas, never
-           the artwork itself. */
-        <section className="relative overflow-hidden bg-cream/88">
-          <Image src={af.hero.image} alt={af.hero.alt || ''} aria-hidden={!af.hero.alt} fill priority quality={90} className="object-cover object-left-top" sizes="100vw" />
-          <div className="relative z-10 px-5 py-14 sm:py-16 md:py-20 lg:flex lg:min-h-[420px] lg:items-center lg:justify-end">
-            <div className="max-w-xl lg:pr-10 xl:pr-16">
-              <div className="text-xs font-semibold uppercase tracking-[0.2em] text-terracotta">{af.hero.eyebrow}</div>
-              <h1 className="mt-2 font-head text-3xl leading-tight text-headline-green sm:text-4xl">{af.hero.heading}</h1>
-              <div className="my-4 h-0.5 w-12 bg-gold" />
-              <p className="max-w-[56ch] text-sm leading-relaxed text-muted">{af.hero.lead}</p>
+        // Box ratio matches the artwork's own 1955:803 ratio exactly, at
+        // every breakpoint, so object-cover never has anything to crop —
+        // a fixed min-height (tried before) always mismatches the box
+        // ratio against *some* viewport width and crops the canopy. Below
+        // md the ratio box is too short to overlay text on, so text
+        // stacks below it there instead of overlaying on top of it.
+        <section className="relative bg-cream/88">
+          <div className="relative w-full overflow-hidden aspect-[1955/803]">
+            <Image src={af.hero.image} alt={af.hero.alt || ''} aria-hidden={!af.hero.alt} fill priority quality={90} className="object-cover object-left" sizes="100vw" />
+            <div className="absolute inset-0 z-10 hidden items-center justify-end px-5 md:flex lg:pr-10 xl:pr-16">
+              <div className="max-w-xl">
+                <div className="text-xs font-semibold uppercase tracking-[0.2em] text-terracotta">{af.hero.eyebrow}</div>
+                <h1 className="mt-2 font-head text-3xl leading-tight text-headline-green lg:text-4xl">{af.hero.heading}</h1>
+                <div className="my-4 h-0.5 w-12 bg-gold" />
+                <p className="max-w-[56ch] text-sm leading-relaxed text-muted">{af.hero.lead}</p>
+              </div>
             </div>
+          </div>
+          <div className="px-5 py-8 md:hidden">
+            <div className="text-xs font-semibold uppercase tracking-[0.2em] text-terracotta">{af.hero.eyebrow}</div>
+            <h1 className="mt-2 font-head text-3xl leading-tight text-headline-green">{af.hero.heading}</h1>
+            <div className="my-4 h-0.5 w-12 bg-gold" />
+            <p className="max-w-[56ch] text-sm leading-relaxed text-muted">{af.hero.lead}</p>
           </div>
         </section>
       ) : (
