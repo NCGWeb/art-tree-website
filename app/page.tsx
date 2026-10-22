@@ -63,14 +63,14 @@ export default async function HomePage() {
       {/* RECORD */}
       <Reveal as="section" className="border-t border-black/5 bg-cream/88 py-10 sm:py-12">
         <div className="mx-auto grid max-w-site grid-cols-1 items-center gap-8 px-5 md:grid-cols-2">
+          <div className="relative aspect-[4/3] w-full overflow-hidden rounded-sm shadow-lg">
+            <Image src={home.record.image} alt={home.record.alt} fill quality={90} className="object-cover" sizes="(min-width: 768px) 50vw, 100vw" />
+          </div>
           <div>
             <h2 className="mb-2 font-head text-2xl leading-tight text-headline-green sm:text-3xl">{home.record.heading}</h2>
             <div className="mb-3.5 h-0.5 w-12 bg-gold" />
             <p className="mb-2.5 max-w-[48ch] text-sm leading-relaxed text-muted">{home.record.paragraph}</p>
             <Modal title={home.record.heading} paragraphs={home.record.modalParagraphs} buttonLabel={home.record.buttonLabel} />
-          </div>
-          <div className="relative aspect-[4/3] w-full overflow-hidden rounded-sm shadow-lg">
-            <Image src={home.record.image} alt={home.record.alt} fill quality={90} className="object-cover" sizes="(min-width: 768px) 50vw, 100vw" />
           </div>
         </div>
       </Reveal>

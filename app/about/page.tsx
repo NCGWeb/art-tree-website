@@ -15,26 +15,20 @@ export default async function AboutPage() {
 
   return (
     <main id="main">
-      {/* HERO — the source artwork is a tree illustration flush to its own
-          left edge with a lot of its own canvas left empty (same pale cream
-          as the page background) to its right, built to be used as one
-          continuous full-bleed background, not boxed into its own column.
-          Putting it in a separate grid cell (the previous version) left a
-          visible dead rectangle of blank space between the tree and the
-          text — two boxes sitting side by side instead of one picture.
-          Full-bleed on desktop instead: the image is the whole section's
-          background (object-cover, anchored top-left so only its own blank
-          canvas can ever be cropped, never the tree), text overlaid
-          directly on top in the right portion — "full width" and "same row
-          on laptop" as asked. On mobile there's no room to overlay text
-          over a ~150px-tall sliver of this image, so it stacks instead:
-          the artwork at its native ratio, then the text block below it. */}
-      <section className="relative bg-cream/88 py-10 md:py-0">
-        <div className="relative w-full aspect-[1955/803] md:absolute md:inset-0 md:aspect-auto">
-          <Image src={about.hero.image} alt={about.hero.alt} fill quality={90} priority className="object-cover object-left-top" sizes="100vw" />
-        </div>
-        <div className="relative z-10 px-5 py-8 md:flex md:min-h-[460px] md:items-center md:justify-end lg:min-h-[520px]">
-          <div className="md:max-w-xl md:pr-10 lg:pr-16">
+      {/* HERO — same full-bleed structure as the Exhibitions hero: the
+          image is a plain fill sibling (not boxed into its own grid cell),
+          height driven by the text content's own padding + an lg
+          min-height, never by the image's aspect ratio. object-left-top
+          keeps the artwork (concentrated in its own left/top portion)
+          anchored so object-cover only ever crops into its own blank
+          canvas, never the tree, at any breakpoint — no mobile/desktop
+          split needed. Unlike Exhibitions' photo, this artwork's "empty"
+          area is already the same pale cream as the page, so dark text
+          sits directly on it with no gradient scrim required. */}
+      <section className="relative overflow-hidden bg-cream/88">
+        <Image src={about.hero.image} alt={about.hero.alt} fill priority quality={90} className="object-cover object-left-top" sizes="100vw" />
+        <div className="relative z-10 px-5 py-14 sm:py-16 md:py-20 lg:flex lg:min-h-[420px] lg:items-center lg:justify-end">
+          <div className="max-w-xl lg:pr-10 xl:pr-16">
             <div className="text-xs font-semibold uppercase tracking-[0.2em] text-terracotta">{about.hero.eyebrow}</div>
             <h1 className="mt-2 font-head text-3xl leading-tight text-headline-green sm:text-4xl">{about.hero.heading}</h1>
             <div className="my-4 h-0.5 w-12 bg-gold" />

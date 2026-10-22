@@ -15,20 +15,16 @@ export default async function ArtformsPage() {
   return (
     <main id="main">
       {af.hero.image ? (
-        /* Optional hero image (set in the CMS). A full-bleed box with a
-           fixed min-height and object-cover was both too short ("small")
-           and, for artwork/illustration photos that bleed to one edge with
-           empty canvas elsewhere, cropping the subject to fill a mismatched
-           box. Two-column layout with object-contain instead: image gets
-           its own column at a generous, fixed-ratio box (never cropped,
-           only ever letterboxed), text gets its own padded column — same
-           pattern as the About hero. */
-        <section className="bg-cream/88 py-10 sm:py-12">
-          <div className="grid grid-cols-1 items-center gap-8 md:grid-cols-[1.1fr_1fr]">
-            <div className="relative aspect-[16/9] w-full overflow-hidden">
-              <Image src={af.hero.image} alt={af.hero.alt || ''} aria-hidden={!af.hero.alt} fill priority quality={90} className="object-contain object-left" sizes="(min-width: 768px) 55vw, 100vw" />
-            </div>
-            <div className="px-5 md:pl-0 md:pr-8 lg:pr-16">
+        /* Same full-bleed structure as the Exhibitions/About heroes: the
+           image is a plain fill sibling, height driven by the text
+           content's own padding + an lg min-height, not by the image's
+           aspect ratio. object-left-top keeps the artwork anchored so
+           object-cover only ever crops into its own blank canvas, never
+           the artwork itself. */
+        <section className="relative overflow-hidden bg-cream/88">
+          <Image src={af.hero.image} alt={af.hero.alt || ''} aria-hidden={!af.hero.alt} fill priority quality={90} className="object-cover object-left-top" sizes="100vw" />
+          <div className="relative z-10 px-5 py-14 sm:py-16 md:py-20 lg:flex lg:min-h-[420px] lg:items-center lg:justify-end">
+            <div className="max-w-xl lg:pr-10 xl:pr-16">
               <div className="text-xs font-semibold uppercase tracking-[0.2em] text-terracotta">{af.hero.eyebrow}</div>
               <h1 className="mt-2 font-head text-3xl leading-tight text-headline-green sm:text-4xl">{af.hero.heading}</h1>
               <div className="my-4 h-0.5 w-12 bg-gold" />
