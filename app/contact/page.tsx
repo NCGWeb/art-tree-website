@@ -2,9 +2,8 @@ import Image from 'next/image';
 import type { Metadata } from 'next';
 import ContactForm from '@/components/ContactForm';
 import Reveal from '@/components/Reveal';
-import LotusQuoteBanner from '@/components/LotusQuoteBanner';
 import { PhoneIcon, MailIcon, PinIcon, YoutubeIcon, FacebookIcon, InstagramIcon } from '@/components/icons';
-import { getPageContent, getSiteSettings } from '@/lib/content';
+import { getPageContent } from '@/lib/content';
 
 export async function generateMetadata(): Promise<Metadata> {
   const contact = await getPageContent('contact');
@@ -13,7 +12,6 @@ export async function generateMetadata(): Promise<Metadata> {
 
 export default async function ContactPage() {
   const contact = await getPageContent('contact');
-  const site = await getSiteSettings();
 
   return (
     <main id="main">
@@ -121,9 +119,6 @@ export default async function ContactPage() {
           </Reveal>
         </div>
       </section>
-
-      {/* Reuses the site's existing footer-banner copy — no new copy here. */}
-      <LotusQuoteBanner quote={site.footerBanner} />
     </main>
   );
 }
