@@ -60,23 +60,25 @@ export default async function HomePage() {
         </div>
       </section>
 
-      {/* RECORD — same edge-to-edge bleed-left treatment as the Canvas
-          section below it: image as a plain full-width column (no padded
-          box/shadow/rounded corners), text in its own gutter-padded
-          column. */}
-      <Reveal as="section" className="border-t border-black/5 bg-cream/88 py-10 sm:py-12">
-        {/* Mobile shows text first, then image (order-2/order-1 below md);
-            desktop keeps image-left/text-right (reset to natural order at
-            md). */}
-        <div className="grid grid-cols-1 items-center gap-8 md:grid-cols-2">
-          <div className="relative order-2 aspect-[4/3] w-full overflow-hidden md:order-1">
-            <Image src={home.record.image} alt={home.record.alt} fill quality={90} className="object-cover" sizes="(min-width: 768px) 50vw, 100vw" />
-          </div>
-          <div className="order-1 px-5 md:order-2 md:pr-8 lg:pr-16">
-            <h2 className="mb-2 font-head text-2xl leading-tight text-headline-green sm:text-3xl">{home.record.heading}</h2>
-            <div className="mb-3.5 h-0.5 w-12 bg-gold" />
-            <p className="mb-2.5 max-w-[48ch] text-sm leading-relaxed text-muted">{home.record.paragraph}</p>
-            <Modal title={home.record.heading} paragraphs={home.record.modalParagraphs} buttonLabel={home.record.buttonLabel} />
+      {/* RECORD — same pattern as the About/Art Forms heroes: box ratio
+          matches the artwork's own 1955:803 ratio exactly so it's never
+          cropped, text overlaid on top via absolute positioning (so it
+          doesn't affect the box's height) at every breakpoint — no
+          mobile/desktop split, image and text both always visible, same
+          row, as asked. */}
+      <Reveal as="section" className="relative overflow-hidden border-t border-black/5 bg-cream/88">
+        <div className="relative w-full aspect-[1955/803]">
+          <Image src={home.record.image} alt={home.record.alt} fill quality={90} className="object-cover object-left-top" sizes="100vw" />
+          <div className="absolute inset-0 bg-gradient-to-r from-transparent via-cream/50 to-cream/92" />
+          <div className="absolute inset-0 z-10 flex items-center justify-end px-5 lg:pr-10 xl:pr-16">
+            <div className="max-w-xl">
+              <h2 className="font-head text-lg leading-tight text-headline-green sm:text-2xl lg:text-3xl">{home.record.heading}</h2>
+              <div className="my-2 h-0.5 w-10 bg-gold sm:my-3.5 sm:w-12" />
+              <p className="hidden max-w-[48ch] text-sm leading-relaxed text-muted sm:block">{home.record.paragraph}</p>
+              <div className="mt-2 sm:mt-3.5">
+                <Modal title={home.record.heading} paragraphs={home.record.modalParagraphs} buttonLabel={home.record.buttonLabel} />
+              </div>
+            </div>
           </div>
         </div>
       </Reveal>
