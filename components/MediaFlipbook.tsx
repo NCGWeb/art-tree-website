@@ -71,23 +71,24 @@ export default function MediaFlipbook({ items }: { items: MediaItem[] }) {
 
   return (
     <div className="mx-auto flex w-full max-w-7xl flex-col items-center gap-5 px-4">
-      <div className="flex w-full items-center justify-center gap-2 sm:gap-5">
+      <div className="flex w-full items-center justify-center gap-1.5 sm:gap-5">
         <button
           type="button"
           onClick={prev}
           disabled={pageIndex <= 0}
           aria-label="Previous page"
-          className="flex h-11 w-11 shrink-0 items-center justify-center rounded-full border border-headline-green/30 text-xl text-headline-green transition-all duration-300 ease-out hover:border-terracotta hover:bg-terracotta/10 hover:text-terracotta disabled:pointer-events-none disabled:opacity-30"
+          className="flex h-9 w-9 shrink-0 items-center justify-center rounded-full border border-headline-green/30 text-xl text-headline-green transition-all duration-300 ease-out hover:border-terracotta hover:bg-terracotta/10 hover:text-terracotta disabled:pointer-events-none disabled:opacity-30 sm:h-11 sm:w-11"
         >
           ‹
         </button>
 
-        {/* 70vw as asked. The max-w-3xl (768px) this used to carry
-            defeated 70vw on anything wider than ~1100px viewport — it
-            still looked small on a normal laptop/desktop screen despite
-            the 70vw. The FlipBook's own maxWidth prop (900, below) is the
-            real ceiling now, so this div has no competing cap. */}
-        <div className="w-[70vw] drop-shadow-xl">
+        {/* 70vw on sm+. On mobile the two nav buttons (even shrunk) still
+            eat a fixed ~90px out of the viewport, so 70% of the full
+            viewport width read as noticeably smaller than 70% of the space
+            actually left for the book — bumped to 84vw below sm, and the
+            buttons themselves shrink there too, to leave more of that to
+            the book itself. */}
+        <div className="w-[84vw] drop-shadow-xl sm:w-[70vw]">
           {FlipBook ? (
             <FlipBook
               ref={bookRef}

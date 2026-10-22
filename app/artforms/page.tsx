@@ -15,29 +15,21 @@ export default async function ArtformsPage() {
   return (
     <main id="main">
       {af.hero.image ? (
-        // Box ratio matches the artwork's own 1955:803 ratio exactly, at
-        // every breakpoint, so object-cover never has anything to crop —
-        // a fixed min-height (tried before) always mismatches the box
-        // ratio against *some* viewport width and crops the canopy. Below
-        // md the ratio box is too short to overlay text on, so text
-        // stacks below it there instead of overlaying on top of it.
-        <section className="relative bg-cream/88">
-          <div className="relative w-full overflow-hidden aspect-[1955/803]">
-            <Image src={af.hero.image} alt={af.hero.alt || ''} aria-hidden={!af.hero.alt} fill priority quality={90} className="object-cover object-left" sizes="100vw" />
-            <div className="absolute inset-0 z-10 hidden items-center justify-end px-5 md:flex lg:pr-10 xl:pr-16">
-              <div className="max-w-xl">
-                <div className="text-xs font-semibold uppercase tracking-[0.2em] text-terracotta">{af.hero.eyebrow}</div>
-                <h1 className="mt-2 font-head text-3xl leading-tight text-headline-green lg:text-4xl">{af.hero.heading}</h1>
-                <div className="my-4 h-0.5 w-12 bg-gold" />
-                <p className="max-w-[56ch] text-sm leading-relaxed text-muted">{af.hero.lead}</p>
-              </div>
+        // Text overlays the artwork at every breakpoint (no mobile/desktop
+        // split): object-position keeps the artwork anchored top-left so
+        // any cropping from a min-height mismatch only ever eats into its
+        // own blank canvas, and a light scrim keeps the text legible even
+        // where it doesn't.
+        <section className="relative overflow-hidden bg-cream/88">
+          <Image src={af.hero.image} alt={af.hero.alt || ''} aria-hidden={!af.hero.alt} fill priority quality={90} className="object-cover object-left-top" sizes="100vw" />
+          <div className="absolute inset-0 bg-gradient-to-r from-transparent via-cream/50 to-cream/92" />
+          <div className="relative z-10 flex min-h-[320px] items-center justify-end px-5 py-10 sm:min-h-[360px] md:min-h-[400px] lg:min-h-[440px] lg:pr-10 xl:pr-16">
+            <div className="max-w-xl">
+              <div className="text-xs font-semibold uppercase tracking-[0.2em] text-terracotta">{af.hero.eyebrow}</div>
+              <h1 className="mt-2 font-head text-3xl leading-tight text-headline-green lg:text-4xl">{af.hero.heading}</h1>
+              <div className="my-4 h-0.5 w-12 bg-gold" />
+              <p className="max-w-[56ch] text-sm leading-relaxed text-muted">{af.hero.lead}</p>
             </div>
-          </div>
-          <div className="px-5 py-8 md:hidden">
-            <div className="text-xs font-semibold uppercase tracking-[0.2em] text-terracotta">{af.hero.eyebrow}</div>
-            <h1 className="mt-2 font-head text-3xl leading-tight text-headline-green">{af.hero.heading}</h1>
-            <div className="my-4 h-0.5 w-12 bg-gold" />
-            <p className="max-w-[56ch] text-sm leading-relaxed text-muted">{af.hero.lead}</p>
           </div>
         </section>
       ) : (

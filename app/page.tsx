@@ -65,11 +65,14 @@ export default async function HomePage() {
           box/shadow/rounded corners), text in its own gutter-padded
           column. */}
       <Reveal as="section" className="border-t border-black/5 bg-cream/88 py-10 sm:py-12">
+        {/* Mobile shows text first, then image (order-2/order-1 below md);
+            desktop keeps image-left/text-right (reset to natural order at
+            md). */}
         <div className="grid grid-cols-1 items-center gap-8 md:grid-cols-2">
-          <div className="relative aspect-[4/3] w-full overflow-hidden">
+          <div className="relative order-2 aspect-[4/3] w-full overflow-hidden md:order-1">
             <Image src={home.record.image} alt={home.record.alt} fill quality={90} className="object-cover" sizes="(min-width: 768px) 50vw, 100vw" />
           </div>
-          <div className="px-5 md:pr-8 lg:pr-16">
+          <div className="order-1 px-5 md:order-2 md:pr-8 lg:pr-16">
             <h2 className="mb-2 font-head text-2xl leading-tight text-headline-green sm:text-3xl">{home.record.heading}</h2>
             <div className="mb-3.5 h-0.5 w-12 bg-gold" />
             <p className="mb-2.5 max-w-[48ch] text-sm leading-relaxed text-muted">{home.record.paragraph}</p>
@@ -88,10 +91,10 @@ export default async function HomePage() {
               const Icon = STAT_ICONS[i % STAT_ICONS.length];
               return (
                 <Reveal as="div" key={i} delay={i * 90} className="py-5 text-center sm:py-0">
-                  <Icon className="mx-auto mb-2 h-9 w-9 stroke-terracotta" />
+                  <Icon className="mx-auto mb-3 h-9 w-9 stroke-terracotta" />
                   <div className="font-head text-3xl font-bold text-ink">{s.number}</div>
-                  <div className="mt-1 text-xs font-semibold uppercase tracking-wide">{s.label}</div>
-                  <div className="text-xs uppercase tracking-wide text-muted-soft">{s.sub}</div>
+                  <div className="mt-2 text-xs font-semibold uppercase tracking-wide">{s.label}</div>
+                  <div className="mt-1 text-xs uppercase tracking-wide text-muted-soft">{s.sub}</div>
                 </Reveal>
               );
             })}
@@ -110,21 +113,13 @@ export default async function HomePage() {
           <div className="relative aspect-[1610/975] w-full overflow-hidden">
             <Image src={home.canvas.image} alt={home.canvas.alt} fill quality={90} className="object-cover" sizes="(min-width: 768px) 50vw, 100vw" />
           </div>
-          <div className="relative px-5 md:pl-0">
-            <div className="relative z-10 max-w-[46ch]">
-              <h2 className="mb-2 font-head text-2xl leading-tight text-headline-green sm:text-3xl">{home.canvas.heading}</h2>
-              <div className="mb-3.5 h-0.5 w-12 bg-gold" />
-              {home.canvas.paragraphs.map((p, i) => (
-                <p key={i} className="mb-2.5 text-sm leading-relaxed text-muted">{p}</p>
-              ))}
-              <Modal title={home.canvas.heading} paragraphs={home.canvas.modalParagraphs} buttonLabel={home.canvas.buttonLabel} />
-            </div>
-            {/* Decorative flower in the blank space to the right of the
-                text column — hidden below lg where that space is too
-                tight. */}
-            <div className="pointer-events-none absolute right-6 top-1/2 hidden w-32 -translate-y-1/2 opacity-90 lg:block lg:w-40 xl:w-48">
-              <Image src="/images/g-lotus-plant.webp" alt="" aria-hidden="true" width={1716} height={915} className="h-auto w-full object-contain" />
-            </div>
+          <div className="px-5 md:pl-0">
+            <h2 className="mb-2 font-head text-2xl leading-tight text-headline-green sm:text-3xl">{home.canvas.heading}</h2>
+            <div className="mb-3.5 h-0.5 w-12 bg-gold" />
+            {home.canvas.paragraphs.map((p, i) => (
+              <p key={i} className="mb-2.5 max-w-[46ch] text-sm leading-relaxed text-muted">{p}</p>
+            ))}
+            <Modal title={home.canvas.heading} paragraphs={home.canvas.modalParagraphs} buttonLabel={home.canvas.buttonLabel} />
           </div>
         </div>
       </Reveal>

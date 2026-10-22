@@ -28,22 +28,17 @@ export default async function AboutPage() {
 
   return (
     <main id="main">
-      {/* HERO — the box's aspect ratio matches the artwork's own 1955:803
-          ratio exactly (same technique as the Home hero), at every
-          breakpoint, so object-cover never has anything to crop —
-          guaranteed, not just "mostly". A fixed pixel min-height here
-          (tried twice before) always mismatches the box ratio against *some*
-          viewport width and crops the canopy. Below md the ratio box is
-          only ~150px tall — not enough to hold text overlaid on it — so
-          text stacks below it there instead of overlaying on top of it. */}
-      <section className="relative bg-cream/88">
-        <div className="relative w-full overflow-hidden aspect-[1955/803]">
-          <Image src={about.hero.image} alt={about.hero.alt} fill priority quality={90} className="object-cover object-left" sizes="100vw" />
-          <div className="absolute inset-0 z-10 hidden items-center justify-end px-5 md:flex lg:pr-10 xl:pr-16">
-            {heroText}
-          </div>
+      {/* HERO — text overlays the artwork at every breakpoint (no
+          mobile/desktop split): object-position keeps the tree anchored
+          top-left so any cropping from a min-height mismatch only ever eats
+          into its own blank canvas at the bottom/right, and a light scrim
+          guarantees the text stays legible even where it doesn't. */}
+      <section className="relative overflow-hidden bg-cream/88">
+        <Image src={about.hero.image} alt={about.hero.alt} fill priority quality={90} className="object-cover object-left-top" sizes="100vw" />
+        <div className="absolute inset-0 bg-gradient-to-r from-transparent via-cream/50 to-cream/92" />
+        <div className="relative z-10 flex min-h-[340px] items-center justify-end px-5 py-10 sm:min-h-[400px] md:min-h-[440px] lg:min-h-[500px] lg:pr-10 xl:pr-16">
+          {heroText}
         </div>
-        <div className="px-5 py-8 md:hidden">{heroText}</div>
       </section>
 
       {/* OUR STORY */}

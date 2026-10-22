@@ -49,7 +49,7 @@ export default async function GalleryPage() {
       </Reveal>
 
       <Reveal as="section" id="g-collection" className="bg-[#F6F1E4] py-10 sm:py-12">
-        <div className="mx-auto grid max-w-site grid-cols-1 items-center gap-8 px-5 md:grid-cols-[1.1fr_0.6fr_auto_1fr]">
+        <div className="mx-auto grid max-w-site grid-cols-1 items-center gap-8 px-5 md:grid-cols-[1.1fr_auto_1fr_0.6fr]">
           <div>
             <div className="mb-2 text-xs font-semibold uppercase tracking-[0.2em] text-terracotta">{g.collection.eyebrow}</div>
             <h2 className="mb-2 font-head text-2xl leading-tight text-headline-green sm:text-3xl">{g.collection.heading}</h2>
@@ -63,26 +63,24 @@ export default async function GalleryPage() {
             </Link>
           </div>
 
-          {/* The lotus artwork is a wide 1716:915 illustration — the old
-              h-40 w-28 box was portrait-shaped (taller than wide), the
-              opposite of the image's own proportions, so object-contain
-              shrank it down to a small fraction of the box. Sized to the
-              image's real aspect ratio instead, so it renders at its
-              actual intended size. */}
-          <div className="relative mx-auto aspect-[1716/915] w-44 animate-float sm:w-56 md:w-72">
-            {g.collection.decorImage && (
-              <Image src={g.collection.decorImage} alt="" fill aria-hidden="true" quality={90} className="object-contain drop-shadow-sm" sizes="(min-width: 768px) 288px, 224px" />
-            )}
-          </div>
-
-          {/* Thin divider between the decorative plant and the pull-quote —
-              horizontal on mobile where everything stacks, vertical once
-              the grid goes side-by-side, matching the mockup. */}
+          {/* Thin divider between the text and the pull-quote — horizontal
+              on mobile where everything stacks, vertical once the grid
+              goes side-by-side. */}
           <div className="mx-auto h-px w-24 bg-headline-green/15 md:h-40 md:w-px" />
 
           <div>
             <blockquote className="font-head text-xl italic leading-snug text-headline-green">{g.collection.quote}</blockquote>
             <div className="mt-4 h-0.5 w-12 bg-gold" />
+          </div>
+
+          {/* The lotus artwork is a wide 1716:915 illustration, now at the
+              end of the row instead of between the text and quote. Hidden
+              below md — a single decorative flower doesn't earn its own
+              row once everything stacks on mobile. */}
+          <div className="relative mx-auto hidden aspect-[1716/915] w-44 animate-float md:block md:w-56 lg:w-72">
+            {g.collection.decorImage && (
+              <Image src={g.collection.decorImage} alt="" fill aria-hidden="true" quality={90} className="object-contain drop-shadow-sm" sizes="(min-width: 1024px) 288px, 224px" />
+            )}
           </div>
         </div>
       </Reveal>
