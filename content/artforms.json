@@ -6,7 +6,9 @@
   "hero": {
     "eyebrow": "Art Forms",
     "heading": "Many traditions. One living heritage.",
-    "lead": "India's artistic traditions are as diverse as its landscapes and people, shaped by regions, communities, beliefs and ways of life. Each art form carries a unique story, a distinct visual language and a living legacy that continues to inspire."
+    "lead": "India's artistic traditions are as diverse as its landscapes and people, shaped by regions, communities, beliefs and ways of life. Each art form carries a unique story, a distinct visual language and a living legacy that continues to inspire.",
+    "image": "",
+    "alt": ""
   },
   "artforms": [
     {

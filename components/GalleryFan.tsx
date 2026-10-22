@@ -65,7 +65,7 @@ export default function GalleryFan({ items }: { items: GalleryItem[] }) {
                 transform: `translate(calc(-50% + ${pos.x}px), ${pos.y}px) rotate(${pos.rotate}deg)`,
               }}
             >
-              <Image src={item.image} alt={item.alt} fill quality={90} className="object-cover" sizes="184px" />
+              <Image src={item.image} alt={item.alt} fill quality={90} className="object-contain" sizes="184px" />
             </button>
           );
         })}

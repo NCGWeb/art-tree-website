@@ -14,14 +14,32 @@ export default async function ArtformsPage() {
 
   return (
     <main id="main">
-      <section className="bg-header-bg px-5 py-10 text-center sm:py-12">
-        <div className="mx-auto max-w-2xl">
-          <div className="text-xs font-semibold uppercase tracking-[0.2em] text-terracotta">{af.hero.eyebrow}</div>
-          <h1 className="mt-2 font-head text-3xl leading-tight text-headline-green sm:text-4xl">{af.hero.heading}</h1>
-          <div className="mx-auto my-4 h-0.5 w-12 bg-gold" />
-          <p className="mx-auto max-w-[56ch] text-sm leading-relaxed text-muted">{af.hero.lead}</p>
-        </div>
-      </section>
+      {af.hero.image ? (
+        /* Optional full-bleed background photo (set in the CMS), same
+           edge-to-edge pattern as the Exhibitions/Contact/About heroes, but
+           with the centered text this page has always used. */
+        <section className="relative isolate overflow-hidden">
+          <div className="relative flex min-h-[320px] flex-col items-center justify-center px-5 py-10 text-center sm:min-h-[360px] sm:py-12">
+            <Image src={af.hero.image} alt={af.hero.alt || ''} aria-hidden={!af.hero.alt} fill priority quality={90} className="object-cover" sizes="100vw" />
+            <div className="absolute inset-0 bg-ink/60" />
+            <div className="relative z-10 mx-auto max-w-2xl">
+              <div className="text-xs font-semibold uppercase tracking-[0.2em] text-white/90">{af.hero.eyebrow}</div>
+              <h1 className="mt-2 font-head text-3xl leading-tight text-white sm:text-4xl">{af.hero.heading}</h1>
+              <div className="mx-auto my-4 h-0.5 w-12 bg-gold" />
+              <p className="mx-auto max-w-[56ch] text-sm leading-relaxed text-white/90">{af.hero.lead}</p>
+            </div>
+          </div>
+        </section>
+      ) : (
+        <section className="bg-header-bg px-5 py-10 text-center sm:py-12">
+          <div className="mx-auto max-w-2xl">
+            <div className="text-xs font-semibold uppercase tracking-[0.2em] text-terracotta">{af.hero.eyebrow}</div>
+            <h1 className="mt-2 font-head text-3xl leading-tight text-headline-green sm:text-4xl">{af.hero.heading}</h1>
+            <div className="mx-auto my-4 h-0.5 w-12 bg-gold" />
+            <p className="mx-auto max-w-[56ch] text-sm leading-relaxed text-muted">{af.hero.lead}</p>
+          </div>
+        </section>
+      )}
 
       <section className="bg-cream/93 py-10 sm:py-12">
         <div className="mx-auto max-w-site space-y-10 px-5">
@@ -38,7 +56,7 @@ export default async function ArtformsPage() {
                     alt={form.alt || form.title}
                     fill
                     quality={90}
-                    className="object-cover transition-transform duration-500 ease-out group-hover:scale-105"
+                    className="object-contain transition-transform duration-500 ease-out group-hover:scale-105"
                     sizes="(min-width: 768px) 50vw, 100vw"
                   />
                 ) : (

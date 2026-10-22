@@ -48,7 +48,7 @@ export default function HomeEditor({ initial }: { initial: any }) {
             />
             <SelectField
               label="Desktop/laptop height"
-              value={data.hero.desktopHeight ?? 'full'}
+              value={data.hero.desktopHeight ?? '660px'}
               onChange={(v) => set(['hero', 'desktopHeight'], v)}
               options={[
                 { value: 'full', label: 'Full image (no cropping)' },

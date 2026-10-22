@@ -42,6 +42,16 @@ export default function ArtformsEditor({ initial }: { initial: any }) {
             <TextField label="Eyebrow" value={data.hero.eyebrow} onChange={(v) => set(['hero', 'eyebrow'], v)} />
             <TextField label="Heading" value={data.hero.heading} onChange={(v) => set(['hero', 'heading'], v)} />
             <TextAreaField label="Lead paragraph" value={data.hero.lead} onChange={(v) => set(['hero', 'lead'], v)} rows={3} />
+            <ImageField
+              label="Background image (optional)"
+              src={data.hero.image}
+              alt={data.hero.alt}
+              onSrcChange={(v) => set(['hero', 'image'], v)}
+              onAltChange={(v) => set(['hero', 'alt'], v)}
+            />
+            <p className="text-xs text-muted-soft">
+              Leave empty to keep the plain background colour. Add an image to show it full-width behind the heading, like the Exhibitions and Contact pages.
+            </p>
           </div>
         </section>
 

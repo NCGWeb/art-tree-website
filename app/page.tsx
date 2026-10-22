@@ -37,14 +37,16 @@ export default async function HomePage() {
             losing content. Using its native aspect ratio at every breakpoint
             keeps the whole illustration (including the quote near the right
             edge) visible on mobile instead of being cut off by object-cover.
-            On laptop/desktop, hero.desktopHeight (editable in the CMS) can
-            cap the height instead of showing the image at full size; "full"
-            (the default) leaves it uncapped so nothing is cropped. */}
+            On laptop/desktop, hero.desktopHeight (editable in the CMS) caps
+            the height so the hero doesn't balloon on tall/wide screens.
+            object-top anchors the crop to the top of the image, so capping
+            the height only trims the plain landscape at the very bottom
+            instead of cutting into the leaf-nav icons or quote. */}
         <div
           className="hero-wrap relative aspect-[1600/885] w-full"
           style={
-            home.hero.desktopHeight && home.hero.desktopHeight !== 'full'
-              ? ({ '--hero-max-h': home.hero.desktopHeight } as any)
+            (home.hero.desktopHeight || '660px') !== 'full'
+              ? ({ '--hero-max-h': home.hero.desktopHeight || '660px' } as any)
               : undefined
           }
         >
@@ -54,7 +56,7 @@ export default async function HomePage() {
             fill
             priority
             quality={90}
-            className="object-cover"
+            className="object-cover object-top"
             sizes="100vw"
           />
           {Object.entries(LEAF_POSITIONS).map(([key, pos]) => (

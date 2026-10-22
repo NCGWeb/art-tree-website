@@ -16,14 +16,24 @@ export default async function AboutPage() {
   return (
     <main id="main">
       {/* HERO — full-bleed background photo edge-to-edge at every width,
-          text overlaid on the left over a scrim, matching the hero pattern
-          used on the Exhibitions and Contact pages (image never shares the
-          row with a text column). */}
+          text overlaid on the right over a scrim (the painted tree in this
+          photo sits on the left, so the text goes over the clearer right
+          side instead of covering the artwork). object-position keeps the
+          tree in frame on narrow/mobile crops too. */}
       <section className="relative isolate overflow-hidden">
         <div className="relative flex min-h-[420px] flex-col justify-center md:min-h-[460px] lg:min-h-[520px]">
-          <Image src={about.hero.image} alt={about.hero.alt} fill priority quality={90} className="object-cover" sizes="100vw" />
-          <div className="absolute inset-0 bg-gradient-to-t from-ink/85 via-ink/50 to-ink/15 md:bg-gradient-to-r md:from-ink/85 md:via-ink/55 md:to-ink/10" />
-          <div className="relative z-10 px-5 py-10 md:max-w-xl md:py-0 md:pl-10 lg:pl-16">
+          <Image
+            src={about.hero.image}
+            alt={about.hero.alt}
+            fill
+            priority
+            quality={90}
+            className="object-cover"
+            style={{ objectPosition: '30% center' }}
+            sizes="100vw"
+          />
+          <div className="absolute inset-0 bg-gradient-to-t from-ink/85 via-ink/50 to-ink/15 md:bg-gradient-to-l md:from-ink/85 md:via-ink/55 md:to-ink/10" />
+          <div className="relative z-10 ml-auto px-5 py-10 text-left md:max-w-xl md:py-0 md:pr-10 lg:pr-16">
             <div className="text-xs font-semibold uppercase tracking-[0.2em] text-white/90">{about.hero.eyebrow}</div>
             <h1 className="mt-2 font-head text-3xl leading-tight text-white sm:text-4xl">{about.hero.heading}</h1>
             <div className="my-4 h-0.5 w-12 bg-gold" />
