@@ -47,9 +47,9 @@ export default function SiteHeader({
     // context, so the FAB would otherwise poke through the open menu.
     <header className="sticky top-0 z-[1000] border-b border-white/10 bg-ink">
       <div className="mx-auto flex max-w-site items-center justify-between px-5 py-3">
-        <Link href="/" className="flex items-center gap-3" aria-label="Art Tree home">
+        <Link href="/" className="flex items-end gap-3" aria-label="Art Tree home">
           <Image src="/images/logo.png" alt={logoAlt} width={140} height={71} quality={90} className="h-11 w-auto" priority />
-          <span className="hidden text-[0.6rem] uppercase tracking-[2px] text-[#bfbba9] sm:inline">
+          <span className="hidden pb-1.5 text-[0.6rem] uppercase tracking-[2px] text-[#bfbba9] sm:inline">
             {tagline}
           </span>
         </Link>
