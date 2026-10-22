@@ -15,12 +15,12 @@ export default async function AboutPage() {
 
   const heroText = (
     <div className="max-w-xl">
-      <div className="text-[0.65rem] font-semibold uppercase tracking-[0.2em] text-white sm:text-xs sm:text-terracotta">{about.hero.eyebrow}</div>
-      <h1 className="mt-1.5 font-head text-base leading-tight text-white sm:mt-2 sm:text-2xl sm:text-headline-green lg:text-4xl">{about.hero.heading}</h1>
-      <div className="my-2 hidden h-0.5 w-10 bg-gold sm:my-4 sm:block sm:w-12" />
-      <p className="hidden max-w-[46ch] text-sm leading-relaxed text-muted sm:block">{about.hero.lead}</p>
-      <blockquote className="mt-2 hidden max-w-md font-head italic leading-snug text-headline-green sm:mt-5 sm:block">
-        <p className="text-base sm:text-lg">{about.hero.quote}</p>
+      <div className="text-xs font-semibold uppercase tracking-[0.2em] text-terracotta">{about.hero.eyebrow}</div>
+      <h1 className="mt-2 font-head text-2xl leading-tight text-headline-green lg:text-4xl">{about.hero.heading}</h1>
+      <div className="my-4 h-0.5 w-12 bg-gold" />
+      <p className="max-w-[46ch] text-sm leading-relaxed text-muted">{about.hero.lead}</p>
+      <blockquote className="mt-5 max-w-md font-head italic leading-snug text-headline-green">
+        <p className="text-lg">{about.hero.quote}</p>
         <span className="mt-2 block font-body text-xs not-italic text-muted-soft">— {about.hero.quoteAttribution}</span>
       </blockquote>
     </div>
@@ -28,21 +28,34 @@ export default async function AboutPage() {
 
   return (
     <main id="main">
-      {/* HERO — the box's ratio always matches the artwork's own 1955:803
-          ratio exactly, at every breakpoint, so the image is NEVER cropped —
-          that's the one non-negotiable rule here, learned the hard way after
-          two earlier attempts traded it away for a comfortable text height.
-          Text overlays on top via absolute positioning instead, which keeps
-          it off the box's own height, so a short box (as on a phone) still
-          shows the complete artwork; the text there just has less room, so
-          it's set smaller and the quote hides below sm rather than crowding
-          or spilling past the artwork. */}
-      <section className="relative overflow-hidden bg-cream/88">
+      {/* HERO, mobile — same treatment as the Events hero: the artwork is a
+          true full-bleed background under a dark scrim, with the height
+          driven by the text's own padding so every line has room. The art
+          is pinned top-left, so only blank canvas on its right is cropped. */}
+      <section className="relative overflow-hidden sm:hidden">
+        <Image src={about.hero.image} alt="" aria-hidden="true" fill priority quality={90} className="object-cover object-left-top" sizes="100vw" />
+        <div className="absolute inset-0 bg-gradient-to-b from-ink/55 via-ink/65 to-ink/80" />
+        <div className="relative z-10 px-5 py-12">
+          <div className="text-xs font-semibold uppercase tracking-[0.2em] text-white/90">{about.hero.eyebrow}</div>
+          <h1 className="mt-2 font-head text-3xl leading-tight text-white">{about.hero.heading}</h1>
+          <div className="my-4 h-0.5 w-12 bg-gold" />
+          <p className="max-w-[46ch] text-sm leading-relaxed text-white/90">{about.hero.lead}</p>
+          <blockquote className="mt-5 max-w-md font-head text-lg italic leading-snug text-white">
+            {about.hero.quote}
+            <span className="mt-2 block font-body text-xs not-italic text-white/80">— {about.hero.quoteAttribution}</span>
+          </blockquote>
+        </div>
+      </section>
+
+      {/* HERO, sm and up — the box's ratio always matches the artwork's own
+          1955:803 ratio, so the image is never cropped; text overlays the
+          blank canvas on the right, aligned to the nav container's edge. */}
+      <section className="relative hidden overflow-hidden bg-cream/88 sm:block">
         <div className="relative w-full aspect-[1955/803]">
           <Image src={about.hero.image} alt={about.hero.alt} fill priority quality={90} className="object-cover object-left-top" sizes="100vw" />
-          <div className="absolute inset-0 bg-gradient-to-t from-ink/80 via-ink/30 to-ink/5 sm:bg-gradient-to-r sm:from-transparent sm:via-cream/50 sm:to-cream/92" />
+          <div className="absolute inset-0 bg-gradient-to-r from-transparent via-cream/50 to-cream/92" />
           <div className="absolute inset-0 z-10">
-            <div className="mx-auto flex h-full max-w-site items-end justify-start p-5 sm:items-center sm:justify-end sm:py-0">
+            <div className="mx-auto flex h-full max-w-site items-center justify-end px-5">
               {heroText}
             </div>
           </div>

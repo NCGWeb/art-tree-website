@@ -15,28 +15,38 @@ export default async function ArtformsPage() {
   return (
     <main id="main">
       {af.hero.image ? (
-        // The box's ratio always matches the artwork's own 1955:803 ratio
-        // exactly, at every breakpoint, so the image is never cropped — a
-        // min-height (tried before) traded that away for a comfortable text
-        // height, which isn't the right trade. Text overlays via absolute
-        // positioning instead, so it's off the box's own height; it just
-        // gets less room on a short mobile box, so it's set smaller there.
-        <section className="relative overflow-hidden bg-cream/88">
-          <div className="relative w-full aspect-[1955/803]">
-            <Image src={af.hero.image} alt={af.hero.alt || ''} aria-hidden={!af.hero.alt} fill priority quality={90} className="object-cover object-left-top" sizes="100vw" />
-            <div className="absolute inset-0 bg-gradient-to-t from-ink/80 via-ink/30 to-ink/5 sm:bg-gradient-to-r sm:from-transparent sm:via-cream/50 sm:to-cream/92" />
-            <div className="absolute inset-0 z-10">
-              <div className="mx-auto flex h-full max-w-site items-end justify-start p-5 sm:items-center sm:justify-end sm:py-0">
-                <div className="max-w-xl">
-                  <div className="text-[0.65rem] font-semibold uppercase tracking-[0.2em] text-white sm:text-xs sm:text-terracotta">{af.hero.eyebrow}</div>
-                  <h1 className="mt-1.5 font-head text-base leading-tight text-white sm:mt-2 sm:text-2xl sm:text-headline-green lg:text-4xl">{af.hero.heading}</h1>
-                  <div className="my-2 hidden h-0.5 w-10 bg-gold sm:my-4 sm:block sm:w-12" />
-                  <p className="hidden max-w-[56ch] text-sm leading-relaxed text-muted sm:block">{af.hero.lead}</p>
+        <>
+          {/* Mobile: Events-style full-bleed hero, height driven by the text. */}
+          <section className="relative overflow-hidden sm:hidden">
+            <Image src={af.hero.image} alt="" aria-hidden="true" fill priority quality={90} className="object-cover object-left-top" sizes="100vw" />
+            <div className="absolute inset-0 bg-gradient-to-b from-ink/55 via-ink/65 to-ink/80" />
+            <div className="relative z-10 px-5 py-12">
+              <div className="text-xs font-semibold uppercase tracking-[0.2em] text-white/90">{af.hero.eyebrow}</div>
+              <h1 className="mt-2 font-head text-3xl leading-tight text-white">{af.hero.heading}</h1>
+              <div className="my-4 h-0.5 w-12 bg-gold" />
+              <p className="max-w-[46ch] text-sm leading-relaxed text-white/90">{af.hero.lead}</p>
+            </div>
+          </section>
+
+          {/* sm and up: aspect-locked so the artwork is never cropped, text
+              overlaid on its blank canvas, aligned to the nav container. */}
+          <section className="relative hidden overflow-hidden bg-cream/88 sm:block">
+            <div className="relative w-full aspect-[1955/803]">
+              <Image src={af.hero.image} alt={af.hero.alt || ''} aria-hidden={!af.hero.alt} fill priority quality={90} className="object-cover object-left-top" sizes="100vw" />
+              <div className="absolute inset-0 bg-gradient-to-r from-transparent via-cream/50 to-cream/92" />
+              <div className="absolute inset-0 z-10">
+                <div className="mx-auto flex h-full max-w-site items-center justify-end px-5">
+                  <div className="max-w-xl">
+                    <div className="text-xs font-semibold uppercase tracking-[0.2em] text-terracotta">{af.hero.eyebrow}</div>
+                    <h1 className="mt-2 font-head text-2xl leading-tight text-headline-green lg:text-4xl">{af.hero.heading}</h1>
+                    <div className="my-4 h-0.5 w-12 bg-gold" />
+                    <p className="max-w-[56ch] text-sm leading-relaxed text-muted">{af.hero.lead}</p>
+                  </div>
                 </div>
               </div>
             </div>
-          </div>
-        </section>
+          </section>
+        </>
       ) : (
         <section className="bg-header-bg px-5 py-10 text-right sm:py-12">
           <div className="ml-auto max-w-2xl">
