@@ -49,20 +49,23 @@ export default async function ArtformsPage() {
               key={form.id}
               className="grid grid-cols-1 items-center gap-6 border-b border-black/5 pb-8 last:border-b-0 md:grid-cols-2"
             >
-              <div className={`group relative w-full overflow-hidden rounded ${i % 2 === 1 ? 'md:order-2' : ''}`}>
+              <div className={`group relative flex w-full items-center justify-center overflow-hidden rounded ${i % 2 === 1 ? 'md:order-2' : ''}`}>
                 {form.image ? (
                   // No fixed aspect-ratio box here on purpose: every artwork
                   // photo keeps its own natural shape (portrait, landscape,
                   // square, ...) instead of being cropped or letterboxed
-                  // inside a uniform frame.
+                  // inside a uniform frame. A max-height cap keeps unusually
+                  // tall scroll-like pieces (e.g. Sanjhi) from overflowing
+                  // the section — width/height both stay auto so the image
+                  // simply scales down proportionally, never cropped.
                   <Image
                     src={form.image}
                     alt={form.alt || form.title}
                     width={1200}
                     height={900}
                     quality={90}
-                    className="h-auto w-full rounded transition-transform duration-500 ease-out group-hover:scale-105"
-                    style={{ width: '100%', height: 'auto' }}
+                    className="h-auto max-h-[460px] w-auto max-w-full rounded transition-transform duration-500 ease-out group-hover:scale-105 sm:max-h-[520px]"
+                    style={{ width: 'auto', height: 'auto' }}
                     sizes="(min-width: 768px) 50vw, 100vw"
                   />
                 ) : (

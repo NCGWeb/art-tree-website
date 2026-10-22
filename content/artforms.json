@@ -12,6 +12,21 @@
   },
   "artforms": [
     {
+      "id": "bhil",
+      "title": "Bhil",
+      "subtitle": "Rajasthan · Madhya Pradesh · Gujarat · Forest keepers",
+      "excerpt": "Bhil art is the visual tradition of one of India's oldest and largest tribal communities, the Bhils of Rajasthan, Madhya Pradesh and Gujarat, custodians of India's forests for aeons. Like most tribal peoples, the Bhils are pagan, their spirituality rooted not in scripture but in the living forces of nature. The defining characteristic of Bhil art is the dot: every surface, figures, animals, trees, borders, is covered in densely packed, carefully placed dots of endlessly varied colour.",
+      "image": "",
+      "alt": "",
+      "modalParagraphs": [
+        "Bhil art is the visual tradition of one of India's oldest and largest tribal communities, the Bhils of Rajasthan, Madhya Pradesh, and Gujarat, custodians of India's forests for aeons. Like most tribal peoples, the Bhils are pagan, their spirituality rooted not in scripture but in the living forces of nature. Rain, sun, wind, the fertility of the earth, the turning of the seasons, each one a presence, each one honoured. This worldview is not the context for Bhil art. It is its very substance.",
+        "The defining characteristic of Bhil art is the dot. Every surface, figures, animals, trees, borders, backgrounds, is covered in densely packed, carefully placed dots of endlessly varied colour, each one applied with patient, deliberate intention.",
+        "The subjects of Bhil art are drawn directly from the world the Bhils inhabit and revere. Flora and fauna dominate, the trees, birds, animals, and rivers of the forest landscape rendered with the intimacy of a community that has lived among them for generations. Horses, peacocks, elephants, tigers, fish, flowering trees, the sun and moon, each one not merely depicted but honoured.",
+        "Local rituals and ceremonies fill the compositions alongside the natural world, festivals, harvests, marriages, and community gatherings specific to Bhil life and culture. These are not borrowed mythologies but living ones, rooted in a particular people and a particular place.",
+        "The Pithora painting deserves special mention, a large ceremonial work created collectively as an offering of gratitude to the deity Pithora Baba, painted on the walls of homes by specialist painters called Lakhara. A Pithora is not made, it is performed, the act of communal creation inseparable from the ritual it enacts."
+      ]
+    },
+    {
       "id": "jangarh",
       "title": "Gond Art",
       "subtitle": "Madhya Pradesh · The Art of the Green Mountain",
@@ -25,6 +40,29 @@
         "The visual grammar is instantly recognisable, bold double-lined outlines filled with densely packed dots, dashes, fish scales, and flowing lines that animate every surface from within. Birds, fish, elephants, trees, serpents, the creatures of the natural world, are rendered not as observed specimens but as living presences, each pulsing with inner life. To paint, in the Gond worldview, is to honour. To honour is to keep alive.",
         "The tradition bears a striking resemblance to aboriginal art from Australia, two practices separated by an ocean, arriving independently at the same truth: that the dot, repeated with intention, can bring a surface to life.",
         "Vibrant, mystical, and endlessly imaginative, Gond Art continues to grow, carried forward today by artists including Venkat Shyam, Ram Singh Urveti, and Bhajju Shyam, from the same green mountains that gave this tradition its name."
+      ]
+    },
+    {
+      "id": "madhubani",
+      "title": "Madhubani",
+      "subtitle": "Mithila, Bihar · The forest of honey",
+      "excerpt": "Madhubani takes its name from the region that gave it birth, Madhu, honey, and Vana, forest, the forest of honey. Originating in the Mithila region of Bihar, Madhubani is among India's most ancient and most alive folk art traditions, traditionally practised solely by the women of the region. Legend holds that it was Raja Janak who first commissioned the painting of walls and floors to celebrate the wedding of Sita with Ram, giving birth to a tradition still alive today.",
+      "image": "",
+      "alt": "",
+      "modalParagraphs": [
+        "Madhubani painting takes its name from the region that gave it birth, Madhu, honey, and Vana, forest, the forest of honey. This name carries the sweetness and abundance this art has always celebrated. Originating in the Mithila region of Bihar, one of the oldest continuously inhabited regions of the Indian subcontinent, Madhubani is among India's most ancient and most alive folk art traditions. This art form was traditionally practised solely by women of the region.",
+        "Madhubani is not simply a folk tradition that happened to arise in Mithila. It is a tradition born in a royal household and practised by local folks, and for the most auspicious of all occasions.",
+        "Mithila was the kingdom of Raja Janak, Sita's father. Legend holds that it was Raja Janak who first commissioned the painting of walls and floors to celebrate the wedding of Sita with Ram. The women were asked to adorn every surface with auspicious images in honour of the occasion. In doing so, he gave birth to a tradition. The kohbar ghar, the bridal chamber, became the most sacred space for this art form. Its walls are still painted with the same devotion and the same imagery that were first invoked for Sita's own wedding night.",
+        "This is why Ram and Sita occupy the absolute centre of the Madhubani visual world. They are the reason the tradition exists, its presiding deities, and its eternal subject. Every Madhubani painting of a wedding, every kohbar ghar adorned for a bride, every lotus and fish and symbol of fertility, at some level, a remembrance of that first great celebration, the marriage of Ram and Sita in the kingdom of Mithila, painted into existence by the women of Janak's court, and never since forgotten.",
+        "Madhubani is not one tradition but five, each associated with a different community within the Mithila region, each with its own visual language and set of conventions.",
+        "Bharni — associated with the Brahmins, characterised by bold, filled forms. The subjects are primarily religious, gods, goddesses, and mythological narratives depicted with confident, celebratory energy. Sun imagery is an important aspect of this form.",
+        "Katchni — practised by the Kayastha community, is a more refined and linear style, using fine lines and cross-hatching to create texture and depth. The figures are delicate, the compositions intricate, the overall effect one of extraordinary precision and control.",
+        "Tantrik — rooted in the Tantric tradition, these paintings depict esoteric symbols, yantras, and the more powerful and complex aspects of the Hindu pantheon. They are among the most spiritually charged of all Madhubani works.",
+        "Godna — inspired by the tattoo tradition of the lower castes, Godna paintings use simple black lines on a plain ground to create compositions of striking directness and economy. They are among the most powerful and least embellished of all Madhubani styles.",
+        "Kohbar — the style specific to the bridal chamber, characterised by its central imagery of the lotus, the bamboo, and the fertility symbols that bless the new marriage.",
+        "The visual vocabulary of Madhubani is rich, specific, and deeply symbolic. The lotus, purity, fertility, and divine beauty. The fish, matsya, prosperity and abundance, sacred to the goddess. The bamboo grove, fertility and the continuity of life. The sun and moon, cosmic witnesses presiding over every composition. Serpents, protectors and symbols of the earth's power. Peacocks, beauty, love, and the coming of the rains. Elephants, wisdom and auspiciousness. Every motif carries meaning accumulated over centuries. Nothing is merely decorative.",
+        "Traditionally painted on freshly plastered mud walls using pigments drawn entirely from the natural world, turmeric for yellow, indigo for blue, cow dung and mud for earthy browns, kusum flowers for red, holi colours, soot and lamp black for the defining outlines. The brushes were twigs, bamboo sticks, fingers, and matchsticks. Today, Madhubani is also painted on paper, cloth, and canvas, a transition that has allowed the tradition to reach new audiences without losing the essential warmth and depth of its natural palette.",
+        "Madhubani is, at its heart, a tradition of prayer. Every painting is an offering, made at a moment of transition, celebration, gratitude, or supplication. The act of making is inseparable from the intention behind it. A woman painting the kohbar ghar is not simply decorating a room, she is invoking the blessings of the gods, the fertility of the earth, and the continuity of her family line. It is this understanding, that to paint is to pray, and that the image is alive with the intention that made it, that gives Madhubani its enduring power."
       ]
     },
     {
@@ -107,44 +145,6 @@
         "Being an agrarian community growing paddy, rice paste is used to create the figures. The brush is a pointed twig of the Bahari plant or bamboo, its tip chewed or split to create a fine, flexible point capable of the delicate line work that characterises the tradition.",
         "The formal vocabulary of Warli painting is built from the simplest of geometric elements, the circle, the triangle, and the square. The circle represents the sun and moon, the cosmic and the cyclical. The triangle, derived from the pointed forms of mountains and trees, represents nature. The square denotes the sacred enclosure, the space set apart from the ordinary. From these three forms, in endlessly varied combination, the entire world of Warli painting is constructed. Figures are rendered as two triangles joined at their tips. The women are differentiated from men by a small hair bun. These figures dance, hunt, sow, harvest, marry, and celebrate, the full arc of community life depicted with a rhythmic vitality that gives Warli painting its characteristic sense of joyful, collective energy.",
         "The central composition of the most important Warli paintings is the Chauk, a square sacred enclosure at the centre of which the Mother Goddess presides, surrounded by her devotees in concentric rings of figures and motifs. The Chauk is painted at weddings and harvest festivals, its creation an act of ritual as much as art. The tarpa (their local musical instrument), dance, the fishing net, the harvesting scene, nature in abundance, the household chores and depiction of daily life are the core of Warli art."
-      ]
-    },
-    {
-      "id": "madhubani",
-      "title": "Madhubani",
-      "subtitle": "Mithila, Bihar · The forest of honey",
-      "excerpt": "Madhubani takes its name from the region that gave it birth, Madhu, honey, and Vana, forest, the forest of honey. Originating in the Mithila region of Bihar, Madhubani is among India's most ancient and most alive folk art traditions, traditionally practised solely by the women of the region. Legend holds that it was Raja Janak who first commissioned the painting of walls and floors to celebrate the wedding of Sita with Ram, giving birth to a tradition still alive today.",
-      "image": "",
-      "alt": "",
-      "modalParagraphs": [
-        "Madhubani painting takes its name from the region that gave it birth, Madhu, honey, and Vana, forest, the forest of honey. This name carries the sweetness and abundance this art has always celebrated. Originating in the Mithila region of Bihar, one of the oldest continuously inhabited regions of the Indian subcontinent, Madhubani is among India's most ancient and most alive folk art traditions. This art form was traditionally practised solely by women of the region.",
-        "Madhubani is not simply a folk tradition that happened to arise in Mithila. It is a tradition born in a royal household and practised by local folks, and for the most auspicious of all occasions.",
-        "Mithila was the kingdom of Raja Janak, Sita's father. Legend holds that it was Raja Janak who first commissioned the painting of walls and floors to celebrate the wedding of Sita with Ram. The women were asked to adorn every surface with auspicious images in honour of the occasion. In doing so, he gave birth to a tradition. The kohbar ghar, the bridal chamber, became the most sacred space for this art form. Its walls are still painted with the same devotion and the same imagery that were first invoked for Sita's own wedding night.",
-        "This is why Ram and Sita occupy the absolute centre of the Madhubani visual world. They are the reason the tradition exists, its presiding deities, and its eternal subject. Every Madhubani painting of a wedding, every kohbar ghar adorned for a bride, every lotus and fish and symbol of fertility, at some level, a remembrance of that first great celebration, the marriage of Ram and Sita in the kingdom of Mithila, painted into existence by the women of Janak's court, and never since forgotten.",
-        "Madhubani is not one tradition but five, each associated with a different community within the Mithila region, each with its own visual language and set of conventions.",
-        "Bharni — associated with the Brahmins, characterised by bold, filled forms. The subjects are primarily religious, gods, goddesses, and mythological narratives depicted with confident, celebratory energy. Sun imagery is an important aspect of this form.",
-        "Katchni — practised by the Kayastha community, is a more refined and linear style, using fine lines and cross-hatching to create texture and depth. The figures are delicate, the compositions intricate, the overall effect one of extraordinary precision and control.",
-        "Tantrik — rooted in the Tantric tradition, these paintings depict esoteric symbols, yantras, and the more powerful and complex aspects of the Hindu pantheon. They are among the most spiritually charged of all Madhubani works.",
-        "Godna — inspired by the tattoo tradition of the lower castes, Godna paintings use simple black lines on a plain ground to create compositions of striking directness and economy. They are among the most powerful and least embellished of all Madhubani styles.",
-        "Kohbar — the style specific to the bridal chamber, characterised by its central imagery of the lotus, the bamboo, and the fertility symbols that bless the new marriage.",
-        "The visual vocabulary of Madhubani is rich, specific, and deeply symbolic. The lotus, purity, fertility, and divine beauty. The fish, matsya, prosperity and abundance, sacred to the goddess. The bamboo grove, fertility and the continuity of life. The sun and moon, cosmic witnesses presiding over every composition. Serpents, protectors and symbols of the earth's power. Peacocks, beauty, love, and the coming of the rains. Elephants, wisdom and auspiciousness. Every motif carries meaning accumulated over centuries. Nothing is merely decorative.",
-        "Traditionally painted on freshly plastered mud walls using pigments drawn entirely from the natural world, turmeric for yellow, indigo for blue, cow dung and mud for earthy browns, kusum flowers for red, holi colours, soot and lamp black for the defining outlines. The brushes were twigs, bamboo sticks, fingers, and matchsticks. Today, Madhubani is also painted on paper, cloth, and canvas, a transition that has allowed the tradition to reach new audiences without losing the essential warmth and depth of its natural palette.",
-        "Madhubani is, at its heart, a tradition of prayer. Every painting is an offering, made at a moment of transition, celebration, gratitude, or supplication. The act of making is inseparable from the intention behind it. A woman painting the kohbar ghar is not simply decorating a room, she is invoking the blessings of the gods, the fertility of the earth, and the continuity of her family line. It is this understanding, that to paint is to pray, and that the image is alive with the intention that made it, that gives Madhubani its enduring power."
-      ]
-    },
-    {
-      "id": "bhil",
-      "title": "Bhil",
-      "subtitle": "Rajasthan · Madhya Pradesh · Gujarat · Forest keepers",
-      "excerpt": "Bhil art is the visual tradition of one of India's oldest and largest tribal communities, the Bhils of Rajasthan, Madhya Pradesh and Gujarat, custodians of India's forests for aeons. Like most tribal peoples, the Bhils are pagan, their spirituality rooted not in scripture but in the living forces of nature. The defining characteristic of Bhil art is the dot: every surface, figures, animals, trees, borders, is covered in densely packed, carefully placed dots of endlessly varied colour.",
-      "image": "",
-      "alt": "",
-      "modalParagraphs": [
-        "Bhil art is the visual tradition of one of India's oldest and largest tribal communities, the Bhils of Rajasthan, Madhya Pradesh, and Gujarat, custodians of India's forests for aeons. Like most tribal peoples, the Bhils are pagan, their spirituality rooted not in scripture but in the living forces of nature. Rain, sun, wind, the fertility of the earth, the turning of the seasons, each one a presence, each one honoured. This worldview is not the context for Bhil art. It is its very substance.",
-        "The defining characteristic of Bhil art is the dot. Every surface, figures, animals, trees, borders, backgrounds, is covered in densely packed, carefully placed dots of endlessly varied colour, each one applied with patient, deliberate intention.",
-        "The subjects of Bhil art are drawn directly from the world the Bhils inhabit and revere. Flora and fauna dominate, the trees, birds, animals, and rivers of the forest landscape rendered with the intimacy of a community that has lived among them for generations. Horses, peacocks, elephants, tigers, fish, flowering trees, the sun and moon, each one not merely depicted but honoured.",
-        "Local rituals and ceremonies fill the compositions alongside the natural world, festivals, harvests, marriages, and community gatherings specific to Bhil life and culture. These are not borrowed mythologies but living ones, rooted in a particular people and a particular place.",
-        "The Pithora painting deserves special mention, a large ceremonial work created collectively as an offering of gratitude to the deity Pithora Baba, painted on the walls of homes by specialist painters called Lakhara. A Pithora is not made, it is performed, the act of communal creation inseparable from the ritual it enacts."
       ]
     }
   ],
