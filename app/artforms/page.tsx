@@ -66,7 +66,8 @@ export default async function ArtformsPage() {
               key={form.id}
               className="grid grid-cols-1 items-center gap-6 border-b border-black/5 pb-8 last:border-b-0 md:grid-cols-2"
             >
-              <div className={`group relative aspect-[4/3] w-full overflow-hidden rounded ${i % 2 === 1 ? 'md:order-2' : ''}`}>
+              <div className={i % 2 === 1 ? 'md:order-2' : ''}>
+              <div className="group relative aspect-[4/3] w-full overflow-hidden rounded">
                 {form.image ? (
                   // A fixed aspect-[4/3] box (vs. the old intrinsic-size
                   // image) so every artform entry fills its column
@@ -89,8 +90,9 @@ export default async function ArtformsPage() {
                   </div>
                 )}
               </div>
+              {form.credit && <div className="mt-2 text-center text-xs italic tracking-wide text-terracotta">{form.credit}</div>}
+              </div>
               <div>
-                {form.credit && <div className="mb-1.5 text-xs italic tracking-wide text-terracotta">{form.credit}</div>}
                 <h2 className="font-head text-2xl text-headline-green">{form.title}</h2>
                 <div className="mb-2.5 mt-1 text-xs uppercase tracking-wide text-tan">{form.subtitle}</div>
                 <p className="mb-3.5 text-sm leading-relaxed text-muted">{form.excerpt}</p>
