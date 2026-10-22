@@ -30,11 +30,13 @@ every page's text and images.
   isn't configured, it falls back to the bundled seed from `/content`.
 - `lib/blob.ts` — `savePageContentBlob(page, data)` writes the edited JSON to Blob storage at
   `content/<page>.json` with `addRandomSuffix: false` (so the path stays stable and each save
-  overwrites the last one). `uploadImageBlob(file)` uploads an admin's
-  image upload to `uploads/<timestamp>-<filename>`.
+  overwrites the last one).
 - `/api/admin/content/[page]` (GET/PUT) — reads/writes a page's JSON via the above.
-- `/api/admin/upload` (POST) — accepts a multipart image upload, pushes it to Blob, returns its
-  public URL for the admin form to use.
+- `/api/admin/upload` (POST) — a Vercel Blob client-upload handshake route (`handleUpload` from
+  `@vercel/blob/client`): it issues a short-lived upload token so the browser can PUT the image
+  file straight to Blob storage, bypassing Vercel's ~4.5MB serverless request body limit that a
+  multipart upload through this route would hit. `ImageField`/`ImageListField` call `upload()`
+  from `@vercel/blob/client` against this route.
 - `/api/admin/login` + `/api/admin/logout` — password check against `ADMIN_PASSWORD`, sets an
   httpOnly signed session cookie (`jose`/HS256, ~7 day expiry).
 - `middleware.ts` — protects everything under `/admin/*` and `/api/admin/*` (except the login

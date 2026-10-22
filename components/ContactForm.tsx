@@ -44,7 +44,7 @@ export default function ContactForm({
             required
             value={name}
             onChange={(e) => setName(e.target.value)}
-            className="w-full rounded border border-black/15 bg-[#FBF7F0] px-3.5 py-2.5 text-sm text-ink transition-colors duration-300 ease-out hover:border-black/30 focus:border-terracotta focus:outline-none focus:ring-2 focus:ring-terracotta/20"
+            className="w-full rounded border border-black/15 bg-cream px-3.5 py-2.5 text-sm text-ink transition-colors duration-300 ease-out hover:border-black/30 focus:border-terracotta focus:outline-none focus:ring-2 focus:ring-terracotta/20"
           />
         </div>
         <div>
@@ -57,7 +57,7 @@ export default function ContactForm({
             required
             value={email}
             onChange={(e) => setEmail(e.target.value)}
-            className="w-full rounded border border-black/15 bg-[#FBF7F0] px-3.5 py-2.5 text-sm text-ink transition-colors duration-300 ease-out hover:border-black/30 focus:border-terracotta focus:outline-none focus:ring-2 focus:ring-terracotta/20"
+            className="w-full rounded border border-black/15 bg-cream px-3.5 py-2.5 text-sm text-ink transition-colors duration-300 ease-out hover:border-black/30 focus:border-terracotta focus:outline-none focus:ring-2 focus:ring-terracotta/20"
           />
         </div>
         <div>
@@ -68,7 +68,7 @@ export default function ContactForm({
             id="cf-subject"
             value={subject}
             onChange={(e) => setSubject(e.target.value)}
-            className="w-full rounded border border-black/15 bg-[#FBF7F0] px-3.5 py-2.5 text-sm text-ink transition-colors duration-300 ease-out hover:border-black/30 focus:border-terracotta focus:outline-none focus:ring-2 focus:ring-terracotta/20"
+            className="w-full rounded border border-black/15 bg-cream px-3.5 py-2.5 text-sm text-ink transition-colors duration-300 ease-out hover:border-black/30 focus:border-terracotta focus:outline-none focus:ring-2 focus:ring-terracotta/20"
           />
         </div>
         <div>
@@ -80,7 +80,7 @@ export default function ContactForm({
             rows={5}
             value={message}
             onChange={(e) => setMessage(e.target.value)}
-            className="w-full rounded border border-black/15 bg-[#FBF7F0] px-3.5 py-2.5 text-sm text-ink transition-colors duration-300 ease-out hover:border-black/30 focus:border-terracotta focus:outline-none focus:ring-2 focus:ring-terracotta/20"
+            className="w-full rounded border border-black/15 bg-cream px-3.5 py-2.5 text-sm text-ink transition-colors duration-300 ease-out hover:border-black/30 focus:border-terracotta focus:outline-none focus:ring-2 focus:ring-terracotta/20"
           />
         </div>
         <button

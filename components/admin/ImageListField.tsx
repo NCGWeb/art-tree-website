@@ -1,6 +1,7 @@
 'use client';
 
 import Image from 'next/image';
+import { upload } from '@vercel/blob/client';
 import { useState } from 'react';
 
 export default function ImageListField({
@@ -18,13 +19,12 @@ export default function ImageListField({
   async function handleFile(i: number, file: File) {
     setUploadingIndex(i);
     try {
-      const formData = new FormData();
-      formData.append('file', file);
-      const res = await fetch('/api/admin/upload', { method: 'POST', body: formData });
-      const data = await res.json();
-      if (!res.ok) throw new Error(data.error || 'Upload failed');
+      const blob = await upload(file.name, file, {
+        access: 'public',
+        handleUploadUrl: '/api/admin/upload',
+      });
       const next = [...images];
-      next[i] = data.url;
+      next[i] = blob.url;
       onChange(next);
     } catch (err) {
       alert(err instanceof Error ? err.message : 'Upload failed');

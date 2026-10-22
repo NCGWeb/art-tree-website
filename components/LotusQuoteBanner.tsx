@@ -11,22 +11,18 @@ import Reveal from '@/components/Reveal';
  * separate <Image> crops) to avoid the flowers showing up twice.
  *
  * Below the `sm` breakpoint the image's very wide 1999:667 aspect ratio
- * leaves too little height for the quote to sit centered over it without
- * overlapping the flowers, so on mobile the quote renders as its own text
- * block above a shorter, text-free decorative strip of the same image —
- * the two can never collide. From `sm` up there's enough height for the
- * original overlay treatment, vertically centered on the artwork.
+ * leaves too little height to fit both the flowers and the quote without
+ * stacking or overlap, so on mobile the artwork is dropped entirely and
+ * just the quote renders, sitting directly above the footer. From `sm` up
+ * there's enough height for the full artwork, quote centered on top of it.
  */
 export default function LotusQuoteBanner({ quote }: { quote: string }) {
   return (
     <Reveal as="section" className="overflow-hidden bg-[#F6F1E4]">
-      <div className="px-5 pt-8 text-center sm:hidden">
+      <div className="px-5 py-8 text-center sm:hidden">
         <blockquote className="mx-auto max-w-[24ch] font-head text-sm italic leading-snug text-headline-green">
           {quote}
         </blockquote>
-      </div>
-      <div className="relative mt-5 h-24 w-full sm:hidden">
-        <Image src="/images/footer-lotus.webp" alt="" aria-hidden="true" fill quality={90} className="object-contain" sizes="100vw" />
       </div>
 
       <div className="relative hidden w-full sm:block" style={{ aspectRatio: '1999 / 667' }}>
