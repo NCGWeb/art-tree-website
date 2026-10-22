@@ -41,8 +41,10 @@ export default async function AboutPage() {
         <div className="relative w-full aspect-[1955/803]">
           <Image src={about.hero.image} alt={about.hero.alt} fill priority quality={90} className="object-cover object-left-top" sizes="100vw" />
           <div className="absolute inset-0 bg-gradient-to-t from-ink/80 via-ink/30 to-ink/5 sm:bg-gradient-to-r sm:from-transparent sm:via-cream/50 sm:to-cream/92" />
-          <div className="absolute inset-0 z-10 flex items-end justify-start p-5 sm:items-center sm:justify-end sm:p-0 sm:px-5 lg:pr-10 xl:pr-16">
-            {heroText}
+          <div className="absolute inset-0 z-10">
+            <div className="mx-auto flex h-full max-w-site items-end justify-start p-5 sm:items-center sm:justify-end sm:py-0">
+              {heroText}
+            </div>
           </div>
         </div>
       </section>

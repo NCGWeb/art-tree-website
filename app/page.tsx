@@ -92,7 +92,8 @@ export default async function HomePage() {
         <div className="relative hidden w-full sm:block sm:aspect-[1955/803]">
           <Image src={home.record.image} alt={home.record.alt} fill quality={90} className="object-cover object-left-top" sizes="100vw" />
           <div className="absolute inset-0 bg-gradient-to-r from-transparent via-cream/50 to-cream/92" />
-          <div className="absolute inset-0 z-10 flex items-center justify-end px-5 sm:pr-8 lg:pr-12 xl:pr-20">
+          <div className="absolute inset-0 z-10">
+            <div className="mx-auto flex h-full max-w-site items-center justify-end px-5">
             <div className="max-w-xl">
               <h2 className="font-head text-2xl leading-tight text-headline-green lg:text-3xl">{home.record.heading}</h2>
               <div className="my-3.5 h-0.5 w-12 bg-gold" />
@@ -100,6 +101,7 @@ export default async function HomePage() {
               <div className="mt-3.5">
                 <Modal title={home.record.heading} paragraphs={home.record.modalParagraphs} buttonLabel={home.record.buttonLabel} />
               </div>
+            </div>
             </div>
           </div>
         </div>
