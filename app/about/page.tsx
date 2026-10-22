@@ -122,14 +122,14 @@ export default async function AboutPage() {
             <p className="mb-3 max-w-[48ch] text-sm leading-relaxed text-muted sm:mb-4">{about.philosophy.paragraph}</p>
             <Modal title={about.philosophy.heading} paragraphs={about.philosophy.modalParagraphs} buttonLabel={about.philosophy.buttonLabel} />
           </div>
-          <div className="flex min-h-[180px] flex-col items-center justify-center gap-3 sm:min-h-[220px] sm:gap-4">
+          <div className="flex flex-col items-start justify-center gap-3 sm:min-h-[220px] sm:items-center sm:gap-4">
             {/* Stacked (leaf above, quote below) instead of overlaid in the
                 same box — overlapping them made the quote hard to read
                 against the leaf. Source file had no alpha channel (a
                 near-white background baked in, a shade off the section's
                 own cream, which read as a visible box); re-exported with
                 that background keyed out to transparent. */}
-            <div className="relative h-24 w-40 sm:h-32 sm:w-56">
+            <div className="relative h-24 w-40 sm:h-32 sm:w-56 sm:self-auto">
               <Image
                 src={about.philosophy.sprigImage}
                 alt=""
@@ -140,7 +140,7 @@ export default async function AboutPage() {
                 sizes="224px"
               />
             </div>
-            <blockquote className="max-w-[20ch] text-center font-head text-xs italic leading-snug text-headline-green sm:text-xl">
+            <blockquote className="max-w-[24ch] text-left font-head text-xl italic leading-snug text-headline-green sm:text-center">
               {about.philosophy.quote}
             </blockquote>
           </div>
