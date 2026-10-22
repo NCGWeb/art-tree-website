@@ -66,7 +66,7 @@ export default function ArtformsEditor({ initial }: { initial: any }) {
             renderItem={(item: any, update) => (
               <>
                 <TextField label="Title" value={item.title} onChange={(v) => update({ title: v })} />
-                <TextField label="Artist credit (shown below the image, e.g. Gond Art by Durga Bai)" value={item.credit || ''} onChange={(v) => update({ credit: v })} />
+                <TextField label="Artist credit (shown below the image, e.g. Gond by Durga Bai)" value={item.credit || ''} onChange={(v) => update({ credit: v })} />
                 <TextField label="Subtitle (region · description)" value={item.subtitle} onChange={(v) => update({ subtitle: v })} />
                 <ImageField
                   label="Image (leave empty to show a placeholder)"
