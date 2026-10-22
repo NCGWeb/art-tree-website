@@ -4,11 +4,11 @@ import Image from 'next/image';
 import { useEffect, useRef, useState } from 'react';
 
 const POSITIONS = [
-  { x: -290, y: 70, rotate: -18, z: 1, w: 150, h: 230, opacity: 0.9 },
-  { x: -150, y: 20, rotate: -9, z: 2, w: 170, h: 270, opacity: 1 },
-  { x: 0, y: -10, rotate: 0, z: 5, w: 230, h: 350, opacity: 1 },
-  { x: 150, y: 20, rotate: 9, z: 2, w: 170, h: 270, opacity: 1 },
-  { x: 290, y: 70, rotate: 18, z: 1, w: 150, h: 230, opacity: 0.9 },
+  { x: -230, y: 56, rotate: -18, z: 1, w: 120, h: 184, opacity: 0.9 },
+  { x: -120, y: 16, rotate: -9, z: 2, w: 136, h: 216, opacity: 1 },
+  { x: 0, y: -8, rotate: 0, z: 5, w: 184, h: 280, opacity: 1 },
+  { x: 120, y: 16, rotate: 9, z: 2, w: 136, h: 216, opacity: 1 },
+  { x: 230, y: 56, rotate: 18, z: 1, w: 120, h: 184, opacity: 0.9 },
 ];
 
 type GalleryItem = { image: string; alt: string; title: string; form: string; region: string };
@@ -36,17 +36,14 @@ export default function GalleryFan({ items }: { items: GalleryItem[] }) {
   const current = items[cursor];
 
   return (
-    <div className="relative mx-auto mt-10 max-w-site">
+    <div className="relative mx-auto mt-4 max-w-site sm:mt-6">
       {/* Height must fully contain the tallest card's visual extent:
-          top-5 (20px) + pos.y (-10px) + pos.h (350px) = 360px for the
-          center card. The old h-[320px] base was 40px too short below the
-          sm breakpoint (640px) — StPageFlip... no, this is GalleryFan: the
-          center card visually overflowed the container by 40px and, being
-          position:absolute, painted over the caption/nav-buttons below it
-          and bled into the next section, since positioned elements always
-          paint above normal-flow siblings regardless of z-index. */}
+          top-5 (20px) + pos.y (-8px) + pos.h (280px) = 292px for the
+          center card. Positioned elements always paint above normal-flow
+          siblings regardless of z-index, so the box must be tall enough
+          that the center card doesn't bleed into the caption/nav below. */}
       <div
-        className="relative mx-auto flex h-[380px] items-start justify-center sm:h-[420px]"
+        className="relative mx-auto flex h-[300px] items-start justify-center sm:h-[340px]"
         onMouseEnter={() => (pausedRef.current = true)}
         onMouseLeave={() => (pausedRef.current = false)}
       >
@@ -68,7 +65,7 @@ export default function GalleryFan({ items }: { items: GalleryItem[] }) {
                 transform: `translate(calc(-50% + ${pos.x}px), ${pos.y}px) rotate(${pos.rotate}deg)`,
               }}
             >
-              <Image src={item.image} alt={item.alt} fill quality={90} className="object-cover" sizes="230px" />
+              <Image src={item.image} alt={item.alt} fill quality={90} className="object-cover" sizes="184px" />
             </button>
           );
         })}

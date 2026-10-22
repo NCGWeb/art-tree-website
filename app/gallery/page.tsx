@@ -19,10 +19,10 @@ export default async function GalleryPage() {
       {/* HERO — left-aligned text with a decorative illustrated branch
           bleeding off the top-right corner, per the client's reference
           mockup (previously this was centered with no decoration). */}
-      <section className="relative overflow-hidden bg-cream px-5 pb-10 pt-10 sm:pt-12">
+      <section className="relative overflow-hidden bg-cream px-5 pb-6 pt-10 sm:pt-12">
         {g.hero.birdImage && (
-          <div className="pointer-events-none absolute -right-6 -top-6 hidden h-56 w-56 sm:block md:-right-8 md:-top-8 md:h-72 md:w-72 lg:h-80 lg:w-80">
-            <Image src={g.hero.birdImage} alt="" aria-hidden="true" fill priority quality={90} className="object-contain object-right-top" sizes="320px" />
+          <div className="pointer-events-none absolute -right-6 -top-6 hidden h-56 w-64 sm:block md:-right-8 md:-top-8 md:h-72 md:w-80 lg:h-80 lg:w-[22rem]">
+            <Image src={g.hero.birdImage} alt="" aria-hidden="true" fill priority quality={90} className="object-cover object-right-top" sizes="352px" />
           </div>
         )}
         <div className="relative z-10 mx-auto max-w-site">
