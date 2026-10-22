@@ -8,6 +8,13 @@ import { getPageContent } from '@/lib/content';
 
 const STAT_ICONS = [StarIcon, PeopleIcon, BuildingIcon];
 
+const ORNAMENT_STRIP = {
+  backgroundImage:
+    "url(\"data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='36' height='28' viewBox='0 0 36 28'><g fill='none' stroke='%23C9A24A' stroke-width='1.2'><circle cx='18' cy='14' r='6'/><circle cx='18' cy='14' r='1.6' fill='%23C9A24A'/><path d='M18 2v4M18 22v4M6 14h4M26 14h4'/></g></svg>\")",
+  backgroundRepeat: 'repeat-y',
+  backgroundPosition: 'center top',
+} as const;
+
 const LEAF_POSITIONS: Record<string, { top: string; left: string; width: string; height: string; label: string; href: string }> = {
   about: { top: '14%', left: '60%', width: '12%', height: '17%', label: 'About Us', href: '/about' },
   artforms: { top: '32%', left: '65%', width: '13%', height: '17%', label: 'Art Forms', href: '/artforms' },
@@ -67,15 +74,30 @@ export default async function HomePage() {
           mobile/desktop split, image and text both always visible, same
           row, as asked. */}
       <Reveal as="section" className="relative overflow-hidden border-t border-black/5 bg-cream/88">
-        <div className="relative w-full aspect-[1955/803]">
+        {/* Mobile: normal document flow, text then image — avoids overlapping
+            the painted tree, which an overlay can't avoid at narrow widths. */}
+        <div className="px-5 py-8 sm:hidden">
+          <h2 className="font-head text-xl leading-tight text-headline-green">{home.record.heading}</h2>
+          <div className="my-2 h-0.5 w-10 bg-gold" />
+          <p className="max-w-[48ch] text-sm leading-relaxed text-muted">{home.record.paragraph}</p>
+          <div className="mt-3">
+            <Modal title={home.record.heading} paragraphs={home.record.modalParagraphs} buttonLabel={home.record.buttonLabel} />
+          </div>
+        </div>
+        <div className="relative aspect-[16/10] w-full sm:hidden">
+          <Image src={home.record.image} alt={home.record.alt} fill quality={90} className="object-cover object-left-top" sizes="100vw" />
+        </div>
+
+        {/* Desktop/tablet: overlay on the artwork's own blank-canvas area. */}
+        <div className="relative hidden w-full sm:block sm:aspect-[1955/803]">
           <Image src={home.record.image} alt={home.record.alt} fill quality={90} className="object-cover object-left-top" sizes="100vw" />
           <div className="absolute inset-0 bg-gradient-to-r from-transparent via-cream/50 to-cream/92" />
           <div className="absolute inset-0 z-10 flex items-center justify-end px-5 sm:pr-8 lg:pr-12 xl:pr-20">
             <div className="max-w-xl">
-              <h2 className="font-head text-lg leading-tight text-headline-green sm:text-2xl lg:text-3xl">{home.record.heading}</h2>
-              <div className="my-2 h-0.5 w-10 bg-gold sm:my-3.5 sm:w-12" />
-              <p className="hidden max-w-[48ch] text-sm leading-relaxed text-muted sm:block">{home.record.paragraph}</p>
-              <div className="mt-2 sm:mt-3.5">
+              <h2 className="font-head text-2xl leading-tight text-headline-green lg:text-3xl">{home.record.heading}</h2>
+              <div className="my-3.5 h-0.5 w-12 bg-gold" />
+              <p className="max-w-[48ch] text-sm leading-relaxed text-muted">{home.record.paragraph}</p>
+              <div className="mt-3.5">
                 <Modal title={home.record.heading} paragraphs={home.record.modalParagraphs} buttonLabel={home.record.buttonLabel} />
               </div>
             </div>
@@ -86,13 +108,15 @@ export default async function HomePage() {
       {/* STATS — a visually distinct band (warmer gold tone + vertical
           dividers) whose border runs along the same edge as its own
           background, rather than a separate inset box, so the two align. */}
-      <section className="bg-cream/88 py-12 sm:py-16" aria-label="Art Tree in numbers">
-        <div className="mx-auto max-w-site px-5">
-          <div className="grid grid-cols-1 divide-y divide-gold/25 border border-gold/40 bg-[#EFE1BD] sm:grid-cols-3 sm:divide-x sm:divide-y-0">
+      <section className="relative border-y border-gold/40 bg-[#F3EBD9] py-10 sm:py-12" aria-label="Art Tree in numbers">
+        <div aria-hidden="true" className="absolute inset-y-0 left-0 hidden w-9 border-r border-gold/40 sm:block lg:w-12" style={ORNAMENT_STRIP} />
+        <div aria-hidden="true" className="absolute inset-y-0 right-0 hidden w-9 border-l border-gold/40 sm:block lg:w-12" style={ORNAMENT_STRIP} />
+        <div className="mx-auto max-w-site px-5 sm:px-14">
+          <div className={`grid grid-cols-1 divide-y divide-gold/30 sm:divide-x sm:divide-y-0 ${home.stats.length === 4 ? 'sm:grid-cols-4' : 'sm:grid-cols-3'}`}>
             {home.stats.map((s, i) => {
               const Icon = STAT_ICONS[i % STAT_ICONS.length];
               return (
-                <Reveal as="div" key={i} delay={i * 90} className="px-5 py-7 text-center">
+                <Reveal as="div" key={i} delay={i * 90} className="px-5 py-6 text-center sm:py-2">
                   <Icon className="mx-auto mb-3 h-9 w-9 stroke-terracotta" />
                   <div className="font-head text-3xl font-bold text-ink">{s.number}</div>
                   <div className="mt-2 text-xs font-semibold uppercase tracking-wide">{s.label}</div>
@@ -115,7 +139,10 @@ export default async function HomePage() {
           <div className="relative aspect-[1610/975] w-full overflow-hidden">
             <Image src={home.canvas.image} alt={home.canvas.alt} fill quality={90} className="object-cover" sizes="(min-width: 768px) 50vw, 100vw" />
           </div>
-          <div className="px-5 md:pl-0">
+          <div className="relative px-5 md:pl-0 md:pr-24 lg:pr-32">
+            <div className="pointer-events-none absolute bottom-0 right-3 hidden h-32 w-[85px] opacity-90 md:block lg:right-8 lg:h-40 lg:w-[107px]">
+              <Image src="/images/canvas-flower-sprig.png" alt="" aria-hidden="true" fill quality={90} className="object-contain" sizes="96px" />
+            </div>
             <h2 className="mb-2 font-head text-2xl leading-tight text-headline-green sm:text-3xl">{home.canvas.heading}</h2>
             <div className="mb-3.5 h-0.5 w-12 bg-gold" />
             {home.canvas.paragraphs.map((p, i) => (
@@ -129,10 +156,13 @@ export default async function HomePage() {
       {/* WHAT WE DO */}
       <Reveal as="section" className="bg-cream/88 py-14 text-center sm:py-16">
         <div className="mx-auto max-w-site px-5">
-          <div className="mb-10 flex items-center justify-center gap-5 text-olive">
-            <span aria-hidden="true">⟵</span>
+          <div className="mb-10">
             <h2 className="font-head text-3xl font-bold text-headline-green sm:text-4xl">{home.whatWeDo.heading}</h2>
-            <span aria-hidden="true">⟶</span>
+            <div className="mx-auto mt-3 flex w-40 items-center gap-2 text-gold" aria-hidden="true">
+              <span className="h-px flex-1 bg-gold/70" />
+              <span className="text-xs leading-none">◆</span>
+              <span className="h-px flex-1 bg-gold/70" />
+            </div>
           </div>
           <div className="grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-4">
             {home.whatWeDo.items.map((item, i) => {
@@ -196,7 +226,11 @@ export default async function HomePage() {
 
       {/* FOOTER QUOTE BANNER */}
       <Reveal as="div" className="bg-footer-gold px-4 py-5 text-center font-head text-base leading-relaxed text-white">
-        {home.footerBanner}
+        <div className="mx-auto flex max-w-site items-center gap-4">
+          <span aria-hidden="true" className="hidden h-px flex-1 bg-white/50 sm:block" />
+          <span>{home.footerBanner}</span>
+          <span aria-hidden="true" className="hidden h-px flex-1 bg-white/50 sm:block" />
+        </div>
       </Reveal>
     </main>
   );

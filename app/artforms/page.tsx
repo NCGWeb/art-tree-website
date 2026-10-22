@@ -24,12 +24,12 @@ export default async function ArtformsPage() {
         <section className="relative overflow-hidden bg-cream/88">
           <div className="relative w-full aspect-[1955/803]">
             <Image src={af.hero.image} alt={af.hero.alt || ''} aria-hidden={!af.hero.alt} fill priority quality={90} className="object-cover object-left-top" sizes="100vw" />
-            <div className="absolute inset-0 bg-gradient-to-r from-transparent via-cream/50 to-cream/92" />
-            <div className="absolute inset-0 z-10 flex items-center justify-end px-5 lg:pr-10 xl:pr-16">
+            <div className="absolute inset-0 bg-gradient-to-t from-ink/80 via-ink/30 to-ink/5 sm:bg-gradient-to-r sm:from-transparent sm:via-cream/50 sm:to-cream/92" />
+            <div className="absolute inset-0 z-10 flex items-end justify-start p-5 sm:items-center sm:justify-end sm:p-0 sm:px-5 lg:pr-10 xl:pr-16">
               <div className="max-w-xl">
-                <div className="text-[0.65rem] font-semibold uppercase tracking-[0.2em] text-terracotta sm:text-xs">{af.hero.eyebrow}</div>
-                <h1 className="mt-1.5 font-head text-lg leading-tight text-headline-green sm:mt-2 sm:text-2xl lg:text-4xl">{af.hero.heading}</h1>
-                <div className="my-2 h-0.5 w-10 bg-gold sm:my-4 sm:w-12" />
+                <div className="text-[0.65rem] font-semibold uppercase tracking-[0.2em] text-white sm:text-xs sm:text-terracotta">{af.hero.eyebrow}</div>
+                <h1 className="mt-1.5 font-head text-base leading-tight text-white sm:mt-2 sm:text-2xl sm:text-headline-green lg:text-4xl">{af.hero.heading}</h1>
+                <div className="my-2 hidden h-0.5 w-10 bg-gold sm:my-4 sm:block sm:w-12" />
                 <p className="hidden max-w-[56ch] text-sm leading-relaxed text-muted sm:block">{af.hero.lead}</p>
               </div>
             </div>

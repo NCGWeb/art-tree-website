@@ -15,10 +15,10 @@ export default async function AboutPage() {
 
   const heroText = (
     <div className="max-w-xl">
-      <div className="text-[0.65rem] font-semibold uppercase tracking-[0.2em] text-terracotta sm:text-xs">{about.hero.eyebrow}</div>
-      <h1 className="mt-1.5 font-head text-lg leading-tight text-headline-green sm:mt-2 sm:text-2xl lg:text-4xl">{about.hero.heading}</h1>
-      <div className="my-2 h-0.5 w-10 bg-gold sm:my-4 sm:w-12" />
-      <p className="max-w-[46ch] text-xs leading-snug text-muted sm:text-sm sm:leading-relaxed">{about.hero.lead}</p>
+      <div className="text-[0.65rem] font-semibold uppercase tracking-[0.2em] text-white sm:text-xs sm:text-terracotta">{about.hero.eyebrow}</div>
+      <h1 className="mt-1.5 font-head text-base leading-tight text-white sm:mt-2 sm:text-2xl sm:text-headline-green lg:text-4xl">{about.hero.heading}</h1>
+      <div className="my-2 hidden h-0.5 w-10 bg-gold sm:my-4 sm:block sm:w-12" />
+      <p className="hidden max-w-[46ch] text-sm leading-relaxed text-muted sm:block">{about.hero.lead}</p>
       <blockquote className="mt-2 hidden max-w-md font-head italic leading-snug text-headline-green sm:mt-5 sm:block">
         <p className="text-base sm:text-lg">{about.hero.quote}</p>
         <span className="mt-2 block font-body text-xs not-italic text-muted-soft">— {about.hero.quoteAttribution}</span>
@@ -40,8 +40,8 @@ export default async function AboutPage() {
       <section className="relative overflow-hidden bg-cream/88">
         <div className="relative w-full aspect-[1955/803]">
           <Image src={about.hero.image} alt={about.hero.alt} fill priority quality={90} className="object-cover object-left-top" sizes="100vw" />
-          <div className="absolute inset-0 bg-gradient-to-r from-transparent via-cream/50 to-cream/92" />
-          <div className="absolute inset-0 z-10 flex items-center justify-end px-5 lg:pr-10 xl:pr-16">
+          <div className="absolute inset-0 bg-gradient-to-t from-ink/80 via-ink/30 to-ink/5 sm:bg-gradient-to-r sm:from-transparent sm:via-cream/50 sm:to-cream/92" />
+          <div className="absolute inset-0 z-10 flex items-end justify-start p-5 sm:items-center sm:justify-end sm:p-0 sm:px-5 lg:pr-10 xl:pr-16">
             {heroText}
           </div>
         </div>
@@ -99,7 +99,7 @@ export default async function AboutPage() {
 
       {/* PHILOSOPHY */}
       <Reveal as="section" className="relative overflow-hidden bg-[#EFE8D8] px-5 py-10 sm:py-12">
-        <div className="mx-auto grid max-w-site grid-cols-[1.3fr_1fr] items-center gap-4 sm:gap-8 md:grid-cols-[1.2fr_1fr]">
+        <div className="mx-auto grid max-w-site grid-cols-1 items-center gap-6 sm:grid-cols-[1.3fr_1fr] sm:gap-8 md:grid-cols-[1.2fr_1fr]">
           <div>
             <div className="mb-2 text-xs font-semibold uppercase tracking-[0.2em] text-terracotta">{about.philosophy.eyebrow}</div>
             <h2 className="mb-1.5 font-head text-2xl leading-tight text-headline-green sm:text-3xl">{about.philosophy.heading}</h2>
