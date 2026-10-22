@@ -85,15 +85,15 @@ export default async function HomePage() {
           </div>
         </div>
         <div className="relative aspect-[16/10] w-full sm:hidden">
-          <Image src={home.record.image} alt={home.record.alt} fill quality={90} className="object-cover object-left-top" sizes="100vw" />
+          <Image src={home.record.image} alt={home.record.alt} fill quality={90} className="object-cover object-right" sizes="100vw" />
         </div>
 
-        {/* Desktop/tablet: overlay on the artwork's own blank-canvas area. */}
+        {/* Desktop/tablet: overlay on the artwork's own blank-canvas area (left). */}
         <div className="relative hidden w-full sm:block sm:aspect-[1955/803]">
-          <Image src={home.record.image} alt={home.record.alt} fill quality={90} className="object-cover object-left-top" sizes="100vw" />
-          <div className="absolute inset-0 bg-gradient-to-r from-transparent via-cream/50 to-cream/92" />
+          <Image src={home.record.image} alt={home.record.alt} fill quality={90} className="object-cover object-right-top" sizes="100vw" />
+          <div className="absolute inset-0 bg-gradient-to-l from-transparent via-cream/30 to-cream/70" />
           <div className="absolute inset-0 z-10">
-            <div className="mx-auto flex h-full max-w-site items-center justify-end px-5">
+            <div className="mx-auto flex h-full max-w-site items-center justify-start px-5">
             <div className="max-w-xl">
               <h2 className="font-head text-2xl leading-tight text-headline-green lg:text-3xl">{home.record.heading}</h2>
               <div className="my-3.5 h-0.5 w-12 bg-gold" />
