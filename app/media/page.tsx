@@ -16,13 +16,13 @@ export default async function MediaPage() {
     // warm cream palette as every other page, so the shared header/footer
     // don't sit against a jarring dark band.
     <main id="main">
-      <section className="bg-gradient-to-b from-cream to-[#EFE8D8] px-5 py-10 text-center sm:py-12">
+      <section className="bg-gradient-to-b from-cream/88 to-[#EFE8D8]/88 px-5 py-10 text-center sm:py-12">
         <div className="text-xs font-semibold uppercase tracking-[0.2em] text-terracotta">{media.hero.eyebrow}</div>
         <h1 className="mt-2 font-head text-3xl text-headline-green sm:text-4xl">{media.hero.heading}</h1>
         <p className="mx-auto mt-3 max-w-[52ch] text-sm leading-relaxed text-muted">{media.hero.lead}</p>
       </section>
 
-      <Reveal as="section" className="bg-cream-deep/93 py-10 sm:py-14">
+      <Reveal as="section" className="bg-cream-deep/88 py-10 sm:py-14">
         <MediaFlipbook items={media.items} />
       </Reveal>
     </main>

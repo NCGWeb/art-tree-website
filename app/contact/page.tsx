@@ -50,25 +50,21 @@ export default async function ContactPage() {
         </div>
       </section>
 
-      <section className="bg-cream/93 pb-4 pt-10 sm:pb-6 sm:pt-12">
+      <section className="bg-cream/88 pb-4 pt-10 sm:pb-6 sm:pt-12">
         <div className="mx-auto grid max-w-site grid-cols-1 gap-10 px-5 lg:grid-cols-[1fr_1.2fr]">
           <Reveal as="div">
             <h2 className="mb-1.5 font-head text-2xl text-headline-green">Contact Information</h2>
             <div className="mb-5 h-0.5 w-12 bg-gold" />
 
-            <div className="mb-4 flex items-start gap-3.5">
-              <span className="flex h-9 w-9 shrink-0 items-center justify-center rounded-full border border-gold-dark text-terracotta">
-                <PhoneIcon className="h-4 w-4" />
-              </span>
+            <div className="group mb-3 flex items-start gap-3.5 rounded-lg px-2 py-2.5 -mx-2 transition-all duration-300 ease-out hover:translate-x-1 hover:bg-terracotta/5">
+              <PhoneIcon className="mt-1.5 h-[18px] w-[18px] shrink-0 text-terracotta transition-transform duration-300 ease-out group-hover:scale-110" />
               <a href={`tel:${contact.phone.replace(/\s+/g, '')}`} className="border-b border-transparent pt-1.5 text-sm text-ink transition-colors duration-300 ease-out hover:border-terracotta hover:text-terracotta">
                 {contact.phone}
               </a>
             </div>
 
-            <div className="mb-4 flex items-start gap-3.5">
-              <span className="flex h-9 w-9 shrink-0 items-center justify-center rounded-full border border-gold-dark text-terracotta">
-                <MailIcon className="h-4 w-4" />
-              </span>
+            <div className="group mb-3 flex items-start gap-3.5 rounded-lg px-2 py-2.5 -mx-2 transition-all duration-300 ease-out hover:translate-x-1 hover:bg-terracotta/5">
+              <MailIcon className="mt-1.5 h-[18px] w-[18px] shrink-0 text-terracotta transition-transform duration-300 ease-out group-hover:scale-110" />
               <div className="pt-1.5 text-sm text-ink">
                 {contact.emails.map((e: string, i: number) => (
                   <div key={i}>
@@ -78,10 +74,8 @@ export default async function ContactPage() {
               </div>
             </div>
 
-            <div className="mb-6 flex items-start gap-3.5">
-              <span className="flex h-9 w-9 shrink-0 items-center justify-center rounded-full border border-gold-dark text-terracotta">
-                <PinIcon className="h-4 w-4" />
-              </span>
+            <div className="group mb-6 flex items-start gap-3.5 rounded-lg px-2 py-2.5 -mx-2 transition-all duration-300 ease-out hover:translate-x-1 hover:bg-terracotta/5">
+              <PinIcon className="mt-1.5 h-[18px] w-[18px] shrink-0 text-terracotta transition-transform duration-300 ease-out group-hover:scale-110" />
               <div className="pt-1.5 text-sm text-ink">
                 {contact.location} <em className="block text-xs text-tan not-italic">({contact.locationNote})</em>
               </div>

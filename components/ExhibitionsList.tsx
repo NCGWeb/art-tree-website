@@ -87,7 +87,7 @@ export default function ExhibitionsList({
         </div>
       </section>
 
-      <section className="bg-cream/93 py-6">
+      <section className="bg-cream/88 py-6">
         <div className="mx-auto max-w-site space-y-10 px-5">
           {filtered.map((ev, i) => (
             <Reveal

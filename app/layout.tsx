@@ -47,13 +47,13 @@ export default async function RootLayout({
           // opaque backgrounds or a page's hero image on top of it. The
           // flat-color gradient over the image lightens it to a faint
           // texture (page sections lay their own near-opaque cream tint on
-          // top of this too — see the bg-cream/93 etc. classes across the
+          // top of this too — see the bg-cream/88 etc. classes across the
           // page files) rather than the image's true saturated colors.
           <div
             aria-hidden="true"
             className="fixed inset-0 -z-10"
             style={{
-              backgroundImage: `linear-gradient(rgba(250, 247, 240, 0.93), rgba(250, 247, 240, 0.93)), url(${bodyBgImage})`,
+              backgroundImage: `linear-gradient(rgba(250, 247, 240, 0.88), rgba(250, 247, 240, 0.88)), url(${bodyBgImage})`,
               backgroundSize: 'cover',
               backgroundPosition: 'center',
               backgroundRepeat: 'no-repeat',

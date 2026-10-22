@@ -47,7 +47,7 @@ export default async function AboutPage() {
       </section>
 
       {/* OUR STORY */}
-      <section className="grid grid-cols-1 bg-cream/93 md:grid-cols-2">
+      <section className="grid grid-cols-1 bg-cream/88 md:grid-cols-2">
         <Reveal as="div" className="order-2 flex flex-col justify-center bg-expertise-terracotta p-8 text-white md:order-1 md:p-11">
           <div className="mb-2 text-xs font-semibold uppercase tracking-[0.2em] text-white/80">{about.story.eyebrow}</div>
           <h2 className="mb-1.5 font-head text-2xl leading-tight text-white sm:text-3xl">{about.story.heading}</h2>
@@ -68,7 +68,7 @@ export default async function AboutPage() {
       </section>
 
       {/* WHAT WE DO */}
-      <section className="grid grid-cols-1 bg-cream/93 md:grid-cols-2">
+      <section className="grid grid-cols-1 bg-cream/88 md:grid-cols-2">
         <div className="relative order-1 min-h-[220px]">
           <Image src={about.whatWeDo.image} alt={about.whatWeDo.alt} fill quality={90} className="object-cover" sizes="(min-width: 768px) 50vw, 100vw" />
         </div>
