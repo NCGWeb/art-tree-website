@@ -71,7 +71,7 @@ read from Blob first, falling back to the bundled JSON seed.
 ## IMPORTANT: production content lives in Blob storage, not in this repo
 
 **This is the single most important thing to understand before touching any page's text or
-images.** Production (`art-tree-website.vercel.app` / the live domain) has real content saved
+images.** Production (`art-tree-website-rho.vercel.app` / the live domain) has real content saved
 via `/admin` for `home`, `about`, `artforms`, `exhibitions`, `gallery`, and `media` — custom
 hero photos, real press images, art-form edits — that **does not exist in this repo** and is
 **not overwritten by deploying new code**. Editing `content/home.json` and pushing changes
@@ -169,14 +169,29 @@ chromium`; it is not in `package.json`. Screenshot at 375 and 1440 wide. Scroll-
 `fullPage` screenshot, and use `waitUntil: 'load'` (dev HMR never reaches `networkidle`). Local dev
 reads the same Blob as production once `BLOB_READ_WRITE_TOKEN` is set.
 
-## Deploying and syncing the CMS
+## Hosting and deploying (moved 2026-10-23)
 
-Push to `origin master`; Vercel's GitHub integration deploys it. Check with
-`gh api repos/thiru-hue/art-tree-website/commits/<sha>/status`. If a change touches content, push
-first and wait for `success`, then patch the Blob (so the new file exists before the page
-references it), changing only the fields you edited, and report which Blob values you replaced.
-Before overwriting any image field, read its current Blob value; it may be the owner's own upload
-(this already happened once with the Gallery branch image) and should be kept or cut out, not swapped.
+The site moved off the old Vercel team (`zzxc`, paused for exceeding Hobby limits) to the new
+Vercel account **Northville** (user `hello-53371763`, team slug `northville`).
+- **Live URL:** https://art-tree-website-rho.vercel.app (also `art-tree-website-northville.vercel.app`).
+  The old `art-tree-website.vercel.app` belongs to the paused account and returns 402.
+- **Repo:** `NCGWeb/art-tree-website` (Vercel is connected to it, so a push deploys). The old repo
+  `thiru-hue/art-tree-website` is kept as a backup (remote `origin`).
+- **Blob store:** `art-tree-blob` (`fafoipekjr6jdjwv.public.blob.vercel-storage.com`). Content and
+  25 uploaded images were copied from the old store (`pkrmhzwvtlfb70wx`, still intact; 16 unreferenced
+  files were not copied). Link the CLI to the new project with `npx vercel link --yes --project art-tree-website`.
+- **Two GitHub accounts on this laptop.** `thiru-hue` uses HTTPS via `gh` (remote `origin`). `NCGWeb`
+  uses an SSH deploy key (`~/.ssh/id_ed25519_ncgweb`) through the host alias `github-ncgweb` in
+  `~/.ssh/config` (remote `ncgweb` = `git@github-ncgweb:NCGWeb/art-tree-website.git`). Deploy with
+  `git push ncgweb master`; also `git push origin master` to keep the backup current.
+- **Env vars** (Vercel → art-tree-website → Settings): `ADMIN_PASSWORD`, `SESSION_SECRET` (same values as
+  `.env.local`) and `BLOB_READ_WRITE_TOKEN` (added by the Blob store). `.env.local` now holds the NEW store's
+  token; the old token only exists in the old Vercel dashboard.
+
+Deploy check: `npx vercel ls` (status Ready) or `curl -I` the live URL; if a change touches content, push first,
+wait for Ready, then patch the Blob (so the new file exists before the page references it), changing only the
+fields you edited. Before overwriting any image field, read its current Blob value; it may be the owner's own
+upload and should be kept or cut out, not swapped.
 
 **Never read a content blob with a query string (`?t=`, `?v=`).** Blob serves an OLDER copy for URLs
 with a query, while the plain URL is the one refreshed on overwrite. Read-modify-write scripts that
@@ -248,6 +263,7 @@ Open items / next steps:
 5. Contact and Media pages have not been through the mobile/desktop audit (only Home, About, Art
    Forms, Gallery have).
 6. A dev server may not be running; start it with `npm run dev` before screenshots.
+7. Optional: connect a custom domain and/or upgrade to Pro; confirm the admin login works on the new URL.
 
 ## Known chores to be done after a `npm run build`
 
