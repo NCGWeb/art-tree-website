@@ -243,8 +243,13 @@ keep them at or below their native size.
 
 ## Where we left off (update this at the end of each session)
 
-Last updated 2026-10-22. Everything below is pushed to GitHub (`master`) and live on Vercel; the
-saved Blob content is in sync for the fields listed.
+Last updated 2026-10-23. Everything below is pushed to GitHub (`master`, both remotes) and live on
+Vercel; the saved Blob content is in sync for the fields listed.
+
+2026-10-23 session: the site is live on the `zzxc` Pro account again (see Hosting above);
+`.env.local` now holds the `zzxc` store token and its content matches live; `.gitignore` now excludes
+`.vercel` and `.env*`; four unreferenced images were added to `public/images/` (two ChatGPT PNGs, the
+ganga aarti Madhubani JPEG, `profile pic.JPG`), not yet used on any page.
 
 Done this session:
 - Home: Record section uses the garden artwork (`record-women.webp`), text on the left, stacked on
