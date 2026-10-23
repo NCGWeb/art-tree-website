@@ -171,6 +171,18 @@ reads the same Blob as production once `BLOB_READ_WRITE_TOKEN` is set.
 
 ## Hosting and deploying (moved 2026-10-23)
 
+**UPDATE 2026-10-23, supersedes the move below:** the owner upgraded the `zzxc` team to **Pro**, so the
+live site is `art-tree-website.vercel.app` on `zzxc` again (deploys from the `thiru-hue` repo, `origin`),
+reading the old Blob store `pkrmhzwvtlfb70wx` (`art-tree-website-blob`). The Northville project
+`art-tree-website` no longer exists (its `*.vercel.app` URLs return 404) and the Northville store
+`art-tree-blob` is an unused copy. The Blob optimization (`a08687a`, no `list()` per request) is on both
+repos. **`.env.local` must hold the `zzxc` store's `BLOB_READ_WRITE_TOKEN`** (store id `pkrmhzwvtlfb70wx`,
+from the store's `.env.local` tab); until then it still holds the Northville token (`faFoIpEkjr6jDJWV`),
+so local dev and any Blob patch would hit the wrong store. The Vercel CLI here is logged into Northville;
+run `npx vercel login` as the `zzxc` account before using it for the live project.
+
+Historical notes (the move to Northville):
+
 The site moved off the old Vercel team (`zzxc`, paused for exceeding Hobby limits) to the new
 Vercel account **Northville** (user `hello-53371763`, team slug `northville`).
 - **Live URL:** https://art-tree-website-rho.vercel.app (also `art-tree-website-northville.vercel.app`).
