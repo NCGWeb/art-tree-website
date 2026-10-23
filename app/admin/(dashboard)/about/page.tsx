@@ -2,6 +2,6 @@ import AboutEditor from '@/components/admin/editors/AboutEditor';
 import { getPageContent } from '@/lib/content';
 
 export default async function AdminAboutPage() {
-  const data = await getPageContent('about');
+  const data = await getPageContent('about', { fresh: true });
   return <AboutEditor initial={data} />;
 }

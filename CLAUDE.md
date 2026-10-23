@@ -178,10 +178,16 @@ references it), changing only the fields you edited, and report which Blob value
 Before overwriting any image field, read its current Blob value; it may be the owner's own upload
 (this already happened once with the Gallery branch image) and should be kept or cut out, not swapped.
 
-**Blob reads can be stale for ~1 minute after a write** (CDN cache; `?t=` does not bust it). A
-second read-modify-write within that window writes the OLD copy back and silently reverts the
-first patch (this wiped six art-form credits once). Set every field you need in a single patch,
-or wait 90s between patches, and verify against the live page, not a Blob re-read.
+**Never read a content blob with a query string (`?t=`, `?v=`).** Blob serves an OLDER copy for URLs
+with a query, while the plain URL is the one refreshed on overwrite. Read-modify-write scripts that
+used `?t=` silently reverted earlier patches (it wiped six art-form credits and the "Gond" rename).
+Read the plain `list()` URL / `https://<storeId>.public.blob.vercel-storage.com/content/<page>.json`
+with `cache: 'no-store'`, patch every field you need in ONE write, and verify against the live page.
+
+**`lib/content.ts` must not call `list()` per request.** Each `list()` is a billable Blob "advanced
+operation"; doing it on every page view blew the Hobby cap (2K) and paused the account. Public reads
+GET the fixed URL (store id comes from the token) and cache 60s in memory; admin screens pass
+`{ fresh: true }`.
 
 Pages with saved Blob content: home, about, exhibitions, artforms, gallery, media. Contact and
 site have none, so their seeds apply directly.

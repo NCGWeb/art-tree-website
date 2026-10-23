@@ -15,7 +15,7 @@ export async function GET(
   if (!isPageKey(params.page)) {
     return NextResponse.json({ error: 'Unknown page' }, { status: 404 });
   }
-  const data = await getPageContent(params.page);
+  const data = await getPageContent(params.page, { fresh: true });
   return NextResponse.json(data);
 }
 
