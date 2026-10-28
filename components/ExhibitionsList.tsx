@@ -101,8 +101,8 @@ export default function ExhibitionsList({
                 <div className="text-sm text-ink">{ev.month}</div>
                 <div className="font-head text-base text-terracotta">{ev.year}</div>
               </div>
-              <div className="relative aspect-[4/3] w-full overflow-hidden rounded shadow">
-                <Image src={ev.image} alt={ev.alt} fill quality={90} className="object-cover transition-transform duration-500 ease-out hover:scale-105" sizes="260px" />
+              <div className="relative aspect-[4/3] w-full overflow-hidden rounded bg-cream-deep shadow">
+                <Image src={ev.image} alt={ev.alt} fill quality={90} className="object-contain transition-transform duration-500 ease-out hover:scale-105" sizes="(min-width: 640px) 300px, 90vw" />
               </div>
               <div>
                 <div className="mb-1 text-xs font-semibold uppercase tracking-wide text-tan">{ev.category}</div>
