@@ -35,7 +35,6 @@ export default function GalleryFan({ items }: { items: GalleryItem[] }) {
     setCursor((c) => (c + dir + items.length) % items.length);
   }
 
-  const current = items[cursor];
 
   return (
     <div className="relative mx-auto mt-6 w-full max-w-[1500px] animate-fadeIn px-2 sm:mt-8 sm:px-4">
@@ -72,15 +71,7 @@ export default function GalleryFan({ items }: { items: GalleryItem[] }) {
         })}
       </div>
 
-      <div key={cursor} className="relative z-10 mt-6 text-center animate-fadeIn">
-        <div className="text-sm font-semibold text-ink sm:text-base">{current.title}</div>
-        <div className="mx-auto my-2 h-0.5 w-8 bg-gold" />
-        <div className="text-xs text-muted-soft sm:text-sm">
-          {current.form} | {current.region}
-        </div>
-      </div>
-
-      <div className="mt-4 flex justify-center gap-3">
+      <div className="mt-6 flex justify-center gap-3">
         <button
           type="button"
           aria-label="Previous"
