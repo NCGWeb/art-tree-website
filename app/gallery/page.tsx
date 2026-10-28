@@ -93,13 +93,22 @@ export default async function GalleryPage() {
           <div className="grid grid-cols-2 gap-5 lg:grid-cols-4">
             {g.featured.items.map((item, i) => (
               <Reveal as="figure" key={i} delay={Math.min(i, 4) * 70} className="group">
-                <div className="relative aspect-[7/9] w-full overflow-hidden rounded-md border border-gold/40 bg-black/25 shadow-md transition-shadow duration-300 ease-out group-hover:shadow-xl">
+                <div className="relative aspect-[7/9] w-full overflow-hidden rounded-md border border-gold/40 bg-black/30 shadow-md transition-shadow duration-300 ease-out group-hover:shadow-xl">
+                  <Image
+                    src={item.image}
+                    alt=""
+                    aria-hidden="true"
+                    fill
+                    quality={30}
+                    className="scale-125 object-cover opacity-70 blur-2xl"
+                    sizes="64px"
+                  />
                   <Image
                     src={item.image}
                     alt={item.alt}
                     fill
                     quality={95}
-                    className="object-contain transition-transform duration-500 ease-out group-hover:scale-105"
+                    className="relative object-contain transition-transform duration-500 ease-out group-hover:scale-105"
                     sizes="(min-width: 1024px) 700px, 100vw"
                   />
                 </div>
