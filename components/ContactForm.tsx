@@ -23,12 +23,31 @@ export default function ContactForm({
   const [subject, setSubject] = useState('');
   const [message, setMessage] = useState('');
 
-  function handleSubmit(e: FormEvent) {
+  const [website, setWebsite] = useState('');
+  const [status, setStatus] = useState<'idle' | 'sending' | 'sent'>('idle');
+
+  async function handleSubmit(e: FormEvent) {
     e.preventDefault();
-    const finalSubject = subject.trim() || defaultSubject;
-    const body = `Name: ${name.trim()}\nEmail: ${email.trim()}\n\n${message.trim()}`;
-    const mailto = `mailto:${recipientEmail}?subject=${encodeURIComponent(finalSubject)}&body=${encodeURIComponent(body)}`;
-    window.location.href = mailto;
+    setStatus('sending');
+    try {
+      const res = await fetch('/api/contact', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ name, email, subject, message, website }),
+      });
+      if (!res.ok) throw new Error(String(res.status));
+      setStatus('sent');
+      setName('');
+      setEmail('');
+      setSubject('');
+      setMessage('');
+    } catch {
+      // Server mail unavailable: fall back to the visitor's own mail app.
+      setStatus('idle');
+      const finalSubject = subject.trim() || defaultSubject;
+      const body = `Name: ${name.trim()}\nEmail: ${email.trim()}\n\n${message.trim()}`;
+      window.location.href = `mailto:${recipientEmail}?subject=${encodeURIComponent(finalSubject)}&body=${encodeURIComponent(body)}`;
+    }
   }
 
   return (
@@ -83,12 +102,26 @@ export default function ContactForm({
             className="w-full rounded border border-tan/40 bg-cream-deep/70 px-3.5 py-2.5 text-sm text-ink transition-colors duration-300 ease-out hover:border-terracotta/40 focus:border-terracotta focus:outline-none focus:ring-2 focus:ring-terracotta/20"
           />
         </div>
+        <input
+          tabIndex={-1}
+          autoComplete="off"
+          aria-hidden="true"
+          value={website}
+          onChange={(e) => setWebsite(e.target.value)}
+          className="absolute -left-[9999px] h-0 w-0 opacity-0"
+        />
         <button
           type="submit"
-          className="inline-flex items-center gap-2 border border-ink px-6 py-3 text-xs uppercase tracking-widest text-ink transition-all duration-300 ease-out hover:-translate-y-0.5 hover:bg-ink hover:text-cream"
+          disabled={status === 'sending'}
+          className="inline-flex items-center gap-2 border border-ink px-6 py-3 text-xs uppercase tracking-widest text-ink transition-all duration-300 ease-out hover:-translate-y-0.5 hover:bg-ink hover:text-cream disabled:opacity-60"
         >
-          {labels.submitLabel} <span aria-hidden="true">→</span>
+          {status === 'sending' ? 'Sending…' : labels.submitLabel} <span aria-hidden="true">→</span>
         </button>
+        {status === 'sent' && (
+          <p role="status" className="text-sm text-headline-green">
+            Thank you, your message has been sent. We will get back to you soon.
+          </p>
+        )}
       </form>
     </div>
   );
