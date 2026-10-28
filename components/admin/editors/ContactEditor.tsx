@@ -55,11 +55,10 @@ export default function ContactEditor({ initial }: { initial: any }) {
           <h2 className="mb-3 font-head text-lg text-headline-green">Contact details</h2>
           <div className="space-y-3">
             <TextField label="Phone number" value={data.phone} onChange={(v) => set(['phone'], v)} />
-            <StringListField label="Email addresses shown on the page" value={data.emails} onChange={(v) => set(['emails'], v)} />
-            <TextField
-              label="Email the contact form sends to"
-              value={data.recipientEmail}
-              onChange={(v) => set(['recipientEmail'], v)}
+            <StringListField
+              label="Email addresses (shown on the page; the contact form sends to all of them)"
+              value={data.emails}
+              onChange={(v) => set(['emails'], v)}
             />
             <TextField label="Location" value={data.location} onChange={(v) => set(['location'], v)} />
             <TextField label="Location note" value={data.locationNote} onChange={(v) => set(['locationNote'], v)} />
