@@ -5,7 +5,7 @@ import { forwardRef, useEffect, useRef, useState, type ComponentType } from 'rea
 // Pages run latest to oldest. `url` (optional) is the online article the page
 // came from; when set, the page shows a "Read article" link. `publication` and
 // `date` (YYYY-MM-DD) feed the caption under the book.
-type MediaItem = { image: string; alt: string; url?: string; publication?: string; date?: string };
+type MediaItem = { image: string; alt: string; url?: string; publication?: string; date?: string; event?: string };
 
 const MONTHS = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'];
 function formatDate(iso?: string) {
@@ -179,9 +179,9 @@ export default function MediaFlipbook({ items }: { items: MediaItem[] }) {
           Next ›
         </button>
       </div>
-      {(items[pageIndex]?.publication || items[pageIndex]?.date) && (
+      {(items[pageIndex]?.event || items[pageIndex]?.publication || items[pageIndex]?.date) && (
         <p className="text-center text-sm font-medium text-ink">
-          {[items[pageIndex]?.publication, formatDate(items[pageIndex]?.date)].filter(Boolean).join(' · ')}
+          {[items[pageIndex]?.event, items[pageIndex]?.publication, formatDate(items[pageIndex]?.date)].filter(Boolean).join(' · ')}
         </p>
       )}
       <p className="text-center text-xs text-muted-soft">Drag a corner, swipe, or use the arrows to flip through.</p>

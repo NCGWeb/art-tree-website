@@ -53,7 +53,7 @@ export default function MediaEditor({ initial }: { initial: any }) {
           <CardList
             items={data.items}
             onChange={(v) => set(['items'], v)}
-            newItem={() => ({ image: '', alt: '', publication: '', date: '', url: '' })}
+            newItem={() => ({ image: '', alt: '', event: '', publication: '', date: '', url: '' })}
             addLabel="+ Add page"
             itemLabel={(item: any, i: number) => `Page ${i + 1}${item.publication ? ` · ${item.publication}` : ''}`}
             renderItem={(item: any, update) => (
@@ -65,6 +65,7 @@ export default function MediaEditor({ initial }: { initial: any }) {
                   onSrcChange={(v) => update({ image: v })}
                   onAltChange={(v) => update({ alt: v })}
                 />
+                <TextField label="Event (as named on the Exhibitions page, shown under the book)" value={item.event || ''} onChange={(v) => update({ event: v })} />
                 <TextField label="Publication (shown under the book)" value={item.publication || ''} onChange={(v) => update({ publication: v })} />
                 <TextField label="Date, YYYY-MM-DD (shown under the book)" value={item.date || ''} onChange={(v) => update({ date: v })} />
                 <TextField label="Article link (adds a Read article button, leave empty for print clippings)" value={item.url || ''} onChange={(v) => update({ url: v })} />
