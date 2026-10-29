@@ -2,24 +2,43 @@
 
 import { forwardRef, useEffect, useRef, useState, type ComponentType } from 'react';
 
-type MediaItem = { image: string; alt: string };
+// Pages run latest to oldest. `url` (optional) is the online article the page
+// came from; when set, the page shows a "Read article" link. `publication` and
+// `date` (YYYY-MM-DD) feed the caption under the book.
+type MediaItem = { image: string; alt: string; url?: string; publication?: string; date?: string };
+
+const MONTHS = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'];
+function formatDate(iso?: string) {
+  const m = /^(\d{4})-(\d{2})-(\d{2})$/.exec(iso || '');
+  return m ? `${Number(m[3])} ${MONTHS[Number(m[2]) - 1]} ${m[1]}` : '';
+}
 
 // react-pageflip targets its own ref directly at each page's root DOM node
 // to size/position/flip it, so every page must forward a ref.
-const Page = forwardRef<HTMLDivElement, { image: string; alt: string; priority?: boolean }>(
-  ({ image, alt, priority }, ref) => (
+const Page = forwardRef<HTMLDivElement, { item: MediaItem; priority?: boolean }>(
+  ({ item, priority }, ref) => (
     <div ref={ref} className="flex h-full w-full items-center justify-center bg-white">
       {/* Plain <img>, not next/image: the flip engine applies its own
           absolute positioning/transform to this element while dragging, and
           a lazily-hydrated next/image fill box doesn't play well with that.
           Only the first couple of pages skip native lazy-loading. */}
       <img
-        src={image}
-        alt={alt}
+        src={item.image}
+        alt={item.alt}
         draggable={false}
         loading={priority ? 'eager' : 'lazy'}
         className="h-full w-full select-none object-contain"
       />
+      {item.url && (
+        <a
+          href={item.url}
+          target="_blank"
+          rel="noopener noreferrer"
+          className="absolute bottom-2 right-2 rounded-full bg-headline-green/90 px-3 py-1.5 text-[11px] font-medium uppercase tracking-wide text-white shadow transition-colors duration-300 ease-out hover:bg-terracotta sm:bottom-3 sm:right-3 sm:text-xs"
+        >
+          Read article ↗
+        </a>
+      )}
     </div>
   ),
 );
@@ -118,7 +137,7 @@ export default function MediaFlipbook({ items }: { items: MediaItem[] }) {
               onFlip={(e: any) => setPageIndex(e.data)}
             >
               {items.map((item, i) => (
-                <Page key={i} image={item.image} alt={item.alt} priority={i === 0} />
+                <Page key={i} item={item} priority={i === 0} />
               ))}
             </FlipBook>
           ) : (
@@ -160,6 +179,11 @@ export default function MediaFlipbook({ items }: { items: MediaItem[] }) {
           Next ›
         </button>
       </div>
+      {(items[pageIndex]?.publication || items[pageIndex]?.date) && (
+        <p className="text-center text-sm font-medium text-ink">
+          {[items[pageIndex]?.publication, formatDate(items[pageIndex]?.date)].filter(Boolean).join(' · ')}
+        </p>
+      )}
       <p className="text-center text-xs text-muted-soft">Drag a corner, swipe, or use the arrows to flip through.</p>
     </div>
   );

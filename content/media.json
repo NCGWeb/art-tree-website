@@ -9,39 +9,250 @@
     "lead": "Flip through our press coverage, features and reviews, one page at a time."
   },
   "items": [
-    { "image": "/images/media/8.jpg", "alt": "Press coverage page 1" },
-    { "image": "/images/media/13.jpg", "alt": "Press coverage page 2" },
-    { "image": "/images/media/7.jpg", "alt": "Press coverage page 3" },
-    { "image": "/images/media/9.jpg", "alt": "Press coverage page 4" },
-    { "image": "/images/media/11.jpg", "alt": "Press coverage page 5" },
-    { "image": "/images/media/4.jpg", "alt": "Press coverage page 6" },
-    { "image": "/images/media/6.jpg", "alt": "Press coverage page 7" },
-    { "image": "/images/media/10.jpg", "alt": "Press coverage page 8" },
-    { "image": "/images/media/12.jpg", "alt": "Press coverage page 9" },
-    { "image": "/images/media/14.jpg", "alt": "Press coverage page 10" },
-    { "image": "/images/media/15.jpg", "alt": "Press coverage page 11" },
-    { "image": "/images/media/16.jpg", "alt": "Press coverage page 12" },
-    { "image": "/images/media/17.jpg", "alt": "Press coverage page 13" },
-    { "image": "/images/media/18.jpg", "alt": "Press coverage page 14" },
-    { "image": "/images/media/19.jpg", "alt": "Press coverage page 15" },
-    { "image": "/images/media/20.jpg", "alt": "Press coverage page 16" },
-    { "image": "/images/media/21.jpg", "alt": "Press coverage page 17" },
-    { "image": "/images/media/2.jpg", "alt": "Press coverage page 18" },
-    { "image": "/images/media/3.jpg", "alt": "Press coverage page 19" },
-    { "image": "/images/media/5.jpg", "alt": "Press coverage page 20" },
-    { "image": "/images/media/22.jpg", "alt": "Press coverage page 21" }
-  ],
-  "pressLinks": {
-    "heading": "More Press & Mentions",
-    "items": [
-      { "title": "Joint interview on VAMA with Cheriyal artists Vanaja & Padma", "publication": "ETV Bharat", "url": "https://www.etvbharat.com/en/!lifestyle/vama-art-interview-cheriyal-artists-telangana-vanaja-padma-enn25093001233" },
-      { "title": "VAMA", "publication": "YouTube", "url": "https://youtu.be/bkytfwOYUZA?si=UGUsPZelBfu_pVG_" },
-      { "title": "Celebrating Women Artists: A Tribute to India's Traditional Art Forms", "publication": "Dev Discourse", "url": "https://www.devdiscourse.com/article/entertainment/3643782-celebrating-women-artists-a-tribute-to-indias-traditional-art-forms" },
-      { "title": "VAMA", "publication": "", "url": "https://share.google/gEM032pDz1G9iqYTW" },
-      { "title": "VAMA: celebrating the strength of Indian women artists", "publication": "The Patriot", "url": "https://thepatriot.in/listicle/vama-celebrating-the-strength-of-indian-women-artists-76373" },
-      { "title": "VAMA", "publication": "Instagram", "url": "https://www.instagram.com/p/DPRCsUokyJm/?igsh=MTA0aW1kenpscmVuaQ==" },
-      { "title": "Honour the Power of Womanhood Through Tribal Art at This Exhibition in New Delhi", "publication": "Architect & Interiors India", "url": "https://www.architectandinteriorsindia.com/news/honour-the-power-of-womanhood-through-tribal-art-at-this-exhibition-in-new-delhi" },
-      { "title": "VAMA in Delhi Showcases Folk and Traditional Art by Women Artists", "publication": "The New Indian Express", "url": "https://www.newindianexpress.com/cities/delhi/2025/Sep/30/vama-in-delhi-showcases-folk-and-traditional-art-by-women-artists" }
-    ]
-  }
+    {
+      "image": "/images/media/press-2025-instagram.jpg",
+      "alt": "Instagram (Abir Pothi): Art Tree presents VAMA, The Strength Within",
+      "publication": "Instagram",
+      "date": "2025-10-01",
+      "url": "https://www.instagram.com/p/DPRCsUokyJm/"
+    },
+    {
+      "image": "/images/media/press-2025-newindianexpress.jpg",
+      "alt": "The New Indian Express: VAMA in Delhi showcases folk and traditional art by women artists",
+      "publication": "The New Indian Express",
+      "date": "2025-09-30",
+      "url": "https://www.newindianexpress.com/cities/delhi/2025/Sep/30/vama-in-delhi-showcases-folk-and-traditional-art-by-women-artists"
+    },
+    {
+      "image": "/images/media/press-2025-etvbharat.jpg",
+      "alt": "ETV Bharat: Two women artists hold forth on how Cheriyal preserves Telangana's living history",
+      "publication": "ETV Bharat",
+      "date": "2025-09-30",
+      "url": "https://www.etvbharat.com/en/!lifestyle/vama-art-interview-cheriyal-artists-telangana-vanaja-padma-enn25093001233"
+    },
+    {
+      "image": "/images/media/press-2025-youtube.jpg",
+      "alt": "YouTube (Art Scene, Delhi): Vama, works of Tribal women artists at Bikaner House",
+      "publication": "YouTube",
+      "date": "2025-09-28",
+      "url": "https://www.youtube.com/watch?v=bkytfwOYUZA"
+    },
+    {
+      "image": "/images/media/press-2025-theweek.jpg",
+      "alt": "The Week (PTI): Vama group exhibition pays tribute to womanhood through traditional folk tribal art",
+      "publication": "The Week",
+      "date": "2025-09-27",
+      "url": "https://www.theweek.in/wire-updates/national/2025/09/27/lst1-art-women.html"
+    },
+    {
+      "image": "/images/media/press-2025-devdiscourse.jpg",
+      "alt": "Devdiscourse: Celebrating women artists, a tribute to India's traditional art forms",
+      "publication": "Devdiscourse",
+      "date": "2025-09-27",
+      "url": "https://www.devdiscourse.com/article/entertainment/3643782-celebrating-women-artists-a-tribute-to-indias-traditional-art-forms"
+    },
+    {
+      "image": "/images/media/press-2025-thepatriot.jpg",
+      "alt": "The Patriot: VAMA, celebrating the strength of Indian women artists",
+      "publication": "The Patriot",
+      "date": "2025-09-27",
+      "url": "https://thepatriot.in/listicle/vama-celebrating-the-strength-of-indian-women-artists-76373"
+    },
+    {
+      "image": "/images/media/press-2025-architectandinteriors.jpg",
+      "alt": "Architect & Interiors India: Honour the power of womanhood through tribal art at this exhibition in New Delhi",
+      "publication": "Architect & Interiors India",
+      "date": "2025-09-27",
+      "url": "https://www.architectandinteriorsindia.com/news/honour-the-power-of-womanhood-through-tribal-art-at-this-exhibition-in-new-delhi"
+    },
+    {
+      "image": "/images/media/press-2021-nationalherald.jpg",
+      "alt": "National Herald: Ekayan, Ek Sutra celebrates works of National Award-winning artists",
+      "publication": "National Herald",
+      "date": "2021-12-30",
+      "url": "https://www.nationalheraldindia.com/art/ekayan-ek-sutra-celebrates-works-of-national-award-winning-artists-manisha-jha-prakash-joshi-jniranjan"
+    },
+    {
+      "image": "/images/media/press-2021-a2z-reviving.jpg",
+      "alt": "A2Z of Trends: Reviving India's dying art forms",
+      "publication": "A2Z of Trends",
+      "date": "2021-12-30",
+      "url": ""
+    },
+    {
+      "image": "/images/media/press-2021-a2z-learnings.jpg",
+      "alt": "A2Z of Trends: Small learnings about art can create curiosity",
+      "publication": "A2Z of Trends",
+      "date": "2021-12-30",
+      "url": ""
+    },
+    {
+      "image": "/images/media/press-2021-lifeandmore.jpg",
+      "alt": "Life and More: Experimental forms of traditional Madhubani, Phad and Kalamkari art",
+      "publication": "Life and More",
+      "date": "2021-12-28",
+      "url": "https://lifeandmore.in/more/art-craft/experimental-madhubani-phad-kalamkari/"
+    },
+    {
+      "image": "/images/media/press-2021-broadwayworld-kickoff.jpg",
+      "alt": "BroadwayWorld: Art House kicks off new exhibition at Bikaner House in New Delhi",
+      "publication": "BroadwayWorld",
+      "date": "2021-12-27",
+      "url": "https://www.broadwayworld.com/india/article/Art-House-Kicks-Off-New-Exhibition-at-Bikaner-House-in-New-Delhi-20211227"
+    },
+    {
+      "image": "/images/media/press-2021-htcity.jpg",
+      "alt": "Hindustan Times, HT City: Ekayan, Ek Sutra",
+      "publication": "Hindustan Times",
+      "date": "2021-12-24",
+      "url": ""
+    },
+    {
+      "image": "/images/media/press-2021-indianexpress.jpg",
+      "alt": "The Indian Express: Art Tree to present three traditional art forms to celebrate oneness of India",
+      "publication": "The Indian Express",
+      "date": "2021-12-23",
+      "url": "https://indianexpress.com/article/lifestyle/art-and-culture/art-tree-three-traditional-art-forms-celebrate-oneness-india-madhubani-phad-chintz-7683654/"
+    },
+    {
+      "image": "/images/media/press-2021-morningstandard.jpg",
+      "alt": "The Morning Standard: For art's sake",
+      "publication": "The Morning Standard",
+      "date": "2021-12-23",
+      "url": ""
+    },
+    {
+      "image": "/images/media/press-2021-lokbharati.jpg",
+      "alt": "Lokbharati: Art Tree Ekayan ki prastuti",
+      "publication": "Lokbharati",
+      "date": "2021-12-23",
+      "url": ""
+    },
+    {
+      "image": "/images/media/press-2021-republicworld.jpg",
+      "alt": "Republic World (PTI): Exhibition presents distinct art forms in experimental style",
+      "publication": "Republic World",
+      "date": "2021-12-18",
+      "url": "https://www.republicworld.com/india-news/general-news/exhibition-presents-distinct-art-forms-in-experimental-style.html"
+    },
+    {
+      "image": "/images/media/press-2021-jagran.jpg",
+      "alt": "Jagran: Manisha Jha, Prakash Joshi aur J Niranjan ka Madhubani, Phad aur Chintz art show Delhi mein",
+      "publication": "Jagran",
+      "date": "2021-12-18",
+      "url": "https://jagranhindi.in/?p=17124"
+    },
+    {
+      "image": "/images/media/press-2021-devdiscourse.jpg",
+      "alt": "Devdiscourse (PTI): Exhibition presents distinct art forms in experimental style",
+      "publication": "Devdiscourse",
+      "date": "2021-12-18",
+      "url": "https://www.devdiscourse.com/article/entertainment/1852804-exhibition-presents-distinct-art-forms-in-experimental-style"
+    },
+    {
+      "image": "/images/media/press-2021-nyoooz.jpg",
+      "alt": "Nyoooz (PTI): Exhibition presents distinct art forms in experimental style",
+      "publication": "Nyoooz",
+      "date": "2021-12-18",
+      "url": "https://www.nyoooz.com/news/delhi/1637497/exhibition-presents-distinct-art-forms-in-experimental-style/"
+    },
+    {
+      "image": "/images/media/press-2021-newindianexpress.jpg",
+      "alt": "The New Indian Express, Leisure Corner: Diverse show of craft",
+      "publication": "The New Indian Express",
+      "date": "2021-12-12",
+      "url": ""
+    },
+    {
+      "image": "/images/media/press-2021-liveaaryaavart.jpg",
+      "alt": "Live Aaryaa Vart: Art Tree dwara Madhubani, Phad aur Chintz trikoniya art show",
+      "publication": "Live Aaryaa Vart",
+      "date": "2021-12-06",
+      "url": "https://liveaaryaavart.com/2021/12/art-sho-delhi.html"
+    },
+    {
+      "image": "/images/media/press-2021-broadwayworld-tripartite.jpg",
+      "alt": "BroadwayWorld: Art Tree to present tripartite show on Madhubani, Phad and Chintz",
+      "publication": "BroadwayWorld",
+      "date": "2021-12-02",
+      "url": "https://www.broadwayworld.com/india/article/Art-Tree-to-Present-Tripartite-Show-On-Madhubani-Phad-Chintz-20211202"
+    },
+    {
+      "image": "/images/media/press-2021-indiaeducationdiary.jpg",
+      "alt": "India Education Diary: Art Tree tripartite show on Madhubani, Phad and Chintz",
+      "publication": "India Education Diary",
+      "date": "2021-12-02",
+      "url": "https://indiaeducationdiary.in/art-tree-tripartite-show-on-madhubani-phad-chintz/"
+    },
+    {
+      "image": "/images/media/press-2021-dailyadvent.jpg",
+      "alt": "Daily Advent: Art Tree to present tripartite show on Madhubani, Phad and Chintz",
+      "publication": "Daily Advent",
+      "date": "2021-12-02",
+      "url": "https://m.dailyadvent.com/news/53084046fb1aaa5a62bc4c57ea9f2e22-Art-Tree-to-Present-Tripartite-Show-On-Madhubani-Phad--Chintz"
+    },
+    {
+      "image": "https://pkrmhzwvtlfb70wx.public.blob.vercel-storage.com/uploads/1792613224930-WhatsApp-Image-2026-10-22-at-1.18.39-AM-gYmznNvN3hZdtBvhGoQfzccc44JWiw.jpeg",
+      "alt": "Phad: Mythical Heritage of Bhilwara at Bikaner House, October 2017",
+      "publication": "",
+      "date": "2017-10-05",
+      "url": ""
+    },
+    {
+      "image": "https://pkrmhzwvtlfb70wx.public.blob.vercel-storage.com/uploads/1792613419128-WhatsApp-Image-2026-10-22-at-1.17.14-AM-wsdxSX3UXByWQ9rhTcFuH2T8CPLXp7.jpeg",
+      "alt": "Hindustan Times, HT City: Rajasthan's Phad paintings to unscroll tales of deities, in Delhi",
+      "publication": "Hindustan Times",
+      "date": "2017-10-04",
+      "url": ""
+    },
+    {
+      "image": "/images/media/11.jpg",
+      "alt": "Phad: Mythical Heritage of Bhilwara, exhibition brochure",
+      "publication": "",
+      "date": "2017-10-04",
+      "url": ""
+    },
+    {
+      "image": "https://pkrmhzwvtlfb70wx.public.blob.vercel-storage.com/uploads/1792613071638-WhatsApp-Image-2026-10-22-at-1.17.41-AM-iAqEMtCrXlsTHxHR3P2euxPzE3ff8k.jpeg",
+      "alt": "The Asian Age: Myriad hues of Neelanchal",
+      "publication": "The Asian Age",
+      "date": "2017-03-02",
+      "url": ""
+    },
+    {
+      "image": "https://pkrmhzwvtlfb70wx.public.blob.vercel-storage.com/uploads/1792613032811-WhatsApp-Image-2026-10-22-at-1.17.27-AM-uG56oaCsNIJttlpgQDV7Z5fNF4BAFZ.jpeg",
+      "alt": "Delhi Age: Party whirl, splash of vivid hues",
+      "publication": "Delhi Age",
+      "date": "2017-02-26",
+      "url": ""
+    },
+    {
+      "image": "https://pkrmhzwvtlfb70wx.public.blob.vercel-storage.com/uploads/1792612939057-WhatsApp-Image-2026-10-22-at-1.17.23-AM-3IMBvKxtjxPpxWkJh10tpz5bMF7qgv.jpeg",
+      "alt": "Hues of Neelanchal, an art show of the unsung artists of Odisha, invitation",
+      "publication": "",
+      "date": "2017-02-19",
+      "url": ""
+    },
+    {
+      "image": "/images/media/13.jpg",
+      "alt": "Hues of Neelanchal, exhibition brochure",
+      "publication": "",
+      "date": "2017-02-19",
+      "url": ""
+    },
+    {
+      "image": "https://pkrmhzwvtlfb70wx.public.blob.vercel-storage.com/uploads/1792613101883-WhatsApp-Image-2026-10-22-at-1.19.09-AM-XtN2lG7zs5U0jitndcwOFWOvxGREBw.jpeg",
+      "alt": "Hues of marginalised artists",
+      "publication": "",
+      "date": "2017-02-19",
+      "url": ""
+    },
+    {
+      "image": "https://pkrmhzwvtlfb70wx.public.blob.vercel-storage.com/uploads/1792613289877-WhatsApp-Image-2026-10-22-at-1.18.41-AM-2AWD85dBszQ9JtHvtpiA1ISdERWQl0.jpeg",
+      "alt": "Delhi Age: Tunes from another time",
+      "publication": "Delhi Age",
+      "date": "2017-02-26",
+      "url": ""
+    }
+  ]
 }
