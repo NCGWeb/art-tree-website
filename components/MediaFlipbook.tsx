@@ -38,6 +38,8 @@ Page.displayName = 'MediaFlipbookPage';
 export default function MediaFlipbook({ items }: { items: MediaItem[] }) {
   const bookRef = useRef<any>(null);
   const [pageIndex, setPageIndex] = useState(0);
+  // true when the book is open as a two-page spread (desktop), false on a phone
+  const [spread, setSpread] = useState(false);
   // react-pageflip (StPageFlip under the hood) measures and manipulates the
   // DOM on mount, so it can never run during SSR. Rather than
   // next/dynamic(..., { ssr: false }) — whose loader wrapper is a plain
@@ -125,6 +127,8 @@ export default function MediaFlipbook({ items }: { items: MediaItem[] }) {
               disableFlipByClick={false}
               className="media-flipbook"
               style={{}}
+              onInit={(e: any) => setSpread(e.data?.mode === 'landscape')}
+              onChangeOrientation={(e: any) => setSpread(e.data === 'landscape')}
               onFlip={(e: any) => setPageIndex(e.data)}
             >
               {items.map((item, i) => (
@@ -149,18 +153,27 @@ export default function MediaFlipbook({ items }: { items: MediaItem[] }) {
         </button>
       </div>
 
-      {/* Reserved height so the layout doesn't jump when a page has no link. */}
-      <div className="flex min-h-[48px] items-center justify-center">
-        {items[pageIndex]?.url && (
-          <a
-            href={items[pageIndex].url}
-            target="_blank"
-            rel="noopener noreferrer"
-            className="inline-flex min-h-[44px] items-center rounded-full bg-headline-green px-7 py-2.5 text-sm font-semibold uppercase tracking-wide text-white shadow-md transition-colors duration-300 ease-out hover:bg-terracotta"
-          >
-            {linkLabel(items[pageIndex].url as string)} ↗
-          </a>
-        )}
+      {/* One link button per visible page, centred under it: two across when the
+          book is open as a spread, one on a phone. Height is reserved so the
+          layout doesn't jump when a page has no link. */}
+      <div
+        className="grid min-h-[48px] w-[84vw] sm:w-[70vw]"
+        style={{ gridTemplateColumns: `repeat(${spread ? 2 : 1}, minmax(0, 1fr))` }}
+      >
+        {(spread ? [items[pageIndex], items[pageIndex + 1]] : [items[pageIndex]]).map((it, k) => (
+          <div key={k} className="flex items-center justify-center">
+            {it?.url && (
+              <a
+                href={it.url}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="inline-flex min-h-[44px] items-center rounded-full bg-headline-green px-5 py-2.5 text-xs font-semibold uppercase tracking-wide text-white shadow-md transition-colors duration-300 ease-out hover:bg-terracotta sm:px-7 sm:text-sm"
+              >
+                {linkLabel(it.url)} ↗
+              </a>
+            )}
+          </div>
+        ))}
       </div>
 
       <div className="flex items-center gap-4 text-xs uppercase tracking-widest text-ink">
