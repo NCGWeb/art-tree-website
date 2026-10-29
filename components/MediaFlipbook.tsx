@@ -2,16 +2,11 @@
 
 import { forwardRef, useEffect, useRef, useState, type ComponentType } from 'react';
 
-// Pages run latest to oldest. `url` (optional) is the online article the page
-// came from; when set, the page shows a "Read article" link. `publication` and
-// `date` (YYYY-MM-DD) feed the caption under the book.
+// Pages run latest to oldest (Exhibitions page event order, then date). `url`
+// (optional) is the online article the page came from; when set, the page shows
+// a "Read article" link. `event`, `publication` and `date` (YYYY-MM-DD) are
+// bookkeeping for the admin and are not shown on the page.
 type MediaItem = { image: string; alt: string; url?: string; publication?: string; date?: string; event?: string };
-
-const MONTHS = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'];
-function formatDate(iso?: string) {
-  const m = /^(\d{4})-(\d{2})-(\d{2})$/.exec(iso || '');
-  return m ? `${Number(m[3])} ${MONTHS[Number(m[2]) - 1]} ${m[1]}` : '';
-}
 
 // react-pageflip targets its own ref directly at each page's root DOM node
 // to size/position/flip it, so every page must forward a ref.
@@ -179,11 +174,6 @@ export default function MediaFlipbook({ items }: { items: MediaItem[] }) {
           Next ›
         </button>
       </div>
-      {(items[pageIndex]?.event || items[pageIndex]?.publication || items[pageIndex]?.date) && (
-        <p className="text-center text-sm font-medium text-ink">
-          {[items[pageIndex]?.event, items[pageIndex]?.publication, formatDate(items[pageIndex]?.date)].filter(Boolean).join(' · ')}
-        </p>
-      )}
       <p className="text-center text-xs text-muted-soft">Drag a corner, swipe, or use the arrows to flip through.</p>
     </div>
   );

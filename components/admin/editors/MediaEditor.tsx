@@ -65,9 +65,9 @@ export default function MediaEditor({ initial }: { initial: any }) {
                   onSrcChange={(v) => update({ image: v })}
                   onAltChange={(v) => update({ alt: v })}
                 />
-                <TextField label="Event (as named on the Exhibitions page, shown under the book)" value={item.event || ''} onChange={(v) => update({ event: v })} />
-                <TextField label="Publication (shown under the book)" value={item.publication || ''} onChange={(v) => update({ publication: v })} />
-                <TextField label="Date, YYYY-MM-DD (shown under the book)" value={item.date || ''} onChange={(v) => update({ date: v })} />
+                <TextField label="Event (as named on the Exhibitions page, for ordering)" value={item.event || ''} onChange={(v) => update({ event: v })} />
+                <TextField label="Publication (for reference)" value={item.publication || ''} onChange={(v) => update({ publication: v })} />
+                <TextField label="Date, YYYY-MM-DD (pages run newest first)" value={item.date || ''} onChange={(v) => update({ date: v })} />
                 <TextField label="Article link (adds a Read article button, leave empty for print clippings)" value={item.url || ''} onChange={(v) => update({ url: v })} />
               </div>
             )}
