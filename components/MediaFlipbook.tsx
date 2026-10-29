@@ -82,25 +82,23 @@ export default function MediaFlipbook({ items }: { items: MediaItem[] }) {
   }
 
   return (
-    <div className="mx-auto flex w-full max-w-7xl flex-col items-center gap-5 px-4">
+    <div className="mx-auto flex w-full max-w-7xl flex-col items-center gap-5 px-2 sm:px-4">
       <div className="flex w-full items-center justify-center gap-1.5 sm:gap-5">
         <button
           type="button"
           onClick={prev}
           disabled={pageIndex <= 0}
           aria-label="Previous page"
-          className="flex h-9 w-9 shrink-0 items-center justify-center rounded-full border border-headline-green/30 text-xl text-headline-green transition-all duration-300 ease-out hover:border-terracotta hover:bg-terracotta/10 hover:text-terracotta disabled:pointer-events-none disabled:opacity-30 sm:h-11 sm:w-11"
+          className="hidden h-9 w-9 shrink-0 items-center sm:flex justify-center rounded-full border border-headline-green/30 text-xl text-headline-green transition-all duration-300 ease-out hover:border-terracotta hover:bg-terracotta/10 hover:text-terracotta disabled:pointer-events-none disabled:opacity-30 sm:h-11 sm:w-11"
         >
           ‹
         </button>
 
-        {/* 70vw on sm+. On mobile the two nav buttons (even shrunk) still
-            eat a fixed ~90px out of the viewport, so 70% of the full
-            viewport width read as noticeably smaller than 70% of the space
-            actually left for the book — bumped to 84vw below sm, and the
-            buttons themselves shrink there too, to leave more of that to
-            the book itself. */}
-        <div className="w-[84vw] drop-shadow-xl sm:w-[70vw]">
+        {/* 70vw on sm+. Below sm the side arrows are hidden (the Prev / Next
+            buttons underneath and swiping still work) so the book can use
+            the full width of the phone, which keeps the clipping text
+            readable. */}
+        <div className="w-full drop-shadow-xl sm:w-[70vw]">
           {FlipBook ? (
             <FlipBook
               ref={bookRef}
@@ -147,7 +145,7 @@ export default function MediaFlipbook({ items }: { items: MediaItem[] }) {
           onClick={next}
           disabled={pageIndex >= total - 1}
           aria-label="Next page"
-          className="flex h-11 w-11 shrink-0 items-center justify-center rounded-full border border-headline-green/30 text-xl text-headline-green transition-all duration-300 ease-out hover:border-terracotta hover:bg-terracotta/10 hover:text-terracotta disabled:pointer-events-none disabled:opacity-30"
+          className="hidden h-11 w-11 shrink-0 items-center sm:flex justify-center rounded-full border border-headline-green/30 text-xl text-headline-green transition-all duration-300 ease-out hover:border-terracotta hover:bg-terracotta/10 hover:text-terracotta disabled:pointer-events-none disabled:opacity-30"
         >
           ›
         </button>
@@ -157,7 +155,7 @@ export default function MediaFlipbook({ items }: { items: MediaItem[] }) {
           book is open as a spread, one on a phone. Height is reserved so the
           layout doesn't jump when a page has no link. */}
       <div
-        className="grid min-h-[48px] w-[84vw] sm:w-[70vw]"
+        className="grid min-h-[48px] w-full sm:w-[70vw]"
         style={{ gridTemplateColumns: `repeat(${spread ? 2 : 1}, minmax(0, 1fr))` }}
       >
         {(spread ? [items[pageIndex], items[pageIndex + 1]] : [items[pageIndex]]).map((it, k) => (
