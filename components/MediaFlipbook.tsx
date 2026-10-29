@@ -3,10 +3,16 @@
 import { forwardRef, useEffect, useRef, useState, type ComponentType } from 'react';
 
 // Pages run latest to oldest (Exhibitions page event order, then date). `url`
-// (optional) is the online article the page came from; when set, the page shows
-// a "Read article" link. `event`, `publication` and `date` (YYYY-MM-DD) are
-// bookkeeping for the admin and are not shown on the page.
+// (optional) is the online article the page came from; when set, a link button
+// sits under the book while that page is showing. `event`, `publication` and
+// `date` (YYYY-MM-DD) are bookkeeping for the admin and are not shown.
 type MediaItem = { image: string; alt: string; url?: string; publication?: string; date?: string; event?: string };
+
+function linkLabel(url: string) {
+  if (/youtube\.com|youtu\.be/i.test(url)) return 'See video';
+  if (/instagram\.com/i.test(url)) return 'See post';
+  return 'Read article';
+}
 
 // react-pageflip targets its own ref directly at each page's root DOM node
 // to size/position/flip it, so every page must forward a ref.
@@ -24,16 +30,6 @@ const Page = forwardRef<HTMLDivElement, { item: MediaItem; priority?: boolean }>
         loading={priority ? 'eager' : 'lazy'}
         className="h-full w-full select-none object-contain"
       />
-      {item.url && (
-        <a
-          href={item.url}
-          target="_blank"
-          rel="noopener noreferrer"
-          className="absolute bottom-2 right-2 rounded-full bg-headline-green/90 px-3 py-1.5 text-[11px] font-medium uppercase tracking-wide text-white shadow transition-colors duration-300 ease-out hover:bg-terracotta sm:bottom-3 sm:right-3 sm:text-xs"
-        >
-          Read article ↗
-        </a>
-      )}
     </div>
   ),
 );
@@ -151,6 +147,20 @@ export default function MediaFlipbook({ items }: { items: MediaItem[] }) {
         >
           ›
         </button>
+      </div>
+
+      {/* Reserved height so the layout doesn't jump when a page has no link. */}
+      <div className="flex min-h-[48px] items-center justify-center">
+        {items[pageIndex]?.url && (
+          <a
+            href={items[pageIndex].url}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="inline-flex min-h-[44px] items-center rounded-full bg-headline-green px-7 py-2.5 text-sm font-semibold uppercase tracking-wide text-white shadow-md transition-colors duration-300 ease-out hover:bg-terracotta"
+          >
+            {linkLabel(items[pageIndex].url as string)} ↗
+          </a>
+        )}
       </div>
 
       <div className="flex items-center gap-4 text-xs uppercase tracking-widest text-ink">
