@@ -73,7 +73,8 @@ export async function POST(req: Request) {
     }
   } catch (err) {
     console.error('[contact] send failed:', err);
-    return NextResponse.json({ error: 'Could not send' }, { status: 502 });
+    // TEMP DEBUG: remove once the send works.
+    return NextResponse.json({ error: 'Could not send', detail: String((err as Error)?.message).slice(0, 300) }, { status: 502 });
   }
   return NextResponse.json({ ok: true });
 }
