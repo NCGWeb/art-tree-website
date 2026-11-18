@@ -8,7 +8,7 @@ export const runtime = 'nodejs';
 const EMAIL_RE = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
 
 export async function POST(req: Request) {
-  const resendKey = process.env.RESEND_API_KEY;
+  const resendKey = process.env.RESEND_API_KEY?.trim();
   const user = process.env.SMTP_USER;
   const pass = process.env.SMTP_PASS;
   if (!resendKey && (!user || !pass)) {
@@ -48,7 +48,7 @@ export async function POST(req: Request) {
         method: 'POST',
         headers: { Authorization: `Bearer ${resendKey}`, 'Content-Type': 'application/json' },
         body: JSON.stringify({
-          from: process.env.CONTACT_FROM || 'Art Tree website <enquiries@art-tree.co.in>',
+          from: process.env.CONTACT_FROM?.trim() || 'Art Tree website <enquiries@art-tree.co.in>',
           to,
           reply_to: email,
           subject: finalSubject,
@@ -73,8 +73,7 @@ export async function POST(req: Request) {
     }
   } catch (err) {
     console.error('[contact] send failed:', err);
-    // TEMP DEBUG: remove once the send works.
-    return NextResponse.json({ error: 'Could not send', detail: String((err as Error)?.message).slice(0, 300) }, { status: 502 });
+    return NextResponse.json({ error: 'Could not send' }, { status: 502 });
   }
   return NextResponse.json({ ok: true });
 }
