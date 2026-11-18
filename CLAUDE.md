@@ -176,10 +176,27 @@ live site is `art-tree-website.vercel.app` on `zzxc` again (deploys from the `th
 reading the old Blob store `pkrmhzwvtlfb70wx` (`art-tree-website-blob`). The Northville project
 `art-tree-website` no longer exists (its `*.vercel.app` URLs return 404) and the Northville store
 `art-tree-blob` is an unused copy. The Blob optimization (`a08687a`, no `list()` per request) is on both
-repos. **`.env.local` must hold the `zzxc` store's `BLOB_READ_WRITE_TOKEN`** (store id `pkrmhzwvtlfb70wx`,
-from the store's `.env.local` tab); until then it still holds the Northville token (`faFoIpEkjr6jDJWV`),
-so local dev and any Blob patch would hit the wrong store. The Vercel CLI here is logged into Northville;
-run `npx vercel login` as the `zzxc` account before using it for the live project.
+repos. **`.env.local` holds the `zzxc` store's `BLOB_READ_WRITE_TOKEN`** (store id `pkrmhzwvtlfb70wx`), so
+local dev and Blob patches hit the live store. The Vercel CLI here is logged into Northville; run
+`npx vercel login` as the `zzxc` account before using it for the live project.
+
+**Domain and DNS (2026-11-18).** The live address is **https://www.art-tree.co.in** (the bare domain
+redirects to `www`); both are attached to the `zzxc` `art-tree-website` Vercel project. The domain was
+transferred from the previous developer's registrar (Endurance) into the owner's **GoDaddy** account
+(Northville login) and DNS is now hosted at GoDaddy (`ns45/ns46.domaincontrol.com`), so nothing depends on
+the previous developer. Records: `A @ 216.150.1.1` and `CNAME www 14553991524c28c3.vercel-dns-017.com`
+(Vercel's values; check the Vercel Domains page if they change), plus Resend's DKIM/`send` records. There are
+**no MX records**, so `pragati@art-tree.co.in` has no mailbox right now (it used to live on the previous
+developer's server). Do not delete the Resend records or the `_domainconnect` record.
+
+**Contact form (live).** `components/ContactForm.tsx` POSTs to `app/api/contact/route.ts`, which sends through
+**Resend** (domain `art-tree.co.in` verified; sender `enquiries@art-tree.co.in`, override with
+`CONTACT_FROM`) and falls back to Gmail SMTP (`SMTP_USER`/`SMTP_PASS`) if `RESEND_API_KEY` is unset. If the
+server can't send, the form falls back to opening the visitor's mail app, which is how a missing or bad key
+shows up. Vercel env vars: `RESEND_API_KEY` (the value is trimmed in code; a pasted line break once broke it).
+Recipients come from the Contact page's `formRecipients` list (editable in `/admin` → Contact, not shown
+publicly): `thiru@northvilleconsultinggroup.com`, `pragati@art-tree.co.in`, `arttree23@gmail.com`. Reading
+the response of a failed send is the quickest diagnosis (add a temporary `detail`, then remove it).
 
 Historical notes (the move to Northville):
 
@@ -243,8 +260,17 @@ keep them at or below their native size.
 
 ## Where we left off (update this at the end of each session)
 
-Last updated 2026-10-23. Everything below is pushed to GitHub (`master`, both remotes) and live on
+Last updated 2026-11-18. Everything below is pushed to GitHub (`master`, both remotes) and live on
 Vercel; the saved Blob content is in sync for the fields listed.
+
+2026-10-28 to 2026-11-18: Madhubani credit is "Manoj Choudhary"; new Sanjhi image (Art Forms) and Phad
+image (Exhibitions); Gallery caption under the fan removed; Gallery Featured and Exhibitions images shown
+in full (`object-contain`, blurred backdrop on Featured); 12 Samanvay (2023) press items added to Media;
+domain moved to GoDaddy and DNS pointed at Vercel; contact form sends via Resend to three addresses (see
+Hosting). Open: the `pragati@art-tree.co.in` mailbox (no MX), the Resend API key should be rotated (it
+appeared in a screenshot and once in a debug response), the Tulika/Exhibitions event images are cropped in
+the source files (need the full posters), the two Patriot press images are wide and look small in the flipbook,
+and an orange village painting the owner wants removed from the Media flipbook was never identified.
 
 2026-10-23 session: the site is live on the `zzxc` Pro account again (see Hosting above);
 `.env.local` now holds the `zzxc` store token and its content matches live; `.gitignore` now excludes
