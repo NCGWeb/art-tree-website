@@ -8,9 +8,10 @@ export const runtime = 'nodejs';
 const EMAIL_RE = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
 
 export async function POST(req: Request) {
+  const resendKey = process.env.RESEND_API_KEY;
   const user = process.env.SMTP_USER;
   const pass = process.env.SMTP_PASS;
-  if (!user || !pass) {
+  if (!resendKey && (!user || !pass)) {
     return NextResponse.json({ error: 'Mail is not configured' }, { status: 503 });
   }
 
@@ -37,21 +38,39 @@ export async function POST(req: Request) {
   const contact = await getPageContent('contact', { fresh: true });
   const to = contact.emails;
 
-  const transporter = nodemailer.createTransport({
-    host: process.env.SMTP_HOST || 'smtp.gmail.com',
-    port: 465,
-    secure: true,
-    auth: { user, pass },
-  });
+  const finalSubject = subject || contact.form.defaultSubject;
+  const text = `Name: ${name}\nEmail: ${email}\n\n${message}`;
 
   try {
-    await transporter.sendMail({
-      from: `"Art Tree website" <${user}>`,
-      to,
-      replyTo: `"${name.replace(/"/g, '')}" <${email}>`,
-      subject: subject || contact.form.defaultSubject,
-      text: `Name: ${name}\nEmail: ${email}\n\n${message}`,
-    });
+    if (resendKey) {
+      // Resend: the sender must be an address on a domain verified in Resend.
+      const res = await fetch('https://api.resend.com/emails', {
+        method: 'POST',
+        headers: { Authorization: `Bearer ${resendKey}`, 'Content-Type': 'application/json' },
+        body: JSON.stringify({
+          from: process.env.CONTACT_FROM || 'Art Tree website <enquiries@art-tree.co.in>',
+          to,
+          reply_to: email,
+          subject: finalSubject,
+          text,
+        }),
+      });
+      if (!res.ok) throw new Error(`resend ${res.status} ${await res.text()}`);
+    } else {
+      const transporter = nodemailer.createTransport({
+        host: process.env.SMTP_HOST || 'smtp.gmail.com',
+        port: 465,
+        secure: true,
+        auth: { user, pass },
+      });
+      await transporter.sendMail({
+        from: `"Art Tree website" <${user}>`,
+        to,
+        replyTo: `"${name.replace(/"/g, '')}" <${email}>`,
+        subject: finalSubject,
+        text,
+      });
+    }
   } catch (err) {
     console.error('[contact] send failed:', err);
     return NextResponse.json({ error: 'Could not send' }, { status: 502 });
