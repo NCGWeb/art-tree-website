@@ -36,7 +36,7 @@ export async function POST(req: Request) {
   }
 
   const contact = await getPageContent('contact', { fresh: true });
-  const to = contact.emails;
+  const to = contact.formRecipients?.length ? contact.formRecipients : contact.emails;
 
   const finalSubject = subject || contact.form.defaultSubject;
   const text = `Name: ${name}\nEmail: ${email}\n\n${message}`;

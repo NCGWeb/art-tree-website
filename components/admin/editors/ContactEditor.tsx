@@ -56,9 +56,14 @@ export default function ContactEditor({ initial }: { initial: any }) {
           <div className="space-y-3">
             <TextField label="Phone number" value={data.phone} onChange={(v) => set(['phone'], v)} />
             <StringListField
-              label="Email addresses (shown on the page; the contact form sends to all of them)"
+              label="Email addresses shown on the page"
               value={data.emails}
               onChange={(v) => set(['emails'], v)}
+            />
+            <StringListField
+              label="Contact form sends enquiries to (not shown on the page)"
+              value={data.formRecipients}
+              onChange={(v) => set(['formRecipients'], v)}
             />
             <TextField label="Location" value={data.location} onChange={(v) => set(['location'], v)} />
             <TextField label="Location note" value={data.locationNote} onChange={(v) => set(['locationNote'], v)} />

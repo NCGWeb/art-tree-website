@@ -103,7 +103,7 @@ export default async function ContactPage() {
 
           <Reveal as="div" delay={120}>
             <ContactForm
-              recipientEmail={contact.emails.join(',')}
+              recipientEmail={contact.formRecipients.join(',')}
               defaultSubject={contact.form.defaultSubject}
               labels={contact.form}
             />
